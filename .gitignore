@@ -2,3 +2,6 @@
 .Rhistory
 .RData
 .quarto
+
+/.quarto/
+**/*.quarto_ipynb

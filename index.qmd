@@ -1,0 +1,14 @@
+---
+title: "Bienvenido al Curso"
+---
+
+Hola estudiantes,
+
+En este sitio encontrarán todo el material del curso de R y RStudio.
+
+### Estructura del curso
+
+1.  **Teoría:** Conceptos fundamentales explicados con Quarto.
+2.  **Práctica:** Ejercicios interactivos que se ejecutan directamente en su navegador.
+
+¡Comencemos a programar!

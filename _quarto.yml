@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: docs # GitHub Pages usa esta carpeta fácilmente
+  output-dir: docs
 
 website:
   title: "Curso de Fundamentos en R"
@@ -10,9 +10,20 @@ website:
         text: Inicio
       - text: "Módulos Teóricos"
         menu:
-          - teoria/Modulo_1.qmd
+          - text: "Módulo 1"
+            file: teoria/Modulo_1.qmd
+          # Añade aquí tus otros módulos cuando los muevas
+      - text: "Práctica Interactiva"
+        menu:
+          - text: "Práctica 1"
+            file: practica/Practica_Modulo_1.qmd
 
 format:
   html:
-    theme: flatly # O 'flatly', 'journal' (estilos limpios)
+    theme: flatly
     toc: true
+    css: styles.css
+
+# ESTO ES LO QUE ACTIVA LA MAGIA DE WEBASSEMBLY
+filters:
+  - r-wasm/live

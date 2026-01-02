@@ -24,8 +24,6 @@ Calcula el resultado de las siguientes operaciones matemáticas: 1. La suma de 1
 
 ```{webr}
 # Escribe tu código aquí
-#| exercise: ex_1
-5 + 5
 ```
 
 ### Ejercicio 1.2

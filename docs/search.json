@@ -1,0 +1,121 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Bienvenido al Curso",
+    "section": "",
+    "text": "Hola estudiantes,\nEn este sitio encontrarán todo el material del curso de R y RStudio.\n\nEstructura del curso\n\nTeoría: Conceptos fundamentales explicados con Quarto.\nPráctica: Ejercicios interactivos que se ejecutan directamente en su navegador.\n\n¡Comencemos a programar!"
+  },
+  {
+    "objectID": "teoria/Modulo_1.html#introducción",
+    "href": "teoria/Modulo_1.html#introducción",
+    "title": "Módulo 1: Introducción a R y RStudio",
+    "section": "Introducción",
+    "text": "Introducción\nBienvenidos al curso.\nAntes de empezar, debemos distinguir entre las herramientas:\n\nR: Es el lenguaje de programación (el motor).\nRStudio: Es el Entorno de Desarrollo Integrado (el tablero de control).\n\n\n“R hace el cálculo, RStudio nos facilita la vida.”"
+  },
+  {
+    "objectID": "teoria/Modulo_1.html#la-interfaz-de-rstudio",
+    "href": "teoria/Modulo_1.html#la-interfaz-de-rstudio",
+    "title": "Módulo 1: Introducción a R y RStudio",
+    "section": "La Interfaz de RStudio",
+    "text": "La Interfaz de RStudio\nRStudio se divide en 4 paneles principales:\n\n\n\nSource: Editor de código.\nConsole: Ejecución inmediata.\nEnvironment: Variables y datos.\nFiles/Plots: Gráficos y archivos.\n\n\n\n\n\nLayout RStudio"
+  },
+  {
+    "objectID": "teoria/Modulo_1.html#r-como-calculadora",
+    "href": "teoria/Modulo_1.html#r-como-calculadora",
+    "title": "Módulo 1: Introducción a R y RStudio",
+    "section": "R como Calculadora",
+    "text": "R como Calculadora\nLo más básico: operaciones matemáticas directas.\n\n# Suma y Resta\n10 + 5\n\n[1] 15\n\n20 - 8\n\n[1] 12\n\n# Multiplicación y División\n4 * 5\n\n[1] 20\n\n100 / 4\n\n[1] 25\n\n# Potencia\n2^5\n\n[1] 32"
+  },
+  {
+    "objectID": "teoria/Modulo_1.html#funciones-matemáticas",
+    "href": "teoria/Modulo_1.html#funciones-matemáticas",
+    "title": "Módulo 1: Introducción a R y RStudio",
+    "section": "Funciones Matemáticas",
+    "text": "Funciones Matemáticas\nR tiene funciones integradas para cálculos más complejos.\n\nsqrt(64)   # Raíz cuadrada\n\n[1] 8\n\nlog(10)    # Logaritmo natural\n\n[1] 2.302585\n\nabs(-50)   # Valor absoluto\n\n[1] 50\n\npi         # Constante Pi\n\n[1] 3.141593"
+  },
+  {
+    "objectID": "teoria/Modulo_1.html#variables-y-asignación",
+    "href": "teoria/Modulo_1.html#variables-y-asignación",
+    "title": "Módulo 1: Introducción a R y RStudio",
+    "section": "Variables y Asignación",
+    "text": "Variables y Asignación\nPara guardar valores usamos el operador de asignación &lt;- (Alt + -).\n\nx &lt;- 20\ny &lt;- 10\n\n# Operamos con las variables\nresultado &lt;- x + y\nresultado\n\n[1] 30\n\n\n\n\n\n\n\n\nTip\n\n\nEvita usar = para asignar variables en R. Es una buena práctica usar siempre &lt;-."
+  },
+  {
+    "objectID": "teoria/Modulo_1.html#tipos-de-datos-atómicos",
+    "href": "teoria/Modulo_1.html#tipos-de-datos-atómicos",
+    "title": "Módulo 1: Introducción a R y RStudio",
+    "section": "Tipos de Datos (Atómicos)",
+    "text": "Tipos de Datos (Atómicos)\nR maneja diferentes “clases” de datos:\n1. Numeric y Character\n\n# Numérico\nprecio &lt;- 15.5\nclass(precio)\n\n[1] \"numeric\"\n\n# Caracter (Texto)\ncurso &lt;- \"Computacion I\"\nclass(curso)\n\n[1] \"character\""
+  },
+  {
+    "objectID": "teoria/Modulo_1.html#logical-booleanos",
+    "href": "teoria/Modulo_1.html#logical-booleanos",
+    "title": "Módulo 1: Introducción a R y RStudio",
+    "section": "2. Logical (Booleanos)",
+    "text": "2. Logical (Booleanos)\nSolo existen TRUE y FALSE. Son vitales para filtrar datos.\n\nsoy_profesor &lt;- TRUE\nsoy_alumno &lt;- FALSE\n\n# Comparación lógica\n10 &gt; 5\n\n[1] TRUE"
+  },
+  {
+    "objectID": "teoria/Modulo_1.html#vectores",
+    "href": "teoria/Modulo_1.html#vectores",
+    "title": "Módulo 1: Introducción a R y RStudio",
+    "section": "3. Vectores",
+    "text": "3. Vectores\nEs la estructura de datos fundamental. Colección de elementos del mismo tipo usando c().\n\nedades &lt;- c(25, 30, 22, 28)\nedades\n\n[1] 25 30 22 28\n\nnombres &lt;- c(\"Ana\", \"Luis\", \"Oliver\")\nnombres\n\n[1] \"Ana\"    \"Luis\"   \"Oliver\""
+  },
+  {
+    "objectID": "teoria/Modulo_1.html#ejercicio-práctico",
+    "href": "teoria/Modulo_1.html#ejercicio-práctico",
+    "title": "Módulo 1: Introducción a R y RStudio",
+    "section": "Ejercicio Práctico:",
+    "text": "Ejercicio Práctico:\nCalcular el IMC (\\(IMC = \\frac{peso}{altura^2}\\))\n\npeso &lt;- 75      # kg\naltura &lt;- 1.80  # metros\n\nimc &lt;- peso / (altura^2)\n\n# Imprimir resultado redondeado\nround(imc, 2)\n\n[1] 23.15"
+  },
+  {
+    "objectID": "practica/Practica_Modulo_1.html",
+    "href": "practica/Practica_Modulo_1.html",
+    "title": "Práctica Módulo 1: Fundamentos de R",
+    "section": "",
+    "text": "Este cuaderno contiene ejercicios prácticos para reforzar los conceptos del Módulo 1.\nTu misión: Escribir el código correspondiente dentro de los bloques (chunks) vacíos para resolver cada problema."
+  },
+  {
+    "objectID": "practica/Practica_Modulo_1.html#instrucciones",
+    "href": "practica/Practica_Modulo_1.html#instrucciones",
+    "title": "Práctica Módulo 1: Fundamentos de R",
+    "section": "",
+    "text": "Este cuaderno contiene ejercicios prácticos para reforzar los conceptos del Módulo 1.\nTu misión: Escribir el código correspondiente dentro de los bloques (chunks) vacíos para resolver cada problema."
+  },
+  {
+    "objectID": "practica/Practica_Modulo_1.html#parte-1-r-como-calculadora",
+    "href": "practica/Practica_Modulo_1.html#parte-1-r-como-calculadora",
+    "title": "Práctica Módulo 1: Fundamentos de R",
+    "section": "Parte 1: R como Calculadora",
+    "text": "Parte 1: R como Calculadora\n\nEjercicio 1.1\nCalcula el resultado de las siguientes operaciones matemáticas: 1. La suma de 125 más 480. 2. La división de 500 entre 25. 3. 5 elevado a la potencia 4.\n\n\n\n\n\n\n\n\n\n\nEjercicio 1.2\nUsa funciones matemáticas para calcular: 1. La raíz cuadrada de 144. 2. El logaritmo natural de 100. 3. El valor absoluto de -250."
+  },
+  {
+    "objectID": "practica/Practica_Modulo_1.html#parte-2-variables-y-asignación",
+    "href": "practica/Practica_Modulo_1.html#parte-2-variables-y-asignación",
+    "title": "Práctica Módulo 1: Fundamentos de R",
+    "section": "Parte 2: Variables y Asignación",
+    "text": "Parte 2: Variables y Asignación\n\nEjercicio 2.1\n\nCrea una variable llamada precio con el valor 50.\nCrea una variable llamada cantidad con el valor 5.\nCalcula el total multiplicando ambas variables y guárdalo en una variable llamada total_venta.\nImprime el resultado de total_venta.\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 2.2\nCorrige el siguiente código para que siga las “buenas prácticas” de R (usa la flecha &lt;- y nombres descriptivos en minúsculas)."
+  },
+  {
+    "objectID": "practica/Practica_Modulo_1.html#parte-3-tipos-de-datos",
+    "href": "practica/Practica_Modulo_1.html#parte-3-tipos-de-datos",
+    "title": "Práctica Módulo 1: Fundamentos de R",
+    "section": "Parte 3: Tipos de Datos",
+    "text": "Parte 3: Tipos de Datos\n\nEjercicio 3.1\nVerifica la clase (tipo de dato) de los siguientes valores usando la función class():\n\n10.5\n“Data Science”\nTRUE"
+  },
+  {
+    "objectID": "practica/Practica_Modulo_1.html#parte-4-vectores",
+    "href": "practica/Practica_Modulo_1.html#parte-4-vectores",
+    "title": "Práctica Módulo 1: Fundamentos de R",
+    "section": "Parte 4: Vectores",
+    "text": "Parte 4: Vectores\n\nEjercicio 4.1\nCrea un vector llamado notas que contenga las siguientes calificaciones: 15, 18, 20, 12, 16. Imprime el vector.\n\n\n\n\n\n\n\n\n\n\nEjercicio 4.2 (Desafío de Coerción)\n¿Qué pasa si intentas crear el siguiente vector? mi_vector &lt;- c(10, “Veinte”, 30)\n\nCrea el vector.\nVerifica su clase con class().\nExplica con un comentario (#) qué ocurrió."
+  },
+  {
+    "objectID": "practica/Practica_Modulo_1.html#parte-5-ejercicio-integrador",
+    "href": "practica/Practica_Modulo_1.html#parte-5-ejercicio-integrador",
+    "title": "Práctica Módulo 1: Fundamentos de R",
+    "section": "Parte 5: Ejercicio Integrador",
+    "text": "Parte 5: Ejercicio Integrador\nImagina que estás calculando el costo básico de una póliza.\n\nCrea una variable prima_base con valor 1000.\nCrea una variable tasa_impuesto con valor 0.16 (16%).\nCalcula el monto_impuesto multiplicando la base por la tasa.\nCalcula el precio_final sumando la base y el impuesto.\nImprime el precio_final."
+  }
+]

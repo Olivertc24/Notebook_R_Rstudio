@@ -1,0 +1,173 @@
+---
+title: "Práctica Módulo 5: Manipulación de Datos con Tidyverse"
+subtitle: "Análisis del Mercado Inmobiliario"
+author: "Prof. Oliver Triveño"
+format: live-html
+engine: knitr
+editor: visual
+lang: es
+---
+
+## Instrucciones
+
+En esta práctica actuaremos como Analistas de Datos en una inmobiliaria.
+
+Usaremos el paquete `tidyverse` para limpiar, transformar y resumir un dataset real de precios de viviendas.
+
+**Requisito:** Asegúrate de tener el archivo `data_house_price.csv` en la misma carpeta que este documento.
+
+------------------------------------------------------------------------
+
+## Parte 0: Configuración y Carga
+
+### Ejercicio 0.1: Cargar paquetes y datos
+
+1.  Carga la librería `tidyverse`.
+2.  Lee el archivo `data_house_price.csv` usando `read_csv()` y asígnalo a un objeto llamado `casas`.
+3.  Usa `glimpse(casas)` para inspeccionar rápidamente las variables.
+
+```{webr}
+#| message: false
+# 1. Librerías
+
+# 2. Lectura
+
+# 3. Inspección
+```
+
+## Parte 1: Verbos Básicos (Select, Filter, Arrange)
+
+### Ejercicio 1.1: Selección de Columnas
+
+Nuestro jefe solo quiere ver la información básica. Crea un nuevo objeto llamado casas_simple que contenga solo las siguientes columnas:
+
+1.  date
+
+2.  price
+
+3.  bedrooms
+
+4.  sqft_living (pies cuadrados habitables)
+
+5.  city
+
+```{webr}
+# Escribe tu código aquí
+```
+
+### Ejercicio 1.2: Filtrado de Datos
+
+Nos interesan casas con características específicas para un cliente exigente:
+
+1.  Deben estar en la ciudad de "Seattle".
+
+2.  Deben tener más de 3 habitaciones (bedrooms \> 3).
+
+3.  El precio debe ser menor a 600,000.
+
+Guarda este subconjunto en ofertas_seattle.
+
+```{webr}
+# Escribe tu código aquí
+```
+
+### Ejercicio 1.3: Ordenamiento
+
+Toma el objeto ofertas_seattle y ordénalo por precio de forma descendente (de la más cara a la más barata). Muestra las primeras 5 filas con head().
+
+```{webr}
+# Escribe tu código aquí
+```
+
+## Parte 2: Transformación (Mutate)
+
+### Ejercicio 2.1: Ingeniería de Características
+
+En bienes raíces, el precio total engaña. La métrica clave es el "Precio por Pie Cuadrado". Usando el dataset original casas:
+
+1.  Crea una nueva columna llamada precio_sqft que sea la división de price entre sqft_living.
+
+2.  Crea otra columna llamada es_lujo que sea TRUE si el precio es mayor a 1,000,000, y FALSE en caso contrario (usa ifelse o comparación directa).
+
+Asigna el resultado a casas_procesadas.
+
+```{webr}
+# Escribe tu código aquí
+```
+
+## Parte 3: Resúmenes y Agrupaciones (Group by + Summarise)
+
+### Ejercicio 3.1: Análisis por Ciudad
+
+Queremos saber qué ciudades son las más caras.
+
+1.  Agrupa casas_procesadas por city.
+
+2.  Calcula:
+
+-   conteo: Número de casas en venta.
+
+-   precio_promedio: Promedio de la columna price.
+
+-   promedio_sqft: Promedio del precio_sqft.
+
+3.  Ordena el resultado por precio_promedio descendente.
+
+```{webr}
+# Escribe tu código aquí
+```
+
+## Parte 4: Unión de Datos (Joins)
+
+### Ejercicio 4.1: Cruzando información
+
+A veces necesitamos enriquecer nuestro CSV con datos externos. Vamos a crear una pequeña tabla de referencia manual (simulada) que clasifica algunas ciudades por "Región".
+
+Ejecuta este bloque para crear la tabla auxiliar:
+
+```{webr, message=FALSE}
+library(tidyverse)
+regiones <- tibble(
+  city = c("Seattle", "Renton", "Bellevue", "Redmond", "Kent"),
+  zona = c("Urbana", "Suburbio", "Tech Hub", "Tech Hub", "Industrial")
+)
+print(regiones)
+```
+
+-   Tu Misión:
+
+1.  Realiza un left_join entre tu dataset casas y la tabla regiones.
+
+2.  Observa qué pasa con las ciudades que NO están en la tabla regiones (ej. Shoreline). ¿Qué valor asigna R en la columna zona?
+
+```{webr}
+# Escribe tu código aquí
+```
+
+## Parte 5: Reestructuración (Tidyr)
+
+### Ejercicio 5.1: Pivotar (Bonus)
+
+Supongamos que calculamos el precio promedio por ciudad y cantidad de habitaciones. Ejecuta el siguiente código para generar un resumen:
+
+```{webr}
+### resumen_habitaciones <- casas %>% 
+  # (city %in% c("Seattle", "Bellevue")) %>% 
+  # group_by(city, bedrooms) %>% 
+  # summarise(promedio = mean(price), .groups = "drop") %>% 
+  # filter(bedrooms >= 2, bedrooms <= 4)
+
+### print(resumen_habitaciones)
+```
+
+Este formato es "Largo" (Long). Tu tarea: Usa pivot_wider() para convertir las habitaciones (bedrooms) en columnas.
+
+-   names_from = bedrooms
+
+-   values_from = promedio
+
+El objetivo es tener una columna para "2 habs", otra para "3 habs", etc., por ciudad.
+
+```{webr}
+# Escribe tu código aquí
+```

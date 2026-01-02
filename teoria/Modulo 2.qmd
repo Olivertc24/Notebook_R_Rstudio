@@ -1,0 +1,203 @@
+---
+title: "Módulo 2: Sintaxis Básica y Tipos de Datos"
+subtitle: "Aprendiendo a 'hablar' el lenguaje R"
+author: "Prof. Oliver Triveño"
+format: 
+  revealjs:
+    theme: simple
+    transition: slide
+    slide-number: true
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/724px-R_logo.svg.png"
+    footer: "Fundamentos de R"
+    echo: true
+    highlight-style: github
+editor: visual
+lang: es
+---
+
+## Objetivo del Módulo
+
+En esta sesión aprenderemos la gramática esencial de R:
+
+1.  Uso de operadores y asignación.
+2.  Distinción de tipos de datos atómicos.
+3.  Operadores lógicos y relacionales.
+4.  Manejo correcto de datos faltantes (`NA`, `NaN`, `NULL`).
+
+---
+
+## 1. Asignación de Variables
+
+En R existen dos formas principales de asignar valores:
+
+::: {.fragment}
+### La flecha (`<-`) vs El igual (`=`)
+:::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Operador `<-`**
+Es el estándar en R. Se prefiere por claridad histórica y alcance (scope).
+```{r}
+x <- 10
+x
+```
+:::
+
+::: {.column width="50%"} 
+**Operador ` =`** Funciona igual en la mayoría de casos simples, pero se reserva usualmente para argumentos dentro de funciones.
+
+:::
+
+::::
+
+::: {.callout-tip} 
+Buenas prácticas: Usa <- para crear variables y = para asignar parámetros dentro de funciones. 
+:::
+
+---
+
+## 2. Tipos de Datos Atómicos
+R trabaja con vectores atómicos. Los 4 principales son:
+
+Numéricos (Numeric/Double) y Enteros (Integer)
+Por defecto, los números en R son numeric (decimales). Para forzar un entero, usamos la L.
+
+```{r}
+#| label: tipos-num
+
+a <- 10.5
+b <- 10   # Parece entero, pero internamente es numeric
+c <- 10L  # La 'L' fuerza a que sea entero (Integer)
+
+class(a)
+class(b)
+class(c)
+```
+
+---
+
+### Caracteres y Lógicos
+
+:::: {.columns}
+
+::: {.column width="50%"} 
+Character (String) Texto entre comillas simples o dobles.
+```{r}
+nombre <- "Oliver"
+perfil <- 'Profesor'
+
+class(nombre)
+```
+:::
+
+::: {.column width="50%"} 
+Logical (Boolean) Solo TRUE (T) o FALSE (F).
+```{r}
+flag <- TRUE
+otro_flag <- F
+
+class(flag)
+```
+:::
+
+::::
+---
+
+## 3. Operadores
+
+### Aritméticos
+
+Más allá de sumar y restar, R tiene operadores específicos:
+
+```{r}
+#| label: aritmeticos
+
+10 / 3    # División normal
+10 %/% 3  # División entera (cociente)
+10 %% 3   # Módulo (residuo)
+2 ^ 3     # Potencia
+```
+
+---
+
+### Relacionales
+
+Sirven para comparar valores y devuelven un logical.
+
+```{r}
+#| label: relacionales
+
+x <- 10
+y <- 5
+
+x > y    # Mayor que
+x == y   # Igualdad exacta (OJO: es doble igual)
+x != y   # Diferente de
+```
+
+---
+
+### Lógicos
+
+Sirven para combinar condiciones (AND, OR, NOT).
+
+& : AND (Y).
+
+\| : OR (O).
+
+! : NOT (Negación).
+
+```{r}
+#| label: logicos
+
+(x > 5) & (y < 2)  # Verdadero Y Falso -> Falso
+(x > 5) | (y < 2)  # Verdadero O Falso -> Verdadero
+!TRUE              # Negación -> Falso
+```
+
+## 4. Valores Perdidos y Especiales
+
+En Ciencia de Datos, saber qué "no está" es vital.
+
+### NA (Not Available)
+
+Representa un dato faltante. Existe el espacio, pero no sabemos el valor.
+
+```{r}
+edades <- c(25, 30, NA)
+is.na(edades) # Función para detectar NAs
+```
+
+---
+
+### NaN (Not a Number)
+
+Resultado matemático imposible (indeterminado).
+
+```{r}
+0 / 0
+Inf - Inf
+```
+
+### NULL
+
+Representa el vacío absoluto. No ocupa espacio en un vector.
+
+```{r}
+lista <- c(1, 2, NULL, 4)
+length(lista) # El NULL desaparece, longitud es 3
+```
+
+::: {.fragment}
+¡Fin del Módulo 2! 
+:::
+
+---
+
+### Puntos didácticos incluidos en este código:
+
+1.  **Diferencia `Numeric` vs `Integer`**: Esto es importante para la optimización de memoria en grandes volúmenes de datos, por eso incluí el sufijo `L`.
+2.  **Operadores Avanzados**: Agregué Módulo (`%%`) y División Entera (`%/%`), que son muy útiles en programación lógica.
+3.  **La tabla de Valores Especiales**: Diferenciar `NA` de `NULL` suele ser confuso para iniciantes. El ejemplo de `length()` con NULL demuestra visualmente que NULL "no existe" para el vector, mientras que NA sí ocupa un espacio.

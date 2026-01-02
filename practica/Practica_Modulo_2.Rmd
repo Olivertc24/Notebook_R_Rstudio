@@ -1,0 +1,153 @@
+---
+title: "Práctica Módulo 2: Sintaxis y Tipos de Datos"
+subtitle: "Ejercicios de Gramática R"
+author: "Prof. Oliver Triveño"
+format: live-html
+engine: knitr
+editor: visual
+lang: es
+---
+
+## Instrucciones
+
+En este módulo profundizamos en los tipos de datos y operadores.
+
+**Objetivo:** Completar los bloques de código y responder a las preguntas conceptuales.
+
+------------------------------------------------------------------------
+
+## Parte 1: Tipos Numéricos y Enteros
+
+### Ejercicio 1.1
+
+R guarda los números como decimales (`numeric`) por defecto.
+
+1.  Crea una variable `a` con el valor `10`.
+2.  Crea una variable `b` con el valor `10L` (nota la L mayúscula).
+3.  Verifica la clase de ambas variables con `class()`.
+
+```{webr}
+# Escribe tu código aquí
+```
+
+### Ejercicio 1.2
+
+¿Qué pasa si intentas sumar a y b del ejercicio anterior? ¿Cuál crees que será la clase del resultado? Realiza la suma y verifica la clase del resultado.
+
+```{webr}
+# Escribe tu código aquí
+```
+
+## Parte 2: Operadores Aritméticos Avanzados
+
+### Ejercicio 2.1
+
+Calcula lo siguiente:
+
+1.  El residuo (módulo) de dividir 25 entre 4.
+
+2.  La parte entera (cociente) de dividir 25 entre 4.
+
+```{webr}
+# Escribe tu código aquí
+```
+
+## Parte 3: Operadores Lógicos y Relacionales
+
+### Ejercicio 3.1
+
+Tenemos las siguientes variables:
+
+```{webr}
+edad_cliente <- 25
+tiene_deuda <- TRUE
+tiene_empleo <- TRUE
+```
+
+Escribe expresiones lógicas que devuelvan TRUE o FALSE para las siguientes preguntas:
+
+1.  ¿El cliente es mayor de 18 años?
+
+2.  ¿El cliente tiene empleo Y NO tiene deuda?
+
+3.  ¿El cliente es menor de 20 O tiene deuda?
+
+```{webr}
+# 1. Mayor de 18?
+
+# 2. Empleo Y NO deuda?
+
+# 3. Menor de 20 O deuda?
+```
+
+### Ejercicio 3.2 (El error común)
+
+El siguiente código intenta comparar si x es igual a 5, pero falla o hace algo inesperado. Corrige el operador de comparación.
+
+```{webr}
+#| eval: false
+x <- 10
+x = 5  # <--- Esto es una asignación, no una pregunta. ¡Corrígelo!
+```
+
+```{webr}
+# Tu versión corregida:
+```
+
+## Parte 4: Valores Perdidos (NA) y Nulos (NULL)
+
+### Ejercicio 4.1
+
+Tienes el siguiente vector de siniestros con un dato faltante: siniestros \<- c(500, 1000, NA, 200)
+
+1.  Intenta calcular el promedio con mean(siniestros). ¿Qué obtienes?
+
+2.  Investiga o recuerda cómo hacer que mean() ignore los NAs (Pista: usa el argumento na.rm).
+
+```{webr}
+siniestros <- c(500, 1000, NA, 200)
+
+# 1. Promedio normal (fallará)
+
+# 2. Promedio ignorando NAs
+```
+
+### Ejercicio 4.2: Detectando NAs
+
+Usa la función is.na() para saber qué posición del vector siniestros es el dato faltante.
+
+```{webr}
+# Escribe tu código aquí
+```
+
+### Ejercicio 4.3: NA vs NULL
+
+1.  Crea un vector v1 \<- c(1, 2, NA). Verifica su longitud con length().
+
+2.  Crea un vector v2 \<- c(1, 2, NULL). Verifica su longitud con length().
+
+3.  Explica brevemente la diferencia.
+
+```{webr}
+# Escribe tu código aquí
+```
+
+## Parte 5: Desafío Actuarial
+
+Un seguro de auto solo se otorga si:
+
+1.  La edad es mayor o igual a 25 años.
+
+2.  O si la edad es menor a 25 pero el conductor tiene más de 5 años de experiencia (experiencia \> 5).
+
+3.  Evalúa si este candidato es asegurable:
+
+```{webr}
+edad <- 23
+experiencia <- 6
+
+# Escribe la expresión lógica completa:
+### es_asegurable <- # ... tu lógica aquí ...
+
+### es_asegurable
+```

@@ -12,12 +12,35 @@ website:
         menu:
           - text: "Módulo 1"
             file: teoria/Modulo_1.qmd
+          - text: "Módulo 2"
+            file: teoria/Modulo_2.qmd
+          - text: "Módulo 3"
+            file: teoria/Modulo_3.qmd
+          - text: "Módulo 4"
+            file: teoria/Modulo_4.qmd
+          - text: "Módulo 5"
+            file: teoria/Modulo_5.qmd
+          - text: "Módulo 6"
+            file: teoria/Modulo_6.qmd
+          - text: "Módulo 7"
+            file: teoria/Modulo_7.qmd
           # Añade aquí tus otros módulos cuando los muevas
       - text: "Práctica Interactiva"
         menu:
           - text: "Práctica 1"
             file: practica/Practica_Modulo_1.qmd
-
+          - text: "Práctica 2"
+            file: practica/Practica_Modulo_2.qmd
+          - text: "Práctica 3"
+            file: practica/Practica_Modulo_3.qmd
+          - text: "Práctica 4"
+            file: practica/Practica_Modulo_4.qmd
+          - text: "Práctica 5"
+            file: practica/Practica_Modulo_5.qmd
+          - text: "Práctica 6"
+            file: practica/Practica_Modulo_6.qmd
+          - text: "Práctica 7"
+            file: practica/Practica_Modulo_7.qmd
 format:
   html:
     theme: flatly

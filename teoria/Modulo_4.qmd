@@ -1,0 +1,154 @@
+---
+title: "Módulo 4: Importación y Exportación"
+subtitle: "Trayendo el mundo real a R"
+author: "Prof. Oliver Triveño"
+format: 
+  revealjs:
+    theme: simple
+    transition: slide
+    slide-number: true
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/724px-R_logo.svg.png"
+    footer: "Input / Output en R"
+    echo: true
+    highlight-style: github
+editor: visual
+lang: es
+---
+
+## El Ciclo de Vida del Dato
+
+R rara vez genera sus propios datos desde cero. Lo normal es un flujo **ETL**:
+
+1.  **Extract (Importar):** Leer desde CSV, Excel, SQL.
+2.  **Transform (Procesar):** Limpiar y analizar (R).
+3.  **Load (Exportar):** Guardar resultados o reportes.
+
+::: {.callout-note}
+**Prerrequisito:** Siempre verifica tu "Directorio de Trabajo" (`getwd()`) para saber dónde busca R los archivos.
+:::
+
+---
+
+## 1. Archivos Planos (.csv / .txt)
+
+Son el estándar universal. Tenemos dos formas de leerlos:
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Base R (`utils`)**
+Viene instalado por defecto.
+```{r}
+#| eval: false
+datos <- read.csv("archivo.csv")
+```
+
+---
+
+Devuelve: Data Frame. 
+
+:::
+
+::: {.column width="50%"} 
+Paquete readr Más rápido y no convierte texto a factores automáticamente.
+```{r}
+#| eval: false
+library(readr)
+datos <- read_csv("archivo.csv")
+```
+Devuelve: Tibble (Data Frame moderno). 
+:::
+
+::::
+
+---
+
+## 2. Archivos de Excel (.xlsx)
+
+Para el mundo actuarial y financiero, Excel es inevitable. Usamos el paquete readxl.
+
+```{r}
+#| eval: false
+library(readxl)
+
+# Leer la primera hoja
+siniestros <- read_excel("base_siniestros.xlsx")
+
+# Leer una hoja específica por nombre o índice
+reservas <- read_excel("base_siniestros.xlsx", 
+                       sheet = "Reservas_2025")
+```
+
+::: {.callout-tip} 
+A diferencia de CSV, readxl puede detectar automáticamente los tipos de datos de las celdas de Excel. 
+:::
+
+---
+
+## 3. Conexión a Bases de Datos (SQL)
+
+R se conecta, no copia. Usamos DBI (interfaz genérica) y un conector específico (ej. RSQLite, RPostgres).
+
+```{r}
+#| eval: false
+library(DBI)
+library(RSQLite)
+
+# 1. Crear conexión
+con <- dbConnect(RSQLite::SQLite(), "mi_base.db")
+
+# 2. Consultar con SQL directo
+df_clientes <- dbGetQuery(con, "SELECT * FROM clientes WHERE edad > 30")
+
+# 3. Cerrar conexión (¡Importante!)
+dbDisconnect(con)
+```
+
+---
+
+## 4. Archivos Web (JSON / XML)
+
+Muy usados en APIs y desarrollo web.
+
+JSON (JavaScript Object Notation) Es una estructura jerárquica (parecida a las listas en R).
+
+```{r}
+#| eval: false
+library(jsonlite)
+
+# Leer desde una URL o archivo
+datos_api <- fromJSON("[https://api.ejemplo.com/datos.json](https://api.ejemplo.com/datos.json)")
+
+# jsonlite intenta convertirlo a Data Frame automáticamente
+head(datos_api)
+```
+
+---
+
+## 5. Exportación de Datos
+Después de analizar, debemos guardar los resultados limpios.
+
+### A CSV (Universal)
+
+```{r}
+#| eval: false
+# Base R
+write.csv(datos_limpios, "resultados.csv", row.names = FALSE)
+
+# readr (Más rápido, sin nombres de filas por defecto)
+write_csv(datos_limpios, "resultados_v2.csv")
+```
+
+### A Excel
+
+Requiere paquete writexl.
+
+```{r}
+#| eval: false
+library(writexl)
+write_xlsx(list(Hoja1 = df1, Hoja2 = df2), "reporte_final.xlsx")
+```
+
+::: {.fragment}
+¡Fin del Módulo 4! 
+:::

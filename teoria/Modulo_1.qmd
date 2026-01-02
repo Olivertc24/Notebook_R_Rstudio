@@ -1,0 +1,192 @@
+---
+title: "Módulo 1: Introducción a R y RStudio"
+subtitle: "Fundamentos de Programación"
+author: "Prof. Oliver Triveño"
+format: 
+  revealjs:
+    theme: simple        # Temas sugeridos: simple, beige, blood, moon
+    transition: slide    # Transiciones: slide, fade, convex
+    slide-number: true
+    show-slide-number: all
+    preview-links: true
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/724px-R_logo.svg.png" # Logo opcional de R
+    footer: "Introducción a R"
+    echo: true           # Muestra el código por defecto
+editor: visual
+lang: es
+---
+
+## Introducción {background-color="aquamarine"}
+
+Bienvenidos al curso.
+
+Antes de empezar, debemos distinguir entre las herramientas:
+
+* **R**: Es el lenguaje de programación (el motor).
+* **RStudio**: Es el Entorno de Desarrollo Integrado (el tablero de control).
+
+> "R hace el cálculo, RStudio nos facilita la vida."
+
+---
+
+## La Interfaz de RStudio
+
+RStudio se divide en 4 paneles principales:
+
+:::: {.columns}
+
+::: {.column width="50%"}
+1.  **Source:** Editor de código.
+2.  **Console:** Ejecución inmediata.
+3.  **Environment:** Variables y datos.
+4.  **Files/Plots:** Gráficos y archivos.
+:::
+
+::: {.column width="50%"}
+![Layout RStudio](https://docs.posit.co/ide/user/ide/guide/ui/images/rstudio-panes-labeled.jpeg)
+:::
+
+::::
+
+---
+
+## R como Calculadora
+
+Lo más básico: operaciones matemáticas directas.
+
+```{r}
+#| label: calc
+
+# Suma y Resta
+10 + 5
+20 - 8
+
+# Multiplicación y División
+4 * 5
+100 / 4
+
+# Potencia
+2^5
+```
+
+## Funciones Matemáticas
+
+R tiene funciones integradas para cálculos más complejos.
+
+```{r}
+#| label: funciones
+
+sqrt(64)   # Raíz cuadrada
+log(10)    # Logaritmo natural
+abs(-50)   # Valor absoluto
+pi         # Constante Pi
+```
+
+---
+
+## Variables y Asignación
+
+Para guardar valores usamos el operador de asignación <- (Alt + -).
+
+```{r}
+#| label: asignacion
+
+x <- 20
+y <- 10
+
+# Operamos con las variables
+resultado <- x + y
+resultado
+```
+
+:::{.callout-tip} 
+Evita usar = para asignar variables en R. Es una buena práctica usar siempre <-. 
+:::
+
+---
+
+## Tipos de Datos (Atómicos)
+
+R maneja diferentes "clases" de datos:
+
+### 1. Numeric y Character
+
+```{r}
+# Numérico
+precio <- 15.5
+class(precio)
+
+# Caracter (Texto)
+curso <- "Computacion I"
+class(curso)
+```
+
+## 2. Logical (Booleanos)
+
+Solo existen TRUE y FALSE. Son vitales para filtrar datos.
+
+```{r}
+#| label: logicos
+
+soy_profesor <- TRUE
+soy_alumno <- FALSE
+
+# Comparación lógica
+10 > 5
+```
+
+---
+
+## 3. Vectores
+
+Es la estructura de datos fundamental. Colección de elementos del mismo tipo usando c().
+
+```{r}
+#| label: vectores
+
+edades <- c(25, 30, 22, 28)
+edades
+
+nombres <- c("Ana", "Luis", "Oliver")
+nombres
+```
+
+---
+
+:::{.callout-tip} 
+Cuidado con la "Coerción". Si mezclas tipos, R forzará a todos a ser del mismo tipo (usualmente texto).
+:::
+
+```{r}
+#| label: coercion
+
+# Un número y un texto
+mezcla <- c(10, "Hola")
+
+mezcla
+class(mezcla)
+```
+
+---
+
+## Ejercicio Práctico:
+
+Calcular el IMC ($IMC = \frac{peso}{altura^2}$)
+
+```{r}
+#| label: imc
+
+peso <- 75      # kg
+altura <- 1.80  # metros
+
+imc <- peso / (altura^2)
+
+# Imprimir resultado redondeado
+round(imc, 2)
+```
+
+---
+
+::: {.r-fit-text} 
+¿Preguntas?
+:::

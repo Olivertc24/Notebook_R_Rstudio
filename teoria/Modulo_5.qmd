@@ -1,0 +1,190 @@
+---
+title: "Módulo 5: Manipulación de Datos"
+subtitle: "El poder del Tidyverse: dplyr y tidyr"
+author: "Prof. Oliver Triveño"
+format: 
+  revealjs:
+    theme: simple
+    transition: slide
+    slide-number: true
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/724px-R_logo.svg.png"
+    footer: "Data Wrangling en R"
+    echo: true
+    highlight-style: github
+editor: visual
+lang: es
+---
+
+## ¿Qué es el Tidyverse?
+
+Es una colección de paquetes diseñados para la Ciencia de Datos. Todos comparten una misma filosofía de diseño, gramática y estructuras de datos.
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse) 
+# Carga dplyr, tidyr, readr, ggplot2, etc.
+```
+
+Vamos a trabajar con un dataframe de ejemplo:
+
+
+```{r}
+siniestros <- tibble(
+  id = 1:5,
+  ramo = c("Auto", "Vida", "Auto", "Salud", "Vida"),
+  monto = c(500, 2000, 450, 150, 3000),
+  estado = c("Pagado", "Pendiente", "Pagado", "Pagado", "Rechazado")
+)
+```
+
+---
+
+1. El Operador Pipe (%>% o |>)
+El "pipe" nos permite encadenar operaciones. Se lee como "y entonces...".
+
+*  %>% (Magrittr): El clásico del tidyverse (Ctrl + Shift + M).
+* |> (Nativo): Disponible desde R 4.1.
+
+---
+
+Sin Pipe (Difícil de leer): summarise(group_by(filter(siniestros, monto > 300), ramo))
+
+Con Pipe (Fluido):
+
+```{r}
+siniestros %>% 
+  filter(monto > 300) %>% 
+  group_by(ramo) %>% 
+  summarise(monto)
+```
+
+---
+
+## 2. Los 5 Verbos de dplyr
+### Select y Filter
+
+* select(): Selecciona columnas (variables).
+* filter(): Selecciona filas según condiciones.
+
+```{r}
+siniestros %>% 
+  filter(monto > 400) %>% 
+  select(ramo, monto)
+```
+
+---
+
+### Arrange y Mutate
+* arrange(): Ordena las filas.
+* mutate(): Crea o modifica variables (columnas).
+
+```{r}
+siniestros %>% 
+  arrange(desc(monto)) %>% 
+  mutate(iva = monto * 0.16,
+         total = monto + iva)
+```
+
+---
+
+### Summarise (y Group_by)
+
+La potencia real surge al combinar estos dos. group_by() rompe el dataset en grupos, y summarise() colapsa cada grupo en una sola fila (estadística).
+
+```{r}
+siniestros %>% 
+  group_by(ramo) %>% 
+  summarise(
+    conteo = n(),
+    promedio_costo = mean(monto),
+    total_ramo = sum(monto)
+  )
+```
+
+---
+
+## 3. Reestructurar con tidyr
+
+A veces los datos vienen en formato "Ancho" (Excel) y los necesitamos en formato "Largo" (Tidy) para graficar o modelar.
+
+* Pivot Longer (De Ancho a Largo)
+
+```{r}
+# Datos "Anchos" (Ej: Reservas por año en columnas)
+reservas <- tibble(
+  ramo = c("Auto", "Vida"),
+  res_2023 = c(100, 500),
+  res_2024 = c(120, 550)
+)
+reservas
+```
+
+---
+
+* Pivot Longer (De Ancho a Largo)
+
+```{r}
+# Transformación
+reservas_long <- reservas %>% 
+  pivot_longer(
+    cols = c(res_2023, res_2024),
+    names_to = "anio",
+    values_to = "reserva"
+  )
+reservas_long
+```
+
+---
+
+* Pivot Wider (De Largo a Ancho)
+
+La operación inversa. Útil para presentar reportes finales.
+
+```{r}
+reservas_long %>% 
+  pivot_wider(
+    names_from = anio,
+    values_from = reserva
+  )
+```
+
+---
+
+## 4. Unión de Tablas (Joins)
+
+Vincular datos de dos fuentes distintas usando una clave común (key).
+
+```{r}
+polizas <- tibble(id = 1:3, cliente = c("Ana", "Bob", "Cid"))
+reclamos <- tibble(id = c(1, 1, 2), monto = c(100, 200, 500))
+```
+
+:::: {.columns}
+
+::: {.column width="50%"} 
+Left Join Mantiene todas las pólizas, trae reclamos si existen.
+```{r}
+left_join(polizas, reclamos, by = "id")
+```
+:::
+
+::: {.column width="50%"} 
+Inner Join Solo mantiene registros que existen en AMBAS tablas.
+```{r}
+inner_join(polizas, reclamos, by = "id")
+```
+:::
+
+::::
+
+---
+
+* Left Join: Todo lo de la izquierda (A).
+* Right Join: Todo lo de la derecha (B).
+* Inner Join: Solo la intersección ($A \cap B$).
+* Full Join: Todo ($A \cup B$).
+
+::: {.fragment} 
+Ejercicio: Intenta calcular el "Loss Ratio" (Siniestros / Primas) uniendo una tabla de primas con una de siniestros. 
+:::

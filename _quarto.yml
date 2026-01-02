@@ -1,0 +1,18 @@
+project:
+  type: website
+  output-dir: docs # GitHub Pages usa esta carpeta fácilmente
+
+website:
+  title: "Curso de Fundamentos en R"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Inicio
+      - text: "Módulos Teóricos"
+        menu:
+          - teoria/Modulo_1.qmd
+
+format:
+  html:
+    theme: flatly # O 'flatly', 'journal' (estilos limpios)
+    toc: true

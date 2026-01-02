@@ -1,0 +1,121 @@
+---
+title: "Práctica Módulo 4: Importación de Archivos CSV"
+subtitle: "Lectura y Escritura de Datos"
+author: "Prof. Oliver Triveño"
+format: 
+  html:
+    theme: spacelab
+    toc: true
+    code-tools: true
+    self-contained: true
+editor: visual
+lang: es
+---
+
+## Instrucciones
+
+En este módulo aprenderemos a cargar datos desde archivos de texto separados por comas (.csv).
+**Requisito indispensable:** Asegúrate de que el archivo `data_house_price.csv` esté guardado en la **misma carpeta** donde guardaste este archivo `.qmd`.
+
+---
+
+## Parte 1: El Enfoque Clásico (Base R)
+
+R tiene funciones nativas para leer archivos sin instalar nada extra. Aunque son antiguas, es vital conocerlas porque aparecen en mucho código heredado.
+
+### Ejercicio 1.1: Lectura Básica
+1. Usa la función `read.csv()` para cargar el archivo `"data_house_price.csv"`.
+2. Asigna el resultado a una variable llamada `datos_base`.
+
+```{r}
+# Escribe tu código aquí
+```
+
+### Ejercicio 1.2: Inspección Rápida
+
+Una vez cargados los datos, siempre debemos revisarlos.
+
+1. Usa la función head() para ver las primeras 6 filas.
+
+2. Usa la función str() para ver la estructura interna (tipos de datos).
+
+  * Pregunta: ¿De qué tipo (clase) cargó la columna date? ¿Texto (chr) o Factor?
+  
+```{r}
+# Escribe tu código aquí
+```
+
+## Parte 2: El Enfoque Moderno (Tidyverse)
+
+El paquete readr (parte del tidyverse) es más rápido y detecta mejor los tipos de datos (fechas, números, etc.).
+
+### Ejercicio 2.1: Carga de Librería y Lectura
+
+1. Carga la librería tidyverse (o readr).
+
+2. Usa la función read_csv() (nota el guion bajo _) para cargar el mismo archivo.
+
+3. Asigna el resultado a una variable llamada datos_tidy.
+
+```{r}
+#| message: false
+# Escribe tu código aquí
+```
+
+### Ejercicio 2.2: Inspección con Glimpse
+
+Los objetos creados por tidyverse son "tibbles" (data frames mejorados).
+
+1. Usa la función glimpse() sobre datos_tidy.
+
+2. Compara visualmente la salida con str() del ejercicio anterior. ¿Cuál te parece más legible?
+
+```{r}
+# Escribe tu código aquí
+```
+
+## Parte 3: Comparación de Resultados
+
+### Ejercicio 3.1: Diferencias de Clase
+
+Verifica la clase de los dos objetos que creaste usando la función class().
+
+* class(datos_base)
+
+* class(datos_tidy)
+
+```{r}
+# Escribe tu código aquí
+```
+
+### Ejercicio 3.2: Acceso a Columnas
+
+Intenta calcular el promedio de la columna de precios (price) usando el objeto datos_tidy. Recuerda usar el signo de dólar $.
+
+```{r}
+# Escribe tu código aquí
+```
+
+## Parte 4: Exportación de Datos (Guardar)
+
+Supongamos que hemos terminado de trabajar y queremos enviar una pequeña muestra de los datos a un cliente.
+
+### Ejercicio 4.1: Crear un Subconjunto
+
+Crea un objeto pequeño llamado muestra que contenga solo las primeras 10 filas de datos_tidy. (Pista: Puedes usar head(datos_tidy, 10)).
+
+```{r}
+# Escribe tu código aquí
+```
+
+### Ejercicio 4.2: Escribir a CSV
+
+Guarda ese objeto muestra en tu disco duro con el nombre "muestra_clientes.csv". Usa la función write_csv().
+
+```{r}
+# Escribe tu código aquí
+```
+
+
+
+

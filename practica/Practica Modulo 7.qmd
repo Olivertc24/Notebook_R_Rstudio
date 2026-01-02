@@ -1,0 +1,145 @@
+---
+title: "Práctica Módulo 7: Programación Funcional y Control de Flujo"
+subtitle: "Automatizando tareas con R"
+author: "Prof. Oliver Triveño"
+format: 
+  html:
+    theme: flatly
+    toc: true
+    code-tools: true
+    self-contained: true
+editor: visual
+lang: es
+---
+
+## Instrucciones
+
+En este módulo dejaremos de copiar y pegar código. Aprenderemos a escribir nuestras propias funciones y a controlar el flujo de ejecución.
+**Requisito:** Asegúrate de tener el archivo `data_house_price.csv` disponible.
+
+---
+
+## Parte 0: Carga de Datos
+
+```{r}
+#| message: false
+library(tidyverse)
+casas <- read_csv("data_house_price.csv")
+```
+
+## Parte 1: Estructuras de Control (if, else, ifelse)
+
+### Ejercicio 1.1: El if clásico
+
+Vamos a verificar si nuestro dataset es lo suficientemente grande para un análisis confiable. Escribe una estructura if / else que:
+
+1. Verifique si el número de filas de casas (nrow(casas)) es mayor a 1000.
+
+2. Si es cierto, imprime "Datos suficientes para modelar".
+
+3. Si es falso, imprime "Se necesitan más datos".
+
+```{r}
+# Escribe tu código aquí
+```
+
+### Ejercicio 1.2: ifelse vectorizado (Columna nueva)
+
+El if normal no funciona bien para crear columnas enteras. Usaremos ifelse(). Crea una nueva columna en el dataframe casas llamada categoria_precio con la siguiente lógica:
+
+* Si price > 600,000 -> "Alta Gama"
+
+* Si no -> "Estándar"
+
+Guarda el resultado en casas y cuenta cuántas hay de cada una con count().
+
+```{r}
+# Escribe tu código aquí
+```
+
+## Parte 2: Bucles (for loops)
+
+Aunque en R preferimos evitar los loops para datos grandes, son útiles para reportes o tareas secuenciales.
+
+### Ejercicio 2.1: Iterando sobre ciudades
+
+1. Crea un vector con 3 ciudades de interés: ciudades_interes <- c("Seattle", "Kent", "Bellevue").
+
+2. Escribe un bucle for que recorra ese vector.
+
+3. Dentro del bucle, filtra el dataframe para esa ciudad y calcula su precio promedio.
+
+4. Imprime una frase como: "El precio promedio en [Ciudad] es [Precio]".
+
+```{r}
+ciudades_interes <- c("Seattle", "Kent", "Bellevue")
+
+# Escribe tu bucle for aquí:
+```
+
+## Parte 3: Funciones Personalizadas
+
+### Ejercicio 3.1: Calculadora de Impuestos
+
+Imagina que eres el asesor fiscal. Necesitas una función que calcule el impuesto a pagar por una casa. Crea una función llamada calcular_impuesto que reciba dos argumentos:
+
+1. monto (el precio de la casa).
+
+2. tasa (el porcentaje de impuesto, por defecto 0.012 o 1.2%).
+
+La función debe devolver el monto del impuesto. Prueba tu función con una casa de 500,000.
+
+```{r}
+# Definición de la función
+calcular_impuesto <- function(monto, tasa = 0.012) {
+  # Tu código aquí
+  
+}
+
+# Prueba:
+calcular_impuesto(500000)
+```
+
+### Ejercicio 3.2: Aplicando la función a los datos
+
+Usa la función mutate() para aplicar tu nueva función calcular_impuesto a toda la columna price del dataframe casas. Crea la columna impuesto_estimado.
+
+```{r}
+# Escribe tu código aquí
+```
+
+## Parte 4: La Familia map (purrr)
+
+En lugar de bucles for, en Data Science moderno usamos funciones de mapeo (map, apply).
+
+### Ejercicio 4.1: Promedios Rápidos
+
+Queremos el promedio de varias columnas numéricas a la vez: price, sqft_living y bedrooms.
+
+1. Selecciona solo esas 3 columnas del dataframe casas.
+
+2. Usa la función map_dbl() del paquete purrr (o sapply de R base) para calcular la media (mean) de cada columna.
+
+```{r}
+# 1. Selección
+
+# 2. Mapeo (map_dbl)
+```
+
+### Ejercicio 4.2: Modelado iterativo (Avanzado)
+
+Supongamos que queremos dividir los datos por ciudad y obtener el precio máximo de cada una. Analiza y ejecuta este código (ya escrito) para entender el poder de purrr y group_split.
+
+```{r}
+casas %>%
+  filter(city %in% c("Seattle", "Renton", "Bellevue")) %>% 
+  group_split(city) %>% # Divide el DF en una lista de 3 DFs pequeños
+  map_dbl(~ max(.x$price)) # Aplica la función max() a la columna price de CADA sub-dataframe
+```
+
+Agrega un comentario abajo explicando qué hizo el código.
+
+```{r}
+# Tu explicación:
+```
+

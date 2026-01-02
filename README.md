@@ -4,7 +4,7 @@
 ![Quarto](https://img.shields.io/badge/Quarto-Reproducible-9cf)
 ![Status](https://img.shields.io/badge/Estado-Activo-green)
 
-Bienvenido al repositorio del curso. Este material está diseñado para estudiantes de la **Escuela de Estadística y Ciencias Actuariales**, utilizando **Quarto** para combinar teoría, código y visualización en documentos integrados.
+Bienvenido al **[repositorio del curso](https://olivertc24.github.io/Notebook_R_Rstudio/).** Este material está diseñado para estudiantes de la **Escuela de Estadística y Ciencias Actuariales**, utilizando **Quarto** para combinar teoría, código y visualización en documentos integrados.
 
 ## 📄 Descripción
 

@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Bienvenido al Curso",
     "section": "",
-    "text": "Hola estudiantes,\nEn este sitio encontrarán todo el material del curso de R y RStudio.\n\nEstructura del curso\n\nTeoría: Conceptos fundamentales explicados con Quarto.\nPráctica: Ejercicios interactivos que se ejecutan directamente en su navegador.\n\n¡Comencemos a programar!"
+    "text": "Hola estudiantes,\nEn este sitio encontrarán todo el material del curso de R y RStudio."
   },
   {
     "objectID": "practica/Practica_Modulo_3.html",
@@ -66,8 +66,8 @@
     "objectID": "practica/Practica_Modulo_4.html#instrucciones",
     "href": "practica/Practica_Modulo_4.html#instrucciones",
     "title": "Práctica Módulo 4: Importación de Archivos CSV",
-    "section": "",
-    "text": "En este módulo aprenderemos a cargar datos desde archivos de texto separados por comas (.csv). Requisito indispensable: Asegúrate de que el archivo data_house_price.csv esté guardado en la misma carpeta donde guardaste este archivo .qmd."
+    "section": "Instrucciones",
+    "text": "Instrucciones\nEn este módulo aprenderemos a cargar datos desde archivos de texto separados por comas (.csv). Requisito indispensable: Asegúrate de que el archivo data_house_price.csv esté guardado en la misma carpeta donde guardaste este archivo .qmd."
   },
   {
     "objectID": "practica/Practica_Modulo_4.html#parte-1-el-enfoque-clásico-base-r",
@@ -108,8 +108,8 @@
     "objectID": "practica/Practica_Modulo_7.html#instrucciones",
     "href": "practica/Practica_Modulo_7.html#instrucciones",
     "title": "Práctica Módulo 7: Programación Funcional y Control de Flujo",
-    "section": "",
-    "text": "En este módulo dejaremos de copiar y pegar código. Aprenderemos a escribir nuestras propias funciones y a controlar el flujo de ejecución. Requisito: Asegúrate de tener el archivo data_house_price.csv disponible."
+    "section": "Instrucciones",
+    "text": "Instrucciones\nEn este módulo dejaremos de copiar y pegar código. Aprenderemos a escribir nuestras propias funciones y a controlar el flujo de ejecución. Requisito: Asegúrate de tener el archivo data_house_price.csv disponible."
   },
   {
     "objectID": "practica/Practica_Modulo_7.html#parte-0-carga-de-datos",
@@ -235,7 +235,7 @@
     "href": "teoria/Modulo_6.html#boxplot-numérica-vs-categórica",
     "title": "Módulo 6: Visualización Avanzada",
     "section": "Boxplot (Numérica vs Categórica)",
-    "text": "Boxplot (Numérica vs Categórica)\nPara ver dispersión y outliers por grupo.\n\n\n\nggplot(cartera, \n       aes(x = tipo_auto, \n           y = prima,\n           fill = tipo_auto)) +\n  geom_boxplot()"
+    "text": "Boxplot (Numérica vs Categórica)\nPara ver dispersión y outliers por grupo.\n\n\n\nggplot(cartera, \n       aes(x = tipo_auto, \n           y = prima,\n           fill = tipo_auto)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\n\n\n\n\n\n 🏠 Inicio"
   },
   {
     "objectID": "teoria/Modulo_2.html#objetivo-del-módulo",
@@ -354,7 +354,7 @@
     "href": "teoria/Modulo_4.html#exportación-de-datos",
     "title": "Módulo 4: Importación y Exportación",
     "section": "5. Exportación de Datos",
-    "text": "5. Exportación de Datos\nDespués de analizar, debemos guardar los resultados limpios.\nA CSV (Universal)\n\n# Base R\nwrite.csv(datos_limpios, \"resultados.csv\", row.names = FALSE)\n\n# readr (Más rápido, sin nombres de filas por defecto)\nwrite_csv(datos_limpios, \"resultados_v2.csv\")\n\nA Excel\nRequiere paquete writexl.\n\nlibrary(writexl)\nwrite_xlsx(list(Hoja1 = df1, Hoja2 = df2), \"reporte_final.xlsx\")\n\n\n¡Fin del Módulo 4!"
+    "text": "5. Exportación de Datos\nDespués de analizar, debemos guardar los resultados limpios.\nA CSV (Universal)\n\n# Base R\nwrite.csv(datos_limpios, \"resultados.csv\", row.names = FALSE)\n\n# readr (Más rápido, sin nombres de filas por defecto)\nwrite_csv(datos_limpios, \"resultados_v2.csv\")\n\nA Excel\nRequiere paquete writexl.\n\nlibrary(writexl)\nwrite_xlsx(list(Hoja1 = df1, Hoja2 = df2), \"reporte_final.xlsx\")\n\n\n 🏠 Inicio"
   },
   {
     "objectID": "teoria/Modulo_5.html#qué-es-el-tidyverse",
@@ -445,7 +445,7 @@
     "href": "teoria/Modulo_1.html#ejercicio-práctico",
     "title": "Módulo 1: Introducción a R y RStudio",
     "section": "Ejercicio Práctico:",
-    "text": "Ejercicio Práctico:\nCalcular el IMC (\\(IMC = \\frac{peso}{altura^2}\\))\n\npeso &lt;- 75      # kg\naltura &lt;- 1.80  # metros\n\nimc &lt;- peso / (altura^2)\n\n# Imprimir resultado redondeado\nround(imc, 2)\n\n[1] 23.15"
+    "text": "Ejercicio Práctico:\nCalcular el IMC (\\(IMC = \\frac{peso}{altura^2}\\))\n\npeso &lt;- 75      # kg\naltura &lt;- 1.80  # metros\n\nimc &lt;- peso / (altura^2)\n\n# Imprimir resultado redondeado\nround(imc, 2)\n\n[1] 23.15\n\n\n\n 🏠 Inicio"
   },
   {
     "objectID": "teoria/Modulo_7.html#objetivo",
@@ -494,7 +494,7 @@
     "href": "teoria/Modulo_7.html#resumen-de-flujo",
     "title": "Módulo 7: Programación Funcional",
     "section": "Resumen de Flujo",
-    "text": "Resumen de Flujo\n\nLógica: if, else para decisiones puntuales. ifelse() para columnas de datos.\nRepetición: for (usar con moderación).\nAbstracción: Crea tus propias function().\nIteración Funcional:\nBase: lapply, sapply.\nTidyverse: map, map_dbl.\n\n\n¡Automatiza todo!"
+    "text": "Resumen de Flujo\n\nLógica: if, else para decisiones puntuales. ifelse() para columnas de datos.\nRepetición: for (usar con moderación).\nAbstracción: Crea tus propias function().\nIteración Funcional:\nBase: lapply, sapply.\nTidyverse: map, map_dbl.\n\n\n¡Automatiza todo!\n\n\n 🏠 Inicio"
   },
   {
     "objectID": "practica/Practica_Modulo_6.html",
@@ -507,8 +507,8 @@
     "objectID": "practica/Practica_Modulo_6.html#instrucciones",
     "href": "practica/Practica_Modulo_6.html#instrucciones",
     "title": "Práctica Módulo 6: Visualización de Datos",
-    "section": "",
-    "text": "El objetivo es “pintar con datos”. Usaremos ggplot2 para encontrar patrones visuales en los precios de las casas. Requisito: Asegúrate de tener el archivo data_house_price.csv en tu carpeta."
+    "section": "Instrucciones",
+    "text": "Instrucciones\nEl objetivo es “pintar con datos”. Usaremos ggplot2 para encontrar patrones visuales en los precios de las casas. Requisito: Asegúrate de tener el archivo data_house_price.csv en tu carpeta."
   },
   {
     "objectID": "practica/Practica_Modulo_6.html#parte-0-preparación-del-lienzo",
@@ -612,8 +612,8 @@
     "objectID": "practica/Practica_Modulo_5.html#instrucciones",
     "href": "practica/Practica_Modulo_5.html#instrucciones",
     "title": "Práctica Módulo 5: Manipulación de Datos con Tidyverse",
-    "section": "",
-    "text": "En esta práctica actuaremos como Analistas de Datos en una inmobiliaria.\nUsaremos el paquete tidyverse para limpiar, transformar y resumir un dataset real de precios de viviendas.\nRequisito: Asegúrate de tener el archivo data_house_price.csv en la misma carpeta que este documento."
+    "section": "Instrucciones",
+    "text": "Instrucciones\nEn esta práctica actuaremos como Analistas de Datos en una inmobiliaria.\nUsaremos el paquete tidyverse para limpiar, transformar y resumir un dataset real de precios de viviendas.\nRequisito: Asegúrate de tener el archivo data_house_price.csv en la misma carpeta que este documento."
   },
   {
     "objectID": "practica/Practica_Modulo_5.html#parte-0-configuración-y-carga",
@@ -705,5 +705,40 @@
     "title": "Evaluación Integral: R para Ciencia de Datos",
     "section": "5. Programación Funcional (Módulo 7)",
     "text": "5. Programación Funcional (Módulo 7)\n\nEjercicio 5.1: Función de Clasificación\nCrea una función personalizada llamada clasificar_rentabilidad que reciba un valor numérico (profit) y devuelva:\n\n“Pérdida” si es &lt; 0\n“Baja” si está entre 0 y 500\n“Alta” si es &gt; 500\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 5.2: Aplicación Vectorizada\nAplica tu función a la columna Profit del dataset para crear una nueva variable categórica Tipo_Rentabilidad. Usa mutate() junto con tu función (o map_chr si prefieres purrr). Cuenta cuántas transacciones hay de cada tipo."
+  },
+  {
+    "objectID": "teoria/Modulo_6.html",
+    "href": "teoria/Modulo_6.html",
+    "title": "Módulo 6: Visualización Avanzada",
+    "section": "",
+    "text": "A diferencia de Excel, aquí no elegimos un “gráfico de la galería”. Construimos el gráfico por capas, como si estuviéramos pintando un cuadro.\nLa estructura básica es: \\[Gráfico = Datos + Estética (aes) + Geometría (geom)\\]"
+  },
+  {
+    "objectID": "teoria/Modulo_1.html",
+    "href": "teoria/Modulo_1.html",
+    "title": "Módulo 1: Introducción a R y RStudio",
+    "section": "",
+    "text": "Bienvenidos al curso.\nAntes de empezar, debemos distinguir entre las herramientas:\n\nR: Es el lenguaje de programación (el motor).\nRStudio: Es el Entorno de Desarrollo Integrado (el tablero de control).\n\n\n“R hace el cálculo, RStudio nos facilita la vida.”"
+  },
+  {
+    "objectID": "index.html#teoría-conceptos-fundamentales.",
+    "href": "index.html#teoría-conceptos-fundamentales.",
+    "title": "Bienvenido al Curso",
+    "section": "Teoría: Conceptos fundamentales.",
+    "text": "Teoría: Conceptos fundamentales.\n\nFase 1: Fundamentos\n\nMódulo 1: Introducción y Primeros Pasos\nAprende la interfaz de RStudio y R como calculadora.\nMódulo 2: Sintaxis y Tipos de Datos\nDomina los vectores, variables y operadores lógicos.\nMódulo 3: Estructuras de Datos\nMatrices, Listas y Data Frames.\n\n\n\nFase 2: El Ciclo del Dato\n\nMódulo 4: Importación de Datos\nLectura de CSV, Excel y conexión a bases de datos.\nMódulo 5: Manipulación (Wrangling)\nLimpieza y transformación con dplyr y tidyverse.\n\n\n\nFase 3: Comunicación y Programación\n\nMódulo 6: Visualización de Datos\nLa gramática de gráficos con ggplot2.\nMódulo 7: Programación Funcional\nCrea tus propias funciones y automatiza tareas."
+  },
+  {
+    "objectID": "index.html#práctica-ejercicios-interactivos-que-se-ejecutan-directamente-en-su-navegador.",
+    "href": "index.html#práctica-ejercicios-interactivos-que-se-ejecutan-directamente-en-su-navegador.",
+    "title": "Bienvenido al Curso",
+    "section": "Práctica: Ejercicios interactivos que se ejecutan directamente en su navegador.",
+    "text": "Práctica: Ejercicios interactivos que se ejecutan directamente en su navegador.\n\nFase 1: Fundamentos\n\nMódulo 1: Introducción y Primeros Pasos\nAprende la interfaz de RStudio y R como calculadora.\nMódulo 2: Sintaxis y Tipos de Datos\nDomina los vectores, variables y operadores lógicos.\nMódulo 3: Estructuras de Datos\nMatrices, Listas y Data Frames.\n\n\n\nFase 2: El Ciclo del Dato\n\nMódulo 4: Importación de Datos\nLectura de CSV, Excel y conexión a bases de datos.\nMódulo 5: Manipulación (Wrangling)\nLimpieza y transformación con dplyr y tidyverse.\n\n\n\nFase 3: Comunicación y Programación\n\nMódulo 6: Visualización de Datos\nLa gramática de gráficos con ggplot2.\nMódulo 7: Programación Funcional\nCrea tus propias funciones y automatiza tareas."
+  },
+  {
+    "objectID": "index.html#examen-practico-integrar-los-conocimientos-de-un-dataset-sucio-en-información-valiosa.",
+    "href": "index.html#examen-practico-integrar-los-conocimientos-de-un-dataset-sucio-en-información-valiosa.",
+    "title": "Bienvenido al Curso",
+    "section": "Examen Practico: Integrar los conocimientos de un dataset “sucio” en información valiosa.",
+    "text": "Examen Practico: Integrar los conocimientos de un dataset “sucio” en información valiosa.\n¡Comencemos a programar!"
   }
 ]

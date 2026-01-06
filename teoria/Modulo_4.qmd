@@ -23,45 +23,44 @@ R rara vez genera sus propios datos desde cero. Lo normal es un flujo **ETL**:
 2.  **Transform (Procesar):** Limpiar y analizar (R).
 3.  **Load (Exportar):** Guardar resultados o reportes.
 
-::: {.callout-note}
+::: callout-note
 **Prerrequisito:** Siempre verifica tu "Directorio de Trabajo" (`getwd()`) para saber dónde busca R los archivos.
 :::
 
----
+------------------------------------------------------------------------
 
 ## 1. Archivos Planos (.csv / .txt)
 
 Son el estándar universal. Tenemos dos formas de leerlos:
 
-:::: {.columns}
-
+::::: columns
 ::: {.column width="50%"}
-**Base R (`utils`)**
-Viene instalado por defecto.
+**Base R (`utils`)** Viene instalado por defecto.
+
 ```{r}
 #| eval: false
 datos <- read.csv("archivo.csv")
 ```
 
----
+------------------------------------------------------------------------
 
-Devuelve: Data Frame. 
-
+Devuelve: Data Frame.
 :::
 
-::: {.column width="50%"} 
+::: {.column width="50%"}
 Paquete readr Más rápido y no convierte texto a factores automáticamente.
+
 ```{r}
 #| eval: false
 library(readr)
 datos <- read_csv("archivo.csv")
 ```
-Devuelve: Tibble (Data Frame moderno). 
+
+Devuelve: Tibble (Data Frame moderno).
 :::
+:::::
 
-::::
-
----
+------------------------------------------------------------------------
 
 ## 2. Archivos de Excel (.xlsx)
 
@@ -79,11 +78,11 @@ reservas <- read_excel("base_siniestros.xlsx",
                        sheet = "Reservas_2025")
 ```
 
-::: {.callout-tip} 
-A diferencia de CSV, readxl puede detectar automáticamente los tipos de datos de las celdas de Excel. 
+::: callout-tip
+A diferencia de CSV, readxl puede detectar automáticamente los tipos de datos de las celdas de Excel.
 :::
 
----
+------------------------------------------------------------------------
 
 ## 3. Conexión a Bases de Datos (SQL)
 
@@ -104,7 +103,7 @@ df_clientes <- dbGetQuery(con, "SELECT * FROM clientes WHERE edad > 30")
 dbDisconnect(con)
 ```
 
----
+------------------------------------------------------------------------
 
 ## 4. Archivos Web (JSON / XML)
 
@@ -123,9 +122,10 @@ datos_api <- fromJSON("[https://api.ejemplo.com/datos.json](https://api.ejemplo.
 head(datos_api)
 ```
 
----
+------------------------------------------------------------------------
 
 ## 5. Exportación de Datos
+
 Después de analizar, debemos guardar los resultados limpios.
 
 ### A CSV (Universal)
@@ -149,6 +149,8 @@ library(writexl)
 write_xlsx(list(Hoja1 = df1, Hoja2 = df2), "reporte_final.xlsx")
 ```
 
-::: {.fragment}
-¡Fin del Módulo 4! 
-:::
+<div style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
+  <a href="../index.qmd" class="btn btn-primary shadow-lg" role="button" style="border-radius: 50px; padding: 10px 20px;">
+    🏠 Inicio
+  </a>
+</div>

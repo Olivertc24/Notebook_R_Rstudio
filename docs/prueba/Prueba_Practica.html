@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-82bd6119df2bf4ab524fef438a105040.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-4d0a8ab1528a2302dba6d67982759051.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
 <link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -71,8 +71,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Buscar"
   }
 }</script>
-<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
-<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -104,9 +102,10 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -219,7 +218,40 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#objetivo-de-la-evaluación" id="toc-objetivo-de-la-evaluación" class="nav-link active" data-scroll-target="#objetivo-de-la-evaluación">🎯 Objetivo de la Evaluación</a></li>
+  <li><a href="#importación-e-inspección-módulos-1-4" id="toc-importación-e-inspección-módulos-1-4" class="nav-link" data-scroll-target="#importación-e-inspección-módulos-1-4">1. Importación e Inspección (Módulos 1, 4)</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-1.1-carga-robusta" id="toc-ejercicio-1.1-carga-robusta" class="nav-link" data-scroll-target="#ejercicio-1.1-carga-robusta">Ejercicio 1.1: Carga Robusta</a></li>
+  </ul></li>
+  <li><a href="#limpieza-de-datos-wrangling-módulo-5" id="toc-limpieza-de-datos-wrangling-módulo-5" class="nav-link" data-scroll-target="#limpieza-de-datos-wrangling-módulo-5">2. Limpieza de Datos “Wrangling” (Módulo 5)</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-2.1-estandarización-de-texto" id="toc-ejercicio-2.1-estandarización-de-texto" class="nav-link" data-scroll-target="#ejercicio-2.1-estandarización-de-texto">Ejercicio 2.1: Estandarización de Texto</a></li>
+  <li><a href="#ejercicio-2.2-manejo-de-nas" id="toc-ejercicio-2.2-manejo-de-nas" class="nav-link" data-scroll-target="#ejercicio-2.2-manejo-de-nas">Ejercicio 2.2: Manejo de NAs</a></li>
+  <li><a href="#ejercicio-2.3-el-infierno-de-las-fechas" id="toc-ejercicio-2.3-el-infierno-de-las-fechas" class="nav-link" data-scroll-target="#ejercicio-2.3-el-infierno-de-las-fechas">Ejercicio 2.3: El Infierno de las Fechas</a></li>
+  </ul></li>
+  <li><a href="#manipulación-y-estructuras-módulos-2-3-5" id="toc-manipulación-y-estructuras-módulos-2-3-5" class="nav-link" data-scroll-target="#manipulación-y-estructuras-módulos-2-3-5">3. Manipulación y Estructuras (Módulos 2, 3, 5)</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-3.1-creación-de-métricas." id="toc-ejercicio-3.1-creación-de-métricas." class="nav-link" data-scroll-target="#ejercicio-3.1-creación-de-métricas.">Ejercicio 3.1: Creación de Métricas.</a></li>
+  <li><a href="#ejercicio-3.2-agrupación" id="toc-ejercicio-3.2-agrupación" class="nav-link" data-scroll-target="#ejercicio-3.2-agrupación">Ejercicio 3.2: Agrupación</a></li>
+  </ul></li>
+  <li><a href="#visualización-módulo-6" id="toc-visualización-módulo-6" class="nav-link" data-scroll-target="#visualización-módulo-6">4. Visualización (Módulo 6)</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-4.1-ventas-por-canal" id="toc-ejercicio-4.1-ventas-por-canal" class="nav-link" data-scroll-target="#ejercicio-4.1-ventas-por-canal">Ejercicio 4.1: Ventas por Canal</a></li>
+  <li><a href="#ejercicio-4.2-serie-de-tiempo-tendencia" id="toc-ejercicio-4.2-serie-de-tiempo-tendencia" class="nav-link" data-scroll-target="#ejercicio-4.2-serie-de-tiempo-tendencia">Ejercicio 4.2: Serie de Tiempo (Tendencia)</a></li>
+  </ul></li>
+  <li><a href="#programación-funcional-módulo-7" id="toc-programación-funcional-módulo-7" class="nav-link" data-scroll-target="#programación-funcional-módulo-7">5. Programación Funcional (Módulo 7)</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-5.1-función-de-clasificación" id="toc-ejercicio-5.1-función-de-clasificación" class="nav-link" data-scroll-target="#ejercicio-5.1-función-de-clasificación">Ejercicio 5.1: Función de Clasificación</a></li>
+  <li><a href="#ejercicio-5.2-aplicación-vectorizada" id="toc-ejercicio-5.2-aplicación-vectorizada" class="nav-link" data-scroll-target="#ejercicio-5.2-aplicación-vectorizada">Ejercicio 5.2: Aplicación Vectorizada</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -474,35 +506,10 @@ eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xMSIsImlubGluZSI6ZmFsc2UsIm1l
 <script type="vfs-file">
 W10=
 </script>
-<script type="ojs-module-contents">
-eyJjb250ZW50cyI6W119
-</script>
-<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
-<div id="exercise-loading-status" class="d-flex gap-2">
-
-</div>
-<div class="spinner-grow spinner-grow-sm">
-
-</div>
-</div>
-<script type="vfs-file">
-W10=
-</script>
 </section>
 </section>
 
 </main> <!-- /main -->
-<script type="ojs-module-contents">
-eyJjb250ZW50cyI6W119
-</script>
-<script type="module">
-if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
-window._ojs.paths.runtimeToDoc = "../../prueba";
-window._ojs.paths.runtimeToRoot = "../..";
-window._ojs.paths.docToRoot = "..";
-window._ojs.selfContained = false;
-window._ojs.runtime.interpretFromScriptTags();
-</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

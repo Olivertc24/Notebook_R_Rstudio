@@ -21,7 +21,7 @@ Automatizar tareas repetitivas y tomar decisiones lógicas.
 
 > "Si te encuentras copiando y pegando el mismo código más de dos veces, es hora de escribir una función."
 
----
+------------------------------------------------------------------------
 
 ## 1. Estructuras de Control (`if`, `else`)
 
@@ -47,7 +47,7 @@ if (siniestro > limite) {
 print(paste(mensaje, "-", prioridad))
 ```
 
----
+------------------------------------------------------------------------
 
 ### La versión Vectorizada: ifelse()
 
@@ -65,7 +65,7 @@ status <- ifelse(montos > 10000, "Revisar", "Aprobar")
 status
 ```
 
----
+------------------------------------------------------------------------
 
 ## 2. Bucles (Loops)
 
@@ -85,11 +85,11 @@ for (tasa in tasas) {
 }
 ```
 
-::: {.callout-warning} 
-¡Ojo! En R, evita los bucles for si puedes hacer la operación directamente sobre el vector (vectorización). Es mucho más lento iterar fila por fila. 
+::: callout-warning
+¡Ojo! En R, evita los bucles for si puedes hacer la operación directamente sobre el vector (vectorización). Es mucho más lento iterar fila por fila.
 :::
 
----
+------------------------------------------------------------------------
 
 ## 3. Funciones Personalizadas
 
@@ -117,34 +117,32 @@ calc_prima <- function(frecuencia, severidad, gastos = 0) {
 calc_prima(frecuencia = 0.10, severidad = 5000, gastos = 50)
 ```
 
----
+------------------------------------------------------------------------
 
 ## 4. La Familia apply (Base R)
 
 Para aplicar una función a cada elemento de una lista o matriz sin usar bucles for.
 
-:::: {.columns}
-
-::: {.column width="50%"} 
+::::: columns
+::: {.column width="50%"}
 lapply (List Apply) Devuelve siempre una lista.
 
 ```{r}
 nums <- list(a=10, b=20)
 lapply(nums, sqrt)
 ```
-
 :::
 
-::: {.column width="50%"} 
+::: {.column width="50%"}
 sapply (Simplify Apply) Intenta devolver un vector o matriz.
+
 ```{r}
 sapply(nums, sqrt)
 ```
 :::
+:::::
 
-::::
-
----
+------------------------------------------------------------------------
 
 ### apply para Matrices
 
@@ -162,18 +160,17 @@ apply(matriz_riesgos, MARGIN = 1, sum)
 apply(matriz_riesgos, MARGIN = 2, mean)
 ```
 
-
----
+------------------------------------------------------------------------
 
 ## 5. Iteración con purrr (Tidyverse)
 
 Es la evolución moderna de apply. Más consistente y predecible.
 
-* map(): Devuelve lista (igual a lapply).
+-   map(): Devuelve lista (igual a lapply).
 
-* map_dbl(): Devuelve vector numérico (double).
+-   map_dbl(): Devuelve vector numérico (double).
 
-* map_chr(): Devuelve vector de texto.
+-   map_chr(): Devuelve vector de texto.
 
 ```{r}
 #| label: purrr
@@ -187,22 +184,24 @@ lista_precios <- list(100, 200, 500)
 map_dbl(lista_precios, ~ .x * 0.90)
 ```
 
----
+------------------------------------------------------------------------
 
 ## Resumen de Flujo
 
-* Lógica: if, else para decisiones puntuales. ifelse() para columnas de datos.
+-   Lógica: if, else para decisiones puntuales. ifelse() para columnas de datos.
 
-* Repetición: for (usar con moderación).
+-   Repetición: for (usar con moderación).
 
-* Abstracción: Crea tus propias function().
+-   Abstracción: Crea tus propias function().
 
-* Iteración Funcional:
+-   Iteración Funcional:
 
-* Base: lapply, sapply.
+-   Base: lapply, sapply.
 
-* Tidyverse: map, map_dbl.
+-   Tidyverse: map, map_dbl.
 
-::: {.r-fit-text} 
-¡Automatiza todo! 
-:::
+<div style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
+  <a href="../index.qmd" class="btn btn-primary shadow-lg" role="button" style="border-radius: 50px; padding: 10px 20px;">
+    🏠 Inicio
+  </a>
+</div>

@@ -6,10 +6,62 @@ Hola estudiantes,
 
 En este sitio encontrarán todo el material del curso de R y RStudio.
 
-### Estructura del curso
+# Estructura del curso
 
-1.  **Teoría:** Conceptos fundamentales explicados con Quarto.
-2.  **Práctica:** Ejercicios interactivos que se ejecutan directamente en su navegador.
-3.  **Examen Practico:** Integrar los conocimientos de un dataset “sucio” en información valiosa. 
+##  **Teoría:** Conceptos fundamentales.
+
+### Fase 1: Fundamentos
+
+* [**Módulo 1: Introducción y Primeros Pasos**](teoria/Modulo_1.qmd)  
+    *Aprende la interfaz de RStudio y R como calculadora.*
+    
+* [**Módulo 2: Sintaxis y Tipos de Datos**](teoria/Modulo_2.qmd)  
+    *Domina los vectores, variables y operadores lógicos.*
+    
+* [**Módulo 3: Estructuras de Datos**](teoria/Modulo_3.qmd)  
+    *Matrices, Listas y Data Frames.*
+
+### Fase 2: El Ciclo del Dato
+* [**Módulo 4: Importación de Datos**](teoria/Modulo_4.qmd)  
+    *Lectura de CSV, Excel y conexión a bases de datos.*
+    
+* [**Módulo 5: Manipulación (Wrangling)**](teoria/Modulo_5.qmd)  
+    *Limpieza y transformación con `dplyr` y `tidyverse`.*
+
+### Fase 3: Comunicación y Programación
+* [**Módulo 6: Visualización de Datos**](teoria/Modulo_6.qmd)  
+    *La gramática de gráficos con `ggplot2`.*
+    
+* [**Módulo 7: Programación Funcional**](teoria/Modulo_7.qmd)  
+    *Crea tus propias funciones y automatiza tareas.*
+
+##  **Práctica:** Ejercicios interactivos que se ejecutan directamente en su navegador.
+
+### Fase 1: Fundamentos
+
+* [**Módulo 1: Introducción y Primeros Pasos**](practica/Practica_Modulo_1.qmd)  
+    *Aprende la interfaz de RStudio y R como calculadora.*
+    
+* [**Módulo 2: Sintaxis y Tipos de Datos**](practica/Practica_Modulo_2.qmd)  
+    *Domina los vectores, variables y operadores lógicos.*
+    
+* [**Módulo 3: Estructuras de Datos**](practica/Practica_Modulo_3.qmd)  
+    *Matrices, Listas y Data Frames.*
+
+### Fase 2: El Ciclo del Dato
+* [**Módulo 4: Importación de Datos**](practica/Practica_Modulo_4.qmd)  
+    *Lectura de CSV, Excel y conexión a bases de datos.*
+    
+* [**Módulo 5: Manipulación (Wrangling)**](practica/Practica_Modulo_5.qmd)  
+    *Limpieza y transformación con `dplyr` y `tidyverse`.*
+
+### Fase 3: Comunicación y Programación
+* [**Módulo 6: Visualización de Datos**](practica/Practica_Modulo_6.qmd)  
+    *La gramática de gráficos con `ggplot2`.*
+    
+* [**Módulo 7: Programación Funcional**](practica/Practica_Modulo_7.qmd)  
+    *Crea tus propias funciones y automatiza tareas.*
+
+##  **Examen Practico:** Integrar los conocimientos de un dataset “sucio” en información valiosa. 
 
 ¡Comencemos a programar!

@@ -28,7 +28,6 @@ library(tidyverse)
 
 Vamos a trabajar con un dataframe de ejemplo:
 
-
 ```{r}
 siniestros <- tibble(
   id = 1:5,
@@ -38,17 +37,16 @@ siniestros <- tibble(
 )
 ```
 
----
+------------------------------------------------------------------------
 
-1. El Operador Pipe (%>% o |>)
-El "pipe" nos permite encadenar operaciones. Se lee como "y entonces...".
+1.  El Operador Pipe (%\>% o \|\>) El "pipe" nos permite encadenar operaciones. Se lee como "y entonces...".
 
-*  %>% (Magrittr): El clásico del tidyverse (Ctrl + Shift + M).
-* |> (Nativo): Disponible desde R 4.1.
+-   %\>% (Magrittr): El clásico del tidyverse (Ctrl + Shift + M).
+-   \|\> (Nativo): Disponible desde R 4.1.
 
----
+------------------------------------------------------------------------
 
-Sin Pipe (Difícil de leer): summarise(group_by(filter(siniestros, monto > 300), ramo))
+Sin Pipe (Difícil de leer): summarise(group_by(filter(siniestros, monto \> 300), ramo))
 
 Con Pipe (Fluido):
 
@@ -59,13 +57,14 @@ siniestros %>%
   summarise(monto)
 ```
 
----
+------------------------------------------------------------------------
 
 ## 2. Los 5 Verbos de dplyr
+
 ### Select y Filter
 
-* select(): Selecciona columnas (variables).
-* filter(): Selecciona filas según condiciones.
+-   select(): Selecciona columnas (variables).
+-   filter(): Selecciona filas según condiciones.
 
 ```{r}
 siniestros %>% 
@@ -73,11 +72,12 @@ siniestros %>%
   select(ramo, monto)
 ```
 
----
+------------------------------------------------------------------------
 
 ### Arrange y Mutate
-* arrange(): Ordena las filas.
-* mutate(): Crea o modifica variables (columnas).
+
+-   arrange(): Ordena las filas.
+-   mutate(): Crea o modifica variables (columnas).
 
 ```{r}
 siniestros %>% 
@@ -86,7 +86,7 @@ siniestros %>%
          total = monto + iva)
 ```
 
----
+------------------------------------------------------------------------
 
 ### Summarise (y Group_by)
 
@@ -102,13 +102,13 @@ siniestros %>%
   )
 ```
 
----
+------------------------------------------------------------------------
 
 ## 3. Reestructurar con tidyr
 
 A veces los datos vienen en formato "Ancho" (Excel) y los necesitamos en formato "Largo" (Tidy) para graficar o modelar.
 
-* Pivot Longer (De Ancho a Largo)
+-   Pivot Longer (De Ancho a Largo)
 
 ```{r}
 # Datos "Anchos" (Ej: Reservas por año en columnas)
@@ -120,9 +120,9 @@ reservas <- tibble(
 reservas
 ```
 
----
+------------------------------------------------------------------------
 
-* Pivot Longer (De Ancho a Largo)
+-   Pivot Longer (De Ancho a Largo)
 
 ```{r}
 # Transformación
@@ -135,9 +135,9 @@ reservas_long <- reservas %>%
 reservas_long
 ```
 
----
+------------------------------------------------------------------------
 
-* Pivot Wider (De Largo a Ancho)
+-   Pivot Wider (De Largo a Ancho)
 
 La operación inversa. Útil para presentar reportes finales.
 
@@ -149,7 +149,7 @@ reservas_long %>%
   )
 ```
 
----
+------------------------------------------------------------------------
 
 ## 4. Unión de Tablas (Joins)
 
@@ -160,31 +160,37 @@ polizas <- tibble(id = 1:3, cliente = c("Ana", "Bob", "Cid"))
 reclamos <- tibble(id = c(1, 1, 2), monto = c(100, 200, 500))
 ```
 
-:::: {.columns}
-
-::: {.column width="50%"} 
+::::: columns
+::: {.column width="50%"}
 Left Join Mantiene todas las pólizas, trae reclamos si existen.
+
 ```{r}
 left_join(polizas, reclamos, by = "id")
 ```
 :::
 
-::: {.column width="50%"} 
+::: {.column width="50%"}
 Inner Join Solo mantiene registros que existen en AMBAS tablas.
+
 ```{r}
 inner_join(polizas, reclamos, by = "id")
 ```
 :::
+:::::
 
-::::
+------------------------------------------------------------------------
 
----
+-   Left Join: Todo lo de la izquierda (A).
+-   Right Join: Todo lo de la derecha (B).
+-   Inner Join: Solo la intersección ($A \cap B$).
+-   Full Join: Todo ($A \cup B$).
 
-* Left Join: Todo lo de la izquierda (A).
-* Right Join: Todo lo de la derecha (B).
-* Inner Join: Solo la intersección ($A \cap B$).
-* Full Join: Todo ($A \cup B$).
-
-::: {.fragment} 
-Ejercicio: Intenta calcular el "Loss Ratio" (Siniestros / Primas) uniendo una tabla de primas con una de siniestros. 
+::: fragment
+Ejercicio: Intenta calcular el "Loss Ratio" (Siniestros / Primas) uniendo una tabla de primas con una de siniestros.
 :::
+
+<div style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
+  <a href="../index.qmd" class="btn btn-primary shadow-lg" role="button" style="border-radius: 50px; padding: 10px 20px;">
+    🏠 Inicio
+  </a>
+</div>

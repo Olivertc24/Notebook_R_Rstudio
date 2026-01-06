@@ -24,45 +24,42 @@ En esta sesión aprenderemos la gramática esencial de R:
 3.  Operadores lógicos y relacionales.
 4.  Manejo correcto de datos faltantes (`NA`, `NaN`, `NULL`).
 
----
+------------------------------------------------------------------------
 
 ## 1. Asignación de Variables
 
 En R existen dos formas principales de asignar valores:
 
-::: {.fragment}
+::: fragment
 ### La flecha (`<-`) vs El igual (`=`)
 :::
 
-:::: {.columns}
-
+::::: columns
 ::: {.column width="50%"}
-**Operador `<-`**
-Es el estándar en R. Se prefiere por claridad histórica y alcance (scope).
+**Operador `<-`** Es el estándar en R. Se prefiere por claridad histórica y alcance (scope).
+
 ```{r}
 x <- 10
 x
 ```
 :::
 
-::: {.column width="50%"} 
-**Operador ` =`** Funciona igual en la mayoría de casos simples, pero se reserva usualmente para argumentos dentro de funciones.
+::: {.column width="50%"}
+**Operador `=`** Funciona igual en la mayoría de casos simples, pero se reserva usualmente para argumentos dentro de funciones.
+:::
+:::::
 
+::: callout-tip
+Buenas prácticas: Usa \<- para crear variables y = para asignar parámetros dentro de funciones.
 :::
 
-::::
-
-::: {.callout-tip} 
-Buenas prácticas: Usa <- para crear variables y = para asignar parámetros dentro de funciones. 
-:::
-
----
+------------------------------------------------------------------------
 
 ## 2. Tipos de Datos Atómicos
+
 R trabaja con vectores atómicos. Los 4 principales son:
 
-Numéricos (Numeric/Double) y Enteros (Integer)
-Por defecto, los números en R son numeric (decimales). Para forzar un entero, usamos la L.
+Numéricos (Numeric/Double) y Enteros (Integer) Por defecto, los números en R son numeric (decimales). Para forzar un entero, usamos la L.
 
 ```{r}
 #| label: tipos-num
@@ -76,14 +73,14 @@ class(b)
 class(c)
 ```
 
----
+------------------------------------------------------------------------
 
 ### Caracteres y Lógicos
 
-:::: {.columns}
-
-::: {.column width="50%"} 
+::::: columns
+::: {.column width="50%"}
 Character (String) Texto entre comillas simples o dobles.
+
 ```{r}
 nombre <- "Oliver"
 perfil <- 'Profesor'
@@ -92,8 +89,9 @@ class(nombre)
 ```
 :::
 
-::: {.column width="50%"} 
+::: {.column width="50%"}
 Logical (Boolean) Solo TRUE (T) o FALSE (F).
+
 ```{r}
 flag <- TRUE
 otro_flag <- F
@@ -101,9 +99,9 @@ otro_flag <- F
 class(flag)
 ```
 :::
+:::::
 
-::::
----
+------------------------------------------------------------------------
 
 ## 3. Operadores
 
@@ -120,7 +118,7 @@ Más allá de sumar y restar, R tiene operadores específicos:
 2 ^ 3     # Potencia
 ```
 
----
+------------------------------------------------------------------------
 
 ### Relacionales
 
@@ -137,7 +135,7 @@ x == y   # Igualdad exacta (OJO: es doble igual)
 x != y   # Diferente de
 ```
 
----
+------------------------------------------------------------------------
 
 ### Lógicos
 
@@ -170,7 +168,7 @@ edades <- c(25, 30, NA)
 is.na(edades) # Función para detectar NAs
 ```
 
----
+------------------------------------------------------------------------
 
 ### NaN (Not a Number)
 
@@ -190,14 +188,20 @@ lista <- c(1, 2, NULL, 4)
 length(lista) # El NULL desaparece, longitud es 3
 ```
 
-::: {.fragment}
-¡Fin del Módulo 2! 
+::: fragment
+¡Fin del Módulo 2!
 :::
 
----
+------------------------------------------------------------------------
 
 ### Puntos didácticos incluidos en este código:
 
 1.  **Diferencia `Numeric` vs `Integer`**: Esto es importante para la optimización de memoria en grandes volúmenes de datos, por eso incluí el sufijo `L`.
 2.  **Operadores Avanzados**: Agregué Módulo (`%%`) y División Entera (`%/%`), que son muy útiles en programación lógica.
 3.  **La tabla de Valores Especiales**: Diferenciar `NA` de `NULL` suele ser confuso para iniciantes. El ejemplo de `length()` con NULL demuestra visualmente que NULL "no existe" para el vector, mientras que NA sí ocupa un espacio.
+
+<div style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
+  <a href="../index.qmd" class="btn btn-primary shadow-lg" role="button" style="border-radius: 50px; padding: 10px 20px;">
+    🏠 Inicio
+  </a>
+</div>

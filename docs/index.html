@@ -193,7 +193,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#estructura-del-curso" id="toc-estructura-del-curso" class="nav-link active" data-scroll-target="#estructura-del-curso">Estructura del curso</a></li>
+  <li><a href="#estructura-del-curso" id="toc-estructura-del-curso" class="nav-link active" data-scroll-target="#estructura-del-curso">Estructura del curso</a>
+  <ul class="collapse">
+  <li><a href="#teoría-conceptos-fundamentales." id="toc-teoría-conceptos-fundamentales." class="nav-link" data-scroll-target="#teoría-conceptos-fundamentales."><strong>Teoría:</strong> Conceptos fundamentales.</a>
+  <ul class="collapse">
+  <li><a href="#fase-1-fundamentos" id="toc-fase-1-fundamentos" class="nav-link" data-scroll-target="#fase-1-fundamentos">Fase 1: Fundamentos</a></li>
+  <li><a href="#fase-2-el-ciclo-del-dato" id="toc-fase-2-el-ciclo-del-dato" class="nav-link" data-scroll-target="#fase-2-el-ciclo-del-dato">Fase 2: El Ciclo del Dato</a></li>
+  <li><a href="#fase-3-comunicación-y-programación" id="toc-fase-3-comunicación-y-programación" class="nav-link" data-scroll-target="#fase-3-comunicación-y-programación">Fase 3: Comunicación y Programación</a></li>
+  </ul></li>
+  <li><a href="#práctica-ejercicios-interactivos-que-se-ejecutan-directamente-en-su-navegador." id="toc-práctica-ejercicios-interactivos-que-se-ejecutan-directamente-en-su-navegador." class="nav-link" data-scroll-target="#práctica-ejercicios-interactivos-que-se-ejecutan-directamente-en-su-navegador."><strong>Práctica:</strong> Ejercicios interactivos que se ejecutan directamente en su navegador.</a>
+  <ul class="collapse">
+  <li><a href="#fase-1-fundamentos-1" id="toc-fase-1-fundamentos-1" class="nav-link" data-scroll-target="#fase-1-fundamentos-1">Fase 1: Fundamentos</a></li>
+  <li><a href="#fase-2-el-ciclo-del-dato-1" id="toc-fase-2-el-ciclo-del-dato-1" class="nav-link" data-scroll-target="#fase-2-el-ciclo-del-dato-1">Fase 2: El Ciclo del Dato</a></li>
+  <li><a href="#fase-3-comunicación-y-programación-1" id="toc-fase-3-comunicación-y-programación-1" class="nav-link" data-scroll-target="#fase-3-comunicación-y-programación-1">Fase 3: Comunicación y Programación</a></li>
+  </ul></li>
+  <li><a href="#examen-practico-integrar-los-conocimientos-de-un-dataset-sucio-en-información-valiosa." id="toc-examen-practico-integrar-los-conocimientos-de-un-dataset-sucio-en-información-valiosa." class="nav-link" data-scroll-target="#examen-practico-integrar-los-conocimientos-de-un-dataset-sucio-en-información-valiosa."><strong>Examen Practico:</strong> Integrar los conocimientos de un dataset “sucio” en información valiosa.</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -221,12 +236,74 @@ ul.task-list li input[type="checkbox"] {
 
 <p>Hola estudiantes,</p>
 <p>En este sitio encontrarán todo el material del curso de R y RStudio.</p>
-<section id="estructura-del-curso" class="level3">
-<h3 class="anchored" data-anchor-id="estructura-del-curso">Estructura del curso</h3>
-<ol type="1">
-<li><strong>Teoría:</strong> Conceptos fundamentales explicados con Quarto.</li>
-<li><strong>Práctica:</strong> Ejercicios interactivos que se ejecutan directamente en su navegador.</li>
-</ol>
+<section id="estructura-del-curso" class="level1">
+<h1>Estructura del curso</h1>
+<section id="teoría-conceptos-fundamentales." class="level2">
+<h2 class="anchored" data-anchor-id="teoría-conceptos-fundamentales."><strong>Teoría:</strong> Conceptos fundamentales.</h2>
+<section id="fase-1-fundamentos" class="level3">
+<h3 class="anchored" data-anchor-id="fase-1-fundamentos">Fase 1: Fundamentos</h3>
+<ul>
+<li><p><a href="./teoria/Modulo_1.html"><strong>Módulo 1: Introducción y Primeros Pasos</strong></a><br>
+<em>Aprende la interfaz de RStudio y R como calculadora.</em></p></li>
+<li><p><a href="./teoria/Modulo_2.html"><strong>Módulo 2: Sintaxis y Tipos de Datos</strong></a><br>
+<em>Domina los vectores, variables y operadores lógicos.</em></p></li>
+<li><p><a href="./teoria/Modulo_3.html"><strong>Módulo 3: Estructuras de Datos</strong></a><br>
+<em>Matrices, Listas y Data Frames.</em></p></li>
+</ul>
+</section>
+<section id="fase-2-el-ciclo-del-dato" class="level3">
+<h3 class="anchored" data-anchor-id="fase-2-el-ciclo-del-dato">Fase 2: El Ciclo del Dato</h3>
+<ul>
+<li><p><a href="./teoria/Modulo_4.html"><strong>Módulo 4: Importación de Datos</strong></a><br>
+<em>Lectura de CSV, Excel y conexión a bases de datos.</em></p></li>
+<li><p><a href="./teoria/Modulo_5.html"><strong>Módulo 5: Manipulación (Wrangling)</strong></a><br>
+<em>Limpieza y transformación con <code>dplyr</code> y <code>tidyverse</code>.</em></p></li>
+</ul>
+</section>
+<section id="fase-3-comunicación-y-programación" class="level3">
+<h3 class="anchored" data-anchor-id="fase-3-comunicación-y-programación">Fase 3: Comunicación y Programación</h3>
+<ul>
+<li><p><a href="./teoria/Modulo_6.html"><strong>Módulo 6: Visualización de Datos</strong></a><br>
+<em>La gramática de gráficos con <code>ggplot2</code>.</em></p></li>
+<li><p><a href="./teoria/Modulo_7.html"><strong>Módulo 7: Programación Funcional</strong></a><br>
+<em>Crea tus propias funciones y automatiza tareas.</em></p></li>
+</ul>
+</section>
+</section>
+<section id="práctica-ejercicios-interactivos-que-se-ejecutan-directamente-en-su-navegador." class="level2">
+<h2 class="anchored" data-anchor-id="práctica-ejercicios-interactivos-que-se-ejecutan-directamente-en-su-navegador."><strong>Práctica:</strong> Ejercicios interactivos que se ejecutan directamente en su navegador.</h2>
+<section id="fase-1-fundamentos-1" class="level3">
+<h3 class="anchored" data-anchor-id="fase-1-fundamentos-1">Fase 1: Fundamentos</h3>
+<ul>
+<li><p><a href="./practica/Practica_Modulo_1.html"><strong>Módulo 1: Introducción y Primeros Pasos</strong></a><br>
+<em>Aprende la interfaz de RStudio y R como calculadora.</em></p></li>
+<li><p><a href="./practica/Practica_Modulo_2.html"><strong>Módulo 2: Sintaxis y Tipos de Datos</strong></a><br>
+<em>Domina los vectores, variables y operadores lógicos.</em></p></li>
+<li><p><a href="./practica/Practica_Modulo_3.html"><strong>Módulo 3: Estructuras de Datos</strong></a><br>
+<em>Matrices, Listas y Data Frames.</em></p></li>
+</ul>
+</section>
+<section id="fase-2-el-ciclo-del-dato-1" class="level3">
+<h3 class="anchored" data-anchor-id="fase-2-el-ciclo-del-dato-1">Fase 2: El Ciclo del Dato</h3>
+<ul>
+<li><p><a href="./practica/Practica_Modulo_4.html"><strong>Módulo 4: Importación de Datos</strong></a><br>
+<em>Lectura de CSV, Excel y conexión a bases de datos.</em></p></li>
+<li><p><a href="./practica/Practica_Modulo_5.html"><strong>Módulo 5: Manipulación (Wrangling)</strong></a><br>
+<em>Limpieza y transformación con <code>dplyr</code> y <code>tidyverse</code>.</em></p></li>
+</ul>
+</section>
+<section id="fase-3-comunicación-y-programación-1" class="level3">
+<h3 class="anchored" data-anchor-id="fase-3-comunicación-y-programación-1">Fase 3: Comunicación y Programación</h3>
+<ul>
+<li><p><a href="./practica/Practica_Modulo_6.html"><strong>Módulo 6: Visualización de Datos</strong></a><br>
+<em>La gramática de gráficos con <code>ggplot2</code>.</em></p></li>
+<li><p><a href="./practica/Practica_Modulo_7.html"><strong>Módulo 7: Programación Funcional</strong></a><br>
+<em>Crea tus propias funciones y automatiza tareas.</em></p></li>
+</ul>
+</section>
+</section>
+<section id="examen-practico-integrar-los-conocimientos-de-un-dataset-sucio-en-información-valiosa." class="level2">
+<h2 class="anchored" data-anchor-id="examen-practico-integrar-los-conocimientos-de-un-dataset-sucio-en-información-valiosa."><strong>Examen Practico:</strong> Integrar los conocimientos de un dataset “sucio” en información valiosa.</h2>
 <p>¡Comencemos a programar!</p>
 
 
@@ -244,6 +321,7 @@ eyJjb250ZW50cyI6W119
 <script type="vfs-file">
 W10=
 </script>
+</section>
 </section>
 
 </main> <!-- /main -->

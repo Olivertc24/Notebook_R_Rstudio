@@ -145,7 +145,7 @@ ggplot(cartera, aes(x = prima)) +
 
 Para ver dispersión y outliers por grupo.
 
-:::: columns
+::::: columns
 ::: {.column width="40%"}
 ```{r}
 #| label: box
@@ -157,7 +157,8 @@ ggplot(cartera,
   geom_boxplot()
 ```
 :::
-:::: {.column width="60%"}
+
+::: {.column width="60%"}
 ```{r}
 #| label: box-out
 #| echo: false
@@ -169,3 +170,9 @@ ggplot(cartera,
 ```
 :::
 :::::
+
+<div style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
+  <a href="../index.qmd" class="btn btn-primary shadow-lg" role="button" style="border-radius: 50px; padding: 10px 20px;">
+    🏠 Inicio
+  </a>
+</div>

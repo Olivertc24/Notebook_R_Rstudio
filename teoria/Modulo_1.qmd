@@ -183,6 +183,11 @@ imc <- peso / (altura^2)
 round(imc, 2)
 ```
 
+<div style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
+  <a href="../index.qmd" class="btn btn-primary shadow-lg" role="button" style="border-radius: 50px; padding: 10px 20px;">
+    🏠 Inicio
+  </a>
+</div>
 ------------------------------------------------------------------------
 
 ::: r-fit-text

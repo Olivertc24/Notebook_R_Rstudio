@@ -8,6 +8,17 @@ editor: visual
 lang: es
 ---
 
+```{webr}
+#| context: setup
+
+# 1. Definimos la URL Raw
+url_nike <- "https://raw.githubusercontent.com/Olivertc24/Notebook_R_Rstudio/refs/heads/main/practica/data_house_price.csv"
+install.packages("tidyverse")
+
+# 2. Descargamos el archivo al sistema virtual de WebR
+download.file(url_nike, "data_house_price.csv")
+```
+
 ## Instrucciones
 
 En este módulo dejaremos de copiar y pegar código. Aprenderemos a escribir nuestras propias funciones y a controlar el flujo de ejecución. **Requisito:** Asegúrate de tener el archivo `data_house_price.csv` disponible.

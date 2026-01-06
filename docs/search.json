@@ -7,214 +7,382 @@
     "text": "Hola estudiantes,\nEn este sitio encontrarán todo el material del curso de R y RStudio.\n\nEstructura del curso\n\nTeoría: Conceptos fundamentales explicados con Quarto.\nPráctica: Ejercicios interactivos que se ejecutan directamente en su navegador.\n\n¡Comencemos a programar!"
   },
   {
-    "objectID": "practica/Practica_Modulo_5.html",
-    "href": "practica/Practica_Modulo_5.html",
-    "title": "Práctica Módulo 5: Manipulación de Datos con Tidyverse",
+    "objectID": "practica/Practica_Modulo_3.html",
+    "href": "practica/Practica_Modulo_3.html",
+    "title": "Práctica Módulo 3: Estructuras de Datos",
     "section": "",
-    "text": "En esta práctica actuaremos como Analistas de Datos en una inmobiliaria.\nUsaremos el paquete tidyverse para limpiar, transformar y resumir un dataset real de precios de viviendas.\nRequisito: Asegúrate de tener el archivo data_house_price.csv en la misma carpeta que este documento."
+    "text": "Vamos a practicar cómo almacenar y organizar datos.\nObjetivo: Manipular vectores, operar matrices y construir tu primer Data Frame."
   },
   {
-    "objectID": "practica/Practica_Modulo_5.html#instrucciones",
-    "href": "practica/Practica_Modulo_5.html#instrucciones",
-    "title": "Práctica Módulo 5: Manipulación de Datos con Tidyverse",
+    "objectID": "practica/Practica_Modulo_3.html#instrucciones",
+    "href": "practica/Practica_Modulo_3.html#instrucciones",
+    "title": "Práctica Módulo 3: Estructuras de Datos",
     "section": "",
-    "text": "En esta práctica actuaremos como Analistas de Datos en una inmobiliaria.\nUsaremos el paquete tidyverse para limpiar, transformar y resumir un dataset real de precios de viviendas.\nRequisito: Asegúrate de tener el archivo data_house_price.csv en la misma carpeta que este documento."
+    "text": "Vamos a practicar cómo almacenar y organizar datos.\nObjetivo: Manipular vectores, operar matrices y construir tu primer Data Frame."
   },
   {
-    "objectID": "practica/Practica_Modulo_5.html#parte-0-configuración-y-carga",
-    "href": "practica/Practica_Modulo_5.html#parte-0-configuración-y-carga",
-    "title": "Práctica Módulo 5: Manipulación de Datos con Tidyverse",
-    "section": "Parte 0: Configuración y Carga",
-    "text": "Parte 0: Configuración y Carga\n\nEjercicio 0.1: Cargar paquetes y datos\n\nCarga la librería tidyverse.\nLee el archivo data_house_price.csv usando read_csv() y asígnalo a un objeto llamado casas.\nUsa glimpse(casas) para inspeccionar rápidamente las variables."
+    "objectID": "practica/Practica_Modulo_3.html#parte-1-vectores-y-slicing",
+    "href": "practica/Practica_Modulo_3.html#parte-1-vectores-y-slicing",
+    "title": "Práctica Módulo 3: Estructuras de Datos",
+    "section": "Parte 1: Vectores y “Slicing”",
+    "text": "Parte 1: Vectores y “Slicing”\n\nEjercicio 1.1: Indexación\nTienes el siguiente vector de primas emitidas: primas &lt;- c(100, 200, 300, 400, 500)\n\nExtrae el tercer elemento.\nExtrae el primero y el último elemento en un solo paso.\nExtrae todos los elementos menos el segundo.\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 1.2: Operaciones Vectorizadas (Sin bucles)\nAplica un recargo del 5% (multiplicar por 1.05) a todas las primas del vector anterior simultáneamente."
   },
   {
-    "objectID": "practica/Practica_Modulo_5.html#parte-1-verbos-básicos-select-filter-arrange",
-    "href": "practica/Practica_Modulo_5.html#parte-1-verbos-básicos-select-filter-arrange",
-    "title": "Práctica Módulo 5: Manipulación de Datos con Tidyverse",
-    "section": "Parte 1: Verbos Básicos (Select, Filter, Arrange)",
-    "text": "Parte 1: Verbos Básicos (Select, Filter, Arrange)\n\nEjercicio 1.1: Selección de Columnas\nNuestro jefe solo quiere ver la información básica. Crea un nuevo objeto llamado casas_simple que contenga solo las siguientes columnas:\n\ndate\nprice\nbedrooms\nsqft_living (pies cuadrados habitables)\ncity\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 1.2: Filtrado de Datos\nNos interesan casas con características específicas para un cliente exigente:\n\nDeben estar en la ciudad de “Seattle”.\nDeben tener más de 3 habitaciones (bedrooms &gt; 3).\nEl precio debe ser menor a 600,000.\n\nGuarda este subconjunto en ofertas_seattle.\n\n\n\n\n\n\n\n\n\n\nEjercicio 1.3: Ordenamiento\nToma el objeto ofertas_seattle y ordénalo por precio de forma descendente (de la más cara a la más barata). Muestra las primeras 5 filas con head()."
+    "objectID": "practica/Practica_Modulo_3.html#parte-2-matrices-y-álgebra-lineal",
+    "href": "practica/Practica_Modulo_3.html#parte-2-matrices-y-álgebra-lineal",
+    "title": "Práctica Módulo 3: Estructuras de Datos",
+    "section": "Parte 2: Matrices y Álgebra Lineal",
+    "text": "Parte 2: Matrices y Álgebra Lineal\n\nEjercicio 2.1: Creación\nCrea una matriz de 3 filas y 2 columnas con los números del 1 al 6. Llámala matriz_A.\n\n\n\n\n\n\n\n\n\n\nEjercicio 2.2: El error clásico\nDada la matriz A (de tu ejercicio anterior) y una matriz identidad I de 3x2 (simulada abajo):\n\nIntenta multiplicar matriz_A * matriz_A.\n¿Qué tipo de operación hace R? Si quisieras hacer multiplicación matricial (fila por columna), ¿qué operador deberías usar? (Nota: para multiplicar A por sí misma, A debe ser cuadrada, así que probemos con su transpuesta: t(matriz_A)).\n\n\nCalcula: \\(A \\times A^T\\)"
   },
   {
-    "objectID": "practica/Practica_Modulo_5.html#parte-2-transformación-mutate",
-    "href": "practica/Practica_Modulo_5.html#parte-2-transformación-mutate",
-    "title": "Práctica Módulo 5: Manipulación de Datos con Tidyverse",
-    "section": "Parte 2: Transformación (Mutate)",
-    "text": "Parte 2: Transformación (Mutate)\n\nEjercicio 2.1: Ingeniería de Características\nEn bienes raíces, el precio total engaña. La métrica clave es el “Precio por Pie Cuadrado”. Usando el dataset original casas:\n\nCrea una nueva columna llamada precio_sqft que sea la división de price entre sqft_living.\nCrea otra columna llamada es_lujo que sea TRUE si el precio es mayor a 1,000,000, y FALSE en caso contrario (usa ifelse o comparación directa).\n\nAsigna el resultado a casas_procesadas."
+    "objectID": "practica/Practica_Modulo_3.html#parte-3-factores-categorías",
+    "href": "practica/Practica_Modulo_3.html#parte-3-factores-categorías",
+    "title": "Práctica Módulo 3: Estructuras de Datos",
+    "section": "Parte 3: Factores (Categorías)",
+    "text": "Parte 3: Factores (Categorías)\n\nEjercicio 3.1\nTienes una lista de riesgos: riesgos &lt;- c(“Alto”, “Bajo”, “Medio”, “Alto”, “Bajo”).\nConviértelo en un factor.\nImprime sus levels() (niveles). ¿En qué orden los puso R por defecto?"
   },
   {
-    "objectID": "practica/Practica_Modulo_5.html#parte-3-resúmenes-y-agrupaciones-group-by-summarise",
-    "href": "practica/Practica_Modulo_5.html#parte-3-resúmenes-y-agrupaciones-group-by-summarise",
-    "title": "Práctica Módulo 5: Manipulación de Datos con Tidyverse",
-    "section": "Parte 3: Resúmenes y Agrupaciones (Group by + Summarise)",
-    "text": "Parte 3: Resúmenes y Agrupaciones (Group by + Summarise)\n\nEjercicio 3.1: Análisis por Ciudad\nQueremos saber qué ciudades son las más caras.\n\nAgrupa casas_procesadas por city.\nCalcula:\n\n\nconteo: Número de casas en venta.\nprecio_promedio: Promedio de la columna price.\npromedio_sqft: Promedio del precio_sqft.\n\n\nOrdena el resultado por precio_promedio descendente."
+    "objectID": "practica/Practica_Modulo_3.html#parte-4-listas-el-contenedor-flexible",
+    "href": "practica/Practica_Modulo_3.html#parte-4-listas-el-contenedor-flexible",
+    "title": "Práctica Módulo 3: Estructuras de Datos",
+    "section": "Parte 4: Listas (El contenedor flexible)",
+    "text": "Parte 4: Listas (El contenedor flexible)\n\nEjercicio 4.1\nCrea una lista llamada portafolio que contenga:\n\nUn vector de texto con tu nombre: “Carla”.\nUn vector numérico con 3 años: 2023, 2024, 2025.\nLa matriz matriz_A que creaste antes."
   },
   {
-    "objectID": "practica/Practica_Modulo_5.html#parte-4-unión-de-datos-joins",
-    "href": "practica/Practica_Modulo_5.html#parte-4-unión-de-datos-joins",
-    "title": "Práctica Módulo 5: Manipulación de Datos con Tidyverse",
-    "section": "Parte 4: Unión de Datos (Joins)",
-    "text": "Parte 4: Unión de Datos (Joins)\n\nEjercicio 4.1: Cruzando información\nA veces necesitamos enriquecer nuestro CSV con datos externos. Vamos a crear una pequeña tabla de referencia manual (simulada) que clasifica algunas ciudades por “Región”.\nEjecuta este bloque para crear la tabla auxiliar:\n\n\n\n\n\n\n\n\n\nTu Misión:\n\n\nRealiza un left_join entre tu dataset casas y la tabla regiones.\nObserva qué pasa con las ciudades que NO están en la tabla regiones (ej. Shoreline). ¿Qué valor asigna R en la columna zona?"
+    "objectID": "practica/Practica_Modulo_3.html#parte-5-data-frames-la-tabla-maestra",
+    "href": "practica/Practica_Modulo_3.html#parte-5-data-frames-la-tabla-maestra",
+    "title": "Práctica Módulo 3: Estructuras de Datos",
+    "section": "Parte 5: Data Frames (La Tabla Maestra)",
+    "text": "Parte 5: Data Frames (La Tabla Maestra)\n\nEjercicio 5.1: Creación Manual\nConstruye un Data Frame llamado polizas con las siguientes columnas:\n\nid: 1, 2, 3\ntipo: “Vida”, “Auto”, “Salud”\ncosto: 1500, 800, 400\nactivo: TRUE, TRUE, FALSE\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 5.2: Acceso y Filtrado Base\nUsando el data frame polizas:\n\nSelecciona solo la columna de costo usando el signo de dólar $.\nCalcula el promedio de esa columna.\n(Reto) Intenta filtrar las filas donde el costo sea mayor a 500."
   },
   {
-    "objectID": "practica/Practica_Modulo_5.html#parte-5-reestructuración-tidyr",
-    "href": "practica/Practica_Modulo_5.html#parte-5-reestructuración-tidyr",
-    "title": "Práctica Módulo 5: Manipulación de Datos con Tidyverse",
-    "section": "Parte 5: Reestructuración (Tidyr)",
-    "text": "Parte 5: Reestructuración (Tidyr)\n\nEjercicio 5.1: Pivotar (Bonus)\nSupongamos que calculamos el precio promedio por ciudad y cantidad de habitaciones. Ejecuta el siguiente código para generar un resumen:\n\n\n\n\n\n\n\n\nEste formato es “Largo” (Long). Tu tarea: Usa pivot_wider() para convertir las habitaciones (bedrooms) en columnas.\n\nnames_from = bedrooms\nvalues_from = promedio\n\nEl objetivo es tener una columna para “2 habs”, otra para “3 habs”, etc., por ciudad."
-  },
-  {
-    "objectID": "practica/Practica_Modulo_1.html",
-    "href": "practica/Practica_Modulo_1.html",
-    "title": "Práctica Módulo 1: Fundamentos de R",
+    "objectID": "practica/Practica_Modulo_4.html",
+    "href": "practica/Practica_Modulo_4.html",
+    "title": "Práctica Módulo 4: Importación de Archivos CSV",
     "section": "",
-    "text": "Este cuaderno contiene ejercicios prácticos para reforzar los conceptos del Módulo 1.\nTu misión: Escribir el código correspondiente dentro de los bloques (chunks) vacíos para resolver cada problema."
+    "text": "En este módulo aprenderemos a cargar datos desde archivos de texto separados por comas (.csv). Requisito indispensable: Asegúrate de que el archivo data_house_price.csv esté guardado en la misma carpeta donde guardaste este archivo .qmd."
   },
   {
-    "objectID": "practica/Practica_Modulo_1.html#instrucciones",
-    "href": "practica/Practica_Modulo_1.html#instrucciones",
-    "title": "Práctica Módulo 1: Fundamentos de R",
+    "objectID": "practica/Practica_Modulo_4.html#instrucciones",
+    "href": "practica/Practica_Modulo_4.html#instrucciones",
+    "title": "Práctica Módulo 4: Importación de Archivos CSV",
     "section": "",
-    "text": "Este cuaderno contiene ejercicios prácticos para reforzar los conceptos del Módulo 1.\nTu misión: Escribir el código correspondiente dentro de los bloques (chunks) vacíos para resolver cada problema."
+    "text": "En este módulo aprenderemos a cargar datos desde archivos de texto separados por comas (.csv). Requisito indispensable: Asegúrate de que el archivo data_house_price.csv esté guardado en la misma carpeta donde guardaste este archivo .qmd."
   },
   {
-    "objectID": "practica/Practica_Modulo_1.html#parte-1-r-como-calculadora",
-    "href": "practica/Practica_Modulo_1.html#parte-1-r-como-calculadora",
-    "title": "Práctica Módulo 1: Fundamentos de R",
-    "section": "Parte 1: R como Calculadora",
-    "text": "Parte 1: R como Calculadora\n\nEjercicio 1.1\nCalcula el resultado de las siguientes operaciones matemáticas: 1. La suma de 125 más 480. 2. La división de 500 entre 25. 3. 5 elevado a la potencia 4.\n\n\n\n\n\n\n\n\n\n\nEjercicio 1.2\nUsa funciones matemáticas para calcular: 1. La raíz cuadrada de 144. 2. El logaritmo natural de 100. 3. El valor absoluto de -250."
+    "objectID": "practica/Practica_Modulo_4.html#parte-1-el-enfoque-clásico-base-r",
+    "href": "practica/Practica_Modulo_4.html#parte-1-el-enfoque-clásico-base-r",
+    "title": "Práctica Módulo 4: Importación de Archivos CSV",
+    "section": "Parte 1: El Enfoque Clásico (Base R)",
+    "text": "Parte 1: El Enfoque Clásico (Base R)\nR tiene funciones nativas para leer archivos sin instalar nada extra. Aunque son antiguas, es vital conocerlas porque aparecen en mucho código heredado.\n\nEjercicio 1.1: Lectura Básica\n\nUsa la función read.csv() para cargar el archivo \"data_house_price.csv\".\nAsigna el resultado a una variable llamada datos_base.\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 1.2: Inspección Rápida\nUna vez cargados los datos, siempre debemos revisarlos.\n\nUsa la función head() para ver las primeras 6 filas.\nUsa la función str() para ver la estructura interna (tipos de datos).\n\n\nPregunta: ¿De qué tipo (clase) cargó la columna date? ¿Texto (chr) o Factor?"
   },
   {
-    "objectID": "practica/Practica_Modulo_1.html#parte-2-variables-y-asignación",
-    "href": "practica/Practica_Modulo_1.html#parte-2-variables-y-asignación",
-    "title": "Práctica Módulo 1: Fundamentos de R",
-    "section": "Parte 2: Variables y Asignación",
-    "text": "Parte 2: Variables y Asignación\n\nEjercicio 2.1\n\nCrea una variable llamada precio con el valor 50.\nCrea una variable llamada cantidad con el valor 5.\nCalcula el total multiplicando ambas variables y guárdalo en una variable llamada total_venta.\nImprime el resultado de total_venta.\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 2.2\nCorrige el siguiente código para que siga las “buenas prácticas” de R (usa la flecha &lt;- y nombres descriptivos en minúsculas)."
+    "objectID": "practica/Practica_Modulo_4.html#parte-2-el-enfoque-moderno-tidyverse",
+    "href": "practica/Practica_Modulo_4.html#parte-2-el-enfoque-moderno-tidyverse",
+    "title": "Práctica Módulo 4: Importación de Archivos CSV",
+    "section": "Parte 2: El Enfoque Moderno (Tidyverse)",
+    "text": "Parte 2: El Enfoque Moderno (Tidyverse)\nEl paquete readr (parte del tidyverse) es más rápido y detecta mejor los tipos de datos (fechas, números, etc.).\n\nEjercicio 2.1: Carga de Librería y Lectura\n\nCarga la librería tidyverse (o readr).\nUsa la función read_csv() (nota el guion bajo _) para cargar el mismo archivo.\nAsigna el resultado a una variable llamada datos_tidy.\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 2.2: Inspección con Glimpse\nLos objetos creados por tidyverse son “tibbles” (data frames mejorados).\n\nUsa la función glimpse() sobre datos_tidy.\nCompara visualmente la salida con str() del ejercicio anterior. ¿Cuál te parece más legible?"
   },
   {
-    "objectID": "practica/Practica_Modulo_1.html#parte-3-tipos-de-datos",
-    "href": "practica/Practica_Modulo_1.html#parte-3-tipos-de-datos",
-    "title": "Práctica Módulo 1: Fundamentos de R",
-    "section": "Parte 3: Tipos de Datos",
-    "text": "Parte 3: Tipos de Datos\n\nEjercicio 3.1\nVerifica la clase (tipo de dato) de los siguientes valores usando la función class():\n\n10.5\n“Data Science”\nTRUE"
+    "objectID": "practica/Practica_Modulo_4.html#parte-3-comparación-de-resultados",
+    "href": "practica/Practica_Modulo_4.html#parte-3-comparación-de-resultados",
+    "title": "Práctica Módulo 4: Importación de Archivos CSV",
+    "section": "Parte 3: Comparación de Resultados",
+    "text": "Parte 3: Comparación de Resultados\n\nEjercicio 3.1: Diferencias de Clase\nVerifica la clase de los dos objetos que creaste usando la función class().\n\nclass(datos_base)\nclass(datos_tidy)\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 3.2: Acceso a Columnas\nIntenta calcular el promedio de la columna de precios (price) usando el objeto datos_tidy. Recuerda usar el signo de dólar $."
   },
   {
-    "objectID": "practica/Practica_Modulo_1.html#parte-4-vectores",
-    "href": "practica/Practica_Modulo_1.html#parte-4-vectores",
-    "title": "Práctica Módulo 1: Fundamentos de R",
-    "section": "Parte 4: Vectores",
-    "text": "Parte 4: Vectores\n\nEjercicio 4.1\nCrea un vector llamado notas que contenga las siguientes calificaciones: 15, 18, 20, 12, 16. Imprime el vector.\n\n\n\n\n\n\n\n\n\n\nEjercicio 4.2 (Desafío de Coerción)\n¿Qué pasa si intentas crear el siguiente vector? mi_vector &lt;- c(10, “Veinte”, 30)\n\nCrea el vector.\nVerifica su clase con class().\nExplica con un comentario (#) qué ocurrió."
+    "objectID": "practica/Practica_Modulo_4.html#parte-4-exportación-de-datos-guardar",
+    "href": "practica/Practica_Modulo_4.html#parte-4-exportación-de-datos-guardar",
+    "title": "Práctica Módulo 4: Importación de Archivos CSV",
+    "section": "Parte 4: Exportación de Datos (Guardar)",
+    "text": "Parte 4: Exportación de Datos (Guardar)\nSupongamos que hemos terminado de trabajar y queremos enviar una pequeña muestra de los datos a un cliente.\n\nEjercicio 4.1: Crear un Subconjunto\nCrea un objeto pequeño llamado muestra que contenga solo las primeras 10 filas de datos_tidy. (Pista: Puedes usar head(datos_tidy, 10)).\n\n\n\n\n\n\n\n\n\n\nEjercicio 4.2: Escribir a CSV\nGuarda ese objeto muestra en tu disco duro con el nombre “muestra_clientes.csv”. Usa la función write_csv()."
   },
   {
-    "objectID": "practica/Practica_Modulo_1.html#parte-5-ejercicio-integrador",
-    "href": "practica/Practica_Modulo_1.html#parte-5-ejercicio-integrador",
-    "title": "Práctica Módulo 1: Fundamentos de R",
-    "section": "Parte 5: Ejercicio Integrador",
-    "text": "Parte 5: Ejercicio Integrador\nImagina que estás calculando el costo básico de una póliza.\n\nCrea una variable prima_base con valor 1000.\nCrea una variable tasa_impuesto con valor 0.16 (16%).\nCalcula el monto_impuesto multiplicando la base por la tasa.\nCalcula el precio_final sumando la base y el impuesto.\nImprime el precio_final."
-  },
-  {
-    "objectID": "practica/Practica_Modulo_6.html",
-    "href": "practica/Practica_Modulo_6.html",
-    "title": "Práctica Módulo 6: Visualización de Datos",
+    "objectID": "practica/Practica_Modulo_7.html",
+    "href": "practica/Practica_Modulo_7.html",
+    "title": "Práctica Módulo 7: Programación Funcional y Control de Flujo",
     "section": "",
-    "text": "El objetivo es “pintar con datos”. Usaremos ggplot2 para encontrar patrones visuales en los precios de las casas. Requisito: Asegúrate de tener el archivo data_house_price.csv en tu carpeta."
+    "text": "En este módulo dejaremos de copiar y pegar código. Aprenderemos a escribir nuestras propias funciones y a controlar el flujo de ejecución. Requisito: Asegúrate de tener el archivo data_house_price.csv disponible."
   },
   {
-    "objectID": "practica/Practica_Modulo_6.html#instrucciones",
-    "href": "practica/Practica_Modulo_6.html#instrucciones",
-    "title": "Práctica Módulo 6: Visualización de Datos",
+    "objectID": "practica/Practica_Modulo_7.html#instrucciones",
+    "href": "practica/Practica_Modulo_7.html#instrucciones",
+    "title": "Práctica Módulo 7: Programación Funcional y Control de Flujo",
     "section": "",
-    "text": "El objetivo es “pintar con datos”. Usaremos ggplot2 para encontrar patrones visuales en los precios de las casas. Requisito: Asegúrate de tener el archivo data_house_price.csv en tu carpeta."
+    "text": "En este módulo dejaremos de copiar y pegar código. Aprenderemos a escribir nuestras propias funciones y a controlar el flujo de ejecución. Requisito: Asegúrate de tener el archivo data_house_price.csv disponible."
   },
   {
-    "objectID": "practica/Practica_Modulo_6.html#parte-0-preparación-del-lienzo",
-    "href": "practica/Practica_Modulo_6.html#parte-0-preparación-del-lienzo",
-    "title": "Práctica Módulo 6: Visualización de Datos",
-    "section": "Parte 0: Preparación del Lienzo",
-    "text": "Parte 0: Preparación del Lienzo\n\nEjercicio 0.1: Carga y Limpieza\n\nCarga tidyverse.\nLee data_house_price.csv.\nImportante: La variable condition (estado de la casa) viene como número (1 a 5). Para graficarla bien, conviértela a factor usando as.factor().\nFiltra las casas con precio 0 (hay datos sucios) y quédate solo con las que cuestan más de 0."
+    "objectID": "practica/Practica_Modulo_7.html#parte-0-carga-de-datos",
+    "href": "practica/Practica_Modulo_7.html#parte-0-carga-de-datos",
+    "title": "Práctica Módulo 7: Programación Funcional y Control de Flujo",
+    "section": "Parte 0: Carga de Datos",
+    "text": "Parte 0: Carga de Datos"
   },
   {
-    "objectID": "practica/Practica_Modulo_6.html#parte-1-gráficos-de-dispersión-scatter-plots",
-    "href": "practica/Practica_Modulo_6.html#parte-1-gráficos-de-dispersión-scatter-plots",
-    "title": "Práctica Módulo 6: Visualización de Datos",
-    "section": "Parte 1: Gráficos de Dispersión (Scatter Plots)",
-    "text": "Parte 1: Gráficos de Dispersión (Scatter Plots)\n\nEjercicio 1.1: Relación Tamaño-Precio\nQueremos confirmar la hipótesis: “A mayor tamaño, mayor precio”.\n\nCrea un gráfico con sqft_living en el eje X y price en el eje Y.\nUsa geom_point().\nAgrega el argumento alpha = 0.5 dentro del geom para ver mejor la densidad de puntos (transparencia).\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 1.2: Agregando una tercera dimensión (Color)\nCopia el gráfico anterior y agrega color = condition dentro de la estética aes(). ¿Las casas en mejor condición (5) tienden a estar más arriba (más caras) para el mismo tamaño?"
+    "objectID": "practica/Practica_Modulo_7.html#parte-1-estructuras-de-control-if-else-ifelse",
+    "href": "practica/Practica_Modulo_7.html#parte-1-estructuras-de-control-if-else-ifelse",
+    "title": "Práctica Módulo 7: Programación Funcional y Control de Flujo",
+    "section": "Parte 1: Estructuras de Control (if, else, ifelse)",
+    "text": "Parte 1: Estructuras de Control (if, else, ifelse)\n\nEjercicio 1.1: El if clásico\nVamos a verificar si nuestro dataset es lo suficientemente grande para un análisis confiable. Escribe una estructura if / else que:\n\nVerifique si el número de filas de casas (nrow(casas)) es mayor a 1000.\nSi es cierto, imprime “Datos suficientes para modelar”.\nSi es falso, imprime “Se necesitan más datos”.\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 1.2: ifelse vectorizado (Columna nueva)\nEl if normal no funciona bien para crear columnas enteras. Usaremos ifelse(). Crea una nueva columna en el dataframe casas llamada categoria_precio con la siguiente lógica:\n\nSi price &gt; 600,000 -&gt; “Alta Gama”\nSi no -&gt; “Estándar”\n\nGuarda el resultado en casas y cuenta cuántas hay de cada una con count()."
   },
   {
-    "objectID": "practica/Practica_Modulo_6.html#parte-2-distribuciones-histogramas-y-boxplots",
-    "href": "practica/Practica_Modulo_6.html#parte-2-distribuciones-histogramas-y-boxplots",
-    "title": "Práctica Módulo 6: Visualización de Datos",
-    "section": "Parte 2: Distribuciones (Histogramas y Boxplots)",
-    "text": "Parte 2: Distribuciones (Histogramas y Boxplots)\n\nEjercicio 2.1: El Histograma de Precios\nVisualiza cómo se distribuyen los precios.\n\nUsa geom_histogram().\nPrueba con bins = 30 o bins = 50.\nPinta las barras de color “skyblue” (relleno).\n\nNota: Es normal que la distribución esté muy sesgada a la izquierda (muchas casas baratas, pocas mansiones).\n\n\n\n\n\n\n\n\n\n\nEjercicio 2.2: Boxplot por Condición\nCompara los rangos de precios según la condición de la casa.\n\nEje X: condition\nEje Y: price\nRelleno (fill): condition\nGeometría: geom_boxplot()\n\nPara ver mejor las diferencias, agrega una capa extra: scale_y_log10(). Esto pondrá el precio en escala logarítmica y reducirá el efecto de las mansiones extremas."
+    "objectID": "practica/Practica_Modulo_7.html#parte-2-bucles-for-loops",
+    "href": "practica/Practica_Modulo_7.html#parte-2-bucles-for-loops",
+    "title": "Práctica Módulo 7: Programación Funcional y Control de Flujo",
+    "section": "Parte 2: Bucles (for loops)",
+    "text": "Parte 2: Bucles (for loops)\nAunque en R preferimos evitar los loops para datos grandes, son útiles para reportes o tareas secuenciales.\n\nEjercicio 2.1: Iterando sobre ciudades\n\nCrea un vector con 3 ciudades de interés: ciudades_interes &lt;- c(“Seattle”, “Kent”, “Bellevue”).\nEscribe un bucle for que recorra ese vector.\nDentro del bucle, filtra el dataframe para esa ciudad y calcula su precio promedio.\nImprime una frase como: “El precio promedio en [Ciudad] es [Precio]”."
   },
   {
-    "objectID": "practica/Practica_Modulo_6.html#parte-3-facetas-small-multiples",
-    "href": "practica/Practica_Modulo_6.html#parte-3-facetas-small-multiples",
-    "title": "Práctica Módulo 6: Visualización de Datos",
-    "section": "Parte 3: Facetas (Small Multiples)",
-    "text": "Parte 3: Facetas (Small Multiples)\n\nEjercicio 3.1: Dividir por Habitaciones\nA veces el gráfico se satura. Vamos a separar la visualización anterior por el número de pisos (floors).\n\nReutiliza tu gráfico de dispersión (Tamaño vs Precio).\nAgrega + facet_wrap(~ floors).\n¿Notas alguna diferencia en la pendiente entre casas de 1 piso vs 2 pisos?"
+    "objectID": "practica/Practica_Modulo_7.html#parte-3-funciones-personalizadas",
+    "href": "practica/Practica_Modulo_7.html#parte-3-funciones-personalizadas",
+    "title": "Práctica Módulo 7: Programación Funcional y Control de Flujo",
+    "section": "Parte 3: Funciones Personalizadas",
+    "text": "Parte 3: Funciones Personalizadas\n\nEjercicio 3.1: Calculadora de Impuestos\nImagina que eres el asesor fiscal. Necesitas una función que calcule el impuesto a pagar por una casa. Crea una función llamada calcular_impuesto que reciba dos argumentos:\n\nmonto (el precio de la casa).\ntasa (el porcentaje de impuesto, por defecto 0.012 o 1.2%).\n\nLa función debe devolver el monto del impuesto. Prueba tu función con una casa de 500,000.\n\n\n\n\n\n\n\n\n\n\nEjercicio 3.2: Aplicando la función a los datos\nUsa la función mutate() para aplicar tu nueva función calcular_impuesto a toda la columna price del dataframe casas. Crea la columna impuesto_estimado."
   },
   {
-    "objectID": "practica/Practica_Modulo_6.html#parte-4-series-de-tiempo-líneas",
-    "href": "practica/Practica_Modulo_6.html#parte-4-series-de-tiempo-líneas",
-    "title": "Práctica Módulo 6: Visualización de Datos",
-    "section": "Parte 4: Series de Tiempo (Líneas)",
-    "text": "Parte 4: Series de Tiempo (Líneas)\n\nEjercicio 4.1: Tendencia por Año de Construcción\nQueremos ver si las casas más nuevas son más grandes.\n\nAgrupa los datos por yr_built (Año de construcción).\nCalcula el promedio de sqft_living para cada año.\nGrafica esa tabla resumen: Año en X, Tamaño Promedio en Y.\nUsa geom_line()."
+    "objectID": "practica/Practica_Modulo_7.html#parte-4-la-familia-map-purrr",
+    "href": "practica/Practica_Modulo_7.html#parte-4-la-familia-map-purrr",
+    "title": "Práctica Módulo 7: Programación Funcional y Control de Flujo",
+    "section": "Parte 4: La Familia map (purrr)",
+    "text": "Parte 4: La Familia map (purrr)\nEn lugar de bucles for, en Data Science moderno usamos funciones de mapeo (map, apply).\n\nEjercicio 4.1: Promedios Rápidos\nQueremos el promedio de varias columnas numéricas a la vez: price, sqft_living y bedrooms.\n\nSelecciona solo esas 3 columnas del dataframe casas.\nUsa la función map_dbl() del paquete purrr (o sapply de R base) para calcular la media (mean) de cada columna.\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 4.2: Modelado iterativo (Avanzado)\nSupongamos que queremos dividir los datos por ciudad y obtener el precio máximo de cada una. Analiza y ejecuta este código (ya escrito) para entender el poder de purrr y group_split.\n\n\n\n\n\n\n\n\nAgrega un comentario abajo explicando qué hizo el código."
   },
   {
-    "objectID": "practica/Practica_Modulo_6.html#parte-5-personalización-final-etiquetas-y-tema",
-    "href": "practica/Practica_Modulo_6.html#parte-5-personalización-final-etiquetas-y-tema",
-    "title": "Práctica Módulo 6: Visualización de Datos",
-    "section": "Parte 5: Personalización Final (Etiquetas y Tema)",
-    "text": "Parte 5: Personalización Final (Etiquetas y Tema)\n\nEjercicio 5.1: Gráfico de Publicación\nToma cualquiera de los gráficos anteriores y hazlo lucir profesional:\n\nAgrega un título descriptivo con labs(title = “…”).\nCambia las etiquetas de los ejes X e Y (x = “…”, y = “…”).\nElimina la leyenda si es redundante o cámbiale el título (color = “Condición”).\nAplica un tema limpio como theme_minimal() o theme_classic()."
+    "objectID": "practica/Practica_Modulo_2.html",
+    "href": "practica/Practica_Modulo_2.html",
+    "title": "Práctica Módulo 2: Sintaxis y Tipos de Datos",
+    "section": "",
+    "text": "En este módulo profundizamos en los tipos de datos y operadores.\nObjetivo: Completar los bloques de código y responder a las preguntas conceptuales."
   },
   {
-    "objectID": "teoria/Modulo_7.html#objetivo",
-    "href": "teoria/Modulo_7.html#objetivo",
-    "title": "Módulo 7: Programación Funcional",
-    "section": "Objetivo",
-    "text": "Objetivo\nAutomatizar tareas repetitivas y tomar decisiones lógicas.\n\n“Si te encuentras copiando y pegando el mismo código más de dos veces, es hora de escribir una función.”"
+    "objectID": "practica/Practica_Modulo_2.html#instrucciones",
+    "href": "practica/Practica_Modulo_2.html#instrucciones",
+    "title": "Práctica Módulo 2: Sintaxis y Tipos de Datos",
+    "section": "",
+    "text": "En este módulo profundizamos en los tipos de datos y operadores.\nObjetivo: Completar los bloques de código y responder a las preguntas conceptuales."
   },
   {
-    "objectID": "teoria/Modulo_7.html#estructuras-de-control-if-else",
-    "href": "teoria/Modulo_7.html#estructuras-de-control-if-else",
-    "title": "Módulo 7: Programación Funcional",
-    "section": "1. Estructuras de Control (if, else)",
-    "text": "1. Estructuras de Control (if, else)\nPermiten ejecutar código solo si se cumple una condición.\n\nsiniestro &lt;- 15000\nlimite &lt;- 10000\n\nif (siniestro &gt; limite) {\n  mensaje &lt;- \"Alerta: Siniestro excede el límite\"\n  prioridad &lt;- \"Alta\"\n} else if (siniestro == limite) {\n  mensaje &lt;- \"En el límite exacto\"\n  prioridad &lt;- \"Media\"\n} else {\n  mensaje &lt;- \"Siniestro dentro de parámetros\"\n  prioridad &lt;- \"Baja\"\n}\n\nprint(paste(mensaje, \"-\", prioridad))\n\n[1] \"Alerta: Siniestro excede el límite - Alta\""
+    "objectID": "practica/Practica_Modulo_2.html#parte-1-tipos-numéricos-y-enteros",
+    "href": "practica/Practica_Modulo_2.html#parte-1-tipos-numéricos-y-enteros",
+    "title": "Práctica Módulo 2: Sintaxis y Tipos de Datos",
+    "section": "Parte 1: Tipos Numéricos y Enteros",
+    "text": "Parte 1: Tipos Numéricos y Enteros\n\nEjercicio 1.1\nR guarda los números como decimales (numeric) por defecto.\n\nCrea una variable a con el valor 10.\nCrea una variable b con el valor 10L (nota la L mayúscula).\nVerifica la clase de ambas variables con class().\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 1.2\n¿Qué pasa si intentas sumar a y b del ejercicio anterior? ¿Cuál crees que será la clase del resultado? Realiza la suma y verifica la clase del resultado."
   },
   {
-    "objectID": "teoria/Modulo_7.html#bucles-loops",
-    "href": "teoria/Modulo_7.html#bucles-loops",
-    "title": "Módulo 7: Programación Funcional",
-    "section": "2. Bucles (Loops)",
-    "text": "2. Bucles (Loops)\nLos bucles for y while son útiles para simulaciones o tareas recursivas.\n\n# Calcular crecimiento de una inversión año a año\ncapital &lt;- 1000\ntasas &lt;- c(0.05, 0.03) # Tasas variables\n\nfor (tasa in tasas) {\n  interes &lt;- capital * tasa\n  capital &lt;- capital + interes\n  print(paste(\"Capital acumulado:\", round(capital, 2)))\n}\n\n[1] \"Capital acumulado: 1050\"\n[1] \"Capital acumulado: 1081.5\"\n\n\n\n\n\n\n\n\nAdvertencia\n\n\n¡Ojo! En R, evita los bucles for si puedes hacer la operación directamente sobre el vector (vectorización). Es mucho más lento iterar fila por fila."
+    "objectID": "practica/Practica_Modulo_2.html#parte-2-operadores-aritméticos-avanzados",
+    "href": "practica/Practica_Modulo_2.html#parte-2-operadores-aritméticos-avanzados",
+    "title": "Práctica Módulo 2: Sintaxis y Tipos de Datos",
+    "section": "Parte 2: Operadores Aritméticos Avanzados",
+    "text": "Parte 2: Operadores Aritméticos Avanzados\n\nEjercicio 2.1\nCalcula lo siguiente:\n\nEl residuo (módulo) de dividir 25 entre 4.\nLa parte entera (cociente) de dividir 25 entre 4."
   },
   {
-    "objectID": "teoria/Modulo_7.html#funciones-personalizadas",
-    "href": "teoria/Modulo_7.html#funciones-personalizadas",
-    "title": "Módulo 7: Programación Funcional",
-    "section": "3. Funciones Personalizadas",
-    "text": "3. Funciones Personalizadas\nLa base de la programación robusta. Estructura:\n\nnombre &lt;- function(argumentos) {\n  # cuerpo del código\n  return(resultado)\n}\n\nEjemplo: Calcular Prima Pura de Riesgo.\n\ncalc_prima &lt;- function(frecuencia, severidad, gastos = 0) {\n  pura &lt;- frecuencia * severidad\n  comercial &lt;- pura + gastos\n  return(comercial)\n}\n\n# Probamos la función\ncalc_prima(frecuencia = 0.10, severidad = 5000, gastos = 50)\n\n[1] 550"
+    "objectID": "practica/Practica_Modulo_2.html#parte-3-operadores-lógicos-y-relacionales",
+    "href": "practica/Practica_Modulo_2.html#parte-3-operadores-lógicos-y-relacionales",
+    "title": "Práctica Módulo 2: Sintaxis y Tipos de Datos",
+    "section": "Parte 3: Operadores Lógicos y Relacionales",
+    "text": "Parte 3: Operadores Lógicos y Relacionales\n\nEjercicio 3.1\nTenemos las siguientes variables:\n\n\n\n\n\n\n\n\nEscribe expresiones lógicas que devuelvan TRUE o FALSE para las siguientes preguntas:\n\n¿El cliente es mayor de 18 años?\n¿El cliente tiene empleo Y NO tiene deuda?\n¿El cliente es menor de 20 O tiene deuda?\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 3.2 (El error común)\nEl siguiente código intenta comparar si x es igual a 5, pero falla o hace algo inesperado. Corrige el operador de comparación."
   },
   {
-    "objectID": "teoria/Modulo_7.html#la-familia-apply-base-r",
-    "href": "teoria/Modulo_7.html#la-familia-apply-base-r",
-    "title": "Módulo 7: Programación Funcional",
-    "section": "4. La Familia apply (Base R)",
-    "text": "4. La Familia apply (Base R)\nPara aplicar una función a cada elemento de una lista o matriz sin usar bucles for.\n\n\nlapply (List Apply) Devuelve siempre una lista.\n\nnums &lt;- list(a=10, b=20)\nlapply(nums, sqrt)\n\n$a\n[1] 3.162278\n\n$b\n[1] 4.472136\n\n\n\nsapply (Simplify Apply) Intenta devolver un vector o matriz.\n\nsapply(nums, sqrt)\n\n       a        b \n3.162278 4.472136"
+    "objectID": "practica/Practica_Modulo_2.html#parte-4-valores-perdidos-na-y-nulos-null",
+    "href": "practica/Practica_Modulo_2.html#parte-4-valores-perdidos-na-y-nulos-null",
+    "title": "Práctica Módulo 2: Sintaxis y Tipos de Datos",
+    "section": "Parte 4: Valores Perdidos (NA) y Nulos (NULL)",
+    "text": "Parte 4: Valores Perdidos (NA) y Nulos (NULL)\n\nEjercicio 4.1\nTienes el siguiente vector de siniestros con un dato faltante: siniestros &lt;- c(500, 1000, NA, 200)\n\nIntenta calcular el promedio con mean(siniestros). ¿Qué obtienes?\nInvestiga o recuerda cómo hacer que mean() ignore los NAs (Pista: usa el argumento na.rm).\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 4.2: Detectando NAs\nUsa la función is.na() para saber qué posición del vector siniestros es el dato faltante.\n\n\n\n\n\n\n\n\n\n\nEjercicio 4.3: NA vs NULL\n\nCrea un vector v1 &lt;- c(1, 2, NA). Verifica su longitud con length().\nCrea un vector v2 &lt;- c(1, 2, NULL). Verifica su longitud con length().\nExplica brevemente la diferencia."
   },
   {
-    "objectID": "teoria/Modulo_7.html#iteración-con-purrr-tidyverse",
-    "href": "teoria/Modulo_7.html#iteración-con-purrr-tidyverse",
-    "title": "Módulo 7: Programación Funcional",
-    "section": "5. Iteración con purrr (Tidyverse)",
-    "text": "5. Iteración con purrr (Tidyverse)\nEs la evolución moderna de apply. Más consistente y predecible.\n\nmap(): Devuelve lista (igual a lapply).\nmap_dbl(): Devuelve vector numérico (double).\nmap_chr(): Devuelve vector de texto.\n\n\nlibrary(purrr)\n\nlista_precios &lt;- list(100, 200, 500)\n\n# Aplicar descuento del 10% a cada elemento\n# La virgulilla (~) indica una función anónima\n# El punto (.x) representa el elemento actual\nmap_dbl(lista_precios, ~ .x * 0.90)\n\n[1]  90 180 450"
+    "objectID": "practica/Practica_Modulo_2.html#parte-5-desafío-actuarial",
+    "href": "practica/Practica_Modulo_2.html#parte-5-desafío-actuarial",
+    "title": "Práctica Módulo 2: Sintaxis y Tipos de Datos",
+    "section": "Parte 5: Desafío Actuarial",
+    "text": "Parte 5: Desafío Actuarial\nUn seguro de auto solo se otorga si:\n\nLa edad es mayor o igual a 25 años.\nO si la edad es menor a 25 pero el conductor tiene más de 5 años de experiencia (experiencia &gt; 5).\nEvalúa si este candidato es asegurable:"
   },
   {
-    "objectID": "teoria/Modulo_7.html#resumen-de-flujo",
-    "href": "teoria/Modulo_7.html#resumen-de-flujo",
-    "title": "Módulo 7: Programación Funcional",
-    "section": "Resumen de Flujo",
-    "text": "Resumen de Flujo\n\nLógica: if, else para decisiones puntuales. ifelse() para columnas de datos.\nRepetición: for (usar con moderación).\nAbstracción: Crea tus propias function().\nIteración Funcional:\nBase: lapply, sapply.\nTidyverse: map, map_dbl.\n\n\n¡Automatiza todo!"
+    "objectID": "teoria/Modulo_6.html#la-filosofía-ggplot2",
+    "href": "teoria/Modulo_6.html#la-filosofía-ggplot2",
+    "title": "Módulo 6: Visualización Avanzada",
+    "section": "La Filosofía ggplot2",
+    "text": "La Filosofía ggplot2\nA diferencia de Excel, aquí no elegimos un “gráfico de la galería”. Construimos el gráfico por capas, como si estuviéramos pintando un cuadro.\nLa estructura básica es: \\[Gráfico = Datos + Estética (aes) + Geometría (geom)\\]"
+  },
+  {
+    "objectID": "teoria/Modulo_6.html#preparando-los-datos",
+    "href": "teoria/Modulo_6.html#preparando-los-datos",
+    "title": "Módulo 6: Visualización Avanzada",
+    "section": "Preparando los Datos",
+    "text": "Preparando los Datos\nVamos a simular una cartera de seguros de Automóvil para los ejemplos.\n\nlibrary(tidyverse)\n\n# Semilla para reproducibilidad\nset.seed(123)\n\ncartera &lt;- tibble(\n  edad = sample(18:70, 100, replace = TRUE),\n  tipo_auto = sample(c(\"Sedan\", \"SUV\", \"Deportivo\"), 100, replace = T),\n  prima = jitter(edad * 10 + sample(200:500, 100)),\n  siniestro = sample(c(0, 1), 100, replace = TRUE, prob = c(0.8, 0.2))\n) %&gt;% \n  mutate(siniestro = as.factor(siniestro))"
+  },
+  {
+    "objectID": "teoria/Modulo_6.html#dispersión-scatter-plot",
+    "href": "teoria/Modulo_6.html#dispersión-scatter-plot",
+    "title": "Módulo 6: Visualización Avanzada",
+    "section": "1. Dispersión (Scatter Plot)",
+    "text": "1. Dispersión (Scatter Plot)\nRelación entre dos variables numéricas.\nOJO: Usamos + para agregar capas, no %&gt;%.\n\n\n\nggplot(data = cartera, \n       aes(x = edad, \n           y = prima)) +\n  geom_point(color = \"blue\", \n             size = 3)\n\n\nData: cartera\nAes: x=edad, y=prima\nGeom: Puntos"
+  },
+  {
+    "objectID": "teoria/Modulo_6.html#mapeo-de-colores-aesthetics",
+    "href": "teoria/Modulo_6.html#mapeo-de-colores-aesthetics",
+    "title": "Módulo 6: Visualización Avanzada",
+    "section": "2. Mapeo de Colores (Aesthetics)",
+    "text": "2. Mapeo de Colores (Aesthetics)\n¿Y si queremos que el color dependa de una variable (ej. Tipo de Auto)? Movemos color DENTRO de aes().\n\n\n\nggplot(cartera, \n       aes(x = edad, \n           y = prima,\n           color = tipo_auto)) +\n  geom_point(size = 3)"
+  },
+  {
+    "objectID": "teoria/Modulo_6.html#gráficos-de-distribución",
+    "href": "teoria/Modulo_6.html#gráficos-de-distribución",
+    "title": "Módulo 6: Visualización Avanzada",
+    "section": "3. Gráficos de Distribución",
+    "text": "3. Gráficos de Distribución\nVitales para actuarios: Histogramas y Boxplots.\nHistograma (Variable Numérica)\n\n\n\nggplot(cartera, \n       aes(x = prima)) +\n  geom_histogram(\n    bins = 15,\n    fill = \"skyblue\",\n    color = \"black\"\n  )"
+  },
+  {
+    "objectID": "teoria/Modulo_6.html#boxplot-numérica-vs-categórica",
+    "href": "teoria/Modulo_6.html#boxplot-numérica-vs-categórica",
+    "title": "Módulo 6: Visualización Avanzada",
+    "section": "Boxplot (Numérica vs Categórica)",
+    "text": "Boxplot (Numérica vs Categórica)\nPara ver dispersión y outliers por grupo.\n\n\n\nggplot(cartera, \n       aes(x = tipo_auto, \n           y = prima,\n           fill = tipo_auto)) +\n  geom_boxplot()"
+  },
+  {
+    "objectID": "teoria/Modulo_2.html#objetivo-del-módulo",
+    "href": "teoria/Modulo_2.html#objetivo-del-módulo",
+    "title": "Módulo 2: Sintaxis Básica y Tipos de Datos",
+    "section": "Objetivo del Módulo",
+    "text": "Objetivo del Módulo\nEn esta sesión aprenderemos la gramática esencial de R:\n\nUso de operadores y asignación.\nDistinción de tipos de datos atómicos.\nOperadores lógicos y relacionales.\nManejo correcto de datos faltantes (NA, NaN, NULL)."
+  },
+  {
+    "objectID": "teoria/Modulo_2.html#asignación-de-variables",
+    "href": "teoria/Modulo_2.html#asignación-de-variables",
+    "title": "Módulo 2: Sintaxis Básica y Tipos de Datos",
+    "section": "1. Asignación de Variables",
+    "text": "1. Asignación de Variables\nEn R existen dos formas principales de asignar valores:\n\nLa flecha (&lt;-) vs El igual (=)\n\n\n\nOperador &lt;- Es el estándar en R. Se prefiere por claridad histórica y alcance (scope).\n\nx &lt;- 10\nx\n\n[1] 10\n\n\n\nOperador = Funciona igual en la mayoría de casos simples, pero se reserva usualmente para argumentos dentro de funciones.\n\n\n\n\n\n\n\nTip\n\n\nBuenas prácticas: Usa &lt;- para crear variables y = para asignar parámetros dentro de funciones."
+  },
+  {
+    "objectID": "teoria/Modulo_2.html#tipos-de-datos-atómicos",
+    "href": "teoria/Modulo_2.html#tipos-de-datos-atómicos",
+    "title": "Módulo 2: Sintaxis Básica y Tipos de Datos",
+    "section": "2. Tipos de Datos Atómicos",
+    "text": "2. Tipos de Datos Atómicos\nR trabaja con vectores atómicos. Los 4 principales son:\nNuméricos (Numeric/Double) y Enteros (Integer) Por defecto, los números en R son numeric (decimales). Para forzar un entero, usamos la L.\n\na &lt;- 10.5\nb &lt;- 10   # Parece entero, pero internamente es numeric\nc &lt;- 10L  # La 'L' fuerza a que sea entero (Integer)\n\nclass(a)\n\n[1] \"numeric\"\n\nclass(b)\n\n[1] \"numeric\"\n\nclass(c)\n\n[1] \"integer\""
+  },
+  {
+    "objectID": "teoria/Modulo_2.html#operadores",
+    "href": "teoria/Modulo_2.html#operadores",
+    "title": "Módulo 2: Sintaxis Básica y Tipos de Datos",
+    "section": "3. Operadores",
+    "text": "3. Operadores\nAritméticos\nMás allá de sumar y restar, R tiene operadores específicos:\n\n10 / 3    # División normal\n\n[1] 3.333333\n\n10 %/% 3  # División entera (cociente)\n\n[1] 3\n\n10 %% 3   # Módulo (residuo)\n\n[1] 1\n\n2 ^ 3     # Potencia\n\n[1] 8"
+  },
+  {
+    "objectID": "teoria/Modulo_2.html#valores-perdidos-y-especiales",
+    "href": "teoria/Modulo_2.html#valores-perdidos-y-especiales",
+    "title": "Módulo 2: Sintaxis Básica y Tipos de Datos",
+    "section": "4. Valores Perdidos y Especiales",
+    "text": "4. Valores Perdidos y Especiales\nEn Ciencia de Datos, saber qué “no está” es vital.\nNA (Not Available)\nRepresenta un dato faltante. Existe el espacio, pero no sabemos el valor.\n\nedades &lt;- c(25, 30, NA)\nis.na(edades) # Función para detectar NAs\n\n[1] FALSE FALSE  TRUE"
+  },
+  {
+    "objectID": "teoria/Modulo_3.html#mapa-de-estructuras",
+    "href": "teoria/Modulo_3.html#mapa-de-estructuras",
+    "title": "Módulo 3: Estructuras de Datos Esenciales",
+    "section": "Mapa de Estructuras",
+    "text": "Mapa de Estructuras\nEn R, las estructuras se organizan según su dimensionalidad y contenido:\n\n\n\n\n\n\n\n\n\nHomogéneo (Solo un tipo de dato)\nHeterogéneo (Varios tipos de datos)\n\n\n\n\n1 Dimensión\nVector\nLista\n\n\n2 Dimensiones\nMatriz\nData Frame\n\n\nn Dimensiones\nArray"
+  },
+  {
+    "objectID": "teoria/Modulo_3.html#vectores-profundización",
+    "href": "teoria/Modulo_3.html#vectores-profundización",
+    "title": "Módulo 3: Estructuras de Datos Esenciales",
+    "section": "1. Vectores: Profundización",
+    "text": "1. Vectores: Profundización\nYa sabemos crearlos con c(). Ahora veamos la indexación y vectorización.\nIndexación (Slicing)\nRecuerda: R empieza a contar desde 1.\n\nv &lt;- c(10, 20, 30, 40, 50)\n\nv[1]          # Primer elemento\n\n[1] 10\n\nv[c(1, 3)]    # Elementos 1 y 3\n\n[1] 10 30\n\nv[-2]         # Todos MENOS el 2\n\n[1] 10 30 40 50"
+  },
+  {
+    "objectID": "teoria/Modulo_3.html#matrices-y-arrays",
+    "href": "teoria/Modulo_3.html#matrices-y-arrays",
+    "title": "Módulo 3: Estructuras de Datos Esenciales",
+    "section": "2. Matrices y Arrays",
+    "text": "2. Matrices y Arrays\nEstructuras de 2 dimensiones (filas y columnas) que solo contienen datos del mismo tipo (usualmente numéricos).\n\n# Crear una matriz de 3x3 llenada por filas\nM &lt;- matrix(1:9, nrow = 3, byrow = TRUE)\nM\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n[3,]    7    8    9"
+  },
+  {
+    "objectID": "teoria/Modulo_3.html#factores-categorías",
+    "href": "teoria/Modulo_3.html#factores-categorías",
+    "title": "Módulo 3: Estructuras de Datos Esenciales",
+    "section": "3. Factores (Categorías)",
+    "text": "3. Factores (Categorías)\nEsenciales para estadística y gráficos. Almacenan datos categóricos y definen sus niveles.\n\nsexo &lt;- c(\"M\", \"F\", \"F\", \"M\")\nfactor_sexo &lt;- factor(sexo)\n\nfactor_sexo\n\n[1] M F F M\nLevels: F M\n\nlevels(factor_sexo) # R identifica los grupos únicos\n\n[1] \"F\" \"M\"\n\n\n\n\n\n\n\n\nAdvertencia\n\n\nInternamente, R guarda los factores como enteros (1, 2, 3…) asociados a etiquetas. Cuidado al convertirlos a numéricos."
+  },
+  {
+    "objectID": "teoria/Modulo_3.html#listas",
+    "href": "teoria/Modulo_3.html#listas",
+    "title": "Módulo 3: Estructuras de Datos Esenciales",
+    "section": "4. Listas",
+    "text": "4. Listas\nSon el contenedor más flexible. Pueden guardar vectores, matrices, data frames e incluso otras listas.\n\nmi_mochila &lt;- list(\n  propietario = \"Oliver\",\n  numeros = c(1, 5, 10),\n  matriz_data = matrix(1:4, nrow=2)\n)\n\n# Acceder con el signo de dólar $\nmi_mochila$propietario\n\n[1] \"Oliver\""
+  },
+  {
+    "objectID": "teoria/Modulo_3.html#data-frames",
+    "href": "teoria/Modulo_3.html#data-frames",
+    "title": "Módulo 3: Estructuras de Datos Esenciales",
+    "section": "5. Data Frames",
+    "text": "5. Data Frames\nLa estructura reina del Análisis de Datos. Filas = Observaciones, Columnas = Variables.\n\n# Crear un DF manualmente\nempleados &lt;- data.frame(\n  id = 1:3,\n  nombre = c(\"Ana\", \"Luis\", \"Sol\"),\n  salario = c(2500, 3000, 2800),\n  activo = c(TRUE, TRUE, FALSE)\n)\n\nhead(empleados)\n\n  id nombre salario activo\n1  1    Ana    2500   TRUE\n2  2   Luis    3000   TRUE\n3  3    Sol    2800  FALSE"
+  },
+  {
+    "objectID": "teoria/Modulo_4.html#el-ciclo-de-vida-del-dato",
+    "href": "teoria/Modulo_4.html#el-ciclo-de-vida-del-dato",
+    "title": "Módulo 4: Importación y Exportación",
+    "section": "El Ciclo de Vida del Dato",
+    "text": "El Ciclo de Vida del Dato\nR rara vez genera sus propios datos desde cero. Lo normal es un flujo ETL:\n\nExtract (Importar): Leer desde CSV, Excel, SQL.\nTransform (Procesar): Limpiar y analizar (R).\nLoad (Exportar): Guardar resultados o reportes.\n\n\n\n\n\n\n\nNota\n\n\nPrerrequisito: Siempre verifica tu “Directorio de Trabajo” (getwd()) para saber dónde busca R los archivos."
+  },
+  {
+    "objectID": "teoria/Modulo_4.html#archivos-planos-.csv-.txt",
+    "href": "teoria/Modulo_4.html#archivos-planos-.csv-.txt",
+    "title": "Módulo 4: Importación y Exportación",
+    "section": "1. Archivos Planos (.csv / .txt)",
+    "text": "1. Archivos Planos (.csv / .txt)\nSon el estándar universal. Tenemos dos formas de leerlos:\n\n\nBase R (utils) Viene instalado por defecto.\n\ndatos &lt;- read.csv(\"archivo.csv\")\n\n\nDevuelve: Data Frame.\n\nPaquete readr Más rápido y no convierte texto a factores automáticamente.\n\nlibrary(readr)\ndatos &lt;- read_csv(\"archivo.csv\")\n\nDevuelve: Tibble (Data Frame moderno)."
+  },
+  {
+    "objectID": "teoria/Modulo_4.html#archivos-de-excel-.xlsx",
+    "href": "teoria/Modulo_4.html#archivos-de-excel-.xlsx",
+    "title": "Módulo 4: Importación y Exportación",
+    "section": "2. Archivos de Excel (.xlsx)",
+    "text": "2. Archivos de Excel (.xlsx)\nPara el mundo actuarial y financiero, Excel es inevitable. Usamos el paquete readxl.\n\nlibrary(readxl)\n\n# Leer la primera hoja\nsiniestros &lt;- read_excel(\"base_siniestros.xlsx\")\n\n# Leer una hoja específica por nombre o índice\nreservas &lt;- read_excel(\"base_siniestros.xlsx\", \n                       sheet = \"Reservas_2025\")\n\n\n\n\n\n\n\nTip\n\n\nA diferencia de CSV, readxl puede detectar automáticamente los tipos de datos de las celdas de Excel."
+  },
+  {
+    "objectID": "teoria/Modulo_4.html#conexión-a-bases-de-datos-sql",
+    "href": "teoria/Modulo_4.html#conexión-a-bases-de-datos-sql",
+    "title": "Módulo 4: Importación y Exportación",
+    "section": "3. Conexión a Bases de Datos (SQL)",
+    "text": "3. Conexión a Bases de Datos (SQL)\nR se conecta, no copia. Usamos DBI (interfaz genérica) y un conector específico (ej. RSQLite, RPostgres).\n\nlibrary(DBI)\nlibrary(RSQLite)\n\n# 1. Crear conexión\ncon &lt;- dbConnect(RSQLite::SQLite(), \"mi_base.db\")\n\n# 2. Consultar con SQL directo\ndf_clientes &lt;- dbGetQuery(con, \"SELECT * FROM clientes WHERE edad &gt; 30\")\n\n# 3. Cerrar conexión (¡Importante!)\ndbDisconnect(con)"
+  },
+  {
+    "objectID": "teoria/Modulo_4.html#archivos-web-json-xml",
+    "href": "teoria/Modulo_4.html#archivos-web-json-xml",
+    "title": "Módulo 4: Importación y Exportación",
+    "section": "4. Archivos Web (JSON / XML)",
+    "text": "4. Archivos Web (JSON / XML)\nMuy usados en APIs y desarrollo web.\nJSON (JavaScript Object Notation) Es una estructura jerárquica (parecida a las listas en R).\n\nlibrary(jsonlite)\n\n# Leer desde una URL o archivo\ndatos_api &lt;- fromJSON(\"[https://api.ejemplo.com/datos.json](https://api.ejemplo.com/datos.json)\")\n\n# jsonlite intenta convertirlo a Data Frame automáticamente\nhead(datos_api)"
+  },
+  {
+    "objectID": "teoria/Modulo_4.html#exportación-de-datos",
+    "href": "teoria/Modulo_4.html#exportación-de-datos",
+    "title": "Módulo 4: Importación y Exportación",
+    "section": "5. Exportación de Datos",
+    "text": "5. Exportación de Datos\nDespués de analizar, debemos guardar los resultados limpios.\nA CSV (Universal)\n\n# Base R\nwrite.csv(datos_limpios, \"resultados.csv\", row.names = FALSE)\n\n# readr (Más rápido, sin nombres de filas por defecto)\nwrite_csv(datos_limpios, \"resultados_v2.csv\")\n\nA Excel\nRequiere paquete writexl.\n\nlibrary(writexl)\nwrite_xlsx(list(Hoja1 = df1, Hoja2 = df2), \"reporte_final.xlsx\")\n\n\n¡Fin del Módulo 4!"
+  },
+  {
+    "objectID": "teoria/Modulo_5.html#qué-es-el-tidyverse",
+    "href": "teoria/Modulo_5.html#qué-es-el-tidyverse",
+    "title": "Módulo 5: Manipulación de Datos",
+    "section": "¿Qué es el Tidyverse?",
+    "text": "¿Qué es el Tidyverse?\nEs una colección de paquetes diseñados para la Ciencia de Datos. Todos comparten una misma filosofía de diseño, gramática y estructuras de datos.\n\nlibrary(tidyverse) \n# Carga dplyr, tidyr, readr, ggplot2, etc.\n\nVamos a trabajar con un dataframe de ejemplo:\n\nsiniestros &lt;- tibble(\n  id = 1:5,\n  ramo = c(\"Auto\", \"Vida\", \"Auto\", \"Salud\", \"Vida\"),\n  monto = c(500, 2000, 450, 150, 3000),\n  estado = c(\"Pagado\", \"Pendiente\", \"Pagado\", \"Pagado\", \"Rechazado\")\n)"
+  },
+  {
+    "objectID": "teoria/Modulo_5.html#los-5-verbos-de-dplyr",
+    "href": "teoria/Modulo_5.html#los-5-verbos-de-dplyr",
+    "title": "Módulo 5: Manipulación de Datos",
+    "section": "2. Los 5 Verbos de dplyr",
+    "text": "2. Los 5 Verbos de dplyr\nSelect y Filter\n\nselect(): Selecciona columnas (variables).\nfilter(): Selecciona filas según condiciones.\n\n\nsiniestros %&gt;% \n  filter(monto &gt; 400) %&gt;% \n  select(ramo, monto)\n\n# A tibble: 4 × 2\n  ramo  monto\n  &lt;chr&gt; &lt;dbl&gt;\n1 Auto    500\n2 Vida   2000\n3 Auto    450\n4 Vida   3000"
+  },
+  {
+    "objectID": "teoria/Modulo_5.html#reestructurar-con-tidyr",
+    "href": "teoria/Modulo_5.html#reestructurar-con-tidyr",
+    "title": "Módulo 5: Manipulación de Datos",
+    "section": "3. Reestructurar con tidyr",
+    "text": "3. Reestructurar con tidyr\nA veces los datos vienen en formato “Ancho” (Excel) y los necesitamos en formato “Largo” (Tidy) para graficar o modelar.\n\nPivot Longer (De Ancho a Largo)\n\n\n# Datos \"Anchos\" (Ej: Reservas por año en columnas)\nreservas &lt;- tibble(\n  ramo = c(\"Auto\", \"Vida\"),\n  res_2023 = c(100, 500),\n  res_2024 = c(120, 550)\n)\nreservas\n\n# A tibble: 2 × 3\n  ramo  res_2023 res_2024\n  &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 Auto       100      120\n2 Vida       500      550"
+  },
+  {
+    "objectID": "teoria/Modulo_5.html#unión-de-tablas-joins",
+    "href": "teoria/Modulo_5.html#unión-de-tablas-joins",
+    "title": "Módulo 5: Manipulación de Datos",
+    "section": "4. Unión de Tablas (Joins)",
+    "text": "4. Unión de Tablas (Joins)\nVincular datos de dos fuentes distintas usando una clave común (key).\n\npolizas &lt;- tibble(id = 1:3, cliente = c(\"Ana\", \"Bob\", \"Cid\"))\nreclamos &lt;- tibble(id = c(1, 1, 2), monto = c(100, 200, 500))\n\n\n\nLeft Join Mantiene todas las pólizas, trae reclamos si existen.\n\nleft_join(polizas, reclamos, by = \"id\")\n\n# A tibble: 4 × 3\n     id cliente monto\n  &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;\n1     1 Ana       100\n2     1 Ana       200\n3     2 Bob       500\n4     3 Cid        NA\n\n\n\nInner Join Solo mantiene registros que existen en AMBAS tablas.\n\ninner_join(polizas, reclamos, by = \"id\")\n\n# A tibble: 3 × 3\n     id cliente monto\n  &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;\n1     1 Ana       100\n2     1 Ana       200\n3     2 Bob       500"
   },
   {
     "objectID": "teoria/Modulo_1.html#introducción",
@@ -280,381 +448,262 @@
     "text": "Ejercicio Práctico:\nCalcular el IMC (\\(IMC = \\frac{peso}{altura^2}\\))\n\npeso &lt;- 75      # kg\naltura &lt;- 1.80  # metros\n\nimc &lt;- peso / (altura^2)\n\n# Imprimir resultado redondeado\nround(imc, 2)\n\n[1] 23.15"
   },
   {
-    "objectID": "teoria/Modulo_5.html#qué-es-el-tidyverse",
-    "href": "teoria/Modulo_5.html#qué-es-el-tidyverse",
-    "title": "Módulo 5: Manipulación de Datos",
-    "section": "¿Qué es el Tidyverse?",
-    "text": "¿Qué es el Tidyverse?\nEs una colección de paquetes diseñados para la Ciencia de Datos. Todos comparten una misma filosofía de diseño, gramática y estructuras de datos.\n\nlibrary(tidyverse) \n# Carga dplyr, tidyr, readr, ggplot2, etc.\n\nVamos a trabajar con un dataframe de ejemplo:\n\nsiniestros &lt;- tibble(\n  id = 1:5,\n  ramo = c(\"Auto\", \"Vida\", \"Auto\", \"Salud\", \"Vida\"),\n  monto = c(500, 2000, 450, 150, 3000),\n  estado = c(\"Pagado\", \"Pendiente\", \"Pagado\", \"Pagado\", \"Rechazado\")\n)"
+    "objectID": "teoria/Modulo_7.html#objetivo",
+    "href": "teoria/Modulo_7.html#objetivo",
+    "title": "Módulo 7: Programación Funcional",
+    "section": "Objetivo",
+    "text": "Objetivo\nAutomatizar tareas repetitivas y tomar decisiones lógicas.\n\n“Si te encuentras copiando y pegando el mismo código más de dos veces, es hora de escribir una función.”"
   },
   {
-    "objectID": "teoria/Modulo_5.html#los-5-verbos-de-dplyr",
-    "href": "teoria/Modulo_5.html#los-5-verbos-de-dplyr",
-    "title": "Módulo 5: Manipulación de Datos",
-    "section": "2. Los 5 Verbos de dplyr",
-    "text": "2. Los 5 Verbos de dplyr\nSelect y Filter\n\nselect(): Selecciona columnas (variables).\nfilter(): Selecciona filas según condiciones.\n\n\nsiniestros %&gt;% \n  filter(monto &gt; 400) %&gt;% \n  select(ramo, monto)\n\n# A tibble: 4 × 2\n  ramo  monto\n  &lt;chr&gt; &lt;dbl&gt;\n1 Auto    500\n2 Vida   2000\n3 Auto    450\n4 Vida   3000"
+    "objectID": "teoria/Modulo_7.html#estructuras-de-control-if-else",
+    "href": "teoria/Modulo_7.html#estructuras-de-control-if-else",
+    "title": "Módulo 7: Programación Funcional",
+    "section": "1. Estructuras de Control (if, else)",
+    "text": "1. Estructuras de Control (if, else)\nPermiten ejecutar código solo si se cumple una condición.\n\nsiniestro &lt;- 15000\nlimite &lt;- 10000\n\nif (siniestro &gt; limite) {\n  mensaje &lt;- \"Alerta: Siniestro excede el límite\"\n  prioridad &lt;- \"Alta\"\n} else if (siniestro == limite) {\n  mensaje &lt;- \"En el límite exacto\"\n  prioridad &lt;- \"Media\"\n} else {\n  mensaje &lt;- \"Siniestro dentro de parámetros\"\n  prioridad &lt;- \"Baja\"\n}\n\nprint(paste(mensaje, \"-\", prioridad))\n\n[1] \"Alerta: Siniestro excede el límite - Alta\""
   },
   {
-    "objectID": "teoria/Modulo_5.html#reestructurar-con-tidyr",
-    "href": "teoria/Modulo_5.html#reestructurar-con-tidyr",
-    "title": "Módulo 5: Manipulación de Datos",
-    "section": "3. Reestructurar con tidyr",
-    "text": "3. Reestructurar con tidyr\nA veces los datos vienen en formato “Ancho” (Excel) y los necesitamos en formato “Largo” (Tidy) para graficar o modelar.\n\nPivot Longer (De Ancho a Largo)\n\n\n# Datos \"Anchos\" (Ej: Reservas por año en columnas)\nreservas &lt;- tibble(\n  ramo = c(\"Auto\", \"Vida\"),\n  res_2023 = c(100, 500),\n  res_2024 = c(120, 550)\n)\nreservas\n\n# A tibble: 2 × 3\n  ramo  res_2023 res_2024\n  &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 Auto       100      120\n2 Vida       500      550"
+    "objectID": "teoria/Modulo_7.html#bucles-loops",
+    "href": "teoria/Modulo_7.html#bucles-loops",
+    "title": "Módulo 7: Programación Funcional",
+    "section": "2. Bucles (Loops)",
+    "text": "2. Bucles (Loops)\nLos bucles for y while son útiles para simulaciones o tareas recursivas.\n\n# Calcular crecimiento de una inversión año a año\ncapital &lt;- 1000\ntasas &lt;- c(0.05, 0.03) # Tasas variables\n\nfor (tasa in tasas) {\n  interes &lt;- capital * tasa\n  capital &lt;- capital + interes\n  print(paste(\"Capital acumulado:\", round(capital, 2)))\n}\n\n[1] \"Capital acumulado: 1050\"\n[1] \"Capital acumulado: 1081.5\"\n\n\n\n\n\n\n\n\nAdvertencia\n\n\n¡Ojo! En R, evita los bucles for si puedes hacer la operación directamente sobre el vector (vectorización). Es mucho más lento iterar fila por fila."
   },
   {
-    "objectID": "teoria/Modulo_5.html#unión-de-tablas-joins",
-    "href": "teoria/Modulo_5.html#unión-de-tablas-joins",
-    "title": "Módulo 5: Manipulación de Datos",
-    "section": "4. Unión de Tablas (Joins)",
-    "text": "4. Unión de Tablas (Joins)\nVincular datos de dos fuentes distintas usando una clave común (key).\n\npolizas &lt;- tibble(id = 1:3, cliente = c(\"Ana\", \"Bob\", \"Cid\"))\nreclamos &lt;- tibble(id = c(1, 1, 2), monto = c(100, 200, 500))\n\n\n\nLeft Join Mantiene todas las pólizas, trae reclamos si existen.\n\nleft_join(polizas, reclamos, by = \"id\")\n\n# A tibble: 4 × 3\n     id cliente monto\n  &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;\n1     1 Ana       100\n2     1 Ana       200\n3     2 Bob       500\n4     3 Cid        NA\n\n\n\nInner Join Solo mantiene registros que existen en AMBAS tablas.\n\ninner_join(polizas, reclamos, by = \"id\")\n\n# A tibble: 3 × 3\n     id cliente monto\n  &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;\n1     1 Ana       100\n2     1 Ana       200\n3     2 Bob       500"
+    "objectID": "teoria/Modulo_7.html#funciones-personalizadas",
+    "href": "teoria/Modulo_7.html#funciones-personalizadas",
+    "title": "Módulo 7: Programación Funcional",
+    "section": "3. Funciones Personalizadas",
+    "text": "3. Funciones Personalizadas\nLa base de la programación robusta. Estructura:\n\nnombre &lt;- function(argumentos) {\n  # cuerpo del código\n  return(resultado)\n}\n\nEjemplo: Calcular Prima Pura de Riesgo.\n\ncalc_prima &lt;- function(frecuencia, severidad, gastos = 0) {\n  pura &lt;- frecuencia * severidad\n  comercial &lt;- pura + gastos\n  return(comercial)\n}\n\n# Probamos la función\ncalc_prima(frecuencia = 0.10, severidad = 5000, gastos = 50)\n\n[1] 550"
   },
   {
-    "objectID": "teoria/Modulo_4.html#el-ciclo-de-vida-del-dato",
-    "href": "teoria/Modulo_4.html#el-ciclo-de-vida-del-dato",
-    "title": "Módulo 4: Importación y Exportación",
-    "section": "El Ciclo de Vida del Dato",
-    "text": "El Ciclo de Vida del Dato\nR rara vez genera sus propios datos desde cero. Lo normal es un flujo ETL:\n\nExtract (Importar): Leer desde CSV, Excel, SQL.\nTransform (Procesar): Limpiar y analizar (R).\nLoad (Exportar): Guardar resultados o reportes.\n\n\n\n\n\n\n\nNota\n\n\nPrerrequisito: Siempre verifica tu “Directorio de Trabajo” (getwd()) para saber dónde busca R los archivos."
+    "objectID": "teoria/Modulo_7.html#la-familia-apply-base-r",
+    "href": "teoria/Modulo_7.html#la-familia-apply-base-r",
+    "title": "Módulo 7: Programación Funcional",
+    "section": "4. La Familia apply (Base R)",
+    "text": "4. La Familia apply (Base R)\nPara aplicar una función a cada elemento de una lista o matriz sin usar bucles for.\n\n\nlapply (List Apply) Devuelve siempre una lista.\n\nnums &lt;- list(a=10, b=20)\nlapply(nums, sqrt)\n\n$a\n[1] 3.162278\n\n$b\n[1] 4.472136\n\n\n\nsapply (Simplify Apply) Intenta devolver un vector o matriz.\n\nsapply(nums, sqrt)\n\n       a        b \n3.162278 4.472136"
   },
   {
-    "objectID": "teoria/Modulo_4.html#archivos-planos-.csv-.txt",
-    "href": "teoria/Modulo_4.html#archivos-planos-.csv-.txt",
-    "title": "Módulo 4: Importación y Exportación",
-    "section": "1. Archivos Planos (.csv / .txt)",
-    "text": "1. Archivos Planos (.csv / .txt)\nSon el estándar universal. Tenemos dos formas de leerlos:\n\n\nBase R (utils) Viene instalado por defecto.\n\ndatos &lt;- read.csv(\"archivo.csv\")\n\n\nDevuelve: Data Frame.\n\nPaquete readr Más rápido y no convierte texto a factores automáticamente.\n\nlibrary(readr)\ndatos &lt;- read_csv(\"archivo.csv\")\n\nDevuelve: Tibble (Data Frame moderno)."
+    "objectID": "teoria/Modulo_7.html#iteración-con-purrr-tidyverse",
+    "href": "teoria/Modulo_7.html#iteración-con-purrr-tidyverse",
+    "title": "Módulo 7: Programación Funcional",
+    "section": "5. Iteración con purrr (Tidyverse)",
+    "text": "5. Iteración con purrr (Tidyverse)\nEs la evolución moderna de apply. Más consistente y predecible.\n\nmap(): Devuelve lista (igual a lapply).\nmap_dbl(): Devuelve vector numérico (double).\nmap_chr(): Devuelve vector de texto.\n\n\nlibrary(purrr)\n\nlista_precios &lt;- list(100, 200, 500)\n\n# Aplicar descuento del 10% a cada elemento\n# La virgulilla (~) indica una función anónima\n# El punto (.x) representa el elemento actual\nmap_dbl(lista_precios, ~ .x * 0.90)\n\n[1]  90 180 450"
   },
   {
-    "objectID": "teoria/Modulo_4.html#archivos-de-excel-.xlsx",
-    "href": "teoria/Modulo_4.html#archivos-de-excel-.xlsx",
-    "title": "Módulo 4: Importación y Exportación",
-    "section": "2. Archivos de Excel (.xlsx)",
-    "text": "2. Archivos de Excel (.xlsx)\nPara el mundo actuarial y financiero, Excel es inevitable. Usamos el paquete readxl.\n\nlibrary(readxl)\n\n# Leer la primera hoja\nsiniestros &lt;- read_excel(\"base_siniestros.xlsx\")\n\n# Leer una hoja específica por nombre o índice\nreservas &lt;- read_excel(\"base_siniestros.xlsx\", \n                       sheet = \"Reservas_2025\")\n\n\n\n\n\n\n\nTip\n\n\nA diferencia de CSV, readxl puede detectar automáticamente los tipos de datos de las celdas de Excel."
+    "objectID": "teoria/Modulo_7.html#resumen-de-flujo",
+    "href": "teoria/Modulo_7.html#resumen-de-flujo",
+    "title": "Módulo 7: Programación Funcional",
+    "section": "Resumen de Flujo",
+    "text": "Resumen de Flujo\n\nLógica: if, else para decisiones puntuales. ifelse() para columnas de datos.\nRepetición: for (usar con moderación).\nAbstracción: Crea tus propias function().\nIteración Funcional:\nBase: lapply, sapply.\nTidyverse: map, map_dbl.\n\n\n¡Automatiza todo!"
   },
   {
-    "objectID": "teoria/Modulo_4.html#conexión-a-bases-de-datos-sql",
-    "href": "teoria/Modulo_4.html#conexión-a-bases-de-datos-sql",
-    "title": "Módulo 4: Importación y Exportación",
-    "section": "3. Conexión a Bases de Datos (SQL)",
-    "text": "3. Conexión a Bases de Datos (SQL)\nR se conecta, no copia. Usamos DBI (interfaz genérica) y un conector específico (ej. RSQLite, RPostgres).\n\nlibrary(DBI)\nlibrary(RSQLite)\n\n# 1. Crear conexión\ncon &lt;- dbConnect(RSQLite::SQLite(), \"mi_base.db\")\n\n# 2. Consultar con SQL directo\ndf_clientes &lt;- dbGetQuery(con, \"SELECT * FROM clientes WHERE edad &gt; 30\")\n\n# 3. Cerrar conexión (¡Importante!)\ndbDisconnect(con)"
-  },
-  {
-    "objectID": "teoria/Modulo_4.html#archivos-web-json-xml",
-    "href": "teoria/Modulo_4.html#archivos-web-json-xml",
-    "title": "Módulo 4: Importación y Exportación",
-    "section": "4. Archivos Web (JSON / XML)",
-    "text": "4. Archivos Web (JSON / XML)\nMuy usados en APIs y desarrollo web.\nJSON (JavaScript Object Notation) Es una estructura jerárquica (parecida a las listas en R).\n\nlibrary(jsonlite)\n\n# Leer desde una URL o archivo\ndatos_api &lt;- fromJSON(\"[https://api.ejemplo.com/datos.json](https://api.ejemplo.com/datos.json)\")\n\n# jsonlite intenta convertirlo a Data Frame automáticamente\nhead(datos_api)"
-  },
-  {
-    "objectID": "teoria/Modulo_4.html#exportación-de-datos",
-    "href": "teoria/Modulo_4.html#exportación-de-datos",
-    "title": "Módulo 4: Importación y Exportación",
-    "section": "5. Exportación de Datos",
-    "text": "5. Exportación de Datos\nDespués de analizar, debemos guardar los resultados limpios.\nA CSV (Universal)\n\n# Base R\nwrite.csv(datos_limpios, \"resultados.csv\", row.names = FALSE)\n\n# readr (Más rápido, sin nombres de filas por defecto)\nwrite_csv(datos_limpios, \"resultados_v2.csv\")\n\nA Excel\nRequiere paquete writexl.\n\nlibrary(writexl)\nwrite_xlsx(list(Hoja1 = df1, Hoja2 = df2), \"reporte_final.xlsx\")\n\n\n¡Fin del Módulo 4!"
-  },
-  {
-    "objectID": "teoria/Modulo_3.html#mapa-de-estructuras",
-    "href": "teoria/Modulo_3.html#mapa-de-estructuras",
-    "title": "Módulo 3: Estructuras de Datos Esenciales",
-    "section": "Mapa de Estructuras",
-    "text": "Mapa de Estructuras\nEn R, las estructuras se organizan según su dimensionalidad y contenido:\n\n\n\n\n\n\n\n\n\nHomogéneo (Solo un tipo de dato)\nHeterogéneo (Varios tipos de datos)\n\n\n\n\n1 Dimensión\nVector\nLista\n\n\n2 Dimensiones\nMatriz\nData Frame\n\n\nn Dimensiones\nArray"
-  },
-  {
-    "objectID": "teoria/Modulo_3.html#vectores-profundización",
-    "href": "teoria/Modulo_3.html#vectores-profundización",
-    "title": "Módulo 3: Estructuras de Datos Esenciales",
-    "section": "1. Vectores: Profundización",
-    "text": "1. Vectores: Profundización\nYa sabemos crearlos con c(). Ahora veamos la indexación y vectorización.\nIndexación (Slicing)\nRecuerda: R empieza a contar desde 1.\n\nv &lt;- c(10, 20, 30, 40, 50)\n\nv[1]          # Primer elemento\n\n[1] 10\n\nv[c(1, 3)]    # Elementos 1 y 3\n\n[1] 10 30\n\nv[-2]         # Todos MENOS el 2\n\n[1] 10 30 40 50"
-  },
-  {
-    "objectID": "teoria/Modulo_3.html#matrices-y-arrays",
-    "href": "teoria/Modulo_3.html#matrices-y-arrays",
-    "title": "Módulo 3: Estructuras de Datos Esenciales",
-    "section": "2. Matrices y Arrays",
-    "text": "2. Matrices y Arrays\nEstructuras de 2 dimensiones (filas y columnas) que solo contienen datos del mismo tipo (usualmente numéricos).\n\n# Crear una matriz de 3x3 llenada por filas\nM &lt;- matrix(1:9, nrow = 3, byrow = TRUE)\nM\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n[3,]    7    8    9"
-  },
-  {
-    "objectID": "teoria/Modulo_3.html#factores-categorías",
-    "href": "teoria/Modulo_3.html#factores-categorías",
-    "title": "Módulo 3: Estructuras de Datos Esenciales",
-    "section": "3. Factores (Categorías)",
-    "text": "3. Factores (Categorías)\nEsenciales para estadística y gráficos. Almacenan datos categóricos y definen sus niveles.\n\nsexo &lt;- c(\"M\", \"F\", \"F\", \"M\")\nfactor_sexo &lt;- factor(sexo)\n\nfactor_sexo\n\n[1] M F F M\nLevels: F M\n\nlevels(factor_sexo) # R identifica los grupos únicos\n\n[1] \"F\" \"M\"\n\n\n\n\n\n\n\n\nAdvertencia\n\n\nInternamente, R guarda los factores como enteros (1, 2, 3…) asociados a etiquetas. Cuidado al convertirlos a numéricos."
-  },
-  {
-    "objectID": "teoria/Modulo_3.html#listas",
-    "href": "teoria/Modulo_3.html#listas",
-    "title": "Módulo 3: Estructuras de Datos Esenciales",
-    "section": "4. Listas",
-    "text": "4. Listas\nSon el contenedor más flexible. Pueden guardar vectores, matrices, data frames e incluso otras listas.\n\nmi_mochila &lt;- list(\n  propietario = \"Oliver\",\n  numeros = c(1, 5, 10),\n  matriz_data = matrix(1:4, nrow=2)\n)\n\n# Acceder con el signo de dólar $\nmi_mochila$propietario\n\n[1] \"Oliver\""
-  },
-  {
-    "objectID": "teoria/Modulo_3.html#data-frames",
-    "href": "teoria/Modulo_3.html#data-frames",
-    "title": "Módulo 3: Estructuras de Datos Esenciales",
-    "section": "5. Data Frames",
-    "text": "5. Data Frames\nLa estructura reina del Análisis de Datos. Filas = Observaciones, Columnas = Variables.\n\n# Crear un DF manualmente\nempleados &lt;- data.frame(\n  id = 1:3,\n  nombre = c(\"Ana\", \"Luis\", \"Sol\"),\n  salario = c(2500, 3000, 2800),\n  activo = c(TRUE, TRUE, FALSE)\n)\n\nhead(empleados)\n\n  id nombre salario activo\n1  1    Ana    2500   TRUE\n2  2   Luis    3000   TRUE\n3  3    Sol    2800  FALSE"
-  },
-  {
-    "objectID": "teoria/Modulo_2.html#objetivo-del-módulo",
-    "href": "teoria/Modulo_2.html#objetivo-del-módulo",
-    "title": "Módulo 2: Sintaxis Básica y Tipos de Datos",
-    "section": "Objetivo del Módulo",
-    "text": "Objetivo del Módulo\nEn esta sesión aprenderemos la gramática esencial de R:\n\nUso de operadores y asignación.\nDistinción de tipos de datos atómicos.\nOperadores lógicos y relacionales.\nManejo correcto de datos faltantes (NA, NaN, NULL)."
-  },
-  {
-    "objectID": "teoria/Modulo_2.html#asignación-de-variables",
-    "href": "teoria/Modulo_2.html#asignación-de-variables",
-    "title": "Módulo 2: Sintaxis Básica y Tipos de Datos",
-    "section": "1. Asignación de Variables",
-    "text": "1. Asignación de Variables\nEn R existen dos formas principales de asignar valores:\n\nLa flecha (&lt;-) vs El igual (=)\n\n\n\nOperador &lt;- Es el estándar en R. Se prefiere por claridad histórica y alcance (scope).\n\nx &lt;- 10\nx\n\n[1] 10\n\n\n\nOperador = Funciona igual en la mayoría de casos simples, pero se reserva usualmente para argumentos dentro de funciones.\n\n\n\n\n\n\n\nTip\n\n\nBuenas prácticas: Usa &lt;- para crear variables y = para asignar parámetros dentro de funciones."
-  },
-  {
-    "objectID": "teoria/Modulo_2.html#tipos-de-datos-atómicos",
-    "href": "teoria/Modulo_2.html#tipos-de-datos-atómicos",
-    "title": "Módulo 2: Sintaxis Básica y Tipos de Datos",
-    "section": "2. Tipos de Datos Atómicos",
-    "text": "2. Tipos de Datos Atómicos\nR trabaja con vectores atómicos. Los 4 principales son:\nNuméricos (Numeric/Double) y Enteros (Integer) Por defecto, los números en R son numeric (decimales). Para forzar un entero, usamos la L.\n\na &lt;- 10.5\nb &lt;- 10   # Parece entero, pero internamente es numeric\nc &lt;- 10L  # La 'L' fuerza a que sea entero (Integer)\n\nclass(a)\n\n[1] \"numeric\"\n\nclass(b)\n\n[1] \"numeric\"\n\nclass(c)\n\n[1] \"integer\""
-  },
-  {
-    "objectID": "teoria/Modulo_2.html#operadores",
-    "href": "teoria/Modulo_2.html#operadores",
-    "title": "Módulo 2: Sintaxis Básica y Tipos de Datos",
-    "section": "3. Operadores",
-    "text": "3. Operadores\nAritméticos\nMás allá de sumar y restar, R tiene operadores específicos:\n\n10 / 3    # División normal\n\n[1] 3.333333\n\n10 %/% 3  # División entera (cociente)\n\n[1] 3\n\n10 %% 3   # Módulo (residuo)\n\n[1] 1\n\n2 ^ 3     # Potencia\n\n[1] 8"
-  },
-  {
-    "objectID": "teoria/Modulo_2.html#valores-perdidos-y-especiales",
-    "href": "teoria/Modulo_2.html#valores-perdidos-y-especiales",
-    "title": "Módulo 2: Sintaxis Básica y Tipos de Datos",
-    "section": "4. Valores Perdidos y Especiales",
-    "text": "4. Valores Perdidos y Especiales\nEn Ciencia de Datos, saber qué “no está” es vital.\nNA (Not Available)\nRepresenta un dato faltante. Existe el espacio, pero no sabemos el valor.\n\nedades &lt;- c(25, 30, NA)\nis.na(edades) # Función para detectar NAs\n\n[1] FALSE FALSE  TRUE"
-  },
-  {
-    "objectID": "teoria/Modulo_6.html#la-filosofía-ggplot2",
-    "href": "teoria/Modulo_6.html#la-filosofía-ggplot2",
-    "title": "Módulo 6: Visualización Avanzada",
-    "section": "La Filosofía ggplot2",
-    "text": "La Filosofía ggplot2\nA diferencia de Excel, aquí no elegimos un “gráfico de la galería”. Construimos el gráfico por capas, como si estuviéramos pintando un cuadro.\nLa estructura básica es: \\[Gráfico = Datos + Estética (aes) + Geometría (geom)\\]"
-  },
-  {
-    "objectID": "teoria/Modulo_6.html#preparando-los-datos",
-    "href": "teoria/Modulo_6.html#preparando-los-datos",
-    "title": "Módulo 6: Visualización Avanzada",
-    "section": "Preparando los Datos",
-    "text": "Preparando los Datos\nVamos a simular una cartera de seguros de Automóvil para los ejemplos.\n\nlibrary(tidyverse)\n\n# Semilla para reproducibilidad\nset.seed(123)\n\ncartera &lt;- tibble(\n  edad = sample(18:70, 100, replace = TRUE),\n  tipo_auto = sample(c(\"Sedan\", \"SUV\", \"Deportivo\"), 100, replace = T),\n  prima = jitter(edad * 10 + sample(200:500, 100)),\n  siniestro = sample(c(0, 1), 100, replace = TRUE, prob = c(0.8, 0.2))\n) %&gt;% \n  mutate(siniestro = as.factor(siniestro))"
-  },
-  {
-    "objectID": "teoria/Modulo_6.html#dispersión-scatter-plot",
-    "href": "teoria/Modulo_6.html#dispersión-scatter-plot",
-    "title": "Módulo 6: Visualización Avanzada",
-    "section": "1. Dispersión (Scatter Plot)",
-    "text": "1. Dispersión (Scatter Plot)\nRelación entre dos variables numéricas.\nOJO: Usamos + para agregar capas, no %&gt;%.\n\n\n\nggplot(data = cartera, \n       aes(x = edad, \n           y = prima)) +\n  geom_point(color = \"blue\", \n             size = 3)\n\n\nData: cartera\nAes: x=edad, y=prima\nGeom: Puntos"
-  },
-  {
-    "objectID": "teoria/Modulo_6.html#mapeo-de-colores-aesthetics",
-    "href": "teoria/Modulo_6.html#mapeo-de-colores-aesthetics",
-    "title": "Módulo 6: Visualización Avanzada",
-    "section": "2. Mapeo de Colores (Aesthetics)",
-    "text": "2. Mapeo de Colores (Aesthetics)\n¿Y si queremos que el color dependa de una variable (ej. Tipo de Auto)? Movemos color DENTRO de aes().\n\n\n\nggplot(cartera, \n       aes(x = edad, \n           y = prima,\n           color = tipo_auto)) +\n  geom_point(size = 3)"
-  },
-  {
-    "objectID": "teoria/Modulo_6.html#gráficos-de-distribución",
-    "href": "teoria/Modulo_6.html#gráficos-de-distribución",
-    "title": "Módulo 6: Visualización Avanzada",
-    "section": "3. Gráficos de Distribución",
-    "text": "3. Gráficos de Distribución\nVitales para actuarios: Histogramas y Boxplots.\nHistograma (Variable Numérica)\n\n\n\nggplot(cartera, \n       aes(x = prima)) +\n  geom_histogram(\n    bins = 15,\n    fill = \"skyblue\",\n    color = \"black\"\n  )"
-  },
-  {
-    "objectID": "teoria/Modulo_6.html#boxplot-numérica-vs-categórica",
-    "href": "teoria/Modulo_6.html#boxplot-numérica-vs-categórica",
-    "title": "Módulo 6: Visualización Avanzada",
-    "section": "Boxplot (Numérica vs Categórica)",
-    "text": "Boxplot (Numérica vs Categórica)\nPara ver dispersión y outliers por grupo.\n\n\n\nggplot(cartera, \n       aes(x = tipo_auto, \n           y = prima,\n           fill = tipo_auto)) +\n  geom_boxplot()"
-  },
-  {
-    "objectID": "practica/Practica_Modulo_2.html",
-    "href": "practica/Practica_Modulo_2.html",
-    "title": "Práctica Módulo 2: Sintaxis y Tipos de Datos",
+    "objectID": "practica/Practica_Modulo_6.html",
+    "href": "practica/Practica_Modulo_6.html",
+    "title": "Práctica Módulo 6: Visualización de Datos",
     "section": "",
-    "text": "En este módulo profundizamos en los tipos de datos y operadores.\nObjetivo: Completar los bloques de código y responder a las preguntas conceptuales."
+    "text": "El objetivo es “pintar con datos”. Usaremos ggplot2 para encontrar patrones visuales en los precios de las casas. Requisito: Asegúrate de tener el archivo data_house_price.csv en tu carpeta."
   },
   {
-    "objectID": "practica/Practica_Modulo_2.html#instrucciones",
-    "href": "practica/Practica_Modulo_2.html#instrucciones",
-    "title": "Práctica Módulo 2: Sintaxis y Tipos de Datos",
+    "objectID": "practica/Practica_Modulo_6.html#instrucciones",
+    "href": "practica/Practica_Modulo_6.html#instrucciones",
+    "title": "Práctica Módulo 6: Visualización de Datos",
     "section": "",
-    "text": "En este módulo profundizamos en los tipos de datos y operadores.\nObjetivo: Completar los bloques de código y responder a las preguntas conceptuales."
+    "text": "El objetivo es “pintar con datos”. Usaremos ggplot2 para encontrar patrones visuales en los precios de las casas. Requisito: Asegúrate de tener el archivo data_house_price.csv en tu carpeta."
   },
   {
-    "objectID": "practica/Practica_Modulo_2.html#parte-1-tipos-numéricos-y-enteros",
-    "href": "practica/Practica_Modulo_2.html#parte-1-tipos-numéricos-y-enteros",
-    "title": "Práctica Módulo 2: Sintaxis y Tipos de Datos",
-    "section": "Parte 1: Tipos Numéricos y Enteros",
-    "text": "Parte 1: Tipos Numéricos y Enteros\n\nEjercicio 1.1\nR guarda los números como decimales (numeric) por defecto.\n\nCrea una variable a con el valor 10.\nCrea una variable b con el valor 10L (nota la L mayúscula).\nVerifica la clase de ambas variables con class().\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 1.2\n¿Qué pasa si intentas sumar a y b del ejercicio anterior? ¿Cuál crees que será la clase del resultado? Realiza la suma y verifica la clase del resultado."
+    "objectID": "practica/Practica_Modulo_6.html#parte-0-preparación-del-lienzo",
+    "href": "practica/Practica_Modulo_6.html#parte-0-preparación-del-lienzo",
+    "title": "Práctica Módulo 6: Visualización de Datos",
+    "section": "Parte 0: Preparación del Lienzo",
+    "text": "Parte 0: Preparación del Lienzo\n\nEjercicio 0.1: Carga y Limpieza\n\nCarga tidyverse.\nLee data_house_price.csv.\nImportante: La variable condition (estado de la casa) viene como número (1 a 5). Para graficarla bien, conviértela a factor usando as.factor().\nFiltra las casas con precio 0 (hay datos sucios) y quédate solo con las que cuestan más de 0."
   },
   {
-    "objectID": "practica/Practica_Modulo_2.html#parte-2-operadores-aritméticos-avanzados",
-    "href": "practica/Practica_Modulo_2.html#parte-2-operadores-aritméticos-avanzados",
-    "title": "Práctica Módulo 2: Sintaxis y Tipos de Datos",
-    "section": "Parte 2: Operadores Aritméticos Avanzados",
-    "text": "Parte 2: Operadores Aritméticos Avanzados\n\nEjercicio 2.1\nCalcula lo siguiente:\n\nEl residuo (módulo) de dividir 25 entre 4.\nLa parte entera (cociente) de dividir 25 entre 4."
+    "objectID": "practica/Practica_Modulo_6.html#parte-1-gráficos-de-dispersión-scatter-plots",
+    "href": "practica/Practica_Modulo_6.html#parte-1-gráficos-de-dispersión-scatter-plots",
+    "title": "Práctica Módulo 6: Visualización de Datos",
+    "section": "Parte 1: Gráficos de Dispersión (Scatter Plots)",
+    "text": "Parte 1: Gráficos de Dispersión (Scatter Plots)\n\nEjercicio 1.1: Relación Tamaño-Precio\nQueremos confirmar la hipótesis: “A mayor tamaño, mayor precio”.\n\nCrea un gráfico con sqft_living en el eje X y price en el eje Y.\nUsa geom_point().\nAgrega el argumento alpha = 0.5 dentro del geom para ver mejor la densidad de puntos (transparencia).\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 1.2: Agregando una tercera dimensión (Color)\nCopia el gráfico anterior y agrega color = condition dentro de la estética aes(). ¿Las casas en mejor condición (5) tienden a estar más arriba (más caras) para el mismo tamaño?"
   },
   {
-    "objectID": "practica/Practica_Modulo_2.html#parte-3-operadores-lógicos-y-relacionales",
-    "href": "practica/Practica_Modulo_2.html#parte-3-operadores-lógicos-y-relacionales",
-    "title": "Práctica Módulo 2: Sintaxis y Tipos de Datos",
-    "section": "Parte 3: Operadores Lógicos y Relacionales",
-    "text": "Parte 3: Operadores Lógicos y Relacionales\n\nEjercicio 3.1\nTenemos las siguientes variables:\n\n\n\n\n\n\n\n\nEscribe expresiones lógicas que devuelvan TRUE o FALSE para las siguientes preguntas:\n\n¿El cliente es mayor de 18 años?\n¿El cliente tiene empleo Y NO tiene deuda?\n¿El cliente es menor de 20 O tiene deuda?\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 3.2 (El error común)\nEl siguiente código intenta comparar si x es igual a 5, pero falla o hace algo inesperado. Corrige el operador de comparación."
+    "objectID": "practica/Practica_Modulo_6.html#parte-2-distribuciones-histogramas-y-boxplots",
+    "href": "practica/Practica_Modulo_6.html#parte-2-distribuciones-histogramas-y-boxplots",
+    "title": "Práctica Módulo 6: Visualización de Datos",
+    "section": "Parte 2: Distribuciones (Histogramas y Boxplots)",
+    "text": "Parte 2: Distribuciones (Histogramas y Boxplots)\n\nEjercicio 2.1: El Histograma de Precios\nVisualiza cómo se distribuyen los precios.\n\nUsa geom_histogram().\nPrueba con bins = 30 o bins = 50.\nPinta las barras de color “skyblue” (relleno).\n\nNota: Es normal que la distribución esté muy sesgada a la izquierda (muchas casas baratas, pocas mansiones).\n\n\n\n\n\n\n\n\n\n\nEjercicio 2.2: Boxplot por Condición\nCompara los rangos de precios según la condición de la casa.\n\nEje X: condition\nEje Y: price\nRelleno (fill): condition\nGeometría: geom_boxplot()\n\nPara ver mejor las diferencias, agrega una capa extra: scale_y_log10(). Esto pondrá el precio en escala logarítmica y reducirá el efecto de las mansiones extremas."
   },
   {
-    "objectID": "practica/Practica_Modulo_2.html#parte-4-valores-perdidos-na-y-nulos-null",
-    "href": "practica/Practica_Modulo_2.html#parte-4-valores-perdidos-na-y-nulos-null",
-    "title": "Práctica Módulo 2: Sintaxis y Tipos de Datos",
-    "section": "Parte 4: Valores Perdidos (NA) y Nulos (NULL)",
-    "text": "Parte 4: Valores Perdidos (NA) y Nulos (NULL)\n\nEjercicio 4.1\nTienes el siguiente vector de siniestros con un dato faltante: siniestros &lt;- c(500, 1000, NA, 200)\n\nIntenta calcular el promedio con mean(siniestros). ¿Qué obtienes?\nInvestiga o recuerda cómo hacer que mean() ignore los NAs (Pista: usa el argumento na.rm).\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 4.2: Detectando NAs\nUsa la función is.na() para saber qué posición del vector siniestros es el dato faltante.\n\n\n\n\n\n\n\n\n\n\nEjercicio 4.3: NA vs NULL\n\nCrea un vector v1 &lt;- c(1, 2, NA). Verifica su longitud con length().\nCrea un vector v2 &lt;- c(1, 2, NULL). Verifica su longitud con length().\nExplica brevemente la diferencia."
+    "objectID": "practica/Practica_Modulo_6.html#parte-3-facetas-small-multiples",
+    "href": "practica/Practica_Modulo_6.html#parte-3-facetas-small-multiples",
+    "title": "Práctica Módulo 6: Visualización de Datos",
+    "section": "Parte 3: Facetas (Small Multiples)",
+    "text": "Parte 3: Facetas (Small Multiples)\n\nEjercicio 3.1: Dividir por Habitaciones\nA veces el gráfico se satura. Vamos a separar la visualización anterior por el número de pisos (floors).\n\nReutiliza tu gráfico de dispersión (Tamaño vs Precio).\nAgrega + facet_wrap(~ floors).\n¿Notas alguna diferencia en la pendiente entre casas de 1 piso vs 2 pisos?"
   },
   {
-    "objectID": "practica/Practica_Modulo_2.html#parte-5-desafío-actuarial",
-    "href": "practica/Practica_Modulo_2.html#parte-5-desafío-actuarial",
-    "title": "Práctica Módulo 2: Sintaxis y Tipos de Datos",
-    "section": "Parte 5: Desafío Actuarial",
-    "text": "Parte 5: Desafío Actuarial\nUn seguro de auto solo se otorga si:\n\nLa edad es mayor o igual a 25 años.\nO si la edad es menor a 25 pero el conductor tiene más de 5 años de experiencia (experiencia &gt; 5).\nEvalúa si este candidato es asegurable:"
+    "objectID": "practica/Practica_Modulo_6.html#parte-4-series-de-tiempo-líneas",
+    "href": "practica/Practica_Modulo_6.html#parte-4-series-de-tiempo-líneas",
+    "title": "Práctica Módulo 6: Visualización de Datos",
+    "section": "Parte 4: Series de Tiempo (Líneas)",
+    "text": "Parte 4: Series de Tiempo (Líneas)\n\nEjercicio 4.1: Tendencia por Año de Construcción\nQueremos ver si las casas más nuevas son más grandes.\n\nAgrupa los datos por yr_built (Año de construcción).\nCalcula el promedio de sqft_living para cada año.\nGrafica esa tabla resumen: Año en X, Tamaño Promedio en Y.\nUsa geom_line()."
   },
   {
-    "objectID": "practica/Practica_Modulo_7.html",
-    "href": "practica/Practica_Modulo_7.html",
-    "title": "Práctica Módulo 7: Programación Funcional y Control de Flujo",
+    "objectID": "practica/Practica_Modulo_6.html#parte-5-personalización-final-etiquetas-y-tema",
+    "href": "practica/Practica_Modulo_6.html#parte-5-personalización-final-etiquetas-y-tema",
+    "title": "Práctica Módulo 6: Visualización de Datos",
+    "section": "Parte 5: Personalización Final (Etiquetas y Tema)",
+    "text": "Parte 5: Personalización Final (Etiquetas y Tema)\n\nEjercicio 5.1: Gráfico de Publicación\nToma cualquiera de los gráficos anteriores y hazlo lucir profesional:\n\nAgrega un título descriptivo con labs(title = “…”).\nCambia las etiquetas de los ejes X e Y (x = “…”, y = “…”).\nElimina la leyenda si es redundante o cámbiale el título (color = “Condición”).\nAplica un tema limpio como theme_minimal() o theme_classic()."
+  },
+  {
+    "objectID": "practica/Practica_Modulo_1.html",
+    "href": "practica/Practica_Modulo_1.html",
+    "title": "Práctica Módulo 1: Fundamentos de R",
     "section": "",
-    "text": "En este módulo dejaremos de copiar y pegar código. Aprenderemos a escribir nuestras propias funciones y a controlar el flujo de ejecución. Requisito: Asegúrate de tener el archivo data_house_price.csv disponible."
+    "text": "Este cuaderno contiene ejercicios prácticos para reforzar los conceptos del Módulo 1.\nTu misión: Escribir el código correspondiente dentro de los bloques (chunks) vacíos para resolver cada problema."
   },
   {
-    "objectID": "practica/Practica_Modulo_7.html#instrucciones",
-    "href": "practica/Practica_Modulo_7.html#instrucciones",
-    "title": "Práctica Módulo 7: Programación Funcional y Control de Flujo",
+    "objectID": "practica/Practica_Modulo_1.html#instrucciones",
+    "href": "practica/Practica_Modulo_1.html#instrucciones",
+    "title": "Práctica Módulo 1: Fundamentos de R",
     "section": "",
-    "text": "En este módulo dejaremos de copiar y pegar código. Aprenderemos a escribir nuestras propias funciones y a controlar el flujo de ejecución. Requisito: Asegúrate de tener el archivo data_house_price.csv disponible."
+    "text": "Este cuaderno contiene ejercicios prácticos para reforzar los conceptos del Módulo 1.\nTu misión: Escribir el código correspondiente dentro de los bloques (chunks) vacíos para resolver cada problema."
   },
   {
-    "objectID": "practica/Practica_Modulo_7.html#parte-0-carga-de-datos",
-    "href": "practica/Practica_Modulo_7.html#parte-0-carga-de-datos",
-    "title": "Práctica Módulo 7: Programación Funcional y Control de Flujo",
-    "section": "Parte 0: Carga de Datos",
-    "text": "Parte 0: Carga de Datos"
+    "objectID": "practica/Practica_Modulo_1.html#parte-1-r-como-calculadora",
+    "href": "practica/Practica_Modulo_1.html#parte-1-r-como-calculadora",
+    "title": "Práctica Módulo 1: Fundamentos de R",
+    "section": "Parte 1: R como Calculadora",
+    "text": "Parte 1: R como Calculadora\n\nEjercicio 1.1\nCalcula el resultado de las siguientes operaciones matemáticas: 1. La suma de 125 más 480. 2. La división de 500 entre 25. 3. 5 elevado a la potencia 4.\n\n\n\n\n\n\n\n\n\n\nEjercicio 1.2\nUsa funciones matemáticas para calcular: 1. La raíz cuadrada de 144. 2. El logaritmo natural de 100. 3. El valor absoluto de -250."
   },
   {
-    "objectID": "practica/Practica_Modulo_7.html#parte-1-estructuras-de-control-if-else-ifelse",
-    "href": "practica/Practica_Modulo_7.html#parte-1-estructuras-de-control-if-else-ifelse",
-    "title": "Práctica Módulo 7: Programación Funcional y Control de Flujo",
-    "section": "Parte 1: Estructuras de Control (if, else, ifelse)",
-    "text": "Parte 1: Estructuras de Control (if, else, ifelse)\n\nEjercicio 1.1: El if clásico\nVamos a verificar si nuestro dataset es lo suficientemente grande para un análisis confiable. Escribe una estructura if / else que:\n\nVerifique si el número de filas de casas (nrow(casas)) es mayor a 1000.\nSi es cierto, imprime “Datos suficientes para modelar”.\nSi es falso, imprime “Se necesitan más datos”.\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 1.2: ifelse vectorizado (Columna nueva)\nEl if normal no funciona bien para crear columnas enteras. Usaremos ifelse(). Crea una nueva columna en el dataframe casas llamada categoria_precio con la siguiente lógica:\n\nSi price &gt; 600,000 -&gt; “Alta Gama”\nSi no -&gt; “Estándar”\n\nGuarda el resultado en casas y cuenta cuántas hay de cada una con count()."
+    "objectID": "practica/Practica_Modulo_1.html#parte-2-variables-y-asignación",
+    "href": "practica/Practica_Modulo_1.html#parte-2-variables-y-asignación",
+    "title": "Práctica Módulo 1: Fundamentos de R",
+    "section": "Parte 2: Variables y Asignación",
+    "text": "Parte 2: Variables y Asignación\n\nEjercicio 2.1\n\nCrea una variable llamada precio con el valor 50.\nCrea una variable llamada cantidad con el valor 5.\nCalcula el total multiplicando ambas variables y guárdalo en una variable llamada total_venta.\nImprime el resultado de total_venta.\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 2.2\nCorrige el siguiente código para que siga las “buenas prácticas” de R (usa la flecha &lt;- y nombres descriptivos en minúsculas)."
   },
   {
-    "objectID": "practica/Practica_Modulo_7.html#parte-2-bucles-for-loops",
-    "href": "practica/Practica_Modulo_7.html#parte-2-bucles-for-loops",
-    "title": "Práctica Módulo 7: Programación Funcional y Control de Flujo",
-    "section": "Parte 2: Bucles (for loops)",
-    "text": "Parte 2: Bucles (for loops)\nAunque en R preferimos evitar los loops para datos grandes, son útiles para reportes o tareas secuenciales.\n\nEjercicio 2.1: Iterando sobre ciudades\n\nCrea un vector con 3 ciudades de interés: ciudades_interes &lt;- c(“Seattle”, “Kent”, “Bellevue”).\nEscribe un bucle for que recorra ese vector.\nDentro del bucle, filtra el dataframe para esa ciudad y calcula su precio promedio.\nImprime una frase como: “El precio promedio en [Ciudad] es [Precio]”."
+    "objectID": "practica/Practica_Modulo_1.html#parte-3-tipos-de-datos",
+    "href": "practica/Practica_Modulo_1.html#parte-3-tipos-de-datos",
+    "title": "Práctica Módulo 1: Fundamentos de R",
+    "section": "Parte 3: Tipos de Datos",
+    "text": "Parte 3: Tipos de Datos\n\nEjercicio 3.1\nVerifica la clase (tipo de dato) de los siguientes valores usando la función class():\n\n10.5\n“Data Science”\nTRUE"
   },
   {
-    "objectID": "practica/Practica_Modulo_7.html#parte-3-funciones-personalizadas",
-    "href": "practica/Practica_Modulo_7.html#parte-3-funciones-personalizadas",
-    "title": "Práctica Módulo 7: Programación Funcional y Control de Flujo",
-    "section": "Parte 3: Funciones Personalizadas",
-    "text": "Parte 3: Funciones Personalizadas\n\nEjercicio 3.1: Calculadora de Impuestos\nImagina que eres el asesor fiscal. Necesitas una función que calcule el impuesto a pagar por una casa. Crea una función llamada calcular_impuesto que reciba dos argumentos:\n\nmonto (el precio de la casa).\ntasa (el porcentaje de impuesto, por defecto 0.012 o 1.2%).\n\nLa función debe devolver el monto del impuesto. Prueba tu función con una casa de 500,000.\n\n\n\n\n\n\n\n\n\n\nEjercicio 3.2: Aplicando la función a los datos\nUsa la función mutate() para aplicar tu nueva función calcular_impuesto a toda la columna price del dataframe casas. Crea la columna impuesto_estimado."
+    "objectID": "practica/Practica_Modulo_1.html#parte-4-vectores",
+    "href": "practica/Practica_Modulo_1.html#parte-4-vectores",
+    "title": "Práctica Módulo 1: Fundamentos de R",
+    "section": "Parte 4: Vectores",
+    "text": "Parte 4: Vectores\n\nEjercicio 4.1\nCrea un vector llamado notas que contenga las siguientes calificaciones: 15, 18, 20, 12, 16. Imprime el vector.\n\n\n\n\n\n\n\n\n\n\nEjercicio 4.2 (Desafío de Coerción)\n¿Qué pasa si intentas crear el siguiente vector? mi_vector &lt;- c(10, “Veinte”, 30)\n\nCrea el vector.\nVerifica su clase con class().\nExplica con un comentario (#) qué ocurrió."
   },
   {
-    "objectID": "practica/Practica_Modulo_7.html#parte-4-la-familia-map-purrr",
-    "href": "practica/Practica_Modulo_7.html#parte-4-la-familia-map-purrr",
-    "title": "Práctica Módulo 7: Programación Funcional y Control de Flujo",
-    "section": "Parte 4: La Familia map (purrr)",
-    "text": "Parte 4: La Familia map (purrr)\nEn lugar de bucles for, en Data Science moderno usamos funciones de mapeo (map, apply).\n\nEjercicio 4.1: Promedios Rápidos\nQueremos el promedio de varias columnas numéricas a la vez: price, sqft_living y bedrooms.\n\nSelecciona solo esas 3 columnas del dataframe casas.\nUsa la función map_dbl() del paquete purrr (o sapply de R base) para calcular la media (mean) de cada columna.\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 4.2: Modelado iterativo (Avanzado)\nSupongamos que queremos dividir los datos por ciudad y obtener el precio máximo de cada una. Analiza y ejecuta este código (ya escrito) para entender el poder de purrr y group_split.\n\n\n\n\n\n\n\n\nAgrega un comentario abajo explicando qué hizo el código."
+    "objectID": "practica/Practica_Modulo_1.html#parte-5-ejercicio-integrador",
+    "href": "practica/Practica_Modulo_1.html#parte-5-ejercicio-integrador",
+    "title": "Práctica Módulo 1: Fundamentos de R",
+    "section": "Parte 5: Ejercicio Integrador",
+    "text": "Parte 5: Ejercicio Integrador\nImagina que estás calculando el costo básico de una póliza.\n\nCrea una variable prima_base con valor 1000.\nCrea una variable tasa_impuesto con valor 0.16 (16%).\nCalcula el monto_impuesto multiplicando la base por la tasa.\nCalcula el precio_final sumando la base y el impuesto.\nImprime el precio_final."
   },
   {
-    "objectID": "practica/Practica_Modulo_4.html",
-    "href": "practica/Practica_Modulo_4.html",
-    "title": "Práctica Módulo 4: Importación de Archivos CSV",
+    "objectID": "practica/Practica_Modulo_5.html",
+    "href": "practica/Practica_Modulo_5.html",
+    "title": "Práctica Módulo 5: Manipulación de Datos con Tidyverse",
     "section": "",
-    "text": "En este módulo aprenderemos a cargar datos desde archivos de texto separados por comas (.csv). Requisito indispensable: Asegúrate de que el archivo data_house_price.csv esté guardado en la misma carpeta donde guardaste este archivo .qmd."
+    "text": "En esta práctica actuaremos como Analistas de Datos en una inmobiliaria.\nUsaremos el paquete tidyverse para limpiar, transformar y resumir un dataset real de precios de viviendas.\nRequisito: Asegúrate de tener el archivo data_house_price.csv en la misma carpeta que este documento."
   },
   {
-    "objectID": "practica/Practica_Modulo_4.html#instrucciones",
-    "href": "practica/Practica_Modulo_4.html#instrucciones",
-    "title": "Práctica Módulo 4: Importación de Archivos CSV",
+    "objectID": "practica/Practica_Modulo_5.html#instrucciones",
+    "href": "practica/Practica_Modulo_5.html#instrucciones",
+    "title": "Práctica Módulo 5: Manipulación de Datos con Tidyverse",
     "section": "",
-    "text": "En este módulo aprenderemos a cargar datos desde archivos de texto separados por comas (.csv). Requisito indispensable: Asegúrate de que el archivo data_house_price.csv esté guardado en la misma carpeta donde guardaste este archivo .qmd."
+    "text": "En esta práctica actuaremos como Analistas de Datos en una inmobiliaria.\nUsaremos el paquete tidyverse para limpiar, transformar y resumir un dataset real de precios de viviendas.\nRequisito: Asegúrate de tener el archivo data_house_price.csv en la misma carpeta que este documento."
   },
   {
-    "objectID": "practica/Practica_Modulo_4.html#parte-1-el-enfoque-clásico-base-r",
-    "href": "practica/Practica_Modulo_4.html#parte-1-el-enfoque-clásico-base-r",
-    "title": "Práctica Módulo 4: Importación de Archivos CSV",
-    "section": "Parte 1: El Enfoque Clásico (Base R)",
-    "text": "Parte 1: El Enfoque Clásico (Base R)\nR tiene funciones nativas para leer archivos sin instalar nada extra. Aunque son antiguas, es vital conocerlas porque aparecen en mucho código heredado.\n\nEjercicio 1.1: Lectura Básica\n\nUsa la función read.csv() para cargar el archivo \"data_house_price.csv\".\nAsigna el resultado a una variable llamada datos_base.\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 1.2: Inspección Rápida\nUna vez cargados los datos, siempre debemos revisarlos.\n\nUsa la función head() para ver las primeras 6 filas.\nUsa la función str() para ver la estructura interna (tipos de datos).\n\n\nPregunta: ¿De qué tipo (clase) cargó la columna date? ¿Texto (chr) o Factor?"
+    "objectID": "practica/Practica_Modulo_5.html#parte-0-configuración-y-carga",
+    "href": "practica/Practica_Modulo_5.html#parte-0-configuración-y-carga",
+    "title": "Práctica Módulo 5: Manipulación de Datos con Tidyverse",
+    "section": "Parte 0: Configuración y Carga",
+    "text": "Parte 0: Configuración y Carga\n\nEjercicio 0.1: Cargar paquetes y datos\n\nCarga la librería tidyverse.\nLee el archivo data_house_price.csv usando read_csv() y asígnalo a un objeto llamado casas.\nUsa glimpse(casas) para inspeccionar rápidamente las variables."
   },
   {
-    "objectID": "practica/Practica_Modulo_4.html#parte-2-el-enfoque-moderno-tidyverse",
-    "href": "practica/Practica_Modulo_4.html#parte-2-el-enfoque-moderno-tidyverse",
-    "title": "Práctica Módulo 4: Importación de Archivos CSV",
-    "section": "Parte 2: El Enfoque Moderno (Tidyverse)",
-    "text": "Parte 2: El Enfoque Moderno (Tidyverse)\nEl paquete readr (parte del tidyverse) es más rápido y detecta mejor los tipos de datos (fechas, números, etc.).\n\nEjercicio 2.1: Carga de Librería y Lectura\n\nCarga la librería tidyverse (o readr).\nUsa la función read_csv() (nota el guion bajo _) para cargar el mismo archivo.\nAsigna el resultado a una variable llamada datos_tidy.\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 2.2: Inspección con Glimpse\nLos objetos creados por tidyverse son “tibbles” (data frames mejorados).\n\nUsa la función glimpse() sobre datos_tidy.\nCompara visualmente la salida con str() del ejercicio anterior. ¿Cuál te parece más legible?"
+    "objectID": "practica/Practica_Modulo_5.html#parte-1-verbos-básicos-select-filter-arrange",
+    "href": "practica/Practica_Modulo_5.html#parte-1-verbos-básicos-select-filter-arrange",
+    "title": "Práctica Módulo 5: Manipulación de Datos con Tidyverse",
+    "section": "Parte 1: Verbos Básicos (Select, Filter, Arrange)",
+    "text": "Parte 1: Verbos Básicos (Select, Filter, Arrange)\n\nEjercicio 1.1: Selección de Columnas\nNuestro jefe solo quiere ver la información básica. Crea un nuevo objeto llamado casas_simple que contenga solo las siguientes columnas:\n\ndate\nprice\nbedrooms\nsqft_living (pies cuadrados habitables)\ncity\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 1.2: Filtrado de Datos\nNos interesan casas con características específicas para un cliente exigente:\n\nDeben estar en la ciudad de “Seattle”.\nDeben tener más de 3 habitaciones (bedrooms &gt; 3).\nEl precio debe ser menor a 600,000.\n\nGuarda este subconjunto en ofertas_seattle.\n\n\n\n\n\n\n\n\n\n\nEjercicio 1.3: Ordenamiento\nToma el objeto ofertas_seattle y ordénalo por precio de forma descendente (de la más cara a la más barata). Muestra las primeras 5 filas con head()."
   },
   {
-    "objectID": "practica/Practica_Modulo_4.html#parte-3-comparación-de-resultados",
-    "href": "practica/Practica_Modulo_4.html#parte-3-comparación-de-resultados",
-    "title": "Práctica Módulo 4: Importación de Archivos CSV",
-    "section": "Parte 3: Comparación de Resultados",
-    "text": "Parte 3: Comparación de Resultados\n\nEjercicio 3.1: Diferencias de Clase\nVerifica la clase de los dos objetos que creaste usando la función class().\n\nclass(datos_base)\nclass(datos_tidy)\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 3.2: Acceso a Columnas\nIntenta calcular el promedio de la columna de precios (price) usando el objeto datos_tidy. Recuerda usar el signo de dólar $."
+    "objectID": "practica/Practica_Modulo_5.html#parte-2-transformación-mutate",
+    "href": "practica/Practica_Modulo_5.html#parte-2-transformación-mutate",
+    "title": "Práctica Módulo 5: Manipulación de Datos con Tidyverse",
+    "section": "Parte 2: Transformación (Mutate)",
+    "text": "Parte 2: Transformación (Mutate)\n\nEjercicio 2.1: Ingeniería de Características\nEn bienes raíces, el precio total engaña. La métrica clave es el “Precio por Pie Cuadrado”. Usando el dataset original casas:\n\nCrea una nueva columna llamada precio_sqft que sea la división de price entre sqft_living.\nCrea otra columna llamada es_lujo que sea TRUE si el precio es mayor a 1,000,000, y FALSE en caso contrario (usa ifelse o comparación directa).\n\nAsigna el resultado a casas_procesadas."
   },
   {
-    "objectID": "practica/Practica_Modulo_4.html#parte-4-exportación-de-datos-guardar",
-    "href": "practica/Practica_Modulo_4.html#parte-4-exportación-de-datos-guardar",
-    "title": "Práctica Módulo 4: Importación de Archivos CSV",
-    "section": "Parte 4: Exportación de Datos (Guardar)",
-    "text": "Parte 4: Exportación de Datos (Guardar)\nSupongamos que hemos terminado de trabajar y queremos enviar una pequeña muestra de los datos a un cliente.\n\nEjercicio 4.1: Crear un Subconjunto\nCrea un objeto pequeño llamado muestra que contenga solo las primeras 10 filas de datos_tidy. (Pista: Puedes usar head(datos_tidy, 10)).\n\n\n\n\n\n\n\n\n\n\nEjercicio 4.2: Escribir a CSV\nGuarda ese objeto muestra en tu disco duro con el nombre “muestra_clientes.csv”. Usa la función write_csv()."
+    "objectID": "practica/Practica_Modulo_5.html#parte-3-resúmenes-y-agrupaciones-group-by-summarise",
+    "href": "practica/Practica_Modulo_5.html#parte-3-resúmenes-y-agrupaciones-group-by-summarise",
+    "title": "Práctica Módulo 5: Manipulación de Datos con Tidyverse",
+    "section": "Parte 3: Resúmenes y Agrupaciones (Group by + Summarise)",
+    "text": "Parte 3: Resúmenes y Agrupaciones (Group by + Summarise)\n\nEjercicio 3.1: Análisis por Ciudad\nQueremos saber qué ciudades son las más caras.\n\nAgrupa casas_procesadas por city.\nCalcula:\n\n\nconteo: Número de casas en venta.\nprecio_promedio: Promedio de la columna price.\npromedio_sqft: Promedio del precio_sqft.\n\n\nOrdena el resultado por precio_promedio descendente."
   },
   {
-    "objectID": "practica/Practica_Modulo_3.html",
-    "href": "practica/Practica_Modulo_3.html",
-    "title": "Práctica Módulo 3: Estructuras de Datos",
+    "objectID": "practica/Practica_Modulo_5.html#parte-4-unión-de-datos-joins",
+    "href": "practica/Practica_Modulo_5.html#parte-4-unión-de-datos-joins",
+    "title": "Práctica Módulo 5: Manipulación de Datos con Tidyverse",
+    "section": "Parte 4: Unión de Datos (Joins)",
+    "text": "Parte 4: Unión de Datos (Joins)\n\nEjercicio 4.1: Cruzando información\nA veces necesitamos enriquecer nuestro CSV con datos externos. Vamos a crear una pequeña tabla de referencia manual (simulada) que clasifica algunas ciudades por “Región”.\nEjecuta este bloque para crear la tabla auxiliar:\n\n\n\n\n\n\n\n\n\nTu Misión:\n\n\nRealiza un left_join entre tu dataset casas y la tabla regiones.\nObserva qué pasa con las ciudades que NO están en la tabla regiones (ej. Shoreline). ¿Qué valor asigna R en la columna zona?"
+  },
+  {
+    "objectID": "practica/Practica_Modulo_5.html#parte-5-reestructuración-tidyr",
+    "href": "practica/Practica_Modulo_5.html#parte-5-reestructuración-tidyr",
+    "title": "Práctica Módulo 5: Manipulación de Datos con Tidyverse",
+    "section": "Parte 5: Reestructuración (Tidyr)",
+    "text": "Parte 5: Reestructuración (Tidyr)\n\nEjercicio 5.1: Pivotar (Bonus)\nSupongamos que calculamos el precio promedio por ciudad y cantidad de habitaciones. Ejecuta el siguiente código para generar un resumen:\n\n\n\n\n\n\n\n\nEste formato es “Largo” (Long). Tu tarea: Usa pivot_wider() para convertir las habitaciones (bedrooms) en columnas.\n\nnames_from = bedrooms\nvalues_from = promedio\n\nEl objetivo es tener una columna para “2 habs”, otra para “3 habs”, etc., por ciudad."
+  },
+  {
+    "objectID": "prueba/Prueba_Practica.html",
+    "href": "prueba/Prueba_Practica.html",
+    "title": "Evaluación Integral: R para Ciencia de Datos",
     "section": "",
-    "text": "Vamos a practicar cómo almacenar y organizar datos.\nObjetivo: Manipular vectores, operar matrices y construir tu primer Data Frame."
+    "text": "Integrar los conocimientos de los Módulos 1 al 7 para transformar un dataset “sucio” en información valiosa.\nDataset: Nike_Sales_Uncleaned.csv\nDesafíos detectados:\n\nFechas en múltiples formatos (YYYY-MM-DD, DD-MM-YYYY, YYYY/MM/DD).\nRegiones escritas de forma inconsistente (“bengaluru”, “Bangalore”).\nDatos faltantes (NA) en unidades vendidas.\nColumnas numéricas que podrían leerse como texto."
   },
   {
-    "objectID": "practica/Practica_Modulo_3.html#instrucciones",
-    "href": "practica/Practica_Modulo_3.html#instrucciones",
-    "title": "Práctica Módulo 3: Estructuras de Datos",
-    "section": "",
-    "text": "Vamos a practicar cómo almacenar y organizar datos.\nObjetivo: Manipular vectores, operar matrices y construir tu primer Data Frame."
+    "objectID": "prueba/Prueba_Practica.html#objetivo-de-la-evaluación",
+    "href": "prueba/Prueba_Practica.html#objetivo-de-la-evaluación",
+    "title": "Evaluación Integral: R para Ciencia de Datos",
+    "section": "🎯 Objetivo de la Evaluación",
+    "text": "🎯 Objetivo de la Evaluación\nIntegrar los conocimientos de los Módulos 1 al 7 para transformar un dataset “sucio” en información valiosa.\nDataset: Nike_Sales_Uncleaned.csv\nDesafíos detectados:\n\nFechas en múltiples formatos (YYYY-MM-DD, DD-MM-YYYY, YYYY/MM/DD).\nRegiones escritas de forma inconsistente (“bengaluru”, “Bangalore”).\nDatos faltantes (NA) en unidades vendidas.\nColumnas numéricas que podrían leerse como texto."
   },
   {
-    "objectID": "practica/Practica_Modulo_3.html#parte-1-vectores-y-slicing",
-    "href": "practica/Practica_Modulo_3.html#parte-1-vectores-y-slicing",
-    "title": "Práctica Módulo 3: Estructuras de Datos",
-    "section": "Parte 1: Vectores y “Slicing”",
-    "text": "Parte 1: Vectores y “Slicing”\n\nEjercicio 1.1: Indexación\nTienes el siguiente vector de primas emitidas: primas &lt;- c(100, 200, 300, 400, 500)\n\nExtrae el tercer elemento.\nExtrae el primero y el último elemento en un solo paso.\nExtrae todos los elementos menos el segundo.\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 1.2: Operaciones Vectorizadas (Sin bucles)\nAplica un recargo del 5% (multiplicar por 1.05) a todas las primas del vector anterior simultáneamente."
+    "objectID": "prueba/Prueba_Practica.html#importación-e-inspección-módulos-1-4",
+    "href": "prueba/Prueba_Practica.html#importación-e-inspección-módulos-1-4",
+    "title": "Evaluación Integral: R para Ciencia de Datos",
+    "section": "1. Importación e Inspección (Módulos 1, 4)",
+    "text": "1. Importación e Inspección (Módulos 1, 4)\n\nEjercicio 1.1: Carga Robusta\nCarga los paquetes tidyverse y lubridate (para fechas).\nLee el archivo Nike_Sales_Uncleaned.csv.\nPista: Al leerlo, observa si la columna Order_Date se cargó como fecha o como texto."
   },
   {
-    "objectID": "practica/Practica_Modulo_3.html#parte-2-matrices-y-álgebra-lineal",
-    "href": "practica/Practica_Modulo_3.html#parte-2-matrices-y-álgebra-lineal",
-    "title": "Práctica Módulo 3: Estructuras de Datos",
-    "section": "Parte 2: Matrices y Álgebra Lineal",
-    "text": "Parte 2: Matrices y Álgebra Lineal\n\nEjercicio 2.1: Creación\nCrea una matriz de 3 filas y 2 columnas con los números del 1 al 6. Llámala matriz_A.\n\n\n\n\n\n\n\n\n\n\nEjercicio 2.2: El error clásico\nDada la matriz A (de tu ejercicio anterior) y una matriz identidad I de 3x2 (simulada abajo):\n\nIntenta multiplicar matriz_A * matriz_A.\n¿Qué tipo de operación hace R? Si quisieras hacer multiplicación matricial (fila por columna), ¿qué operador deberías usar? (Nota: para multiplicar A por sí misma, A debe ser cuadrada, así que probemos con su transpuesta: t(matriz_A)).\n\n\nCalcula: \\(A \\times A^T\\)"
+    "objectID": "prueba/Prueba_Practica.html#limpieza-de-datos-wrangling-módulo-5",
+    "href": "prueba/Prueba_Practica.html#limpieza-de-datos-wrangling-módulo-5",
+    "title": "Evaluación Integral: R para Ciencia de Datos",
+    "section": "2. Limpieza de Datos “Wrangling” (Módulo 5)",
+    "text": "2. Limpieza de Datos “Wrangling” (Módulo 5)\n\nEjercicio 2.1: Estandarización de Texto\nLa columna Region es un desastre. Hay “bengaluru”, “Bangalore”, “Hyd”, “Hyderabad”.\n\nUsa mutate() para convertir toda la columna Region a Título (primera letra mayúscula) usando str_to_title().\n(Opcional/Reto) Usa case_when o str_replace para corregir “Hyd” a “Hyderabad” y “Bengaluru” a “Bangalore”.\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 2.2: Manejo de NAs\nLa columna Units_Sold tiene valores vacíos (NA). Como actuario, decides ser conservador:\n\nFiltra y elimina las filas donde Units_Sold sea NA (no podemos inventar ventas).\nVerifica que ya no queden NAs en esa columna.\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 2.3: El Infierno de las Fechas\nLa columna Order_Date tiene formatos mezclados (2024-03-09 vs 15-10-2023). Intenta usar la función parse_date_time() del paquete lubridate con el argumento orders = c(“ymd”, “dmy”) para estandarizar todo a una fecha real."
   },
   {
-    "objectID": "practica/Practica_Modulo_3.html#parte-3-factores-categorías",
-    "href": "practica/Practica_Modulo_3.html#parte-3-factores-categorías",
-    "title": "Práctica Módulo 3: Estructuras de Datos",
-    "section": "Parte 3: Factores (Categorías)",
-    "text": "Parte 3: Factores (Categorías)\n\nEjercicio 3.1\nTienes una lista de riesgos: riesgos &lt;- c(“Alto”, “Bajo”, “Medio”, “Alto”, “Bajo”).\nConviértelo en un factor.\nImprime sus levels() (niveles). ¿En qué orden los puso R por defecto?"
+    "objectID": "prueba/Prueba_Practica.html#manipulación-y-estructuras-módulos-2-3-5",
+    "href": "prueba/Prueba_Practica.html#manipulación-y-estructuras-módulos-2-3-5",
+    "title": "Evaluación Integral: R para Ciencia de Datos",
+    "section": "3. Manipulación y Estructuras (Módulos 2, 3, 5)",
+    "text": "3. Manipulación y Estructuras (Módulos 2, 3, 5)\n\nEjercicio 3.1: Creación de Métricas.\nCrea una nueva columna llamada Margen_Pct (Porcentaje de Margen) calculada como:\n\\[Margen = \\frac{Revenue - (MRP \\times Units\\_Sold)}{Revenue}\\]\nNota: Si el Revenue es 0, esto dará infinito. Filtra primero o acepta el riesgo.\n\n\n\n\n\n\n\n\n\n\nEjercicio 3.2: Agrupación\nQueremos saber qué categoría de género (Gender_Category) es más rentable.\n\nAgrupa por Gender_Category.\nCalcula el Total_Revenue (suma) y el Promedio_Profit (media).\nOrdena de mayor a menor ingresos."
   },
   {
-    "objectID": "practica/Practica_Modulo_3.html#parte-4-listas-el-contenedor-flexible",
-    "href": "practica/Practica_Modulo_3.html#parte-4-listas-el-contenedor-flexible",
-    "title": "Práctica Módulo 3: Estructuras de Datos",
-    "section": "Parte 4: Listas (El contenedor flexible)",
-    "text": "Parte 4: Listas (El contenedor flexible)\n\nEjercicio 4.1\nCrea una lista llamada portafolio que contenga:\n\nUn vector de texto con tu nombre: “Carla”.\nUn vector numérico con 3 años: 2023, 2024, 2025.\nLa matriz matriz_A que creaste antes."
+    "objectID": "prueba/Prueba_Practica.html#visualización-módulo-6",
+    "href": "prueba/Prueba_Practica.html#visualización-módulo-6",
+    "title": "Evaluación Integral: R para Ciencia de Datos",
+    "section": "4. Visualización (Módulo 6)",
+    "text": "4. Visualización (Módulo 6)\n\nEjercicio 4.1: Ventas por Canal\nCrea un gráfico de barras (geom_col) que muestre el Total de Revenue por Sales_Channel.\n\nRellena las barras con un color corporativo (ej. “darkblue”).\nAgrega etiquetas de texto o título.\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 4.2: Serie de Tiempo (Tendencia)\nUsa la columna de fecha limpia (del Ejercicio 2.3).\n\nGrafica la evolución del Revenue a lo largo del tiempo (geom_line o geom_smooth).\nSepara el gráfico en dos paneles (facetas) según Sales_Channel (Retail vs Online)."
   },
   {
-    "objectID": "practica/Practica_Modulo_3.html#parte-5-data-frames-la-tabla-maestra",
-    "href": "practica/Practica_Modulo_3.html#parte-5-data-frames-la-tabla-maestra",
-    "title": "Práctica Módulo 3: Estructuras de Datos",
-    "section": "Parte 5: Data Frames (La Tabla Maestra)",
-    "text": "Parte 5: Data Frames (La Tabla Maestra)\n\nEjercicio 5.1: Creación Manual\nConstruye un Data Frame llamado polizas con las siguientes columnas:\n\nid: 1, 2, 3\ntipo: “Vida”, “Auto”, “Salud”\ncosto: 1500, 800, 400\nactivo: TRUE, TRUE, FALSE\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 5.2: Acceso y Filtrado Base\nUsando el data frame polizas:\n\nSelecciona solo la columna de costo usando el signo de dólar $.\nCalcula el promedio de esa columna.\n(Reto) Intenta filtrar las filas donde el costo sea mayor a 500."
+    "objectID": "prueba/Prueba_Practica.html#programación-funcional-módulo-7",
+    "href": "prueba/Prueba_Practica.html#programación-funcional-módulo-7",
+    "title": "Evaluación Integral: R para Ciencia de Datos",
+    "section": "5. Programación Funcional (Módulo 7)",
+    "text": "5. Programación Funcional (Módulo 7)\n\nEjercicio 5.1: Función de Clasificación\nCrea una función personalizada llamada clasificar_rentabilidad que reciba un valor numérico (profit) y devuelva:\n\n“Pérdida” si es &lt; 0\n“Baja” si está entre 0 y 500\n“Alta” si es &gt; 500\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 5.2: Aplicación Vectorizada\nAplica tu función a la columna Profit del dataset para crear una nueva variable categórica Tipo_Rentabilidad. Usa mutate() junto con tu función (o map_chr si prefieres purrr). Cuenta cuántas transacciones hay de cada tipo."
   }
 ]

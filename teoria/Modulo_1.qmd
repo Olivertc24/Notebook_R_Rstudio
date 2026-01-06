@@ -22,19 +22,18 @@ Bienvenidos al curso.
 
 Antes de empezar, debemos distinguir entre las herramientas:
 
-* **R**: Es el lenguaje de programación (el motor).
-* **RStudio**: Es el Entorno de Desarrollo Integrado (el tablero de control).
+-   **R**: Es el lenguaje de programación (el motor).
+-   **RStudio**: Es el Entorno de Desarrollo Integrado (el tablero de control).
 
 > "R hace el cálculo, RStudio nos facilita la vida."
 
----
+------------------------------------------------------------------------
 
 ## La Interfaz de RStudio
 
 RStudio se divide en 4 paneles principales:
 
-:::: {.columns}
-
+::::: columns
 ::: {.column width="50%"}
 1.  **Source:** Editor de código.
 2.  **Console:** Ejecución inmediata.
@@ -45,10 +44,9 @@ RStudio se divide en 4 paneles principales:
 ::: {.column width="50%"}
 ![Layout RStudio](https://docs.posit.co/ide/user/ide/guide/ui/images/rstudio-panes-labeled.jpeg)
 :::
+:::::
 
-::::
-
----
+------------------------------------------------------------------------
 
 ## R como Calculadora
 
@@ -82,11 +80,11 @@ abs(-50)   # Valor absoluto
 pi         # Constante Pi
 ```
 
----
+------------------------------------------------------------------------
 
 ## Variables y Asignación
 
-Para guardar valores usamos el operador de asignación <- (Alt + -).
+Para guardar valores usamos el operador de asignación \<- (Alt + -).
 
 ```{r}
 #| label: asignacion
@@ -99,11 +97,11 @@ resultado <- x + y
 resultado
 ```
 
-:::{.callout-tip} 
-Evita usar = para asignar variables en R. Es una buena práctica usar siempre <-. 
+::: callout-tip
+Evita usar = para asignar variables en R. Es una buena práctica usar siempre \<-.
 :::
 
----
+------------------------------------------------------------------------
 
 ## Tipos de Datos (Atómicos)
 
@@ -135,7 +133,7 @@ soy_alumno <- FALSE
 10 > 5
 ```
 
----
+------------------------------------------------------------------------
 
 ## 3. Vectores
 
@@ -151,9 +149,9 @@ nombres <- c("Ana", "Luis", "Oliver")
 nombres
 ```
 
----
+------------------------------------------------------------------------
 
-:::{.callout-tip} 
+::: callout-tip
 Cuidado con la "Coerción". Si mezclas tipos, R forzará a todos a ser del mismo tipo (usualmente texto).
 :::
 
@@ -167,7 +165,7 @@ mezcla
 class(mezcla)
 ```
 
----
+------------------------------------------------------------------------
 
 ## Ejercicio Práctico:
 
@@ -185,8 +183,8 @@ imc <- peso / (altura^2)
 round(imc, 2)
 ```
 
----
+------------------------------------------------------------------------
 
-::: {.r-fit-text} 
+::: r-fit-text
 ¿Preguntas?
 :::

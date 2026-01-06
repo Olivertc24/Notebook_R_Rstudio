@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Prof.&nbsp;Oliver Triveño">
+<meta name="author" content="Oliver Triveño">
 
-<title>Práctica Módulo 2: Sintaxis y Tipos de Datos – Curso de Fundamentos en R</title>
+<title>Evaluación Integral: R para Ciencia de Datos – Curso de Fundamentos en R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,6 +74,35 @@ ul.task-list li input[type="checkbox"] {
 <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -196,8 +225,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Práctica Módulo 2: Sintaxis y Tipos de Datos</h1>
-<p class="subtitle lead">Ejercicios de Gramática R</p>
+<h1 class="title">Evaluación Integral: R para Ciencia de Datos</h1>
+<p class="subtitle lead">Caso Práctico: Limpieza y Análisis de Ventas Nike</p>
 </div>
 
 
@@ -207,7 +236,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Autor/a</div>
     <div class="quarto-title-meta-contents">
-             <p>Prof.&nbsp;Oliver Triveño </p>
+             <p>Oliver Triveño </p>
           </div>
   </div>
     
@@ -220,56 +249,56 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="instrucciones" class="level2">
-<h2 class="anchored" data-anchor-id="instrucciones">Instrucciones</h2>
-<p>En este módulo profundizamos en los tipos de datos y operadores.</p>
-<p><strong>Objetivo:</strong> Completar los bloques de código y responder a las preguntas conceptuales.</p>
-<hr>
-</section>
-<section id="parte-1-tipos-numéricos-y-enteros" class="level2">
-<h2 class="anchored" data-anchor-id="parte-1-tipos-numéricos-y-enteros">Parte 1: Tipos Numéricos y Enteros</h2>
-<section id="ejercicio-1.1" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicio-1.1">Ejercicio 1.1</h3>
-<p>R guarda los números como decimales (<code>numeric</code>) por defecto.</p>
-<ol type="1">
-<li>Crea una variable <code>a</code> con el valor <code>10</code>.</li>
-<li>Crea una variable <code>b</code> con el valor <code>10L</code> (nota la L mayúscula).</li>
-<li>Verifica la clase de ambas variables con <code>class()</code>.</li>
-</ol>
-<div class="cell">
+<div class="cell" data-context="setup">
 <div>
 <div id="webr-1" class="exercise-cell">
 
 </div>
 <script type="webr-1-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBFc2NyaWJlIHR1IGPDs2RpZ28gYXF1w60ifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyAxLiBEZWZpbmltb3MgbGEgVVJMIFJhd1xudXJsX25pa2UgPC0gXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vT2xpdmVydGMyNC9Ob3RlYm9va19SX1JzdHVkaW8vcmVmcy9oZWFkcy9tYWluL3BydWViYS9OaWtlX1NhbGVzX1VuY2xlYW5lZC5jc3ZcIlxuaW5zdGFsbC5wYWNrYWdlcyhcInRpZHl2ZXJzZVwiKVxuXG4jIDIuIERlc2NhcmdhbW9zIGVsIGFyY2hpdm8gYWwgc2lzdGVtYSB2aXJ0dWFsIGRlIFdlYlJcbmRvd25sb2FkLmZpbGUodXJsX25pa2UsIFwiTmlrZV9TYWxlc19VbmNsZWFuZWQuY3N2XCIpIn0=
 </script>
 </div>
 </div>
+<section id="objetivo-de-la-evaluación" class="level2">
+<h2 class="anchored" data-anchor-id="objetivo-de-la-evaluación">🎯 Objetivo de la Evaluación</h2>
+<p>Integrar los conocimientos de los Módulos 1 al 7 para transformar un dataset “sucio” en información valiosa.</p>
+<p><strong>Dataset:</strong> <code>Nike_Sales_Uncleaned.csv</code></p>
+<p><strong>Desafíos detectados:</strong></p>
+<ul>
+<li><p>Fechas en múltiples formatos (YYYY-MM-DD, DD-MM-YYYY, YYYY/MM/DD).</p></li>
+<li><p>Regiones escritas de forma inconsistente (“bengaluru”, “Bangalore”).</p></li>
+<li><p>Datos faltantes (<code>NA</code>) en unidades vendidas.</p></li>
+<li><p>Columnas numéricas que podrían leerse como texto.</p></li>
+</ul>
+<hr>
 </section>
-<section id="ejercicio-1.2" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicio-1.2">Ejercicio 1.2</h3>
-<p>¿Qué pasa si intentas sumar a y b del ejercicio anterior? ¿Cuál crees que será la clase del resultado? Realiza la suma y verifica la clase del resultado.</p>
+<section id="importación-e-inspección-módulos-1-4" class="level2">
+<h2 class="anchored" data-anchor-id="importación-e-inspección-módulos-1-4">1. Importación e Inspección (Módulos 1, 4)</h2>
+<section id="ejercicio-1.1-carga-robusta" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-1.1-carga-robusta">Ejercicio 1.1: Carga Robusta</h3>
+<p>Carga los paquetes <code>tidyverse</code> y <code>lubridate</code> (para fechas).</p>
+<p>Lee el archivo <code>Nike_Sales_Uncleaned.csv</code>.</p>
+<p><em>Pista:</em> Al leerlo, observa si la columna <code>Order_Date</code> se cargó como fecha o como texto.</p>
 <div class="cell">
 <div>
 <div id="webr-2" class="exercise-cell">
 
 </div>
 <script type="webr-2-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBFc2NyaWJlIHR1IGPDs2RpZ28gYXF1w60ifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyAxLiBDYXJnYXIgbGlicmVyw61hc1xuXG4jIDIuIExlZXIgZGF0YXNldFxuXG4jIDMuIEluc3BlY2Npw7NuIGluaWNpYWwgKGdsaW1wc2UgbyBzdHIpIn0=
 </script>
 </div>
 </div>
 </section>
 </section>
-<section id="parte-2-operadores-aritméticos-avanzados" class="level2">
-<h2 class="anchored" data-anchor-id="parte-2-operadores-aritméticos-avanzados">Parte 2: Operadores Aritméticos Avanzados</h2>
-<section id="ejercicio-2.1" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicio-2.1">Ejercicio 2.1</h3>
-<p>Calcula lo siguiente:</p>
+<section id="limpieza-de-datos-wrangling-módulo-5" class="level2">
+<h2 class="anchored" data-anchor-id="limpieza-de-datos-wrangling-módulo-5">2. Limpieza de Datos “Wrangling” (Módulo 5)</h2>
+<section id="ejercicio-2.1-estandarización-de-texto" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-2.1-estandarización-de-texto">Ejercicio 2.1: Estandarización de Texto</h3>
+<p>La columna Region es un desastre. Hay “bengaluru”, “Bangalore”, “Hyd”, “Hyderabad”.</p>
 <ol type="1">
-<li><p>El residuo (módulo) de dividir 25 entre 4.</p></li>
-<li><p>La parte entera (cociente) de dividir 25 entre 4.</p></li>
+<li><p>Usa mutate() para convertir toda la columna Region a Título (primera letra mayúscula) usando str_to_title().</p></li>
+<li><p>(Opcional/Reto) Usa case_when o str_replace para corregir “Hyd” a “Hyderabad” y “Bengaluru” a “Bangalore”.</p></li>
 </ol>
 <div class="cell">
 <div>
@@ -277,137 +306,152 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBFc2NyaWJlIHR1IGPDs2Rp
 
 </div>
 <script type="webr-3-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBFc2NyaWJlIHR1IGPDs2RpZ28gYXF1w60ifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBUdSBjw7NkaWdvIGFxdcOtIn0=
 </script>
 </div>
 </div>
 </section>
-</section>
-<section id="parte-3-operadores-lógicos-y-relacionales" class="level2">
-<h2 class="anchored" data-anchor-id="parte-3-operadores-lógicos-y-relacionales">Parte 3: Operadores Lógicos y Relacionales</h2>
-<section id="ejercicio-3.1" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicio-3.1">Ejercicio 3.1</h3>
-<p>Tenemos las siguientes variables:</p>
+<section id="ejercicio-2.2-manejo-de-nas" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-2.2-manejo-de-nas">Ejercicio 2.2: Manejo de NAs</h3>
+<p>La columna Units_Sold tiene valores vacíos (NA). Como actuario, decides ser conservador:</p>
+<ol type="1">
+<li><p>Filtra y elimina las filas donde Units_Sold sea NA (no podemos inventar ventas).</p></li>
+<li><p>Verifica que ya no queden NAs en esa columna.</p></li>
+</ol>
 <div class="cell">
 <div>
 <div id="webr-4" class="exercise-cell">
 
 </div>
 <script type="webr-4-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZWRhZF9jbGllbnRlIDwtIDI1XG50aWVuZV9kZXVkYSA8LSBUUlVFXG50aWVuZV9lbXBsZW8gPC0gVFJVRSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBUdSBjw7NkaWdvIGFxdcOtIn0=
 </script>
 </div>
 </div>
-<p>Escribe expresiones lógicas que devuelvan TRUE o FALSE para las siguientes preguntas:</p>
-<ol type="1">
-<li><p>¿El cliente es mayor de 18 años?</p></li>
-<li><p>¿El cliente tiene empleo Y NO tiene deuda?</p></li>
-<li><p>¿El cliente es menor de 20 O tiene deuda?</p></li>
-</ol>
+</section>
+<section id="ejercicio-2.3-el-infierno-de-las-fechas" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-2.3-el-infierno-de-las-fechas">Ejercicio 2.3: El Infierno de las Fechas</h3>
+<p>La columna Order_Date tiene formatos mezclados (2024-03-09 vs 15-10-2023). Intenta usar la función parse_date_time() del paquete lubridate con el argumento orders = c(“ymd”, “dmy”) para estandarizar todo a una fecha real.</p>
 <div class="cell">
 <div>
 <div id="webr-5" class="exercise-cell">
 
 </div>
 <script type="webr-5-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyAxLiBNYXlvciBkZSAxOD9cblxuIyAyLiBFbXBsZW8gWSBOTyBkZXVkYT9cblxuIyAzLiBNZW5vciBkZSAyMCBPIGRldWRhPyJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBUdSBjw7NkaWdvIGFxdcOtIn0=
 </script>
 </div>
 </div>
 </section>
-<section id="ejercicio-3.2-el-error-común" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicio-3.2-el-error-común">Ejercicio 3.2 (El error común)</h3>
-<p>El siguiente código intenta comparar si x es igual a 5, pero falla o hace algo inesperado. Corrige el operador de comparación.</p>
+</section>
+<section id="manipulación-y-estructuras-módulos-2-3-5" class="level2">
+<h2 class="anchored" data-anchor-id="manipulación-y-estructuras-módulos-2-3-5">3. Manipulación y Estructuras (Módulos 2, 3, 5)</h2>
+<section id="ejercicio-3.1-creación-de-métricas." class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3.1-creación-de-métricas.">Ejercicio 3.1: Creación de Métricas.</h3>
+<p>Crea una nueva columna llamada Margen_Pct (Porcentaje de Margen) calculada como:</p>
+<p><span class="math display">\[Margen = \frac{Revenue - (MRP \times Units\_Sold)}{Revenue}\]</span></p>
+<p>Nota: Si el Revenue es 0, esto dará infinito. Filtra primero o acepta el riesgo.</p>
 <div class="cell">
 <div>
 <div id="webr-6" class="exercise-cell">
 
 </div>
 <script type="webr-6-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoieCA8LSAxMFxueCA9IDUgICMgPC0tLSBFc3RvIGVzIHVuYSBhc2lnbmFjacOzbiwgbm8gdW5hIHByZWd1bnRhLiDCoUNvcnLDrWdlbG8hIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBUdSBjw7NkaWdvIGFxdcOtIn0=
 </script>
 </div>
 </div>
+</section>
+<section id="ejercicio-3.2-agrupación" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3.2-agrupación">Ejercicio 3.2: Agrupación</h3>
+<p>Queremos saber qué categoría de género (Gender_Category) es más rentable.</p>
+<ol type="1">
+<li><p>Agrupa por Gender_Category.</p></li>
+<li><p>Calcula el Total_Revenue (suma) y el Promedio_Profit (media).</p></li>
+<li><p>Ordena de mayor a menor ingresos.</p></li>
+</ol>
 <div class="cell">
 <div>
 <div id="webr-7" class="exercise-cell">
 
 </div>
 <script type="webr-7-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBUdSB2ZXJzacOzbiBjb3JyZWdpZGE6In0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBUdSBjw7NkaWdvIGFxdcOtIn0=
 </script>
 </div>
 </div>
 </section>
 </section>
-<section id="parte-4-valores-perdidos-na-y-nulos-null" class="level2">
-<h2 class="anchored" data-anchor-id="parte-4-valores-perdidos-na-y-nulos-null">Parte 4: Valores Perdidos (NA) y Nulos (NULL)</h2>
-<section id="ejercicio-4.1" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicio-4.1">Ejercicio 4.1</h3>
-<p>Tienes el siguiente vector de siniestros con un dato faltante: siniestros &lt;- c(500, 1000, NA, 200)</p>
-<ol type="1">
-<li><p>Intenta calcular el promedio con mean(siniestros). ¿Qué obtienes?</p></li>
-<li><p>Investiga o recuerda cómo hacer que mean() ignore los NAs (Pista: usa el argumento na.rm).</p></li>
-</ol>
+<section id="visualización-módulo-6" class="level2">
+<h2 class="anchored" data-anchor-id="visualización-módulo-6">4. Visualización (Módulo 6)</h2>
+<section id="ejercicio-4.1-ventas-por-canal" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4.1-ventas-por-canal">Ejercicio 4.1: Ventas por Canal</h3>
+<p>Crea un gráfico de barras (geom_col) que muestre el Total de Revenue por Sales_Channel.</p>
+<ul>
+<li><p>Rellena las barras con un color corporativo (ej. “darkblue”).</p></li>
+<li><p>Agrega etiquetas de texto o título.</p></li>
+</ul>
 <div class="cell">
 <div>
 <div id="webr-8" class="exercise-cell">
 
 </div>
 <script type="webr-8-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic2luaWVzdHJvcyA8LSBjKDUwMCwgMTAwMCwgTkEsIDIwMClcblxuIyAxLiBQcm9tZWRpbyBub3JtYWwgKGZhbGxhcsOhKVxuXG4jIDIuIFByb21lZGlvIGlnbm9yYW5kbyBOQXMifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBUdSBjw7NkaWdvIGFxdcOtIn0=
 </script>
 </div>
 </div>
 </section>
-<section id="ejercicio-4.2-detectando-nas" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicio-4.2-detectando-nas">Ejercicio 4.2: Detectando NAs</h3>
-<p>Usa la función is.na() para saber qué posición del vector siniestros es el dato faltante.</p>
+<section id="ejercicio-4.2-serie-de-tiempo-tendencia" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4.2-serie-de-tiempo-tendencia">Ejercicio 4.2: Serie de Tiempo (Tendencia)</h3>
+<p>Usa la columna de fecha limpia (del Ejercicio 2.3).</p>
+<ol type="1">
+<li><p>Grafica la evolución del Revenue a lo largo del tiempo (geom_line o geom_smooth).</p></li>
+<li><p>Separa el gráfico en dos paneles (facetas) según Sales_Channel (Retail vs Online).</p></li>
+</ol>
 <div class="cell">
 <div>
 <div id="webr-9" class="exercise-cell">
 
 </div>
 <script type="webr-9-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBFc2NyaWJlIHR1IGPDs2RpZ28gYXF1w60ifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBUdSBjw7NkaWdvIGFxdcOtIn0=
 </script>
 </div>
 </div>
 </section>
-<section id="ejercicio-4.3-na-vs-null" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicio-4.3-na-vs-null">Ejercicio 4.3: NA vs NULL</h3>
-<ol type="1">
-<li><p>Crea un vector v1 &lt;- c(1, 2, NA). Verifica su longitud con length().</p></li>
-<li><p>Crea un vector v2 &lt;- c(1, 2, NULL). Verifica su longitud con length().</p></li>
-<li><p>Explica brevemente la diferencia.</p></li>
-</ol>
+</section>
+<section id="programación-funcional-módulo-7" class="level2">
+<h2 class="anchored" data-anchor-id="programación-funcional-módulo-7">5. Programación Funcional (Módulo 7)</h2>
+<section id="ejercicio-5.1-función-de-clasificación" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5.1-función-de-clasificación">Ejercicio 5.1: Función de Clasificación</h3>
+<p>Crea una función personalizada llamada clasificar_rentabilidad que reciba un valor numérico (profit) y devuelva:</p>
+<ul>
+<li><p>“Pérdida” si es &lt; 0</p></li>
+<li><p>“Baja” si está entre 0 y 500</p></li>
+<li><p>“Alta” si es &gt; 500</p></li>
+</ul>
 <div class="cell">
 <div>
 <div id="webr-10" class="exercise-cell">
 
 </div>
 <script type="webr-10-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBFc2NyaWJlIHR1IGPDs2RpZ28gYXF1w60ifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBEZWZpbmUgdHUgZnVuY2nDs24gYXF1w60ifQ==
 </script>
 </div>
 </div>
 </section>
-</section>
-<section id="parte-5-desafío-actuarial" class="level2">
-<h2 class="anchored" data-anchor-id="parte-5-desafío-actuarial">Parte 5: Desafío Actuarial</h2>
-<p>Un seguro de auto solo se otorga si:</p>
-<ol type="1">
-<li><p>La edad es mayor o igual a 25 años.</p></li>
-<li><p>O si la edad es menor a 25 pero el conductor tiene más de 5 años de experiencia (experiencia &gt; 5).</p></li>
-<li><p>Evalúa si este candidato es asegurable:</p></li>
-</ol>
+<section id="ejercicio-5.2-aplicación-vectorizada" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5.2-aplicación-vectorizada">Ejercicio 5.2: Aplicación Vectorizada</h3>
+<p>Aplica tu función a la columna Profit del dataset para crear una nueva variable categórica Tipo_Rentabilidad. Usa mutate() junto con tu función (o map_chr si prefieres purrr). Cuenta cuántas transacciones hay de cada tipo.</p>
 <div class="cell">
 <div>
 <div id="webr-11" class="exercise-cell">
 
 </div>
 <script type="webr-11-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZWRhZCA8LSAyM1xuZXhwZXJpZW5jaWEgPC0gNlxuXG4jIEVzY3JpYmUgbGEgZXhwcmVzacOzbiBsw7NnaWNhIGNvbXBsZXRhOlxuIyMjIGVzX2FzZWd1cmFibGUgPC0gIyAuLi4gdHUgbMOzZ2ljYSBhcXXDrSAuLi5cblxuIyMjIGVzX2FzZWd1cmFibGUifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBUdSBjw7NkaWdvIGFxdcOtIn0=
 </script>
 </div>
 </div>
@@ -445,6 +489,7 @@ eyJjb250ZW50cyI6W119
 W10=
 </script>
 </section>
+</section>
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
@@ -452,7 +497,7 @@ eyJjb250ZW50cyI6W119
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
-window._ojs.paths.runtimeToDoc = "../../practica";
+window._ojs.paths.runtimeToDoc = "../../prueba";
 window._ojs.paths.runtimeToRoot = "../..";
 window._ojs.paths.docToRoot = "..";
 window._ojs.selfContained = false;

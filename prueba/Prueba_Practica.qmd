@@ -8,6 +8,18 @@ editor: visual
 lang: es
 ---
 
+```{webr}
+#| context: setup
+
+# 1. Definimos la URL Raw
+url_nike <- "https://raw.githubusercontent.com/Olivertc24/Notebook_R_Rstudio/refs/heads/main/prueba/Nike_Sales_Uncleaned.csv"
+install.packages("tidyverse")
+
+# 2. Descargamos el archivo al sistema virtual de WebR
+download.file(url_nike, "Nike_Sales_Uncleaned.csv")
+
+```
+
 ## 🎯 Objetivo de la Evaluación
 
 Integrar los conocimientos de los Módulos 1 al 7 para transformar un dataset "sucio" en información valiosa.

@@ -38,7 +38,7 @@ Integrar los conocimientos de los Módulos 1 al 7 para transformar un dataset "s
 
 ------------------------------------------------------------------------
 
-## 1. Importación e Inspección (Módulos 1, 4)
+## 1. Importación e Inspección
 
 ### Ejercicio 1.1: Carga Robusta
 
@@ -57,7 +57,7 @@ Lee el archivo `Nike_Sales_Uncleaned.csv`.
 # 3. Inspección inicial (glimpse o str)
 ```
 
-## 2. Limpieza de Datos "Wrangling" (Módulo 5)
+## 2. Limpieza de Datos "Wrangling"
 
 ### Ejercicio 2.1: Estandarización de Texto
 
@@ -91,7 +91,7 @@ La columna Order_Date tiene formatos mezclados (2024-03-09 vs 15-10-2023). Inten
 # Tu código aquí
 ```
 
-## 3. Manipulación y Estructuras (Módulos 2, 3, 5)
+## 3. Manipulación y Estructuras
 
 ### Ejercicio 3.1: Creación de Métricas.
 
@@ -119,7 +119,7 @@ Queremos saber qué categoría de género (Gender_Category) es más rentable.
 # Tu código aquí
 ```
 
-## 4. Visualización (Módulo 6)
+## 4. Visualización
 
 ### Ejercicio 4.1: Ventas por Canal
 
@@ -145,7 +145,7 @@ Usa la columna de fecha limpia (del Ejercicio 2.3).
 # Tu código aquí
 ```
 
-## 5. Programación Funcional (Módulo 7)
+## 5. Programación Funcional
 
 ### Ejercicio 5.1: Función de Clasificación
 

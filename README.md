@@ -27,31 +27,31 @@ Para seguir este curso, asegúrate de tener instalado lo siguiente en este orden
 El contenido está dividido en 7 módulos secuenciales. Cada módulo es un archivo Quarto (`.qmd`) que puedes renderizar en tu computadora.
 
 ### **Módulo 1: Introducción a R y RStudio**
-* `01_introduccion.qmd`
-* Historia de R, el entorno IDE, consola vs. script, y configuración del directorio de trabajo (Proyectos).
+* `Modulo_1.qmd`
+* Introducción a R y Rstudio, el entorno IDE, consola vs. script, primeros pasos.
 
 ### **Módulo 2: Sintaxis Básica y Tipos de Datos**
-* `02_sintaxis_tipos.qmd`
+* `Modulo_2.qmd`
 * Variables, operadores aritméticos y lógicos. Tipos atómicos: `numeric`, `character`, `logical`, `integer`.
 
 ### **Módulo 3: Estructuras de Datos Esenciales**
-* `03_estructuras.qmd`
+* `Modulo_3.qmd`
 * Vectores, Matrices, Listas y Data Frames. Indexación y subconjuntos (`[ ]`, `$`).
 
 ### **Módulo 4: Importación y Exportación**
-* `04_importacion.qmd`
+* `Modulo_4.qmd`
 * Lectura de datos desde Excel, CSV y archivos de texto. Guardar resultados para informes externos.
 
 ### **Módulo 5: Manipulación de Datos**
-* `05_manipulacion.qmd`
+* `Modulo_5.qmd`
 * Introducción al "Tidyverse". Uso de `dplyr` para filtrar, seleccionar, transformar y resumir información estadística.
 
 ### **Módulo 6: Visualización Avanzada**
-* `06_visualizacion.qmd`
+* `Modulo_6.qmd`
 * Gramática de gráficos con `ggplot2`. Geometrías, facetas, escalas y personalización estética para informes profesionales.
 
 ### **Módulo 7: Programación Funcional**
-* `07_funcional.qmd`
+* `Modulo_7.qmd`
 * Creación de funciones propias (`function()`), estructuras de control (`if`, `for`) y la familia `apply` vs `map`.
 
 ## 🚀 Cómo utilizar este material
@@ -61,7 +61,7 @@ El contenido está dividido en 7 módulos secuenciales. Cada módulo es un archi
 2.  **Abre el Proyecto:**
     * Haz doble clic en el archivo `.Rproj`. Esto abrirá RStudio en el contexto correcto.
 3.  **Renderizar (Compilar):**
-    * Abre cualquier archivo `.qmd` (por ejemplo, `01_introduccion.qmd`).
+    * Abre cualquier archivo `.qmd` (por ejemplo, `Modulo_1.qmd`).
     * Haz clic en el botón **Render** (ícono de flecha azul sobre el editor) para generar el documento HTML o PDF con la clase y los ejercicios resueltos.
 
 ## 🤝 Dudas y Contribuciones

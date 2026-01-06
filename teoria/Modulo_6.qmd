@@ -20,12 +20,9 @@ lang: es
 
 A diferencia de Excel, aquí no elegimos un "gráfico de la galería". Construimos el gráfico por **capas**, como si estuviéramos pintando un cuadro.
 
+La estructura básica es: $$Gráfico = Datos + Estética (aes) + Geometría (geom)$$
 
-
-La estructura básica es:
-$$Gráfico = Datos + Estética (aes) + Geometría (geom)$$
-
----
+------------------------------------------------------------------------
 
 ## Preparando los Datos
 
@@ -51,10 +48,9 @@ cartera <- tibble(
 
 Relación entre dos variables numéricas.
 
-**OJO**: Usamos + para agregar capas, no %>%.
+**OJO**: Usamos + para agregar capas, no %\>%.
 
-:::: {.columns}
-
+::::: columns
 ::: {.column width="50%"}
 ```{r}
 #| label: scatter
@@ -66,35 +62,29 @@ ggplot(data = cartera,
              size = 3)
 ```
 
-* Data: cartera
-* Aes: x=edad, y=prima
-* Geom: Puntos 
-
+-   Data: cartera
+-   Aes: x=edad, y=prima
+-   Geom: Puntos
 :::
 
 ::: {.column width="50%"}
-
 ```{r}
 #| label: scatter-out
 #| echo: false
 ggplot(data = cartera, aes(x = edad, y = prima)) +
   geom_point(color = "blue", size = 3) + theme_minimal()
 ```
-
 :::
+:::::
 
-::::
-
----
+------------------------------------------------------------------------
 
 ## 2. Mapeo de Colores (Aesthetics)
 
 ¿Y si queremos que el color dependa de una variable (ej. Tipo de Auto)? Movemos color DENTRO de aes().
 
-:::: {.columns}
-
+::::: columns
 ::: {.column width="45%"}
-
 ```{r}
 #| label: aes-color
 #| eval: false
@@ -104,11 +94,9 @@ ggplot(cartera,
            color = tipo_auto)) +
   geom_point(size = 3)
 ```
-
 :::
 
 ::: {.column width="55%"}
-
 ```{r}
 #| label: aes-color-out
 #| echo: false
@@ -116,20 +104,18 @@ ggplot(cartera, aes(x = edad, y = prima, color = tipo_auto)) +
   geom_point(size = 3) + theme_minimal(base_size = 14) + theme(legend.position="top")
 ```
 :::
+:::::
 
-::::
-
----
+------------------------------------------------------------------------
 
 ## 3. Gráficos de Distribución
+
 Vitales para actuarios: Histogramas y Boxplots.
 
 Histograma (Variable Numérica)
 
-:::: {.columns}
-
+::::: columns
 ::: {.column width="40%"}
-
 ```{r}
 #| label: hist
 #| eval: false
@@ -141,11 +127,9 @@ ggplot(cartera,
     color = "black"
   )
 ```
-
 :::
 
 ::: {.column width="60%"}
-
 ```{r}
 #| label: hist-out
 #| echo: false
@@ -153,19 +137,16 @@ ggplot(cartera, aes(x = prima)) +
   geom_histogram(bins = 15, fill = "skyblue", color = "black") + theme_minimal()
 ```
 :::
+:::::
 
-::::
-
----
+------------------------------------------------------------------------
 
 ## Boxplot (Numérica vs Categórica)
 
 Para ver dispersión y outliers por grupo.
 
-:::: {.columns}
-
+:::: columns
 ::: {.column width="40%"}
-
 ```{r}
 #| label: box
 #| eval: false
@@ -175,4 +156,16 @@ ggplot(cartera,
            fill = tipo_auto)) +
   geom_boxplot()
 ```
-
+:::
+:::: {.column width="60%"}
+```{r}
+#| label: box-out
+#| echo: false
+ggplot(cartera, 
+       aes(x = tipo_auto, 
+           y = prima,
+           fill = tipo_auto)) +
+  geom_boxplot()
+```
+:::
+:::::

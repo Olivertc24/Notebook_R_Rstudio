@@ -388,8 +388,8 @@
     "objectID": "teoria/Modulo_1.html#introducción",
     "href": "teoria/Modulo_1.html#introducción",
     "title": "Módulo 1: Introducción a R y RStudio",
-    "section": "",
-    "text": "Bienvenidos al curso.\nAntes de empezar, debemos distinguir entre las herramientas:\n\nR: Es el lenguaje de programación (el motor).\nRStudio: Es el Entorno de Desarrollo Integrado (el tablero de control).\n\n\n“R hace el cálculo, RStudio nos facilita la vida.”"
+    "section": "Introducción",
+    "text": "Introducción\nBienvenidos al curso.\nAntes de empezar, debemos distinguir entre las herramientas:\n\nR: Es el lenguaje de programación (el motor).\nRStudio: Es el Entorno de Desarrollo Integrado (el tablero de control).\n\n\n“R hace el cálculo, RStudio nos facilita la vida.”"
   },
   {
     "objectID": "teoria/Modulo_1.html#la-interfaz-de-rstudio",
@@ -417,14 +417,14 @@
     "href": "teoria/Modulo_1.html#variables-y-asignación",
     "title": "Módulo 1: Introducción a R y RStudio",
     "section": "Variables y Asignación",
-    "text": "Variables y Asignación\nPara guardar valores usamos el operador de asignación &lt;- (Alt + -).\n\nx &lt;- 20\ny &lt;- 10\n\n# Operamos con las variables\nresultado &lt;- x + y\nresultado\n\n[1] 30\n\n\n\n\n\n\n\n\nTip\n\n\n\nEvita usar = para asignar variables en R. Es una buena práctica usar siempre &lt;-."
+    "text": "Variables y Asignación\nPara guardar valores usamos el operador de asignación &lt;- (Alt + -).\n\nx &lt;- 20\ny &lt;- 10\n\n# Operamos con las variables\nresultado &lt;- x + y\nresultado\n\n[1] 30\n\n\n\n\n\n\n\n\nTip\n\n\nEvita usar = para asignar variables en R. Es una buena práctica usar siempre &lt;-."
   },
   {
     "objectID": "teoria/Modulo_1.html#tipos-de-datos-atómicos",
     "href": "teoria/Modulo_1.html#tipos-de-datos-atómicos",
     "title": "Módulo 1: Introducción a R y RStudio",
     "section": "Tipos de Datos (Atómicos)",
-    "text": "Tipos de Datos (Atómicos)\nR maneja diferentes “clases” de datos:\n\n1. Numeric y Character\n\n# Numérico\nprecio &lt;- 15.5\nclass(precio)\n\n[1] \"numeric\"\n\n# Caracter (Texto)\ncurso &lt;- \"Computacion I\"\nclass(curso)\n\n[1] \"character\""
+    "text": "Tipos de Datos (Atómicos)\nR maneja diferentes “clases” de datos:\n1. Numeric y Character\n\n# Numérico\nprecio &lt;- 15.5\nclass(precio)\n\n[1] \"numeric\"\n\n# Caracter (Texto)\ncurso &lt;- \"Computacion I\"\nclass(curso)\n\n[1] \"character\""
   },
   {
     "objectID": "teoria/Modulo_1.html#logical-booleanos",
@@ -438,14 +438,14 @@
     "href": "teoria/Modulo_1.html#vectores",
     "title": "Módulo 1: Introducción a R y RStudio",
     "section": "3. Vectores",
-    "text": "3. Vectores\nEs la estructura de datos fundamental. Colección de elementos del mismo tipo usando c().\n\nedades &lt;- c(25, 30, 22, 28)\nedades\n\n[1] 25 30 22 28\n\nnombres &lt;- c(\"Ana\", \"Luis\", \"Oliver\")\nnombres\n\n[1] \"Ana\"    \"Luis\"   \"Oliver\"\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nCuidado con la “Coerción”. Si mezclas tipos, R forzará a todos a ser del mismo tipo (usualmente texto).\n\n\n\n# Un número y un texto\nmezcla &lt;- c(10, \"Hola\")\n\nmezcla\n\n[1] \"10\"   \"Hola\"\n\nclass(mezcla)\n\n[1] \"character\""
+    "text": "3. Vectores\nEs la estructura de datos fundamental. Colección de elementos del mismo tipo usando c().\n\nedades &lt;- c(25, 30, 22, 28)\nedades\n\n[1] 25 30 22 28\n\nnombres &lt;- c(\"Ana\", \"Luis\", \"Oliver\")\nnombres\n\n[1] \"Ana\"    \"Luis\"   \"Oliver\""
   },
   {
     "objectID": "teoria/Modulo_1.html#ejercicio-práctico",
     "href": "teoria/Modulo_1.html#ejercicio-práctico",
     "title": "Módulo 1: Introducción a R y RStudio",
     "section": "Ejercicio Práctico:",
-    "text": "Ejercicio Práctico:\nCalcular el IMC (\\(IMC = \\frac{peso}{altura^2}\\))\n\npeso &lt;- 75      # kg\naltura &lt;- 1.80  # metros\n\nimc &lt;- peso / (altura^2)\n\n# Imprimir resultado redondeado\nround(imc, 2)\n\n[1] 23.15\n\n\n\n 🏠 Inicio \n\n\n\n¿Preguntas?"
+    "text": "Ejercicio Práctico:\nCalcular el IMC (\\(IMC = \\frac{peso}{altura^2}\\))\n\npeso &lt;- 75      # kg\naltura &lt;- 1.80  # metros\n\nimc &lt;- peso / (altura^2)\n\n# Imprimir resultado redondeado\nround(imc, 2)\n\n[1] 23.15\n\n\n\n 🏠 Inicio"
   },
   {
     "objectID": "teoria/Modulo_7.html#objetivo",

@@ -64,7 +64,7 @@ Devuelve: Tibble (Data Frame moderno).
 
 ## 2. Archivos de Excel (.xlsx)
 
-Para el mundo actuarial y financiero, Excel es inevitable. Usamos el paquete readxl.
+Para el mundo actual, Excel es inevitable. Usamos el paquete readxl.
 
 ```{r}
 #| eval: false
@@ -149,8 +149,6 @@ library(writexl)
 write_xlsx(list(Hoja1 = df1, Hoja2 = df2), "reporte_final.xlsx")
 ```
 
-<div style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
-  <a href="../index.qmd" class="btn btn-primary shadow-lg" role="button" style="border-radius: 50px; padding: 10px 20px;">
-    🏠 Inicio
-  </a>
-</div>
+::: {style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;"}
+<a href="../index.qmd" class="btn btn-primary shadow-lg" role="button" style="border-radius: 50px; padding: 10px 20px;"> 🏠 Inicio </a>
+:::

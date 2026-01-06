@@ -199,8 +199,8 @@
     "objectID": "teoria/Modulo_6.html#la-filosofía-ggplot2",
     "href": "teoria/Modulo_6.html#la-filosofía-ggplot2",
     "title": "Módulo 6: Visualización Avanzada",
-    "section": "La Filosofía ggplot2",
-    "text": "La Filosofía ggplot2\nA diferencia de Excel, aquí no elegimos un “gráfico de la galería”. Construimos el gráfico por capas, como si estuviéramos pintando un cuadro.\nLa estructura básica es: \\[Gráfico = Datos + Estética (aes) + Geometría (geom)\\]"
+    "section": "",
+    "text": "A diferencia de Excel, aquí no elegimos un “gráfico de la galería”. Construimos el gráfico por capas, como si estuviéramos pintando un cuadro.\nLa estructura básica es: \\[Gráfico = Datos + Estética (aes) + Geometría (geom)\\]"
   },
   {
     "objectID": "teoria/Modulo_6.html#preparando-los-datos",
@@ -235,70 +235,70 @@
     "href": "teoria/Modulo_6.html#boxplot-numérica-vs-categórica",
     "title": "Módulo 6: Visualización Avanzada",
     "section": "Boxplot (Numérica vs Categórica)",
-    "text": "Boxplot (Numérica vs Categórica)\nPara ver dispersión y outliers por grupo.\n\n\n\nggplot(cartera, \n       aes(x = tipo_auto, \n           y = prima,\n           fill = tipo_auto)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\n\n\n\n\n\n 🏠 Inicio"
+    "text": "Boxplot (Numérica vs Categórica)\nPara ver dispersión y outliers por grupo.\n\n\n\nggplot(cartera, \n       aes(x = tipo_auto, \n           y = prima,\n           fill = tipo_auto)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n 🏠 Inicio"
   },
   {
     "objectID": "teoria/Modulo_2.html#objetivo-del-módulo",
     "href": "teoria/Modulo_2.html#objetivo-del-módulo",
     "title": "Módulo 2: Sintaxis Básica y Tipos de Datos",
-    "section": "Objetivo del Módulo",
-    "text": "Objetivo del Módulo\nEn esta sesión aprenderemos la gramática esencial de R:\n\nUso de operadores y asignación.\nDistinción de tipos de datos atómicos.\nOperadores lógicos y relacionales.\nManejo correcto de datos faltantes (NA, NaN, NULL)."
+    "section": "",
+    "text": "En esta sesión aprenderemos la gramática esencial de R:\n\nUso de operadores y asignación.\nDistinción de tipos de datos atómicos.\nOperadores lógicos y relacionales.\nManejo correcto de datos faltantes (NA, NaN, NULL)."
   },
   {
     "objectID": "teoria/Modulo_2.html#asignación-de-variables",
     "href": "teoria/Modulo_2.html#asignación-de-variables",
     "title": "Módulo 2: Sintaxis Básica y Tipos de Datos",
     "section": "1. Asignación de Variables",
-    "text": "1. Asignación de Variables\nEn R existen dos formas principales de asignar valores:\n\nLa flecha (&lt;-) vs El igual (=)\n\n\n\nOperador &lt;- Es el estándar en R. Se prefiere por claridad histórica y alcance (scope).\n\nx &lt;- 10\nx\n\n[1] 10\n\n\n\nOperador = Funciona igual en la mayoría de casos simples, pero se reserva usualmente para argumentos dentro de funciones.\n\n\n\n\n\n\n\nTip\n\n\nBuenas prácticas: Usa &lt;- para crear variables y = para asignar parámetros dentro de funciones."
+    "text": "1. Asignación de Variables\nEn R existen dos formas principales de asignar valores:\n\n\nLa flecha (&lt;-) vs El igual (=)\n\n\n\n\nOperador &lt;- Es el estándar en R. Se prefiere por claridad histórica y alcance (scope).\n\nx &lt;- 10\nx\n\n[1] 10\n\n\n\nOperador = Funciona igual en la mayoría de casos simples, pero se reserva usualmente para argumentos dentro de funciones.\n\n\n\n\n\n\n\n\nTip\n\n\n\nBuenas prácticas: Usa &lt;- para crear variables y = para asignar parámetros dentro de funciones."
   },
   {
     "objectID": "teoria/Modulo_2.html#tipos-de-datos-atómicos",
     "href": "teoria/Modulo_2.html#tipos-de-datos-atómicos",
     "title": "Módulo 2: Sintaxis Básica y Tipos de Datos",
     "section": "2. Tipos de Datos Atómicos",
-    "text": "2. Tipos de Datos Atómicos\nR trabaja con vectores atómicos. Los 4 principales son:\nNuméricos (Numeric/Double) y Enteros (Integer) Por defecto, los números en R son numeric (decimales). Para forzar un entero, usamos la L.\n\na &lt;- 10.5\nb &lt;- 10   # Parece entero, pero internamente es numeric\nc &lt;- 10L  # La 'L' fuerza a que sea entero (Integer)\n\nclass(a)\n\n[1] \"numeric\"\n\nclass(b)\n\n[1] \"numeric\"\n\nclass(c)\n\n[1] \"integer\""
+    "text": "2. Tipos de Datos Atómicos\nR trabaja con vectores atómicos. Los 4 principales son:\n\nNuméricos (Numeric/Double) y Enteros (Integer)\nPor defecto, los números en R son numeric (decimales). Para forzar un entero, usamos la L.\n\na &lt;- 10.5\nb &lt;- 10   # Parece entero, pero internamente es numeric\nc &lt;- 10L  # La 'L' fuerza a que sea entero (Integer)\n\nclass(a)\n\n[1] \"numeric\"\n\nclass(b)\n\n[1] \"numeric\"\n\nclass(c)\n\n[1] \"integer\"\n\n\n\n\n\nCaracteres y Lógicos\n\n\nCharacter (String) Texto entre comillas simples o dobles.\n\nnombre &lt;- \"Oliver\"\nperfil &lt;- 'Profesor'\n\nclass(nombre)\n\n[1] \"character\"\n\n\n\nLogical (Boolean) Solo TRUE (T) o FALSE (F).\n\nflag &lt;- TRUE\notro_flag &lt;- F\n\nclass(flag)\n\n[1] \"logical\""
   },
   {
     "objectID": "teoria/Modulo_2.html#operadores",
     "href": "teoria/Modulo_2.html#operadores",
     "title": "Módulo 2: Sintaxis Básica y Tipos de Datos",
     "section": "3. Operadores",
-    "text": "3. Operadores\nAritméticos\nMás allá de sumar y restar, R tiene operadores específicos:\n\n10 / 3    # División normal\n\n[1] 3.333333\n\n10 %/% 3  # División entera (cociente)\n\n[1] 3\n\n10 %% 3   # Módulo (residuo)\n\n[1] 1\n\n2 ^ 3     # Potencia\n\n[1] 8"
+    "text": "3. Operadores\n\nAritméticos\nMás allá de sumar y restar, R tiene operadores específicos:\n\n10 / 3    # División normal\n\n[1] 3.333333\n\n10 %/% 3  # División entera (cociente)\n\n[1] 3\n\n10 %% 3   # Módulo (residuo)\n\n[1] 1\n\n2 ^ 3     # Potencia\n\n[1] 8\n\n\n\n\n\nRelacionales\nSirven para comparar valores y devuelven un logical.\n\nx &lt;- 10\ny &lt;- 5\n\nx &gt; y    # Mayor que\n\n[1] TRUE\n\nx == y   # Igualdad exacta (OJO: es doble igual)\n\n[1] FALSE\n\nx != y   # Diferente de\n\n[1] TRUE\n\n\n\n\n\nLógicos\nSirven para combinar condiciones (AND, OR, NOT).\n& : AND (Y).\n| : OR (O).\n! : NOT (Negación).\n\n(x &gt; 5) & (y &lt; 2)  # Verdadero Y Falso -&gt; Falso\n\n[1] FALSE\n\n(x &gt; 5) | (y &lt; 2)  # Verdadero O Falso -&gt; Verdadero\n\n[1] TRUE\n\n!TRUE              # Negación -&gt; Falso\n\n[1] FALSE"
   },
   {
     "objectID": "teoria/Modulo_2.html#valores-perdidos-y-especiales",
     "href": "teoria/Modulo_2.html#valores-perdidos-y-especiales",
     "title": "Módulo 2: Sintaxis Básica y Tipos de Datos",
     "section": "4. Valores Perdidos y Especiales",
-    "text": "4. Valores Perdidos y Especiales\nEn Ciencia de Datos, saber qué “no está” es vital.\nNA (Not Available)\nRepresenta un dato faltante. Existe el espacio, pero no sabemos el valor.\n\nedades &lt;- c(25, 30, NA)\nis.na(edades) # Función para detectar NAs\n\n[1] FALSE FALSE  TRUE"
+    "text": "4. Valores Perdidos y Especiales\nEn Ciencia de Datos, saber qué “no está” es vital.\n\nNA (Not Available)\nRepresenta un dato faltante. Existe el espacio, pero no sabemos el valor.\n\nedades &lt;- c(25, 30, NA)\nis.na(edades) # Función para detectar NAs\n\n[1] FALSE FALSE  TRUE\n\n\n\n\n\nNaN (Not a Number)\nResultado matemático imposible (indeterminado).\n\n0 / 0\n\n[1] NaN\n\nInf - Inf\n\n[1] NaN\n\n\n\n\nNULL\nRepresenta el vacío absoluto. No ocupa espacio en un vector.\n\nlista &lt;- c(1, 2, NULL, 4)\nlength(lista) # El NULL desaparece, longitud es 3\n\n[1] 3\n\n\n\n¡Fin del Módulo 2!\n\n\n\n\nPuntos didácticos incluidos en este código:\n\nDiferencia Numeric vs Integer: Esto es importante para la optimización de memoria en grandes volúmenes de datos, por eso incluí el sufijo L.\nOperadores Avanzados: Agregué Módulo (%%) y División Entera (%/%), que son muy útiles en programación lógica.\nLa tabla de Valores Especiales: Diferenciar NA de NULL suele ser confuso para iniciantes. El ejemplo de length() con NULL demuestra visualmente que NULL “no existe” para el vector, mientras que NA sí ocupa un espacio.\n\n\n 🏠 Inicio"
   },
   {
     "objectID": "teoria/Modulo_3.html#mapa-de-estructuras",
     "href": "teoria/Modulo_3.html#mapa-de-estructuras",
     "title": "Módulo 3: Estructuras de Datos Esenciales",
-    "section": "Mapa de Estructuras",
-    "text": "Mapa de Estructuras\nEn R, las estructuras se organizan según su dimensionalidad y contenido:\n\n\n\n\n\n\n\n\n\nHomogéneo (Solo un tipo de dato)\nHeterogéneo (Varios tipos de datos)\n\n\n\n\n1 Dimensión\nVector\nLista\n\n\n2 Dimensiones\nMatriz\nData Frame\n\n\nn Dimensiones\nArray"
+    "section": "",
+    "text": "En R, las estructuras se organizan según su dimensionalidad y contenido:\n\n\n\n\n\n\n\n\n\nHomogéneo (Solo un tipo de dato)\nHeterogéneo (Varios tipos de datos)\n\n\n\n\n1 Dimensión\nVector\nLista\n\n\n2 Dimensiones\nMatriz\nData Frame\n\n\nn Dimensiones\nArray"
   },
   {
     "objectID": "teoria/Modulo_3.html#vectores-profundización",
     "href": "teoria/Modulo_3.html#vectores-profundización",
     "title": "Módulo 3: Estructuras de Datos Esenciales",
     "section": "1. Vectores: Profundización",
-    "text": "1. Vectores: Profundización\nYa sabemos crearlos con c(). Ahora veamos la indexación y vectorización.\nIndexación (Slicing)\nRecuerda: R empieza a contar desde 1.\n\nv &lt;- c(10, 20, 30, 40, 50)\n\nv[1]          # Primer elemento\n\n[1] 10\n\nv[c(1, 3)]    # Elementos 1 y 3\n\n[1] 10 30\n\nv[-2]         # Todos MENOS el 2\n\n[1] 10 30 40 50"
+    "text": "1. Vectores: Profundización\nYa sabemos crearlos con c(). Ahora veamos la indexación y vectorización.\n\nIndexación (Slicing)\nRecuerda: R empieza a contar desde 1.\n\nv &lt;- c(10, 20, 30, 40, 50)\n\nv[1]          # Primer elemento\n\n[1] 10\n\nv[c(1, 3)]    # Elementos 1 y 3\n\n[1] 10 30\n\nv[-2]         # Todos MENOS el 2\n\n[1] 10 30 40 50\n\n\n\n\n\nOperaciones Vectorizadas\nEsta es la magia de R. No necesitas bucles (loops) para operar elemento por elemento.\n\nprecios &lt;- c(100, 200, 300)\nimpuesto &lt;- 1.21  # IVA\n\n# Operación aplicada a TODO el vector simultáneamente\nprecios_finales &lt;- precios * impuesto\nprecios_finales\n\n[1] 121 242 363"
   },
   {
     "objectID": "teoria/Modulo_3.html#matrices-y-arrays",
     "href": "teoria/Modulo_3.html#matrices-y-arrays",
     "title": "Módulo 3: Estructuras de Datos Esenciales",
     "section": "2. Matrices y Arrays",
-    "text": "2. Matrices y Arrays\nEstructuras de 2 dimensiones (filas y columnas) que solo contienen datos del mismo tipo (usualmente numéricos).\n\n# Crear una matriz de 3x3 llenada por filas\nM &lt;- matrix(1:9, nrow = 3, byrow = TRUE)\nM\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n[3,]    7    8    9"
+    "text": "2. Matrices y Arrays\nEstructuras de 2 dimensiones (filas y columnas) que solo contienen datos del mismo tipo (usualmente numéricos).\n\n# Crear una matriz de 3x3 llenada por filas\nM &lt;- matrix(1:9, nrow = 3, byrow = TRUE)\nM\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n[3,]    7    8    9\n\n\n\nAcceso a elementos [fila, columna]\n\nM[1, 2]  # Fila 1, Columna 2\n\n[1] 2\n\nM[ , 3]  # Toda la columna 3\n\n[1] 3 6 9\n\n\nÁlgebra Lineal Básica Como científicos de datos, distinguimos entre multiplicación elemento a elemento y matricial.\n\n\nElemento a Elemento (*)\n\nM * 2\n\n     [,1] [,2] [,3]\n[1,]    2    4    6\n[2,]    8   10   12\n[3,]   14   16   18\n\n\n\nProducto Matricial (%*%)\n\n# Multiplicación de matrices\nM %*% M\n\n     [,1] [,2] [,3]\n[1,]   30   36   42\n[2,]   66   81   96\n[3,]  102  126  150"
   },
   {
     "objectID": "teoria/Modulo_3.html#factores-categorías",
     "href": "teoria/Modulo_3.html#factores-categorías",
     "title": "Módulo 3: Estructuras de Datos Esenciales",
     "section": "3. Factores (Categorías)",
-    "text": "3. Factores (Categorías)\nEsenciales para estadística y gráficos. Almacenan datos categóricos y definen sus niveles.\n\nsexo &lt;- c(\"M\", \"F\", \"F\", \"M\")\nfactor_sexo &lt;- factor(sexo)\n\nfactor_sexo\n\n[1] M F F M\nLevels: F M\n\nlevels(factor_sexo) # R identifica los grupos únicos\n\n[1] \"F\" \"M\"\n\n\n\n\n\n\n\n\nAdvertencia\n\n\nInternamente, R guarda los factores como enteros (1, 2, 3…) asociados a etiquetas. Cuidado al convertirlos a numéricos."
+    "text": "3. Factores (Categorías)\nEsenciales para estadística y gráficos. Almacenan datos categóricos y definen sus niveles.\n\nsexo &lt;- c(\"M\", \"F\", \"F\", \"M\")\nfactor_sexo &lt;- factor(sexo)\n\nfactor_sexo\n\n[1] M F F M\nLevels: F M\n\nlevels(factor_sexo) # R identifica los grupos únicos\n\n[1] \"F\" \"M\"\n\n\n\n\n\n\n\n\nAdvertencia\n\n\n\nInternamente, R guarda los factores como enteros (1, 2, 3…) asociados a etiquetas. Cuidado al convertirlos a numéricos."
   },
   {
     "objectID": "teoria/Modulo_3.html#listas",
@@ -312,14 +312,14 @@
     "href": "teoria/Modulo_3.html#data-frames",
     "title": "Módulo 3: Estructuras de Datos Esenciales",
     "section": "5. Data Frames",
-    "text": "5. Data Frames\nLa estructura reina del Análisis de Datos. Filas = Observaciones, Columnas = Variables.\n\n# Crear un DF manualmente\nempleados &lt;- data.frame(\n  id = 1:3,\n  nombre = c(\"Ana\", \"Luis\", \"Sol\"),\n  salario = c(2500, 3000, 2800),\n  activo = c(TRUE, TRUE, FALSE)\n)\n\nhead(empleados)\n\n  id nombre salario activo\n1  1    Ana    2500   TRUE\n2  2   Luis    3000   TRUE\n3  3    Sol    2800  FALSE"
+    "text": "5. Data Frames\nLa estructura reina del Análisis de Datos. Filas = Observaciones, Columnas = Variables.\n\n# Crear un DF manualmente\nempleados &lt;- data.frame(\n  id = 1:3,\n  nombre = c(\"Ana\", \"Luis\", \"Sol\"),\n  salario = c(2500, 3000, 2800),\n  activo = c(TRUE, TRUE, FALSE)\n)\n\nhead(empleados)\n\n  id nombre salario activo\n1  1    Ana    2500   TRUE\n2  2   Luis    3000   TRUE\n3  3    Sol    2800  FALSE\n\n\n\nManipulación básica de Data Frames\n\n# Acceder a una columna (devuelve un vector)\nempleados$salario\n\n[1] 2500 3000 2800\n\n# Calcular promedio salarial\nmean(empleados$salario)\n\n[1] 2766.667\n\n# Filtrar (Indexación lógica)\nempleados[empleados$salario &gt; 2600, ]\n\n  id nombre salario activo\n2  2   Luis    3000   TRUE\n3  3    Sol    2800  FALSE\n\n\n\n 🏠 Inicio \n\n\n\n¿Preguntas?"
   },
   {
     "objectID": "teoria/Modulo_4.html#el-ciclo-de-vida-del-dato",
     "href": "teoria/Modulo_4.html#el-ciclo-de-vida-del-dato",
     "title": "Módulo 4: Importación y Exportación",
-    "section": "El Ciclo de Vida del Dato",
-    "text": "El Ciclo de Vida del Dato\nR rara vez genera sus propios datos desde cero. Lo normal es un flujo ETL:\n\nExtract (Importar): Leer desde CSV, Excel, SQL.\nTransform (Procesar): Limpiar y analizar (R).\nLoad (Exportar): Guardar resultados o reportes.\n\n\n\n\n\n\n\nNota\n\n\nPrerrequisito: Siempre verifica tu “Directorio de Trabajo” (getwd()) para saber dónde busca R los archivos."
+    "section": "",
+    "text": "R rara vez genera sus propios datos desde cero. Lo normal es un flujo ETL:\n\nExtract (Importar): Leer desde CSV, Excel, SQL.\nTransform (Procesar): Limpiar y analizar (R).\nLoad (Exportar): Guardar resultados o reportes.\n\n\n\n\n\n\n\nNota\n\n\n\nPrerrequisito: Siempre verifica tu “Directorio de Trabajo” (getwd()) para saber dónde busca R los archivos."
   },
   {
     "objectID": "teoria/Modulo_4.html#archivos-planos-.csv-.txt",
@@ -333,7 +333,7 @@
     "href": "teoria/Modulo_4.html#archivos-de-excel-.xlsx",
     "title": "Módulo 4: Importación y Exportación",
     "section": "2. Archivos de Excel (.xlsx)",
-    "text": "2. Archivos de Excel (.xlsx)\nPara el mundo actuarial y financiero, Excel es inevitable. Usamos el paquete readxl.\n\nlibrary(readxl)\n\n# Leer la primera hoja\nsiniestros &lt;- read_excel(\"base_siniestros.xlsx\")\n\n# Leer una hoja específica por nombre o índice\nreservas &lt;- read_excel(\"base_siniestros.xlsx\", \n                       sheet = \"Reservas_2025\")\n\n\n\n\n\n\n\nTip\n\n\nA diferencia de CSV, readxl puede detectar automáticamente los tipos de datos de las celdas de Excel."
+    "text": "2. Archivos de Excel (.xlsx)\nPara el mundo actual, Excel es inevitable. Usamos el paquete readxl.\n\nlibrary(readxl)\n\n# Leer la primera hoja\nsiniestros &lt;- read_excel(\"base_siniestros.xlsx\")\n\n# Leer una hoja específica por nombre o índice\nreservas &lt;- read_excel(\"base_siniestros.xlsx\", \n                       sheet = \"Reservas_2025\")\n\n\n\n\n\n\n\nTip\n\n\n\nA diferencia de CSV, readxl puede detectar automáticamente los tipos de datos de las celdas de Excel."
   },
   {
     "objectID": "teoria/Modulo_4.html#conexión-a-bases-de-datos-sql",
@@ -354,42 +354,42 @@
     "href": "teoria/Modulo_4.html#exportación-de-datos",
     "title": "Módulo 4: Importación y Exportación",
     "section": "5. Exportación de Datos",
-    "text": "5. Exportación de Datos\nDespués de analizar, debemos guardar los resultados limpios.\nA CSV (Universal)\n\n# Base R\nwrite.csv(datos_limpios, \"resultados.csv\", row.names = FALSE)\n\n# readr (Más rápido, sin nombres de filas por defecto)\nwrite_csv(datos_limpios, \"resultados_v2.csv\")\n\nA Excel\nRequiere paquete writexl.\n\nlibrary(writexl)\nwrite_xlsx(list(Hoja1 = df1, Hoja2 = df2), \"reporte_final.xlsx\")\n\n\n 🏠 Inicio"
+    "text": "5. Exportación de Datos\nDespués de analizar, debemos guardar los resultados limpios.\n\nA CSV (Universal)\n\n# Base R\nwrite.csv(datos_limpios, \"resultados.csv\", row.names = FALSE)\n\n# readr (Más rápido, sin nombres de filas por defecto)\nwrite_csv(datos_limpios, \"resultados_v2.csv\")\n\n\n\nA Excel\nRequiere paquete writexl.\n\nlibrary(writexl)\nwrite_xlsx(list(Hoja1 = df1, Hoja2 = df2), \"reporte_final.xlsx\")\n\n\n 🏠 Inicio"
   },
   {
     "objectID": "teoria/Modulo_5.html#qué-es-el-tidyverse",
     "href": "teoria/Modulo_5.html#qué-es-el-tidyverse",
     "title": "Módulo 5: Manipulación de Datos",
-    "section": "¿Qué es el Tidyverse?",
-    "text": "¿Qué es el Tidyverse?\nEs una colección de paquetes diseñados para la Ciencia de Datos. Todos comparten una misma filosofía de diseño, gramática y estructuras de datos.\n\nlibrary(tidyverse) \n# Carga dplyr, tidyr, readr, ggplot2, etc.\n\nVamos a trabajar con un dataframe de ejemplo:\n\nsiniestros &lt;- tibble(\n  id = 1:5,\n  ramo = c(\"Auto\", \"Vida\", \"Auto\", \"Salud\", \"Vida\"),\n  monto = c(500, 2000, 450, 150, 3000),\n  estado = c(\"Pagado\", \"Pendiente\", \"Pagado\", \"Pagado\", \"Rechazado\")\n)"
+    "section": "",
+    "text": "Es una colección de paquetes diseñados para la Ciencia de Datos. Todos comparten una misma filosofía de diseño, gramática y estructuras de datos.\n\nlibrary(tidyverse) \n# Carga dplyr, tidyr, readr, ggplot2, etc.\n\nVamos a trabajar con un dataframe de ejemplo:\n\nsiniestros &lt;- tibble(\n  id = 1:5,\n  ramo = c(\"Auto\", \"Vida\", \"Auto\", \"Salud\", \"Vida\"),\n  monto = c(500, 2000, 450, 150, 3000),\n  estado = c(\"Pagado\", \"Pendiente\", \"Pagado\", \"Pagado\", \"Rechazado\")\n)\n\n\n\nEl Operador Pipe (%&gt;% o |&gt;) El “pipe” nos permite encadenar operaciones. Se lee como “y entonces…”.\n\n\n%&gt;% (Magrittr): El clásico del tidyverse (Ctrl + Shift + M).\n|&gt; (Nativo): Disponible desde R 4.1.\n\n\nSin Pipe (Difícil de leer): summarise(group_by(filter(siniestros, monto &gt; 300), ramo))\nCon Pipe (Fluido):\n\nsiniestros %&gt;% \n  filter(monto &gt; 300) %&gt;% \n  group_by(ramo) %&gt;% \n  summarise(monto)\n\n# A tibble: 4 × 2\n# Groups:   ramo [2]\n  ramo  monto\n  &lt;chr&gt; &lt;dbl&gt;\n1 Auto    500\n2 Auto    450\n3 Vida   2000\n4 Vida   3000"
   },
   {
     "objectID": "teoria/Modulo_5.html#los-5-verbos-de-dplyr",
     "href": "teoria/Modulo_5.html#los-5-verbos-de-dplyr",
     "title": "Módulo 5: Manipulación de Datos",
     "section": "2. Los 5 Verbos de dplyr",
-    "text": "2. Los 5 Verbos de dplyr\nSelect y Filter\n\nselect(): Selecciona columnas (variables).\nfilter(): Selecciona filas según condiciones.\n\n\nsiniestros %&gt;% \n  filter(monto &gt; 400) %&gt;% \n  select(ramo, monto)\n\n# A tibble: 4 × 2\n  ramo  monto\n  &lt;chr&gt; &lt;dbl&gt;\n1 Auto    500\n2 Vida   2000\n3 Auto    450\n4 Vida   3000"
+    "text": "2. Los 5 Verbos de dplyr\n\nSelect y Filter\n\nselect(): Selecciona columnas (variables).\nfilter(): Selecciona filas según condiciones.\n\n\nsiniestros %&gt;% \n  filter(monto &gt; 400) %&gt;% \n  select(ramo, monto)\n\n# A tibble: 4 × 2\n  ramo  monto\n  &lt;chr&gt; &lt;dbl&gt;\n1 Auto    500\n2 Vida   2000\n3 Auto    450\n4 Vida   3000\n\n\n\n\n\nArrange y Mutate\n\narrange(): Ordena las filas.\nmutate(): Crea o modifica variables (columnas).\n\n\nsiniestros %&gt;% \n  arrange(desc(monto)) %&gt;% \n  mutate(iva = monto * 0.16,\n         total = monto + iva)\n\n# A tibble: 5 × 6\n     id ramo  monto estado      iva total\n  &lt;int&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1     5 Vida   3000 Rechazado   480  3480\n2     2 Vida   2000 Pendiente   320  2320\n3     1 Auto    500 Pagado       80   580\n4     3 Auto    450 Pagado       72   522\n5     4 Salud   150 Pagado       24   174\n\n\n\n\n\nSummarise (y Group_by)\nLa potencia real surge al combinar estos dos. group_by() rompe el dataset en grupos, y summarise() colapsa cada grupo en una sola fila (estadística).\n\nsiniestros %&gt;% \n  group_by(ramo) %&gt;% \n  summarise(\n    conteo = n(),\n    promedio_costo = mean(monto),\n    total_ramo = sum(monto)\n  )\n\n# A tibble: 3 × 4\n  ramo  conteo promedio_costo total_ramo\n  &lt;chr&gt;  &lt;int&gt;          &lt;dbl&gt;      &lt;dbl&gt;\n1 Auto       2            475        950\n2 Salud      1            150        150\n3 Vida       2           2500       5000"
   },
   {
     "objectID": "teoria/Modulo_5.html#reestructurar-con-tidyr",
     "href": "teoria/Modulo_5.html#reestructurar-con-tidyr",
     "title": "Módulo 5: Manipulación de Datos",
     "section": "3. Reestructurar con tidyr",
-    "text": "3. Reestructurar con tidyr\nA veces los datos vienen en formato “Ancho” (Excel) y los necesitamos en formato “Largo” (Tidy) para graficar o modelar.\n\nPivot Longer (De Ancho a Largo)\n\n\n# Datos \"Anchos\" (Ej: Reservas por año en columnas)\nreservas &lt;- tibble(\n  ramo = c(\"Auto\", \"Vida\"),\n  res_2023 = c(100, 500),\n  res_2024 = c(120, 550)\n)\nreservas\n\n# A tibble: 2 × 3\n  ramo  res_2023 res_2024\n  &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 Auto       100      120\n2 Vida       500      550"
+    "text": "3. Reestructurar con tidyr\nA veces los datos vienen en formato “Ancho” (Excel) y los necesitamos en formato “Largo” (Tidy) para graficar o modelar.\n\nPivot Longer (De Ancho a Largo)\n\n\n# Datos \"Anchos\" (Ej: Reservas por año en columnas)\nreservas &lt;- tibble(\n  ramo = c(\"Auto\", \"Vida\"),\n  res_2023 = c(100, 500),\n  res_2024 = c(120, 550)\n)\nreservas\n\n# A tibble: 2 × 3\n  ramo  res_2023 res_2024\n  &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 Auto       100      120\n2 Vida       500      550\n\n\n\n\nPivot Longer (De Ancho a Largo)\n\n\n# Transformación\nreservas_long &lt;- reservas %&gt;% \n  pivot_longer(\n    cols = c(res_2023, res_2024),\n    names_to = \"anio\",\n    values_to = \"reserva\"\n  )\nreservas_long\n\n# A tibble: 4 × 3\n  ramo  anio     reserva\n  &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;\n1 Auto  res_2023     100\n2 Auto  res_2024     120\n3 Vida  res_2023     500\n4 Vida  res_2024     550\n\n\n\n\nPivot Wider (De Largo a Ancho)\n\nLa operación inversa. Útil para presentar reportes finales.\n\nreservas_long %&gt;% \n  pivot_wider(\n    names_from = anio,\n    values_from = reserva\n  )\n\n# A tibble: 2 × 3\n  ramo  res_2023 res_2024\n  &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 Auto       100      120\n2 Vida       500      550"
   },
   {
     "objectID": "teoria/Modulo_5.html#unión-de-tablas-joins",
     "href": "teoria/Modulo_5.html#unión-de-tablas-joins",
     "title": "Módulo 5: Manipulación de Datos",
     "section": "4. Unión de Tablas (Joins)",
-    "text": "4. Unión de Tablas (Joins)\nVincular datos de dos fuentes distintas usando una clave común (key).\n\npolizas &lt;- tibble(id = 1:3, cliente = c(\"Ana\", \"Bob\", \"Cid\"))\nreclamos &lt;- tibble(id = c(1, 1, 2), monto = c(100, 200, 500))\n\n\n\nLeft Join Mantiene todas las pólizas, trae reclamos si existen.\n\nleft_join(polizas, reclamos, by = \"id\")\n\n# A tibble: 4 × 3\n     id cliente monto\n  &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;\n1     1 Ana       100\n2     1 Ana       200\n3     2 Bob       500\n4     3 Cid        NA\n\n\n\nInner Join Solo mantiene registros que existen en AMBAS tablas.\n\ninner_join(polizas, reclamos, by = \"id\")\n\n# A tibble: 3 × 3\n     id cliente monto\n  &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;\n1     1 Ana       100\n2     1 Ana       200\n3     2 Bob       500"
+    "text": "4. Unión de Tablas (Joins)\nVincular datos de dos fuentes distintas usando una clave común (key).\n\npolizas &lt;- tibble(id = 1:3, cliente = c(\"Ana\", \"Bob\", \"Cid\"))\nreclamos &lt;- tibble(id = c(1, 1, 2), monto = c(100, 200, 500))\n\n\n\nLeft Join Mantiene todas las pólizas, trae reclamos si existen.\n\nleft_join(polizas, reclamos, by = \"id\")\n\n# A tibble: 4 × 3\n     id cliente monto\n  &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;\n1     1 Ana       100\n2     1 Ana       200\n3     2 Bob       500\n4     3 Cid        NA\n\n\n\nInner Join Solo mantiene registros que existen en AMBAS tablas.\n\ninner_join(polizas, reclamos, by = \"id\")\n\n# A tibble: 3 × 3\n     id cliente monto\n  &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;\n1     1 Ana       100\n2     1 Ana       200\n3     2 Bob       500\n\n\n\n\n\n\nLeft Join: Todo lo de la izquierda (A).\nRight Join: Todo lo de la derecha (B).\nInner Join: Solo la intersección (\\(A \\cap B\\)).\nFull Join: Todo (\\(A \\cup B\\)).\n\n\nEjercicio: Intenta calcular el “Loss Ratio” (Siniestros / Primas) uniendo una tabla de primas con una de siniestros.\n\n\n 🏠 Inicio"
   },
   {
     "objectID": "teoria/Modulo_1.html#introducción",
     "href": "teoria/Modulo_1.html#introducción",
     "title": "Módulo 1: Introducción a R y RStudio",
-    "section": "Introducción",
-    "text": "Introducción\nBienvenidos al curso.\nAntes de empezar, debemos distinguir entre las herramientas:\n\nR: Es el lenguaje de programación (el motor).\nRStudio: Es el Entorno de Desarrollo Integrado (el tablero de control).\n\n\n“R hace el cálculo, RStudio nos facilita la vida.”"
+    "section": "",
+    "text": "Bienvenidos al curso.\nAntes de empezar, debemos distinguir entre las herramientas:\n\nR: Es el lenguaje de programación (el motor).\nRStudio: Es el Entorno de Desarrollo Integrado (el tablero de control).\n\n\n“R hace el cálculo, RStudio nos facilita la vida.”"
   },
   {
     "objectID": "teoria/Modulo_1.html#la-interfaz-de-rstudio",
@@ -417,14 +417,14 @@
     "href": "teoria/Modulo_1.html#variables-y-asignación",
     "title": "Módulo 1: Introducción a R y RStudio",
     "section": "Variables y Asignación",
-    "text": "Variables y Asignación\nPara guardar valores usamos el operador de asignación &lt;- (Alt + -).\n\nx &lt;- 20\ny &lt;- 10\n\n# Operamos con las variables\nresultado &lt;- x + y\nresultado\n\n[1] 30\n\n\n\n\n\n\n\n\nTip\n\n\nEvita usar = para asignar variables en R. Es una buena práctica usar siempre &lt;-."
+    "text": "Variables y Asignación\nPara guardar valores usamos el operador de asignación &lt;- (Alt + -).\n\nx &lt;- 20\ny &lt;- 10\n\n# Operamos con las variables\nresultado &lt;- x + y\nresultado\n\n[1] 30\n\n\n\n\n\n\n\n\nTip\n\n\n\nEvita usar = para asignar variables en R. Es una buena práctica usar siempre &lt;-."
   },
   {
     "objectID": "teoria/Modulo_1.html#tipos-de-datos-atómicos",
     "href": "teoria/Modulo_1.html#tipos-de-datos-atómicos",
     "title": "Módulo 1: Introducción a R y RStudio",
     "section": "Tipos de Datos (Atómicos)",
-    "text": "Tipos de Datos (Atómicos)\nR maneja diferentes “clases” de datos:\n1. Numeric y Character\n\n# Numérico\nprecio &lt;- 15.5\nclass(precio)\n\n[1] \"numeric\"\n\n# Caracter (Texto)\ncurso &lt;- \"Computacion I\"\nclass(curso)\n\n[1] \"character\""
+    "text": "Tipos de Datos (Atómicos)\nR maneja diferentes “clases” de datos:\n\n1. Numeric y Character\n\n# Numérico\nprecio &lt;- 15.5\nclass(precio)\n\n[1] \"numeric\"\n\n# Caracter (Texto)\ncurso &lt;- \"Computacion I\"\nclass(curso)\n\n[1] \"character\""
   },
   {
     "objectID": "teoria/Modulo_1.html#logical-booleanos",
@@ -438,35 +438,35 @@
     "href": "teoria/Modulo_1.html#vectores",
     "title": "Módulo 1: Introducción a R y RStudio",
     "section": "3. Vectores",
-    "text": "3. Vectores\nEs la estructura de datos fundamental. Colección de elementos del mismo tipo usando c().\n\nedades &lt;- c(25, 30, 22, 28)\nedades\n\n[1] 25 30 22 28\n\nnombres &lt;- c(\"Ana\", \"Luis\", \"Oliver\")\nnombres\n\n[1] \"Ana\"    \"Luis\"   \"Oliver\""
+    "text": "3. Vectores\nEs la estructura de datos fundamental. Colección de elementos del mismo tipo usando c().\n\nedades &lt;- c(25, 30, 22, 28)\nedades\n\n[1] 25 30 22 28\n\nnombres &lt;- c(\"Ana\", \"Luis\", \"Oliver\")\nnombres\n\n[1] \"Ana\"    \"Luis\"   \"Oliver\"\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nCuidado con la “Coerción”. Si mezclas tipos, R forzará a todos a ser del mismo tipo (usualmente texto).\n\n\n\n# Un número y un texto\nmezcla &lt;- c(10, \"Hola\")\n\nmezcla\n\n[1] \"10\"   \"Hola\"\n\nclass(mezcla)\n\n[1] \"character\""
   },
   {
     "objectID": "teoria/Modulo_1.html#ejercicio-práctico",
     "href": "teoria/Modulo_1.html#ejercicio-práctico",
     "title": "Módulo 1: Introducción a R y RStudio",
     "section": "Ejercicio Práctico:",
-    "text": "Ejercicio Práctico:\nCalcular el IMC (\\(IMC = \\frac{peso}{altura^2}\\))\n\npeso &lt;- 75      # kg\naltura &lt;- 1.80  # metros\n\nimc &lt;- peso / (altura^2)\n\n# Imprimir resultado redondeado\nround(imc, 2)\n\n[1] 23.15\n\n\n\n 🏠 Inicio"
+    "text": "Ejercicio Práctico:\nCalcular el IMC (\\(IMC = \\frac{peso}{altura^2}\\))\n\npeso &lt;- 75      # kg\naltura &lt;- 1.80  # metros\n\nimc &lt;- peso / (altura^2)\n\n# Imprimir resultado redondeado\nround(imc, 2)\n\n[1] 23.15\n\n\n\n 🏠 Inicio \n\n\n\n¿Preguntas?"
   },
   {
     "objectID": "teoria/Modulo_7.html#objetivo",
     "href": "teoria/Modulo_7.html#objetivo",
     "title": "Módulo 7: Programación Funcional",
-    "section": "Objetivo",
-    "text": "Objetivo\nAutomatizar tareas repetitivas y tomar decisiones lógicas.\n\n“Si te encuentras copiando y pegando el mismo código más de dos veces, es hora de escribir una función.”"
+    "section": "",
+    "text": "Automatizar tareas repetitivas y tomar decisiones lógicas.\n\n“Si te encuentras copiando y pegando el mismo código más de dos veces, es hora de escribir una función.”"
   },
   {
     "objectID": "teoria/Modulo_7.html#estructuras-de-control-if-else",
     "href": "teoria/Modulo_7.html#estructuras-de-control-if-else",
     "title": "Módulo 7: Programación Funcional",
     "section": "1. Estructuras de Control (if, else)",
-    "text": "1. Estructuras de Control (if, else)\nPermiten ejecutar código solo si se cumple una condición.\n\nsiniestro &lt;- 15000\nlimite &lt;- 10000\n\nif (siniestro &gt; limite) {\n  mensaje &lt;- \"Alerta: Siniestro excede el límite\"\n  prioridad &lt;- \"Alta\"\n} else if (siniestro == limite) {\n  mensaje &lt;- \"En el límite exacto\"\n  prioridad &lt;- \"Media\"\n} else {\n  mensaje &lt;- \"Siniestro dentro de parámetros\"\n  prioridad &lt;- \"Baja\"\n}\n\nprint(paste(mensaje, \"-\", prioridad))\n\n[1] \"Alerta: Siniestro excede el límite - Alta\""
+    "text": "1. Estructuras de Control (if, else)\nPermiten ejecutar código solo si se cumple una condición.\n\nsiniestro &lt;- 15000\nlimite &lt;- 10000\n\nif (siniestro &gt; limite) {\n  mensaje &lt;- \"Alerta: Siniestro excede el límite\"\n  prioridad &lt;- \"Alta\"\n} else if (siniestro == limite) {\n  mensaje &lt;- \"En el límite exacto\"\n  prioridad &lt;- \"Media\"\n} else {\n  mensaje &lt;- \"Siniestro dentro de parámetros\"\n  prioridad &lt;- \"Baja\"\n}\n\nprint(paste(mensaje, \"-\", prioridad))\n\n[1] \"Alerta: Siniestro excede el límite - Alta\"\n\n\n\n\nLa versión Vectorizada: ifelse()\nEn R, rara vez usamos if dentro de un bucle para una columna entera. Usamos ifelse().\n\n# Vector de siniestros\nmontos &lt;- c(500, 12000, 800)\n\n# ifelse(test, si_verdadero, si_falso)\nstatus &lt;- ifelse(montos &gt; 10000, \"Revisar\", \"Aprobar\")\n\nstatus\n\n[1] \"Aprobar\" \"Revisar\" \"Aprobar\""
   },
   {
     "objectID": "teoria/Modulo_7.html#bucles-loops",
     "href": "teoria/Modulo_7.html#bucles-loops",
     "title": "Módulo 7: Programación Funcional",
     "section": "2. Bucles (Loops)",
-    "text": "2. Bucles (Loops)\nLos bucles for y while son útiles para simulaciones o tareas recursivas.\n\n# Calcular crecimiento de una inversión año a año\ncapital &lt;- 1000\ntasas &lt;- c(0.05, 0.03) # Tasas variables\n\nfor (tasa in tasas) {\n  interes &lt;- capital * tasa\n  capital &lt;- capital + interes\n  print(paste(\"Capital acumulado:\", round(capital, 2)))\n}\n\n[1] \"Capital acumulado: 1050\"\n[1] \"Capital acumulado: 1081.5\"\n\n\n\n\n\n\n\n\nAdvertencia\n\n\n¡Ojo! En R, evita los bucles for si puedes hacer la operación directamente sobre el vector (vectorización). Es mucho más lento iterar fila por fila."
+    "text": "2. Bucles (Loops)\nLos bucles for y while son útiles para simulaciones o tareas recursivas.\n\n# Calcular crecimiento de una inversión año a año\ncapital &lt;- 1000\ntasas &lt;- c(0.05, 0.03) # Tasas variables\n\nfor (tasa in tasas) {\n  interes &lt;- capital * tasa\n  capital &lt;- capital + interes\n  print(paste(\"Capital acumulado:\", round(capital, 2)))\n}\n\n[1] \"Capital acumulado: 1050\"\n[1] \"Capital acumulado: 1081.5\"\n\n\n\n\n\n\n\n\nAdvertencia\n\n\n\n¡Ojo! En R, evita los bucles for si puedes hacer la operación directamente sobre el vector (vectorización). Es mucho más lento iterar fila por fila."
   },
   {
     "objectID": "teoria/Modulo_7.html#funciones-personalizadas",
@@ -480,7 +480,7 @@
     "href": "teoria/Modulo_7.html#la-familia-apply-base-r",
     "title": "Módulo 7: Programación Funcional",
     "section": "4. La Familia apply (Base R)",
-    "text": "4. La Familia apply (Base R)\nPara aplicar una función a cada elemento de una lista o matriz sin usar bucles for.\n\n\nlapply (List Apply) Devuelve siempre una lista.\n\nnums &lt;- list(a=10, b=20)\nlapply(nums, sqrt)\n\n$a\n[1] 3.162278\n\n$b\n[1] 4.472136\n\n\n\nsapply (Simplify Apply) Intenta devolver un vector o matriz.\n\nsapply(nums, sqrt)\n\n       a        b \n3.162278 4.472136"
+    "text": "4. La Familia apply (Base R)\nPara aplicar una función a cada elemento de una lista o matriz sin usar bucles for.\n\n\nlapply (List Apply) Devuelve siempre una lista.\n\nnums &lt;- list(a=10, b=20)\nlapply(nums, sqrt)\n\n$a\n[1] 3.162278\n\n$b\n[1] 4.472136\n\n\n\nsapply (Simplify Apply) Intenta devolver un vector o matriz.\n\nsapply(nums, sqrt)\n\n       a        b \n3.162278 4.472136 \n\n\n\n\n\n\napply para Matrices\nIdeal para operaciones por filas (1) o columnas (2).\n\nmatriz_riesgos &lt;- matrix(1:9, nrow = 3)\n\n# Sumar por FILAS (MARGIN = 1)\napply(matriz_riesgos, MARGIN = 1, sum)\n\n[1] 12 15 18\n\n# Promedio por COLUMNAS (MARGIN = 2)\napply(matriz_riesgos, MARGIN = 2, mean)\n\n[1] 2 5 8"
   },
   {
     "objectID": "teoria/Modulo_7.html#iteración-con-purrr-tidyverse",
@@ -494,7 +494,7 @@
     "href": "teoria/Modulo_7.html#resumen-de-flujo",
     "title": "Módulo 7: Programación Funcional",
     "section": "Resumen de Flujo",
-    "text": "Resumen de Flujo\n\nLógica: if, else para decisiones puntuales. ifelse() para columnas de datos.\nRepetición: for (usar con moderación).\nAbstracción: Crea tus propias function().\nIteración Funcional:\nBase: lapply, sapply.\nTidyverse: map, map_dbl.\n\n\n¡Automatiza todo!\n\n\n 🏠 Inicio"
+    "text": "Resumen de Flujo\n\nLógica: if, else para decisiones puntuales. ifelse() para columnas de datos.\nRepetición: for (usar con moderación).\nAbstracción: Crea tus propias function().\nIteración Funcional:\nBase: lapply, sapply.\nTidyverse: map, map_dbl.\n\n\n 🏠 Inicio"
   },
   {
     "objectID": "practica/Practica_Modulo_6.html",
@@ -740,5 +740,40 @@
     "title": "Bienvenido al Curso",
     "section": "Examen Practico: Integrar los conocimientos de un dataset “sucio” en información valiosa.",
     "text": "Examen Practico: Integrar los conocimientos de un dataset “sucio” en información valiosa.\n¡Comencemos a programar!"
+  },
+  {
+    "objectID": "teoria/Modulo_2.html",
+    "href": "teoria/Modulo_2.html",
+    "title": "Módulo 2: Sintaxis Básica y Tipos de Datos",
+    "section": "",
+    "text": "En esta sesión aprenderemos la gramática esencial de R:\n\nUso de operadores y asignación.\nDistinción de tipos de datos atómicos.\nOperadores lógicos y relacionales.\nManejo correcto de datos faltantes (NA, NaN, NULL)."
+  },
+  {
+    "objectID": "teoria/Modulo_3.html",
+    "href": "teoria/Modulo_3.html",
+    "title": "Módulo 3: Estructuras de Datos Esenciales",
+    "section": "",
+    "text": "En R, las estructuras se organizan según su dimensionalidad y contenido:\n\n\n\n\n\n\n\n\n\nHomogéneo (Solo un tipo de dato)\nHeterogéneo (Varios tipos de datos)\n\n\n\n\n1 Dimensión\nVector\nLista\n\n\n2 Dimensiones\nMatriz\nData Frame\n\n\nn Dimensiones\nArray"
+  },
+  {
+    "objectID": "teoria/Modulo_4.html",
+    "href": "teoria/Modulo_4.html",
+    "title": "Módulo 4: Importación y Exportación",
+    "section": "",
+    "text": "R rara vez genera sus propios datos desde cero. Lo normal es un flujo ETL:\n\nExtract (Importar): Leer desde CSV, Excel, SQL.\nTransform (Procesar): Limpiar y analizar (R).\nLoad (Exportar): Guardar resultados o reportes.\n\n\n\n\n\n\n\nNota\n\n\n\nPrerrequisito: Siempre verifica tu “Directorio de Trabajo” (getwd()) para saber dónde busca R los archivos."
+  },
+  {
+    "objectID": "teoria/Modulo_5.html",
+    "href": "teoria/Modulo_5.html",
+    "title": "Módulo 5: Manipulación de Datos",
+    "section": "",
+    "text": "Es una colección de paquetes diseñados para la Ciencia de Datos. Todos comparten una misma filosofía de diseño, gramática y estructuras de datos.\n\nlibrary(tidyverse) \n# Carga dplyr, tidyr, readr, ggplot2, etc.\n\nVamos a trabajar con un dataframe de ejemplo:\n\nsiniestros &lt;- tibble(\n  id = 1:5,\n  ramo = c(\"Auto\", \"Vida\", \"Auto\", \"Salud\", \"Vida\"),\n  monto = c(500, 2000, 450, 150, 3000),\n  estado = c(\"Pagado\", \"Pendiente\", \"Pagado\", \"Pagado\", \"Rechazado\")\n)\n\n\n\nEl Operador Pipe (%&gt;% o |&gt;) El “pipe” nos permite encadenar operaciones. Se lee como “y entonces…”.\n\n\n%&gt;% (Magrittr): El clásico del tidyverse (Ctrl + Shift + M).\n|&gt; (Nativo): Disponible desde R 4.1.\n\n\nSin Pipe (Difícil de leer): summarise(group_by(filter(siniestros, monto &gt; 300), ramo))\nCon Pipe (Fluido):\n\nsiniestros %&gt;% \n  filter(monto &gt; 300) %&gt;% \n  group_by(ramo) %&gt;% \n  summarise(monto)\n\n# A tibble: 4 × 2\n# Groups:   ramo [2]\n  ramo  monto\n  &lt;chr&gt; &lt;dbl&gt;\n1 Auto    500\n2 Auto    450\n3 Vida   2000\n4 Vida   3000"
+  },
+  {
+    "objectID": "teoria/Modulo_7.html",
+    "href": "teoria/Modulo_7.html",
+    "title": "Módulo 7: Programación Funcional",
+    "section": "",
+    "text": "Automatizar tareas repetitivas y tomar decisiones lógicas.\n\n“Si te encuentras copiando y pegando el mismo código más de dos veces, es hora de escribir una función.”"
   }
 ]

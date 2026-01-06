@@ -10,36 +10,36 @@ website:
         text: Inicio
       - text: "Módulos Teóricos"
         menu:
-          - text: "Módulo 1"
+          - text: "Módulo 1: Introducción y Primeros Pasos"
             file: teoria/Modulo_1.qmd
-          - text: "Módulo 2"
+          - text: "Módulo 2: Sintaxis y Tipos de Datos"
             file: teoria/Modulo_2.qmd
-          - text: "Módulo 3"
+          - text: "Módulo 3: Estructuras de Datos"
             file: teoria/Modulo_3.qmd
-          - text: "Módulo 4"
+          - text: "Módulo 4: Importación de Datos"
             file: teoria/Modulo_4.qmd
-          - text: "Módulo 5"
+          - text: "Módulo 5: Manipulación (Wrangling)"
             file: teoria/Modulo_5.qmd
-          - text: "Módulo 6"
+          - text: "Módulo 6: Visualización de Datos"
             file: teoria/Modulo_6.qmd
-          - text: "Módulo 7"
+          - text: "Módulo 7: Programación Funcional"
             file: teoria/Modulo_7.qmd
           # Añade aquí tus otros módulos cuando los muevas
       - text: "Práctica Interactiva"
         menu:
-          - text: "Práctica 1"
+          - text: "Práctica 1: Introducción y Primeros Pasos"
             file: practica/Practica_Modulo_1.qmd
-          - text: "Práctica 2"
+          - text: "Práctica 2: Sintaxis y Tipos de Datos"
             file: practica/Practica_Modulo_2.qmd
-          - text: "Práctica 3"
+          - text: "Práctica 3: Estructuras de Datos"
             file: practica/Practica_Modulo_3.qmd
-          - text: "Práctica 4"
+          - text: "Práctica 4: Importación de Datos"
             file: practica/Practica_Modulo_4.qmd
-          - text: "Práctica 5"
+          - text: "Práctica 5: Manipulación (Wrangling)"
             file: practica/Practica_Modulo_5.qmd
-          - text: "Práctica 6"
+          - text: "Práctica 6: Visualización de Datos"
             file: practica/Practica_Modulo_6.qmd
-          - text: "Práctica 7"
+          - text: "Práctica 7: Programación Funcional"
             file: practica/Practica_Modulo_7.qmd
       - text: "Examen Práctico"
         menu:

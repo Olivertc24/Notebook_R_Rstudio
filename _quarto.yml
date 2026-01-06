@@ -41,6 +41,11 @@ website:
             file: practica/Practica_Modulo_6.qmd
           - text: "Práctica 7"
             file: practica/Practica_Modulo_7.qmd
+      - text: "Examen Práctico"
+        menu:
+          - text: "Prueba"
+            file: prueba/Prueba_Practica.qmd
+
 format:
   html:
     theme: flatly

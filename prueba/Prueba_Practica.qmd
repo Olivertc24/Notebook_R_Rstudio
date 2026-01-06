@@ -1,0 +1,158 @@
+---
+title: "Evaluación Integral: R para Ciencia de Datos"
+subtitle: "Caso Práctico: Limpieza y Análisis de Ventas Nike"
+author: "Oliver Triveño"
+format: live-html
+engine: knitr
+editor: visual
+lang: es
+---
+
+## 🎯 Objetivo de la Evaluación
+
+Integrar los conocimientos de los Módulos 1 al 7 para transformar un dataset "sucio" en información valiosa.
+
+**Dataset:** `Nike_Sales_Uncleaned.csv`
+
+**Desafíos detectados:**
+
+-   Fechas en múltiples formatos (YYYY-MM-DD, DD-MM-YYYY, YYYY/MM/DD).
+
+-   Regiones escritas de forma inconsistente ("bengaluru", "Bangalore").
+
+-   Datos faltantes (`NA`) en unidades vendidas.
+
+-   Columnas numéricas que podrían leerse como texto.
+
+------------------------------------------------------------------------
+
+## 1. Importación e Inspección (Módulos 1, 4)
+
+### Ejercicio 1.1: Carga Robusta
+
+Carga los paquetes `tidyverse` y `lubridate` (para fechas).
+
+Lee el archivo `Nike_Sales_Uncleaned.csv`.
+
+*Pista:* Al leerlo, observa si la columna `Order_Date` se cargó como fecha o como texto.
+
+```{webr}
+#| message: false
+# 1. Cargar librerías
+
+# 2. Leer dataset
+
+# 3. Inspección inicial (glimpse o str)
+```
+
+## 2. Limpieza de Datos "Wrangling" (Módulo 5)
+
+### Ejercicio 2.1: Estandarización de Texto
+
+La columna Region es un desastre. Hay "bengaluru", "Bangalore", "Hyd", "Hyderabad".
+
+1.  Usa mutate() para convertir toda la columna Region a Título (primera letra mayúscula) usando str_to_title().
+
+2.  (Opcional/Reto) Usa case_when o str_replace para corregir "Hyd" a "Hyderabad" y "Bengaluru" a "Bangalore".
+
+```{webr}
+# Tu código aquí
+```
+
+### Ejercicio 2.2: Manejo de NAs
+
+La columna Units_Sold tiene valores vacíos (NA). Como actuario, decides ser conservador:
+
+1.  Filtra y elimina las filas donde Units_Sold sea NA (no podemos inventar ventas).
+
+2.  Verifica que ya no queden NAs en esa columna.
+
+```{webr}
+# Tu código aquí
+```
+
+### Ejercicio 2.3: El Infierno de las Fechas
+
+La columna Order_Date tiene formatos mezclados (2024-03-09 vs 15-10-2023). Intenta usar la función parse_date_time() del paquete lubridate con el argumento orders = c("ymd", "dmy") para estandarizar todo a una fecha real.
+
+```{webr}
+# Tu código aquí
+```
+
+## 3. Manipulación y Estructuras (Módulos 2, 3, 5)
+
+### Ejercicio 3.1: Creación de Métricas.
+
+Crea una nueva columna llamada Margen_Pct (Porcentaje de Margen) calculada como:
+
+$$Margen = \frac{Revenue - (MRP \times Units\_Sold)}{Revenue}$$
+
+Nota: Si el Revenue es 0, esto dará infinito. Filtra primero o acepta el riesgo.
+
+```{webr}
+# Tu código aquí
+```
+
+### Ejercicio 3.2: Agrupación
+
+Queremos saber qué categoría de género (Gender_Category) es más rentable.
+
+1.  Agrupa por Gender_Category.
+
+2.  Calcula el Total_Revenue (suma) y el Promedio_Profit (media).
+
+3.  Ordena de mayor a menor ingresos.
+
+```{webr}
+# Tu código aquí
+```
+
+## 4. Visualización (Módulo 6)
+
+### Ejercicio 4.1: Ventas por Canal
+
+Crea un gráfico de barras (geom_col) que muestre el Total de Revenue por Sales_Channel.
+
+-   Rellena las barras con un color corporativo (ej. "darkblue").
+
+-   Agrega etiquetas de texto o título.
+
+```{webr}
+# Tu código aquí
+```
+
+### Ejercicio 4.2: Serie de Tiempo (Tendencia)
+
+Usa la columna de fecha limpia (del Ejercicio 2.3).
+
+1.  Grafica la evolución del Revenue a lo largo del tiempo (geom_line o geom_smooth).
+
+2.  Separa el gráfico en dos paneles (facetas) según Sales_Channel (Retail vs Online).
+
+```{webr}
+# Tu código aquí
+```
+
+## 5. Programación Funcional (Módulo 7)
+
+### Ejercicio 5.1: Función de Clasificación
+
+Crea una función personalizada llamada clasificar_rentabilidad que reciba un valor numérico (profit) y devuelva:
+
+-   "Pérdida" si es \< 0
+
+-   "Baja" si está entre 0 y 500
+
+-   "Alta" si es \> 500
+
+```{webr}
+# Define tu función aquí
+```
+
+### Ejercicio 5.2: Aplicación Vectorizada
+
+Aplica tu función a la columna Profit del dataset para crear una nueva variable categórica Tipo_Rentabilidad. Usa mutate() junto con tu función (o map_chr si prefieres purrr). Cuenta cuántas transacciones hay de cada tipo.
+
+```{webr}
+# Tu código aquí
+```

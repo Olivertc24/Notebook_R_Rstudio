@@ -12,11 +12,11 @@ lang: es
 #| context: setup
 
 # 1. Definimos la URL Raw
-url_nike <- "https://raw.githubusercontent.com/Olivertc24/Notebook_R_Rstudio/refs/heads/main/practica/data_house_price.csv"
+url_casa <- "https://raw.githubusercontent.com/Olivertc24/Notebook_R_Rstudio/refs/heads/main/practica/data_house_price.csv"
 install.packages("tidyverse")
 
 # 2. Descargamos el archivo al sistema virtual de WebR
-download.file(url_nike, "data_house_price.csv")
+download.file(url_casa, "data_house_price.csv")
 ```
 
 ## Instrucciones

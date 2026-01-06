@@ -10,5 +10,6 @@ En este sitio encontrarán todo el material del curso de R y RStudio.
 
 1.  **Teoría:** Conceptos fundamentales explicados con Quarto.
 2.  **Práctica:** Ejercicios interactivos que se ejecutan directamente en su navegador.
+3.  **Examen Practico:** Integrar los conocimientos de un dataset “sucio” en información valiosa. 
 
 ¡Comencemos a programar!

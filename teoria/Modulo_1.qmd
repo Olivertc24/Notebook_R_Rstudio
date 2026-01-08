@@ -1,6 +1,6 @@
 ---
 title: "Módulo 1: Introducción a R y RStudio"
-subtitle: "Fundamentos de Programación"
+subtitle: "Fundamentos de Programacións"
 author: "Prof. Oliver Triveño"
 format: 
   revealjs:
@@ -16,16 +16,60 @@ editor: visual
 lang: es
 ---
 
-## Introducción {background-color="aquamarine"}
+## 1. ¿Qué es R?
 
-Bienvenidos al curso.
+### Breve Historia y Propósito
 
-Antes de empezar, debemos distinguir entre las herramientas:
+* **Origen:** Nació a principios de los 90 en la Universidad de Auckland, Nueva Zelanda.
+    * Creado por **Ross Ihaka y Robert Gentleman**.
+    * Propósito: Un entorno estadístico **libre (open source)** basado en el lenguaje **S**.
+* **Filosofía:** Combinar la potencia de S con una sintaxis más accesible.
 
--   **R**: Es el lenguaje de programación (el motor).
--   **RStudio**: Es el Entorno de Desarrollo Integrado (el tablero de control).
+------------------------------------------------------------------------
 
-> "R hace el cálculo, RStudio nos facilita la vida."
+### Ventajas de R
+
+* **Especializado en análisis estadístico y científico:**
+  * Miles de **paquetes específicos** en CRAN para casi cualquier tipo de análisis.
+* **Lenguaje interpretado y flexible:**
+  * Ejecuta comandos **al vuelo** en la consola.
+  
+-----------------------------------------------------------------------  
+
+### Ventajas de R
+
+* No necesita compilación.
+* **Comunidad activa y en crecimiento:**
+  * Amplia documentación, foros, grupos de usuarios (R-Ladies, RStudio Community, StackOverflow).
+* **Gráficos de alta calidad:**
+  * Con paquetes como **`ggplot2`**, `lattice`, `plotly`, crea visualizaciones impresionantes.
+  
+------------------------------------------------------------------------
+
+### Instalación de R y RStudio
+  
+1.  **Instalar R:**
+  * Descargar desde **CRAN**: `https://cran.r-project.org`
+* Elegir según tu **sistema operativo**.
+* Seguir el instalador (las opciones predeterminadas suelen ser adecuadas).
+
+------------------------------------------------------------------------
+
+### Instalación de R y RStudio
+
+2.  **Instalar RStudio (IDE):**
+  * Descargar el **IDE de escritorio** desde: `https://posit.co/download/rstudio-desktop/`
+* RStudio detectará automáticamente tu instalación de R al abrirlo.
+
+------------------------------------------------------------------------
+
+### Sistemas Operativos Soportados
+  
+  * **Windows:** Ejecutable `.exe`
+
+* **macOS:** Paquete `.pkg`
+
+* **Linux:** Paquetes `.deb` (Debian/Ubuntu) o `.rpm` (Fedora/Red Hat). También se puede compilar desde el código fuente.
 
 ------------------------------------------------------------------------
 
@@ -48,7 +92,97 @@ RStudio se divide en 4 paneles principales:
 
 ------------------------------------------------------------------------
 
-## R como Calculadora
+## 2. Interfaz de RStudio
+  
+### Paneles Principales
+  
+  * **Consola (`Console`)**
+  * Donde se ejecutan los comandos directamente.
+* `>`: indica que R está esperando un comando.
+* `+`: indica que R espera la continuación de un comando (ej. en líneas largas).
+
+------------------------------------------------------------------------
+
+### Editor de Scripts (`Source`)
+  
+* **Espacio de trabajo:** Donde escribimos y guardamos nuestro código R (`.R` files).
+* **Ventajas:** Permite organizar, documentar y reproducir tu trabajo.
+* **Atajos para ejecutar:**
+  * Windows/Linux: `Ctrl + Enter` (ejecuta línea actual o selección).
+  * macOS: `Cmd + Enter`.
+  
+------------------------------------------------------------------------
+
+### Editor de Scripts (`Source`)
+
+* **Guardar script:** `Ctrl + S` (o `Cmd + S`).
+* Sugerencia: Nombrar descriptivamente (ej. `analisis_ventas.R`).
+
+-----------------------------------------------------------------------
+
+### Entorno (`Environment`) / Historial (`History`)
+  
+* **Environment:** Muestra todas las **variables y funciones** activas en tu sesión de R.
+* `ls()`: Lista todos los objetos en el entorno global.
+* `rm(x)`: Elimina el objeto `x`.
+* `remove(list = ls())`: **Limpia todo** el espacio de trabajo.
+* **History:** Almacena un registro de **todos los comandos** ejecutados.
+* Puedes hacer clic para volver a ejecutar o copiar al script.
+
+-----------------------------------------------------------------------
+
+### Otros Paneles: Archivos, Gráficos, Paquetes, Ayuda
+  
+* **Files:** Navegador de carpetas. Permite abrir scripts, CSV, etc.
+* **Plots:** Muestra los **gráficos** generados.
+* Botones para exportar (PNG, PDF) y navegar por el historial de gráficos.
+* **Packages:** Lista de paquetes **instalados**.
+  * Casillas para **cargar/descargar** paquetes.
+  * Botones para **instalar** nuevos paquetes (CRAN, GitHub).
+
+
+-----------------------------------------------------------------------
+
+### Otros Paneles: Archivos, Gráficos, Paquetes, Ayuda
+
+* Ej: Escribir `mean` y presionar Enter para ver la ayuda de la función `mean()`.
+* **Help:** Buscador de **documentación interna** de R y paquetes.
+
+------------------------------------------------------------------------
+
+### Configuración de Preferencias
+  
+* **Menú `Tools` $\rightarrow$ `Global Options...`**
+* **Appearance:** Tema (claro/oscuro), tamaño de fuente, tipografía.
+* **Code:** Autocompletado, sangrías automáticas, estilo de código.
+* **Keyboard Shortcuts:** Personalizar atajos.
+* **Pane Layout:** Reorganizar la posición de los paneles.
+* **Git/SVN:** Configurar control de versiones (si tienes Git instalado).
+
+------------------------------------------------------------------------
+
+### Directorio de Trabajo
+  
+* **Concepto:** La carpeta donde R buscará archivos y guardará resultados por defecto.
+* **Comandos en consola:**
+  * `getwd()`: Muestra el directorio actual.
+* `setwd("ruta/a/mi/carpeta")`: Cambia el directorio de trabajo.
+* **Recomendación:** Usar **Proyectos de RStudio** para manejar automáticamente el directorio de trabajo.
+
+------------------------------------------------------------------------
+
+### Creación y Manejo de Proyectos
+  
+* **Propósito:** Aislar tu trabajo y organizar tus archivos.
+* **Ventajas:**
+* **Rutas relativas:** Evita problemas con rutas absolutas.
+* **Entorno limpio:** Variables y configuraciones específicas del proyecto.
+* **Integración con Git:** Facilita el control de versiones.
+* **Cómo crear:** `File` $\rightarrow$ `New Project...` $\rightarrow$ `New Directory` $\rightarrow$ `New Project` (o usar una carpeta existente).
+
+------------------------------------------------------------------------
+
+## 3. R como Calculadora
 
 Lo más básico: operaciones matemáticas directas.
 
@@ -67,7 +201,9 @@ Lo más básico: operaciones matemáticas directas.
 2^5
 ```
 
-## Funciones Matemáticas
+------------------------------------------------------------------------
+
+### Funciones Matemáticas
 
 R tiene funciones integradas para cálculos más complejos.
 
@@ -82,7 +218,7 @@ pi         # Constante Pi
 
 ------------------------------------------------------------------------
 
-## Variables y Asignación
+## 4. Variables y Asignación
 
 Para guardar valores usamos el operador de asignación \<- (Alt + -).
 
@@ -103,7 +239,7 @@ Evita usar = para asignar variables en R. Es una buena práctica usar siempre \<
 
 ------------------------------------------------------------------------
 
-## Tipos de Datos (Atómicos)
+## 5. Tipos de Datos (Atómicos)
 
 R maneja diferentes "clases" de datos:
 
@@ -119,7 +255,10 @@ curso <- "Computacion I"
 class(curso)
 ```
 
-## 2. Logical (Booleanos)
+
+------------------------------------------------------------------------
+
+### 2. Logical (Booleanos)
 
 Solo existen TRUE y FALSE. Son vitales para filtrar datos.
 
@@ -135,7 +274,7 @@ soy_alumno <- FALSE
 
 ------------------------------------------------------------------------
 
-## 3. Vectores
+### 3. Vectores
 
 Es la estructura de datos fundamental. Colección de elementos del mismo tipo usando c().
 
@@ -167,6 +306,100 @@ class(mezcla)
 
 ------------------------------------------------------------------------
 
+## 6. Ver Contenido y Estructura de Variables
+
+````r
+ls(): Lista nombres de todos los objetos en el entorno.
+
+print(x): Muestra el valor de x explícitamente (escribir x en consola también lo muestra).
+
+str(objeto): Muestra la estructura interna (tipo, dimensiones, ejemplo de contenido).
+
+class(objeto): Devuelve la clase del objeto (ej. "numeric", "data.frame").
+
+length(vector): Número de elementos en un vector.
+
+dim(matriz_o_df): Devuelve filas y columnas de una matriz o data frame.
+````
+
+------------------------------------------------------------------------
+
+* **Comentarios en Código**
+  
+* **Todo lo que sigue al símbolo # en una línea es ignorado por R.**
+* **Crucial para documentar y explicar tu código.**
+  
+````{r}
+# Esto es un comentario: el texto aquí no se ejecuta.
+
+x <- 10 # Esto es un comentario en la misma línea que el código.
+
+y <- x * 2 # Calculamos el doble de x
+
+print(y) # Mostramos el resultado
+````
+------------------------------------------------------------------------
+
+## 7. Scripts y Guardado de Código
+  
+  * **Crear un Script**
+  
+  * **1. File $\rightarrow$ New File $\rightarrow$ R Script.**
+  * **2. Escribe varias líneas de código.**
+  
+
+```{r}
+# Mi primer script de R
+
+# Este script calcula el producto de dos números
+
+numero1 <- 8
+
+numero2 <- 6
+
+resultado_producto <- numero1 * numero2
+
+print(paste("El producto es:", resultado_producto))
+```
+
+------------------------------------------------------------------------
+
+## 7. Scripts y Guardado de Código
+
+* **3. Guarda con Ctrl + S (Windows/Linux) o Cmd + S (macOS), dale un nombre (ej. script_basico.R).**
+
+------------------------------------------------------------------------
+
+## 8. EXTRA
+  
+  
+* **Ejecutar Fragmentos y Scripts Completos**
+  
+
+* Ejecutar fragmentos:
+  * Selecciona la línea o bloque de líneas.
+  * Presiona Ctrl + Enter (o Cmd + Enter).
+  * El resultado aparecerá en la Consola.
+* Ejecutar script completo:
+  * Usa el botón Source (arriba del panel de script).
+  * O ejecuta source("ruta/a/tu/script_basico.R") en la Consola.
+
+------------------------------------------------------------------------
+
+## 8. EXTRA
+
+* **Diferencia entre Consola y Source**
+
+* Consola:
+  * Para comandos rápidos, pruebas, o resultados inmediatos.
+  * El código se ejecuta al instante y no se guarda automáticamente.
+* Source (Editor de Scripts):
+  * Para almacenar, organizar y documentar tu código.
+  * Permite la reproducibilidad de tu análisis.
+  * Es el lugar principal para desarrollar tus proyectos.
+
+------------------------------------------------------------------------
+
 ## Ejercicio Práctico:
 
 Calcular el IMC ($IMC = \frac{peso}{altura^2}$)
@@ -183,11 +416,10 @@ imc <- peso / (altura^2)
 round(imc, 2)
 ```
 
-<div style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
-  <a href="../index.qmd" class="btn btn-primary shadow-lg" role="button" style="border-radius: 50px; padding: 10px 20px;">
-    🏠 Inicio
-  </a>
-</div>
+::: {style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;"}
+<a href="../index.qmd" class="btn btn-primary shadow-lg" role="button" style="border-radius: 50px; padding: 10px 20px;"> 🏠 Inicio </a>
+:::
+
 ------------------------------------------------------------------------
 
 ::: r-fit-text

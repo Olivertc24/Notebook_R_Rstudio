@@ -209,25 +209,59 @@ Prof.&nbsp;Oliver Triveño
 </section>
 <section id="la-filosofía-ggplot2" class="slide level2">
 <h2>La Filosofía <code>ggplot2</code></h2>
-<p>A diferencia de Excel, aquí no elegimos un “gráfico de la galería”. Construimos el gráfico por <strong>capas</strong>, como si estuviéramos pintando un cuadro.</p>
+<ul>
+<li><p>ggplot2 es un sistema para crear gráficos de forma declarativa, basado en la “Gramática de Gráficos”. Esto significa que construyes tus visualizaciones especificando componentes en lugar de los pasos exactos para dibujarlos.</p></li>
+<li><p>A diferencia de Excel, aquí no elegimos un “gráfico de la galería”. Construimos el gráfico por <strong>capas</strong>, como si estuviéramos pintando un cuadro.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
 <p>La estructura básica es: <span class="math display">\[Gráfico = Datos + Estética (aes) + Geometría (geom)\]</span></p>
+<ul>
+<li><p>Gramática de gráficos:</p>
+<ul>
+<li><p>Datos (data): El data frame con la información que quieres visualizar.</p></li>
+<li><p>Mapeos estéticos (aes()): Define cómo las variables de tus datos se traducen en propiedades visuales (ejes x, y, color, tamaño, forma, etc.).</p></li>
+<li><p>Geometrías (geom_*): El tipo de gráfico que quieres dibujar (puntos, líneas, barras, etc.).</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="estructura-básica-de-ggplot2" class="slide level2">
+<h2>Estructura Básica de ggplot2</h2>
+<p>La estructura fundamental de un gráfico en ggplot2 es simple:</p>
+<ul>
+<li><ol type="1">
+<li>Empiezas con la función ggplot()</li>
+</ol></li>
+<li><ol start="2" type="1">
+<li>Especificas los datos y los mapeos estéticos</li>
+</ol></li>
+<li><ol start="3" type="1">
+<li>Añade capas usando +.</li>
+</ol></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> df, <span class="fu">aes</span>(<span class="at">x =</span> var1, <span class="at">y =</span> var2)) <span class="sc">+</span></span>
+<span id="cb1-2"><a></a>   <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="preparando-los-datos" class="slide level2">
 <h2>Preparando los Datos</h2>
 <p>Vamos a simular una cartera de seguros de Automóvil para los ejemplos.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a><span class="co"># Semilla para reproducibilidad</span></span>
-<span id="cb1-4"><a></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb1-5"><a></a></span>
-<span id="cb1-6"><a></a>cartera <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb1-7"><a></a>  <span class="at">edad =</span> <span class="fu">sample</span>(<span class="dv">18</span><span class="sc">:</span><span class="dv">70</span>, <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb1-8"><a></a>  <span class="at">tipo_auto =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Sedan"</span>, <span class="st">"SUV"</span>, <span class="st">"Deportivo"</span>), <span class="dv">100</span>, <span class="at">replace =</span> T),</span>
-<span id="cb1-9"><a></a>  <span class="at">prima =</span> <span class="fu">jitter</span>(edad <span class="sc">*</span> <span class="dv">10</span> <span class="sc">+</span> <span class="fu">sample</span>(<span class="dv">200</span><span class="sc">:</span><span class="dv">500</span>, <span class="dv">100</span>)),</span>
-<span id="cb1-10"><a></a>  <span class="at">siniestro =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.8</span>, <span class="fl">0.2</span>))</span>
-<span id="cb1-11"><a></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-12"><a></a>  <span class="fu">mutate</span>(<span class="at">siniestro =</span> <span class="fu">as.factor</span>(siniestro))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-3"><a></a><span class="fu">library</span>(scales)</span>
+<span id="cb2-4"><a></a></span>
+<span id="cb2-5"><a></a><span class="co"># Semilla para reproducibilidad</span></span>
+<span id="cb2-6"><a></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb2-7"><a></a></span>
+<span id="cb2-8"><a></a>cartera <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb2-9"><a></a>  <span class="at">edad =</span> <span class="fu">sample</span>(<span class="dv">18</span><span class="sc">:</span><span class="dv">70</span>, <span class="dv">120</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-10"><a></a>  <span class="at">tipo_auto =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Sedan"</span>, <span class="st">"SUV"</span>, <span class="st">"Deportivo"</span>), <span class="dv">120</span>, <span class="at">replace =</span> T),</span>
+<span id="cb2-11"><a></a>  <span class="at">prima =</span> <span class="fu">jitter</span>(edad <span class="sc">*</span> <span class="dv">10</span> <span class="sc">+</span> <span class="fu">sample</span>(<span class="dv">200</span><span class="sc">:</span><span class="dv">500</span>, <span class="dv">120</span>)),</span>
+<span id="cb2-12"><a></a>  <span class="at">siniestro =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">120</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.8</span>, <span class="fl">0.2</span>)),</span>
+<span id="cb2-13"><a></a>  <span class="at">mes =</span> <span class="fu">rep</span>(<span class="fu">seq</span>(<span class="fu">as.Date</span>(<span class="st">"2025-01-01"</span>), <span class="at">by =</span> <span class="st">"month"</span>, <span class="at">length.out =</span> <span class="dv">12</span>), <span class="at">times =</span> <span class="dv">10</span>)</span>
+<span id="cb2-14"><a></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-15"><a></a>  <span class="fu">mutate</span>(<span class="at">siniestro =</span> <span class="fu">as.factor</span>(siniestro))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="dispersión-scatter-plot" class="slide level2">
@@ -237,11 +271,11 @@ Prof.&nbsp;Oliver Triveño
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> cartera, </span>
-<span id="cb2-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> edad, </span>
-<span id="cb2-3"><a></a>           <span class="at">y =</span> prima)) <span class="sc">+</span></span>
-<span id="cb2-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, </span>
-<span id="cb2-5"><a></a>             <span class="at">size =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> cartera, </span>
+<span id="cb3-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> edad, </span>
+<span id="cb3-3"><a></a>           <span class="at">y =</span> prima)) <span class="sc">+</span></span>
+<span id="cb3-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, </span>
+<span id="cb3-5"><a></a>             <span class="at">size =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Data: cartera</li>
@@ -260,17 +294,18 @@ Prof.&nbsp;Oliver Triveño
 </div>
 </div></div>
 </section>
-<section id="mapeo-de-colores-aesthetics" class="slide level2">
-<h2>2. Mapeo de Colores (Aesthetics)</h2>
+<section class="slide level2">
+
+<h3 id="mapeo-de-colores-aesthetics">Mapeo de Colores (Aesthetics)</h3>
 <p>¿Y si queremos que el color dependa de una variable (ej. Tipo de Auto)? Movemos color DENTRO de aes().</p>
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(cartera, </span>
-<span id="cb3-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> edad, </span>
-<span id="cb3-3"><a></a>           <span class="at">y =</span> prima,</span>
-<span id="cb3-4"><a></a>           <span class="at">color =</span> tipo_auto)) <span class="sc">+</span></span>
-<span id="cb3-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(cartera, </span>
+<span id="cb4-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> edad, </span>
+<span id="cb4-3"><a></a>           <span class="at">y =</span> prima,</span>
+<span id="cb4-4"><a></a>           <span class="at">color =</span> tipo_auto)) <span class="sc">+</span></span>
+<span id="cb4-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:55%;">
 <div class="cell">
@@ -285,19 +320,19 @@ Prof.&nbsp;Oliver Triveño
 </div></div>
 </section>
 <section id="gráficos-de-distribución" class="slide level2">
-<h2>3. Gráficos de Distribución</h2>
+<h2>2. Gráficos de Distribución</h2>
 <p>Vitales para actuarios: Histogramas y Boxplots.</p>
-<p>Histograma (Variable Numérica)</p>
+<h3 id="histograma-variable-numérica">Histograma (Variable Numérica)</h3>
 <div class="columns">
 <div class="column" style="width:40%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(cartera, </span>
-<span id="cb4-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> prima)) <span class="sc">+</span></span>
-<span id="cb4-3"><a></a>  <span class="fu">geom_histogram</span>(</span>
-<span id="cb4-4"><a></a>    <span class="at">bins =</span> <span class="dv">15</span>,</span>
-<span id="cb4-5"><a></a>    <span class="at">fill =</span> <span class="st">"skyblue"</span>,</span>
-<span id="cb4-6"><a></a>    <span class="at">color =</span> <span class="st">"black"</span></span>
-<span id="cb4-7"><a></a>  )</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(cartera, </span>
+<span id="cb5-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> prima)) <span class="sc">+</span></span>
+<span id="cb5-3"><a></a>  <span class="fu">geom_histogram</span>(</span>
+<span id="cb5-4"><a></a>    <span class="at">bins =</span> <span class="dv">15</span>,</span>
+<span id="cb5-5"><a></a>    <span class="at">fill =</span> <span class="st">"skyblue"</span>,</span>
+<span id="cb5-6"><a></a>    <span class="at">color =</span> <span class="st">"black"</span></span>
+<span id="cb5-7"><a></a>  )</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:60%;">
 <div class="cell">
@@ -311,17 +346,45 @@ Prof.&nbsp;Oliver Triveño
 </div>
 </div></div>
 </section>
-<section id="boxplot-numérica-vs-categórica" class="slide level2">
-<h2>Boxplot (Numérica vs Categórica)</h2>
+<section class="slide level2">
+
+<h3 id="densidad-variable-numérica">Densidad (Variable Numérica)</h3>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(cartera, </span>
+<span id="cb6-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> prima, </span>
+<span id="cb6-3"><a></a>           <span class="at">fill =</span> tipo_auto )) <span class="sc">+</span></span>
+<span id="cb6-4"><a></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb6-5"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-6"><a></a>    <span class="at">title =</span> <span class="st">"Densidad de Primas por Tipo de Vehiculo"</span>, </span>
+<span id="cb6-7"><a></a>    <span class="at">x =</span> <span class="st">"Prima (USD)"</span>, </span>
+<span id="cb6-8"><a></a>    <span class="at">y =</span> <span class="st">"Densidad"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Modulo_6_files/figure-revealjs/dens-out-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="boxplot-numérica-vs-categórica">Boxplot (Numérica vs Categórica)</h3>
 <p>Para ver dispersión y outliers por grupo.</p>
 <div class="columns">
 <div class="column" style="width:40%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(cartera, </span>
-<span id="cb5-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> tipo_auto, </span>
-<span id="cb5-3"><a></a>           <span class="at">y =</span> prima,</span>
-<span id="cb5-4"><a></a>           <span class="at">fill =</span> tipo_auto)) <span class="sc">+</span></span>
-<span id="cb5-5"><a></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(cartera, </span>
+<span id="cb7-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> tipo_auto, </span>
+<span id="cb7-3"><a></a>           <span class="at">y =</span> prima,</span>
+<span id="cb7-4"><a></a>           <span class="at">fill =</span> tipo_auto)) <span class="sc">+</span></span>
+<span id="cb7-5"><a></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:60%;">
 <div class="cell">
@@ -334,7 +397,154 @@ Prof.&nbsp;Oliver Triveño
 </div>
 </div>
 </div></div>
-<div style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
+</section>
+<section class="slide level2">
+
+<h3 id="lineas">Lineas</h3>
+<p>Ideal para representar series temporales o la evolución de una variable a lo largo de otra continua ordenada.</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># 1. Agrupamos y sumarizamos para obtener el total por mes</span></span>
+<span id="cb8-2"><a></a>cartera_resumen <span class="ot">&lt;-</span> cartera <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a></a>  <span class="fu">group_by</span>(mes) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a></a>  <span class="fu">summarise</span>(<span class="at">total_prima =</span> <span class="fu">sum</span>(prima))</span>
+<span id="cb8-5"><a></a></span>
+<span id="cb8-6"><a></a><span class="co"># 2. Generamos el gráfico</span></span>
+<span id="cb8-7"><a></a><span class="fu">ggplot</span>(cartera_resumen, <span class="fu">aes</span>(<span class="at">x =</span> mes, <span class="at">y =</span> total_prima)) <span class="sc">+</span></span>
+<span id="cb8-8"><a></a>  <span class="co"># Usamos geom_line y geom_point para ver la tendencia</span></span>
+<span id="cb8-9"><a></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb8-10"><a></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkred"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb8-11"><a></a>  <span class="co"># Ajustes de formato para el eje de fechas</span></span>
+<span id="cb8-12"><a></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%b"</span>, <span class="at">date_breaks =</span> <span class="st">"1 month"</span>) <span class="sc">+</span></span>
+<span id="cb8-13"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-14"><a></a>    <span class="at">title =</span> <span class="st">"Evolución de Primas Cobradas"</span>,</span>
+<span id="cb8-15"><a></a>    <span class="at">subtitle =</span> <span class="st">"Total acumulado por mes - Año 2025"</span>,</span>
+<span id="cb8-16"><a></a>    <span class="at">x =</span> <span class="st">"Mes"</span>,</span>
+<span id="cb8-17"><a></a>    <span class="at">y =</span> <span class="st">"Monto Total de Primas"</span></span>
+<span id="cb8-18"><a></a>  )</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Modulo_6_files/figure-revealjs/line-out-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="personalización" class="slide level2">
+<h2>Personalización</h2>
+<h3 id="etiquetas-y-títulos-labs">Etiquetas y Títulos (labs())</h3>
+<p>labs() permite añadir y modificar fácilmente títulos, subtítulos, pies de página y etiquetas de ejes.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>labs</span>
+<span id="cb9-2"><a></a>     title <span class="ot">=</span> <span class="st">"Evolución de Primas Cobradas"</span>,</span>
+<span id="cb9-3"><a></a>     subtitle <span class="ot">=</span> <span class="st">"Total acumulado por mes - Año 2025"</span>,</span>
+<span id="cb9-4"><a></a>     x <span class="ot">=</span> <span class="st">"Mes"</span>,</span>
+<span id="cb9-5"><a></a>     y <span class="ot">=</span> <span class="st">"Monto Total de Primas"</span>,</span>
+<span id="cb9-6"><a></a>     caption <span class="ot">=</span> <span class="st">"Fuente de Datos: Elaboración Propia"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="personalización-1" class="slide level2">
+<h2>Personalización</h2>
+<h3 id="temas-theme_">Temas (theme_*())</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>Temas predefinidos<span class="sc">:</span> <span class="fu">theme_minimal</span>(), <span class="fu">theme_bw</span>(), <span class="fu">theme_classic</span>(), <span class="fu">theme_light</span>(), etc., cambian rápidamente la apariencia general del gráfico.</span>
+<span id="cb10-2"><a></a></span>
+<span id="cb10-3"><a></a><span class="sc">*</span> Ajustes manuales con <span class="fu">theme</span>()<span class="sc">:</span> Permite un control granular sobre cada elemento del <span class="fu">tema</span> (texto, líneas, fondos, leyendas).</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="personalización-2" class="slide level2">
+<h2>Personalización</h2>
+<h3 id="escalas-scale_">Escalas (scale_*())</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>Las escalas controlan cómo los datos se mapean a los estéticos.</span>
+<span id="cb11-2"><a></a></span>
+<span id="cb11-3"><a></a>Ejes<span class="sc">:</span> <span class="fu">scale_x_continuous</span>(), <span class="fu">scale_y_log10</span>(), <span class="fu">scale_x_date</span>(), etc., para controlar rangos, breaks, transformaciones.</span>
+<span id="cb11-4"><a></a></span>
+<span id="cb11-5"><a></a>Colores<span class="sc">/</span>Rellenos<span class="sc">:</span> <span class="fu">scale_color_manual</span>(), <span class="fu">scale_fill_brewer</span>(), <span class="fu">scale_fill_viridis_d</span>(), etc., para definir paletas de colores o asignaciones manuales.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="personalización-3" class="slide level2">
+<h2>Personalización</h2>
+<h3 id="facetas-facet_wrap-y-facet_grid">Facetas (facet_wrap() y facet_grid())</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a> Dividen el gráfico en múltiples <span class="fu">paneles</span> (o <span class="st">"facetas"</span>) basados en una o dos variables categóricas.</span>
+<span id="cb12-2"><a></a></span>
+<span id="cb12-3"><a></a>   <span class="fu">facet_wrap</span>(<span class="sc">~</span> var)<span class="sc">:</span> Una dimensión, envuelve los paneles en filas<span class="sc">/</span>columnas.</span>
+<span id="cb12-4"><a></a></span>
+<span id="cb12-5"><a></a>   <span class="fu">facet_grid</span>(var_fila <span class="sc">~</span> var_columna)<span class="sc">:</span> Dos dimensiones, crea una cuadrícula de paneles.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+
+<h3 id="ejemplo-personalización">Ejemplo Personalización</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="co"># --- 1. Preparación de los datos (Igual que antes) ---</span></span>
+<span id="cb13-2"><a></a>cartera_grafico <span class="ot">&lt;-</span> cartera <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a></a>  <span class="fu">group_by</span>(mes, tipo_auto, siniestro) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a></a>  <span class="fu">summarise</span>(<span class="at">monto_primas =</span> <span class="fu">sum</span>(prima), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a></a>  <span class="fu">mutate</span>(<span class="at">siniestro_label =</span> <span class="fu">ifelse</span>(siniestro <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Con Siniestro"</span>, <span class="st">"Sin Siniestro"</span>))</span>
+<span id="cb13-6"><a></a></span>
+<span id="cb13-7"><a></a><span class="co"># --- 2. Gráfico 100% ggplot2 Nativo ---</span></span>
+<span id="cb13-8"><a></a><span class="fu">ggplot</span>(cartera_grafico, <span class="fu">aes</span>(<span class="at">x =</span> mes, <span class="at">y =</span> monto_primas, <span class="at">fill =</span> siniestro_label)) <span class="sc">+</span></span>
+<span id="cb13-9"><a></a>  </span>
+<span id="cb13-10"><a></a>  <span class="co"># --- Geometrías ---</span></span>
+<span id="cb13-11"><a></a>  <span class="co"># width = 20 ajusta el ancho de las barras (días) para que no se toquen entre meses</span></span>
+<span id="cb13-12"><a></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="dv">20</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">alpha =</span> <span class="fl">0.9</span>) <span class="sc">+</span> </span>
+<span id="cb13-13"><a></a>  </span>
+<span id="cb13-14"><a></a>  <span class="co"># --- Facetas ---</span></span>
+<span id="cb13-15"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>tipo_auto, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb13-16"><a></a>  </span>
+<span id="cb13-17"><a></a>  <span class="co"># --- Escalas ---</span></span>
+<span id="cb13-18"><a></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb13-19"><a></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">prefix =</span> <span class="st">"$"</span>, <span class="at">big.mark =</span> <span class="st">","</span>),</span>
+<span id="cb13-20"><a></a>    <span class="co"># expansion añade un 15% extra arriba para que las etiquetas o barras no toquen el techo</span></span>
+<span id="cb13-21"><a></a>    <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.15</span>)) </span>
+<span id="cb13-22"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb13-23"><a></a>  <span class="fu">scale_x_date</span>(</span>
+<span id="cb13-24"><a></a>    <span class="at">date_labels =</span> <span class="st">"%b"</span>, </span>
+<span id="cb13-25"><a></a>    <span class="at">date_breaks =</span> <span class="st">"1 month"</span></span>
+<span id="cb13-26"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb13-27"><a></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb13-28"><a></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Sin Siniestro"</span> <span class="ot">=</span> <span class="st">"#2C3E50"</span>, <span class="st">"Con Siniestro"</span> <span class="ot">=</span> <span class="st">"#E74C3C"</span>)</span>
+<span id="cb13-29"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb13-30"><a></a>  </span>
+<span id="cb13-31"><a></a>  <span class="co"># --- Etiquetas ---</span></span>
+<span id="cb13-32"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb13-33"><a></a>    <span class="at">title =</span> <span class="st">"Análisis de Primas Emitidas por Segmento"</span>,</span>
+<span id="cb13-34"><a></a>    <span class="at">subtitle =</span> <span class="st">"Comparativa mensual de pólizas según estado de siniestralidad"</span>,</span>
+<span id="cb13-35"><a></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb13-36"><a></a>    <span class="at">y =</span> <span class="st">"Primas Cobradas (USD)"</span>,</span>
+<span id="cb13-37"><a></a>    <span class="at">fill =</span> <span class="st">"Estado de Póliza"</span>,</span>
+<span id="cb13-38"><a></a>    <span class="at">caption =</span> <span class="fu">paste0</span>(<span class="st">"Fuente: Datos simulados | Ejecución: "</span>, <span class="fu">Sys.Date</span>())</span>
+<span id="cb13-39"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb13-40"><a></a>  </span>
+<span id="cb13-41"><a></a>  <span class="co"># --- Tema Personalizado ---</span></span>
+<span id="cb13-42"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb13-43"><a></a>  <span class="fu">theme</span>(</span>
+<span id="cb13-44"><a></a>    <span class="co"># Títulos y Textos (Usando element_text nativo)</span></span>
+<span id="cb13-45"><a></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">16</span>, <span class="at">color =</span> <span class="st">"#2c3e50"</span>, <span class="at">hjust =</span> <span class="dv">0</span>),</span>
+<span id="cb13-46"><a></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">color =</span> <span class="st">"grey40"</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">10</span>)),</span>
+<span id="cb13-47"><a></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"grey60"</span>, <span class="at">face =</span> <span class="st">"italic"</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">15</span>)),</span>
+<span id="cb13-48"><a></a>    </span>
+<span id="cb13-49"><a></a>    <span class="co"># Leyenda movida abajo para dar más espacio al gráfico</span></span>
+<span id="cb13-50"><a></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb13-51"><a></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb13-52"><a></a>    </span>
+<span id="cb13-53"><a></a>    <span class="co"># Estilo de las facetas (Cajitas grises arriba de cada gráfico)</span></span>
+<span id="cb13-54"><a></a>    <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#ECF0F1"</span>, <span class="at">color =</span> <span class="cn">NA</span>),</span>
+<span id="cb13-55"><a></a>    <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">color =</span> <span class="st">"#2C3E50"</span>, <span class="at">size =</span> <span class="dv">11</span>),</span>
+<span id="cb13-56"><a></a>    </span>
+<span id="cb13-57"><a></a>    <span class="co"># Limpieza de Ejes</span></span>
+<span id="cb13-58"><a></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">10</span>), <span class="co"># Rotación para leer los meses</span></span>
+<span id="cb13-59"><a></a>    <span class="at">axis.line.x =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"grey80"</span>), <span class="co"># Línea sutil en el eje X</span></span>
+<span id="cb13-60"><a></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), <span class="co"># Eliminar cuadrícula menor</span></span>
+<span id="cb13-61"><a></a>    <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>() <span class="co"># Eliminar líneas verticales para limpieza visual</span></span>
+<span id="cb13-62"><a></a>  )</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="ejemplo-personalización-1">Ejemplo Personalización</h3>
+
+<img data-src="Modulo_6_files/figure-revealjs/pers-out-1.png" width="576" class="r-stretch"><div style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
 <p><a href="../index.html" class="btn btn-primary shadow-lg" role="button" style="border-radius: 50px; padding: 10px 20px;"> 🏠 Inicio </a></p>
 </div>
 

@@ -200,14 +200,14 @@
     "href": "teoria/Modulo_6.html#la-filosofía-ggplot2",
     "title": "Módulo 6: Visualización Avanzada",
     "section": "La Filosofía ggplot2",
-    "text": "La Filosofía ggplot2\nA diferencia de Excel, aquí no elegimos un “gráfico de la galería”. Construimos el gráfico por capas, como si estuviéramos pintando un cuadro.\nLa estructura básica es: \\[Gráfico = Datos + Estética (aes) + Geometría (geom)\\]"
+    "text": "La Filosofía ggplot2\n\nggplot2 es un sistema para crear gráficos de forma declarativa, basado en la “Gramática de Gráficos”. Esto significa que construyes tus visualizaciones especificando componentes en lugar de los pasos exactos para dibujarlos.\nA diferencia de Excel, aquí no elegimos un “gráfico de la galería”. Construimos el gráfico por capas, como si estuviéramos pintando un cuadro."
   },
   {
     "objectID": "teoria/Modulo_6.html#preparando-los-datos",
     "href": "teoria/Modulo_6.html#preparando-los-datos",
     "title": "Módulo 6: Visualización Avanzada",
     "section": "Preparando los Datos",
-    "text": "Preparando los Datos\nVamos a simular una cartera de seguros de Automóvil para los ejemplos.\n\nlibrary(tidyverse)\n\n# Semilla para reproducibilidad\nset.seed(123)\n\ncartera &lt;- tibble(\n  edad = sample(18:70, 100, replace = TRUE),\n  tipo_auto = sample(c(\"Sedan\", \"SUV\", \"Deportivo\"), 100, replace = T),\n  prima = jitter(edad * 10 + sample(200:500, 100)),\n  siniestro = sample(c(0, 1), 100, replace = TRUE, prob = c(0.8, 0.2))\n) %&gt;% \n  mutate(siniestro = as.factor(siniestro))"
+    "text": "Preparando los Datos\nVamos a simular una cartera de seguros de Automóvil para los ejemplos.\n\nlibrary(tidyverse)\nlibrary(ggplot2)\nlibrary(scales)\n\n# Semilla para reproducibilidad\nset.seed(123)\n\ncartera &lt;- tibble(\n  edad = sample(18:70, 120, replace = TRUE),\n  tipo_auto = sample(c(\"Sedan\", \"SUV\", \"Deportivo\"), 120, replace = T),\n  prima = jitter(edad * 10 + sample(200:500, 120)),\n  siniestro = sample(c(0, 1), 120, replace = TRUE, prob = c(0.8, 0.2)),\n  mes = rep(seq(as.Date(\"2025-01-01\"), by = \"month\", length.out = 12), times = 10)\n) %&gt;% \n  mutate(siniestro = as.factor(siniestro))"
   },
   {
     "objectID": "teoria/Modulo_6.html#dispersión-scatter-plot",
@@ -227,8 +227,8 @@
     "objectID": "teoria/Modulo_6.html#gráficos-de-distribución",
     "href": "teoria/Modulo_6.html#gráficos-de-distribución",
     "title": "Módulo 6: Visualización Avanzada",
-    "section": "3. Gráficos de Distribución",
-    "text": "3. Gráficos de Distribución\nVitales para actuarios: Histogramas y Boxplots.\nHistograma (Variable Numérica)\n\n\n\nggplot(cartera, \n       aes(x = prima)) +\n  geom_histogram(\n    bins = 15,\n    fill = \"skyblue\",\n    color = \"black\"\n  )"
+    "section": "2. Gráficos de Distribución",
+    "text": "2. Gráficos de Distribución\nVitales para actuarios: Histogramas y Boxplots.\nHistograma (Variable Numérica)\n\n\n\nggplot(cartera, \n       aes(x = prima)) +\n  geom_histogram(\n    bins = 15,\n    fill = \"skyblue\",\n    color = \"black\"\n  )"
   },
   {
     "objectID": "teoria/Modulo_6.html#boxplot-numérica-vs-categórica",
@@ -326,7 +326,7 @@
     "href": "teoria/Modulo_4.html#archivos-planos-.csv-.txt",
     "title": "Módulo 4: Importación y Exportación",
     "section": "1. Archivos Planos (.csv / .txt)",
-    "text": "1. Archivos Planos (.csv / .txt)\nSon el estándar universal. Tenemos dos formas de leerlos:\n\n\nBase R (utils) Viene instalado por defecto.\n\ndatos &lt;- read.csv(\"archivo.csv\")\n\n\nDevuelve: Data Frame.\n\nPaquete readr Más rápido y no convierte texto a factores automáticamente.\n\nlibrary(readr)\ndatos &lt;- read_csv(\"archivo.csv\")\n\nDevuelve: Tibble (Data Frame moderno)."
+    "text": "1. Archivos Planos (.csv / .txt)\nSon el estándar universal. Tenemos dos formas de leerlos:\n\n\nBase R (utils) Viene instalado por defecto.\n\ndatos &lt;- read.csv(\"archivo.csv\")\n\nDevuelve: Data Frame.\n\nPaquete readr Más rápido y no convierte texto a factores automáticamente.\n\nlibrary(readr)\ndatos &lt;- read_csv(\"archivo.csv\")\n\nDevuelve: Tibble (Data Frame moderno)."
   },
   {
     "objectID": "teoria/Modulo_4.html#archivos-de-excel-.xlsx",
@@ -354,14 +354,14 @@
     "href": "teoria/Modulo_4.html#exportación-de-datos",
     "title": "Módulo 4: Importación y Exportación",
     "section": "5. Exportación de Datos",
-    "text": "5. Exportación de Datos\nDespués de analizar, debemos guardar los resultados limpios.\nA CSV (Universal)\n\n# Base R\nwrite.csv(datos_limpios, \"resultados.csv\", row.names = FALSE)\n\n# readr (Más rápido, sin nombres de filas por defecto)\nwrite_csv(datos_limpios, \"resultados_v2.csv\")\n\nA Excel\nRequiere paquete writexl.\n\nlibrary(writexl)\nwrite_xlsx(list(Hoja1 = df1, Hoja2 = df2), \"reporte_final.xlsx\")\n\n\n 🏠 Inicio"
+    "text": "5. Exportación de Datos\nDespués de analizar, debemos guardar los resultados limpios.\nA CSV (Universal)\n\n# Base R\nwrite.csv(datos_limpios, \"resultados.csv\", row.names = FALSE)\n\n# readr (Más rápido, sin nombres de filas por defecto)\nwrite_csv(datos_limpios, \"resultados_v2.csv\")\n\nA Excel\nRequiere paquete writexl.\n\nlibrary(writexl)\nwrite_xlsx(list(Hoja1 = df1, Hoja2 = df2), \"reporte_final.xlsx\")"
   },
   {
     "objectID": "teoria/Modulo_5.html#qué-es-el-tidyverse",
     "href": "teoria/Modulo_5.html#qué-es-el-tidyverse",
     "title": "Módulo 5: Manipulación de Datos",
     "section": "¿Qué es el Tidyverse?",
-    "text": "¿Qué es el Tidyverse?\nEs una colección de paquetes diseñados para la Ciencia de Datos. Todos comparten una misma filosofía de diseño, gramática y estructuras de datos.\n\nlibrary(tidyverse) \n# Carga dplyr, tidyr, readr, ggplot2, etc.\n\nVamos a trabajar con un dataframe de ejemplo:\n\nsiniestros &lt;- tibble(\n  id = 1:5,\n  ramo = c(\"Auto\", \"Vida\", \"Auto\", \"Salud\", \"Vida\"),\n  monto = c(500, 2000, 450, 150, 3000),\n  estado = c(\"Pagado\", \"Pendiente\", \"Pagado\", \"Pagado\", \"Rechazado\")\n)"
+    "text": "¿Qué es el Tidyverse?\n\nEs una colección de paquetes diseñados para la Ciencia de Datos.\nTodos comparten una misma filosofía de diseño, gramática y estructuras de datos.\n\n\nlibrary(tidyverse) \n# Carga dplyr, tidyr, readr, ggplot2, etc."
   },
   {
     "objectID": "teoria/Modulo_5.html#los-5-verbos-de-dplyr",
@@ -375,7 +375,7 @@
     "href": "teoria/Modulo_5.html#reestructurar-con-tidyr",
     "title": "Módulo 5: Manipulación de Datos",
     "section": "3. Reestructurar con tidyr",
-    "text": "3. Reestructurar con tidyr\nA veces los datos vienen en formato “Ancho” (Excel) y los necesitamos en formato “Largo” (Tidy) para graficar o modelar.\n\nPivot Longer (De Ancho a Largo)\n\n\n# Datos \"Anchos\" (Ej: Reservas por año en columnas)\nreservas &lt;- tibble(\n  ramo = c(\"Auto\", \"Vida\"),\n  res_2023 = c(100, 500),\n  res_2024 = c(120, 550)\n)\nreservas\n\n# A tibble: 2 × 3\n  ramo  res_2023 res_2024\n  &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 Auto       100      120\n2 Vida       500      550"
+    "text": "3. Reestructurar con tidyr\nA veces los datos vienen en formato “Ancho” (Excel) y los necesitamos en formato “Largo” (Tidy) para graficar o modelar.\n\nPivot Longer (De Ancho a Largo)\n\n\n# Datos \"Anchos\" (Ej: Reservas por año en columnas)\nreservas &lt;- tibble(\n  producto = c(\"Auto\", \"Vida\"),\n  res_2023 = c(100, 500),\n  res_2024 = c(120, 550)\n)\nreservas\n\n# A tibble: 2 × 3\n  producto res_2023 res_2024\n  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;\n1 Auto          100      120\n2 Vida          500      550"
   },
   {
     "objectID": "teoria/Modulo_5.html#unión-de-tablas-joins",
@@ -402,8 +402,8 @@
     "objectID": "teoria/Modulo_1.html#r-como-calculadora",
     "href": "teoria/Modulo_1.html#r-como-calculadora",
     "title": "Módulo 1: Introducción a R y RStudio",
-    "section": "R como Calculadora",
-    "text": "R como Calculadora\nLo más básico: operaciones matemáticas directas.\n\n# Suma y Resta\n10 + 5\n\n[1] 15\n\n20 - 8\n\n[1] 12\n\n# Multiplicación y División\n4 * 5\n\n[1] 20\n\n100 / 4\n\n[1] 25\n\n# Potencia\n2^5\n\n[1] 32"
+    "section": "3. R como Calculadora",
+    "text": "3. R como Calculadora\nLo más básico: operaciones matemáticas directas.\n\n# Suma y Resta\n10 + 5\n\n[1] 15\n\n20 - 8\n\n[1] 12\n\n# Multiplicación y División\n4 * 5\n\n[1] 20\n\n100 / 4\n\n[1] 25\n\n# Potencia\n2^5\n\n[1] 32"
   },
   {
     "objectID": "teoria/Modulo_1.html#funciones-matemáticas",
@@ -416,15 +416,15 @@
     "objectID": "teoria/Modulo_1.html#variables-y-asignación",
     "href": "teoria/Modulo_1.html#variables-y-asignación",
     "title": "Módulo 1: Introducción a R y RStudio",
-    "section": "Variables y Asignación",
-    "text": "Variables y Asignación\nPara guardar valores usamos el operador de asignación &lt;- (Alt + -).\n\nx &lt;- 20\ny &lt;- 10\n\n# Operamos con las variables\nresultado &lt;- x + y\nresultado\n\n[1] 30\n\n\n\n\n\n\n\n\nTip\n\n\nEvita usar = para asignar variables en R. Es una buena práctica usar siempre &lt;-."
+    "section": "4. Variables y Asignación",
+    "text": "4. Variables y Asignación\nPara guardar valores usamos el operador de asignación &lt;- (Alt + -).\n\nx &lt;- 20\ny &lt;- 10\n\n# Operamos con las variables\nresultado &lt;- x + y\nresultado\n\n[1] 30\n\n\n\n\n\n\n\n\nTip\n\n\nEvita usar = para asignar variables en R. Es una buena práctica usar siempre &lt;-."
   },
   {
     "objectID": "teoria/Modulo_1.html#tipos-de-datos-atómicos",
     "href": "teoria/Modulo_1.html#tipos-de-datos-atómicos",
     "title": "Módulo 1: Introducción a R y RStudio",
-    "section": "Tipos de Datos (Atómicos)",
-    "text": "Tipos de Datos (Atómicos)\nR maneja diferentes “clases” de datos:\n1. Numeric y Character\n\n# Numérico\nprecio &lt;- 15.5\nclass(precio)\n\n[1] \"numeric\"\n\n# Caracter (Texto)\ncurso &lt;- \"Computacion I\"\nclass(curso)\n\n[1] \"character\""
+    "section": "5. Tipos de Datos (Atómicos)",
+    "text": "5. Tipos de Datos (Atómicos)\nR maneja diferentes “clases” de datos:\n1. Numeric y Character\n\n# Numérico\nprecio &lt;- 15.5\nclass(precio)\n\n[1] \"numeric\"\n\n# Caracter (Texto)\ncurso &lt;- \"Computacion I\"\nclass(curso)\n\n[1] \"character\""
   },
   {
     "objectID": "teoria/Modulo_1.html#logical-booleanos",
@@ -817,5 +817,138 @@
     "title": "Evaluación Integral: R para Ciencia de Datos",
     "section": "5. Programación Funcional",
     "text": "5. Programación Funcional\n\nEjercicio 5.1: Función de Clasificación\nCrea una función personalizada llamada clasificar_rentabilidad que reciba un valor numérico (profit) y devuelva:\n\n“Pérdida” si es &lt; 0\n“Baja” si está entre 0 y 500\n“Alta” si es &gt; 500\n\n\n\n\n\n\n\n\n\n\n\nEjercicio 5.2: Aplicación Vectorizada\nAplica tu función a la columna Profit del dataset para crear una nueva variable categórica Tipo_Rentabilidad. Usa mutate() junto con tu función (o map_chr si prefieres purrr). Cuenta cuántas transacciones hay de cada tipo."
+  },
+  {
+    "objectID": "teoria/Modulo_1.html#qué-es-r",
+    "href": "teoria/Modulo_1.html#qué-es-r",
+    "title": "Módulo 1: Introducción a R y RStudio",
+    "section": "1. ¿Qué es R?",
+    "text": "1. ¿Qué es R?\nBreve Historia y Propósito\n\nOrigen: Nació a principios de los 90 en la Universidad de Auckland, Nueva Zelanda.\n\nCreado por Ross Ihaka y Robert Gentleman.\nPropósito: Un entorno estadístico libre (open source) basado en el lenguaje S.\n\nFilosofía: Combinar la potencia de S con una sintaxis más accesible."
+  },
+  {
+    "objectID": "teoria/Modulo_1.html#interfaz-de-rstudio",
+    "href": "teoria/Modulo_1.html#interfaz-de-rstudio",
+    "title": "Módulo 1: Introducción a R y RStudio",
+    "section": "2. Interfaz de RStudio",
+    "text": "2. Interfaz de RStudio\nPaneles Principales\n\nConsola (Console)\nDonde se ejecutan los comandos directamente.\n&gt;: indica que R está esperando un comando.\n+: indica que R espera la continuación de un comando (ej. en líneas largas)."
+  },
+  {
+    "objectID": "teoria/Modulo_1.html#ver-contenido-y-estructura-de-variables",
+    "href": "teoria/Modulo_1.html#ver-contenido-y-estructura-de-variables",
+    "title": "Módulo 1: Introducción a R y RStudio",
+    "section": "6. Ver Contenido y Estructura de Variables",
+    "text": "6. Ver Contenido y Estructura de Variables\nls(): Lista nombres de todos los objetos en el entorno.\n\nprint(x): Muestra el valor de x explícitamente (escribir x en consola también lo muestra).\n\nstr(objeto): Muestra la estructura interna (tipo, dimensiones, ejemplo de contenido).\n\nclass(objeto): Devuelve la clase del objeto (ej. \"numeric\", \"data.frame\").\n\nlength(vector): Número de elementos en un vector.\n\ndim(matriz_o_df): Devuelve filas y columnas de una matriz o data frame."
+  },
+  {
+    "objectID": "teoria/Modulo_1.html#scripts-y-guardado-de-código",
+    "href": "teoria/Modulo_1.html#scripts-y-guardado-de-código",
+    "title": "Módulo 1: Introducción a R y RStudio",
+    "section": "7. Scripts y Guardado de Código",
+    "text": "7. Scripts y Guardado de Código\n\nCrear un Script\n1. File \\(\\rightarrow\\) New File \\(\\rightarrow\\) R Script.\n2. Escribe varias líneas de código.\n\n\n# Mi primer script de R\n\n# Este script calcula el producto de dos números\n\nnumero1 &lt;- 8\n\nnumero2 &lt;- 6\n\nresultado_producto &lt;- numero1 * numero2\n\nprint(paste(\"El producto es:\", resultado_producto))\n\n[1] \"El producto es: 48\""
+  },
+  {
+    "objectID": "teoria/Modulo_1.html#extra",
+    "href": "teoria/Modulo_1.html#extra",
+    "title": "Módulo 1: Introducción a R y RStudio",
+    "section": "8. EXTRA",
+    "text": "8. EXTRA\n\nEjecutar Fragmentos y Scripts Completos\nEjecutar fragmentos:\n\nSelecciona la línea o bloque de líneas.\nPresiona Ctrl + Enter (o Cmd + Enter).\nEl resultado aparecerá en la Consola.\n\nEjecutar script completo:\n\nUsa el botón Source (arriba del panel de script).\nO ejecuta source(“ruta/a/tu/script_basico.R”) en la Consola."
+  },
+  {
+    "objectID": "teoria/Modulo_1.html#scripts-y-guardado-de-código-1",
+    "href": "teoria/Modulo_1.html#scripts-y-guardado-de-código-1",
+    "title": "Módulo 1: Introducción a R y RStudio",
+    "section": "7. Scripts y Guardado de Código",
+    "text": "7. Scripts y Guardado de Código\n\n3. Guarda con Ctrl + S (Windows/Linux) o Cmd + S (macOS), dale un nombre (ej. script_basico.R)."
+  },
+  {
+    "objectID": "teoria/Modulo_1.html#extra-1",
+    "href": "teoria/Modulo_1.html#extra-1",
+    "title": "Módulo 1: Introducción a R y RStudio",
+    "section": "8. EXTRA",
+    "text": "8. EXTRA\n\nDiferencia entre Consola y Source\nConsola:\n\nPara comandos rápidos, pruebas, o resultados inmediatos.\nEl código se ejecuta al instante y no se guarda automáticamente.\n\nSource (Editor de Scripts):\n\nPara almacenar, organizar y documentar tu código.\nPermite la reproducibilidad de tu análisis.\nEs el lugar principal para desarrollar tus proyectos."
+  },
+  {
+    "objectID": "teoria/Modulo_4.html#archivos-planos-.csv-.txt-1",
+    "href": "teoria/Modulo_4.html#archivos-planos-.csv-.txt-1",
+    "title": "Módulo 4: Importación y Exportación",
+    "section": "1. Archivos Planos (.csv / .txt)",
+    "text": "1. Archivos Planos (.csv / .txt)\n\nArgumentos frecuentes:\n\nheader: indica si la primera fila son nombres de columnas.\nsep: separador (, para CSV, “ para TSV).\nstringsAsFactors = FALSE: evita convertir cadenas en factores automáticamente (en versiones recientes de R esto ya no es predeterminado)."
+  },
+  {
+    "objectID": "teoria/Modulo_4.html#archivos-planos-.csv-.txt-2",
+    "href": "teoria/Modulo_4.html#archivos-planos-.csv-.txt-2",
+    "title": "Módulo 4: Importación y Exportación",
+    "section": "1. Archivos Planos (.csv / .txt)",
+    "text": "1. Archivos Planos (.csv / .txt)\n\nArgumentos frecuentes:\n\nna.strings = c(““,”NA”): cómo interpretar valores faltantes.\ncolClasses = c(“integer”, “character”, “numeric”, …): forzar clases de columnas si se conoce de antemano.\n\nPaquete readr (parte del tidyverse)\n\nVentajas: mayor velocidad, detección automática de tipos, funcionalidad de parsers robustos."
+  },
+  {
+    "objectID": "teoria/Modulo_4.html#archivos-planos-.csv-.txt-3",
+    "href": "teoria/Modulo_4.html#archivos-planos-.csv-.txt-3",
+    "title": "Módulo 4: Importación y Exportación",
+    "section": "1. Archivos Planos (.csv / .txt)",
+    "text": "1. Archivos Planos (.csv / .txt)\n\nArgumentos clave:\n\ncol_types: cadena que especifica tipos de columnas (“c” para character, “i” para integer, “d” para double, “l” para lógico).\nskip = n: omitir primeras n líneas (útil si el archivo tiene metadatos antes de la tabla).\nn_max = k: leer sólo las primeras k filas (útil para verificar estructura)."
+  },
+  {
+    "objectID": "teoria/Modulo_4.html#archivos-planos-.csv-.txt-4",
+    "href": "teoria/Modulo_4.html#archivos-planos-.csv-.txt-4",
+    "title": "Módulo 4: Importación y Exportación",
+    "section": "1. Archivos Planos (.csv / .txt)",
+    "text": "1. Archivos Planos (.csv / .txt)\n\nManejo de valores faltantes\n\nEn read.csv(): na.strings = c(““,”NA”, “NULL”).\nEn read_csv(): na = c(““,”NA”)."
+  },
+  {
+    "objectID": "teoria/Modulo_4.html#archivos-de-excel-.xlsx-1",
+    "href": "teoria/Modulo_4.html#archivos-de-excel-.xlsx-1",
+    "title": "Módulo 4: Importación y Exportación",
+    "section": "2. Archivos de Excel (.xlsx)",
+    "text": "2. Archivos de Excel (.xlsx)\n\nArgumentos clave:\n\nsheet: puede ser nombre o índice de la hoja (1, 2, …).\nrange: rango de celdas (p. ej., “B2:E50”).\ncol_names = TRUE/FALSE: si la primera fila tiene nombres."
+  },
+  {
+    "objectID": "teoria/Modulo_5.html#los-verbos-de-dplyr",
+    "href": "teoria/Modulo_5.html#los-verbos-de-dplyr",
+    "title": "Módulo 5: Manipulación de Datos",
+    "section": "2. Los Verbos de dplyr",
+    "text": "2. Los Verbos de dplyr\nSelect y Filter\n\nselect(): Selecciona columnas (variables).\nfilter(): Selecciona filas según condiciones.\n\n\nsiniestros %&gt;% \n  filter(monto &gt; 400) %&gt;% \n  select(ramo, monto)\n\n# A tibble: 4 × 2\n  ramo  monto\n  &lt;chr&gt; &lt;dbl&gt;\n1 Auto    500\n2 Vida   2000\n3 Auto    450\n4 Vida   3000"
+  },
+  {
+    "objectID": "teoria/Modulo_6.html#estructura-básica-de-ggplot2",
+    "href": "teoria/Modulo_6.html#estructura-básica-de-ggplot2",
+    "title": "Módulo 6: Visualización Avanzada",
+    "section": "Estructura Básica de ggplot2",
+    "text": "Estructura Básica de ggplot2\nLa estructura fundamental de un gráfico en ggplot2 es simple:\n\n\nEmpiezas con la función ggplot()\n\n\nEspecificas los datos y los mapeos estéticos\n\n\nAñade capas usando +.\n\n\nggplot(data = df, aes(x = var1, y = var2)) +\n   geom_point()"
+  },
+  {
+    "objectID": "teoria/Modulo_6.html#etiquetas-y-títulos-labs",
+    "href": "teoria/Modulo_6.html#etiquetas-y-títulos-labs",
+    "title": "Módulo 6: Visualización Avanzada",
+    "section": "Etiquetas y Títulos (labs())",
+    "text": "Etiquetas y Títulos (labs())\nlabs() permite añadir y modificar fácilmente títulos, subtítulos, pies de página y etiquetas de ejes.\nlabs\n    * title = \"Evolución de Primas Cobradas\",\n    * subtitle = \"Total acumulado por mes - Año 2025\",\n    * x = \"Mes\",\n    * y = \"Monto Total de Primas\",\n    * caption = \"Fuente de Datos: Elaboración Propia\"\n\n 🏠 Inicio"
+  },
+  {
+    "objectID": "teoria/Modulo_6.html#personalización",
+    "href": "teoria/Modulo_6.html#personalización",
+    "title": "Módulo 6: Visualización Avanzada",
+    "section": "Personalización",
+    "text": "Personalización\nEtiquetas y Títulos (labs())\nlabs() permite añadir y modificar fácilmente títulos, subtítulos, pies de página y etiquetas de ejes.\nlabs\n     title = \"Evolución de Primas Cobradas\",\n     subtitle = \"Total acumulado por mes - Año 2025\",\n     x = \"Mes\",\n     y = \"Monto Total de Primas\",\n     caption = \"Fuente de Datos: Elaboración Propia\""
+  },
+  {
+    "objectID": "teoria/Modulo_6.html#personalización-1",
+    "href": "teoria/Modulo_6.html#personalización-1",
+    "title": "Módulo 6: Visualización Avanzada",
+    "section": "Personalización",
+    "text": "Personalización\nTemas (theme_*())\nTemas predefinidos: theme_minimal(), theme_bw(), theme_classic(), theme_light(), etc., cambian rápidamente la apariencia general del gráfico.\n\n* Ajustes manuales con theme(): Permite un control granular sobre cada elemento del tema (texto, líneas, fondos, leyendas)."
+  },
+  {
+    "objectID": "teoria/Modulo_6.html#personalización-2",
+    "href": "teoria/Modulo_6.html#personalización-2",
+    "title": "Módulo 6: Visualización Avanzada",
+    "section": "Personalización",
+    "text": "Personalización\nEscalas (scale_*())\nLas escalas controlan cómo los datos se mapean a los estéticos.\n\nEjes: scale_x_continuous(), scale_y_log10(), scale_x_date(), etc., para controlar rangos, breaks, transformaciones.\n\nColores/Rellenos: scale_color_manual(), scale_fill_brewer(), scale_fill_viridis_d(), etc., para definir paletas de colores o asignaciones manuales."
+  },
+  {
+    "objectID": "teoria/Modulo_6.html#personalización-3",
+    "href": "teoria/Modulo_6.html#personalización-3",
+    "title": "Módulo 6: Visualización Avanzada",
+    "section": "Personalización",
+    "text": "Personalización\nFacetas (facet_wrap() y facet_grid())\n Dividen el gráfico en múltiples paneles (o \"facetas\") basados en una o dos variables categóricas.\n\n   facet_wrap(~ var): Una dimensión, envuelve los paneles en filas/columnas.\n\n   facet_grid(var_fila ~ var_columna): Dos dimensiones, crea una cuadrícula de paneles."
   }
 ]

@@ -21,7 +21,7 @@ lang: es
 En R, las estructuras se organizan según su dimensionalidad y contenido:
 
 |   | Homogéneo <br><small>(Solo un tipo de dato)</small> | Heterogéneo <br><small>(Varios tipos de datos)</small> |
-|:----------------------:|:----------------------:|:----------------------:|
+|:--:|:--:|:--:|
 | **1 Dimensión** | **Vector** | **Lista** |
 | **2 Dimensiones** | **Matriz** | **Data Frame** |
 | **n Dimensiones** | **Array** |  |
@@ -183,11 +183,10 @@ mean(empleados$salario)
 empleados[empleados$salario > 2600, ]
 ```
 
-<div style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
-  <a href="../index.qmd" class="btn btn-primary shadow-lg" role="button" style="border-radius: 50px; padding: 10px 20px;">
-    🏠 Inicio
-  </a>
-</div>
+::: {style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;"}
+<a href="../index.qmd" class="btn btn-primary shadow-lg" role="button" style="border-radius: 50px; padding: 10px 20px;"> 🏠 Inicio </a>
+:::
+
 ------------------------------------------------------------------------
 
 ::: r-fit-text

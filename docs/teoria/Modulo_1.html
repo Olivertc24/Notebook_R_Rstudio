@@ -196,7 +196,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Módulo 1: Introducción a R y RStudio</h1>
-  <p class="subtitle">Fundamentos de Programación</p>
+  <p class="subtitle">Fundamentos de Programacións</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -207,17 +207,78 @@ Prof.&nbsp;Oliver Triveño
 </div>
 
 </section>
-<section id="introducción" class="slide level2" data-background-color="aquamarine">
-<h2>Introducción</h2>
-<p>Bienvenidos al curso.</p>
-<p>Antes de empezar, debemos distinguir entre las herramientas:</p>
+<section id="qué-es-r" class="slide level2">
+<h2>1. ¿Qué es R?</h2>
+<h3 id="breve-historia-y-propósito">Breve Historia y Propósito</h3>
 <ul>
-<li><strong>R</strong>: Es el lenguaje de programación (el motor).</li>
-<li><strong>RStudio</strong>: Es el Entorno de Desarrollo Integrado (el tablero de control).</li>
+<li><strong>Origen:</strong> Nació a principios de los 90 en la Universidad de Auckland, Nueva Zelanda.
+<ul>
+<li>Creado por <strong>Ross Ihaka y Robert Gentleman</strong>.</li>
+<li>Propósito: Un entorno estadístico <strong>libre (open source)</strong> basado en el lenguaje <strong>S</strong>.</li>
+</ul></li>
+<li><strong>Filosofía:</strong> Combinar la potencia de S con una sintaxis más accesible.</li>
 </ul>
-<blockquote>
-<p>“R hace el cálculo, RStudio nos facilita la vida.”</p>
-</blockquote>
+</section>
+<section class="slide level2">
+
+<h3 id="ventajas-de-r">Ventajas de R</h3>
+<ul>
+<li><strong>Especializado en análisis estadístico y científico:</strong>
+<ul>
+<li>Miles de <strong>paquetes específicos</strong> en CRAN para casi cualquier tipo de análisis.</li>
+</ul></li>
+<li><strong>Lenguaje interpretado y flexible:</strong>
+<ul>
+<li>Ejecuta comandos <strong>al vuelo</strong> en la consola.</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="ventajas-de-r-1">Ventajas de R</h3>
+<ul>
+<li>No necesita compilación.</li>
+<li><strong>Comunidad activa y en crecimiento:</strong>
+<ul>
+<li>Amplia documentación, foros, grupos de usuarios (R-Ladies, RStudio Community, StackOverflow).</li>
+</ul></li>
+<li><strong>Gráficos de alta calidad:</strong>
+<ul>
+<li>Con paquetes como <strong><code>ggplot2</code></strong>, <code>lattice</code>, <code>plotly</code>, crea visualizaciones impresionantes.</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="instalación-de-r-y-rstudio">Instalación de R y RStudio</h3>
+<ol type="1">
+<li><strong>Instalar R:</strong></li>
+</ol>
+<ul>
+<li>Descargar desde <strong>CRAN</strong>: <code>https://cran.r-project.org</code></li>
+<li>Elegir según tu <strong>sistema operativo</strong>.</li>
+<li>Seguir el instalador (las opciones predeterminadas suelen ser adecuadas).</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="instalación-de-r-y-rstudio-1">Instalación de R y RStudio</h3>
+<ol start="2" type="1">
+<li><strong>Instalar RStudio (IDE):</strong></li>
+</ol>
+<ul>
+<li>Descargar el <strong>IDE de escritorio</strong> desde: <code>https://posit.co/download/rstudio-desktop/</code></li>
+<li>RStudio detectará automáticamente tu instalación de R al abrirlo.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="sistemas-operativos-soportados">Sistemas Operativos Soportados</h3>
+<ul>
+<li><p><strong>Windows:</strong> Ejecutable <code>.exe</code></p></li>
+<li><p><strong>macOS:</strong> Paquete <code>.pkg</code></p></li>
+<li><p><strong>Linux:</strong> Paquetes <code>.deb</code> (Debian/Ubuntu) o <code>.rpm</code> (Fedora/Red Hat). También se puede compilar desde el código fuente.</p></li>
+</ul>
 </section>
 <section id="la-interfaz-de-rstudio" class="slide level2">
 <h2>La Interfaz de RStudio</h2>
@@ -239,8 +300,110 @@ Prof.&nbsp;Oliver Triveño
 </div>
 </div></div>
 </section>
+<section id="interfaz-de-rstudio" class="slide level2">
+<h2>2. Interfaz de RStudio</h2>
+<h3 id="paneles-principales">Paneles Principales</h3>
+<ul>
+<li><strong>Consola (<code>Console</code>)</strong></li>
+<li>Donde se ejecutan los comandos directamente.</li>
+<li><code>&gt;</code>: indica que R está esperando un comando.</li>
+<li><code>+</code>: indica que R espera la continuación de un comando (ej. en líneas largas).</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="editor-de-scripts-source">Editor de Scripts (<code>Source</code>)</h3>
+<ul>
+<li><strong>Espacio de trabajo:</strong> Donde escribimos y guardamos nuestro código R (<code>.R</code> files).</li>
+<li><strong>Ventajas:</strong> Permite organizar, documentar y reproducir tu trabajo.</li>
+<li><strong>Atajos para ejecutar:</strong>
+<ul>
+<li>Windows/Linux: <code>Ctrl + Enter</code> (ejecuta línea actual o selección).</li>
+<li>macOS: <code>Cmd + Enter</code>.</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="editor-de-scripts-source-1">Editor de Scripts (<code>Source</code>)</h3>
+<ul>
+<li><strong>Guardar script:</strong> <code>Ctrl + S</code> (o <code>Cmd + S</code>).</li>
+<li>Sugerencia: Nombrar descriptivamente (ej. <code>analisis_ventas.R</code>).</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="entorno-environment-historial-history">Entorno (<code>Environment</code>) / Historial (<code>History</code>)</h3>
+<ul>
+<li><strong>Environment:</strong> Muestra todas las <strong>variables y funciones</strong> activas en tu sesión de R.</li>
+<li><code>ls()</code>: Lista todos los objetos en el entorno global.</li>
+<li><code>rm(x)</code>: Elimina el objeto <code>x</code>.</li>
+<li><code>remove(list = ls())</code>: <strong>Limpia todo</strong> el espacio de trabajo.</li>
+<li><strong>History:</strong> Almacena un registro de <strong>todos los comandos</strong> ejecutados.</li>
+<li>Puedes hacer clic para volver a ejecutar o copiar al script.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="otros-paneles-archivos-gráficos-paquetes-ayuda">Otros Paneles: Archivos, Gráficos, Paquetes, Ayuda</h3>
+<ul>
+<li><strong>Files:</strong> Navegador de carpetas. Permite abrir scripts, CSV, etc.</li>
+<li><strong>Plots:</strong> Muestra los <strong>gráficos</strong> generados.</li>
+<li>Botones para exportar (PNG, PDF) y navegar por el historial de gráficos.</li>
+<li><strong>Packages:</strong> Lista de paquetes <strong>instalados</strong>.
+<ul>
+<li>Casillas para <strong>cargar/descargar</strong> paquetes.</li>
+<li>Botones para <strong>instalar</strong> nuevos paquetes (CRAN, GitHub).</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="otros-paneles-archivos-gráficos-paquetes-ayuda-1">Otros Paneles: Archivos, Gráficos, Paquetes, Ayuda</h3>
+<ul>
+<li>Ej: Escribir <code>mean</code> y presionar Enter para ver la ayuda de la función <code>mean()</code>.</li>
+<li><strong>Help:</strong> Buscador de <strong>documentación interna</strong> de R y paquetes.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="configuración-de-preferencias">Configuración de Preferencias</h3>
+<ul>
+<li><strong>Menú <code>Tools</code> <span class="math inline">\(\rightarrow\)</span> <code>Global Options...</code></strong></li>
+<li><strong>Appearance:</strong> Tema (claro/oscuro), tamaño de fuente, tipografía.</li>
+<li><strong>Code:</strong> Autocompletado, sangrías automáticas, estilo de código.</li>
+<li><strong>Keyboard Shortcuts:</strong> Personalizar atajos.</li>
+<li><strong>Pane Layout:</strong> Reorganizar la posición de los paneles.</li>
+<li><strong>Git/SVN:</strong> Configurar control de versiones (si tienes Git instalado).</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="directorio-de-trabajo">Directorio de Trabajo</h3>
+<ul>
+<li><strong>Concepto:</strong> La carpeta donde R buscará archivos y guardará resultados por defecto.</li>
+<li><strong>Comandos en consola:</strong>
+<ul>
+<li><code>getwd()</code>: Muestra el directorio actual.</li>
+</ul></li>
+<li><code>setwd("ruta/a/mi/carpeta")</code>: Cambia el directorio de trabajo.</li>
+<li><strong>Recomendación:</strong> Usar <strong>Proyectos de RStudio</strong> para manejar automáticamente el directorio de trabajo.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="creación-y-manejo-de-proyectos">Creación y Manejo de Proyectos</h3>
+<ul>
+<li><strong>Propósito:</strong> Aislar tu trabajo y organizar tus archivos.</li>
+<li><strong>Ventajas:</strong></li>
+<li><strong>Rutas relativas:</strong> Evita problemas con rutas absolutas.</li>
+<li><strong>Entorno limpio:</strong> Variables y configuraciones específicas del proyecto.</li>
+<li><strong>Integración con Git:</strong> Facilita el control de versiones.</li>
+<li><strong>Cómo crear:</strong> <code>File</code> <span class="math inline">\(\rightarrow\)</span> <code>New Project...</code> <span class="math inline">\(\rightarrow\)</span> <code>New Directory</code> <span class="math inline">\(\rightarrow\)</span> <code>New Project</code> (o usar una carpeta existente).</li>
+</ul>
+</section>
 <section id="r-como-calculadora" class="slide level2">
-<h2>R como Calculadora</h2>
+<h2>3. R como Calculadora</h2>
 <p>Lo más básico: operaciones matemáticas directas.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Suma y Resta</span></span>
@@ -268,8 +431,9 @@ Prof.&nbsp;Oliver Triveño
 </div>
 </div>
 </section>
-<section id="funciones-matemáticas" class="slide level2">
-<h2>Funciones Matemáticas</h2>
+<section class="slide level2">
+
+<h3 id="funciones-matemáticas">Funciones Matemáticas</h3>
 <p>R tiene funciones integradas para cálculos más complejos.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">sqrt</span>(<span class="dv">64</span>)   <span class="co"># Raíz cuadrada</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
@@ -291,7 +455,7 @@ Prof.&nbsp;Oliver Triveño
 </div>
 </section>
 <section id="variables-y-asignación" class="slide level2">
-<h2>Variables y Asignación</h2>
+<h2>4. Variables y Asignación</h2>
 <p>Para guardar valores usamos el operador de asignación &lt;- (Alt + -).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">20</span></span>
@@ -319,7 +483,7 @@ Prof.&nbsp;Oliver Triveño
 </div>
 </section>
 <section id="tipos-de-datos-atómicos" class="slide level2">
-<h2>Tipos de Datos (Atómicos)</h2>
+<h2>5. Tipos de Datos (Atómicos)</h2>
 <p>R maneja diferentes “clases” de datos:</p>
 <h3 id="numeric-y-character">1. Numeric y Character</h3>
 <div class="cell">
@@ -337,8 +501,9 @@ Prof.&nbsp;Oliver Triveño
 </div>
 </div>
 </section>
-<section id="logical-booleanos" class="slide level2">
-<h2>2. Logical (Booleanos)</h2>
+<section class="slide level2">
+
+<h3 id="logical-booleanos">2. Logical (Booleanos)</h3>
 <p>Solo existen TRUE y FALSE. Son vitales para filtrar datos.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>soy_profesor <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
@@ -351,8 +516,9 @@ Prof.&nbsp;Oliver Triveño
 </div>
 </div>
 </section>
-<section id="vectores" class="slide level2">
-<h2>3. Vectores</h2>
+<section class="slide level2">
+
+<h3 id="vectores">3. Vectores</h3>
 <p>Es la estructura de datos fundamental. Colección de elementos del mismo tipo usando c().</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>edades <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">22</span>, <span class="dv">28</span>)</span>
@@ -396,17 +562,115 @@ Prof.&nbsp;Oliver Triveño
 </div>
 </div>
 </section>
+<section id="ver-contenido-y-estructura-de-variables" class="slide level2">
+<h2>6. Ver Contenido y Estructura de Variables</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">ls</span>()<span class="sc">:</span> Lista nombres de todos los objetos en el entorno.</span>
+<span id="cb35-2"><a></a></span>
+<span id="cb35-3"><a></a><span class="fu">print</span>(x)<span class="sc">:</span> Muestra el valor de x explícitamente (escribir x en consola también lo muestra).</span>
+<span id="cb35-4"><a></a></span>
+<span id="cb35-5"><a></a><span class="fu">str</span>(objeto)<span class="sc">:</span> Muestra la estructura <span class="fu">interna</span> (tipo, dimensiones, ejemplo de contenido).</span>
+<span id="cb35-6"><a></a></span>
+<span id="cb35-7"><a></a><span class="fu">class</span>(objeto)<span class="sc">:</span> Devuelve la clase del <span class="fu">objeto</span> (ej. <span class="st">"numeric"</span>, <span class="st">"data.frame"</span>).</span>
+<span id="cb35-8"><a></a></span>
+<span id="cb35-9"><a></a><span class="fu">length</span>(vector)<span class="sc">:</span> Número de elementos en un vector.</span>
+<span id="cb35-10"><a></a></span>
+<span id="cb35-11"><a></a><span class="fu">dim</span>(matriz_o_df)<span class="sc">:</span> Devuelve filas y columnas de una matriz o data frame.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+
+<ul>
+<li><p><strong>Comentarios en Código</strong></p></li>
+<li><p><strong>Todo lo que sigue al símbolo # en una línea es ignorado por R.</strong></p></li>
+<li><p><strong>Crucial para documentar y explicar tu código.</strong></p></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="co"># Esto es un comentario: el texto aquí no se ejecuta.</span></span>
+<span id="cb36-2"><a></a></span>
+<span id="cb36-3"><a></a>x <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># Esto es un comentario en la misma línea que el código.</span></span>
+<span id="cb36-4"><a></a></span>
+<span id="cb36-5"><a></a>y <span class="ot">&lt;-</span> x <span class="sc">*</span> <span class="dv">2</span> <span class="co"># Calculamos el doble de x</span></span>
+<span id="cb36-6"><a></a></span>
+<span id="cb36-7"><a></a><span class="fu">print</span>(y) <span class="co"># Mostramos el resultado</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20</code></pre>
+</div>
+</div>
+</section>
+<section id="scripts-y-guardado-de-código" class="slide level2">
+<h2>7. Scripts y Guardado de Código</h2>
+<ul>
+<li><p><strong>Crear un Script</strong></p></li>
+<li><p><strong>1. File <span class="math inline">\(\rightarrow\)</span> New File <span class="math inline">\(\rightarrow\)</span> R Script.</strong></p></li>
+<li><p><strong>2. Escribe varias líneas de código.</strong></p></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="co"># Mi primer script de R</span></span>
+<span id="cb38-2"><a></a></span>
+<span id="cb38-3"><a></a><span class="co"># Este script calcula el producto de dos números</span></span>
+<span id="cb38-4"><a></a></span>
+<span id="cb38-5"><a></a>numero1 <span class="ot">&lt;-</span> <span class="dv">8</span></span>
+<span id="cb38-6"><a></a></span>
+<span id="cb38-7"><a></a>numero2 <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb38-8"><a></a></span>
+<span id="cb38-9"><a></a>resultado_producto <span class="ot">&lt;-</span> numero1 <span class="sc">*</span> numero2</span>
+<span id="cb38-10"><a></a></span>
+<span id="cb38-11"><a></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"El producto es:"</span>, resultado_producto))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "El producto es: 48"</code></pre>
+</div>
+</div>
+</section>
+<section id="scripts-y-guardado-de-código-1" class="slide level2">
+<h2>7. Scripts y Guardado de Código</h2>
+<ul>
+<li><strong>3. Guarda con Ctrl + S (Windows/Linux) o Cmd + S (macOS), dale un nombre (ej. script_basico.R).</strong></li>
+</ul>
+</section>
+<section id="extra" class="slide level2">
+<h2>8. EXTRA</h2>
+<ul>
+<li><p><strong>Ejecutar Fragmentos y Scripts Completos</strong></p></li>
+<li><p>Ejecutar fragmentos:</p>
+<ul>
+<li>Selecciona la línea o bloque de líneas.</li>
+<li>Presiona Ctrl + Enter (o Cmd + Enter).</li>
+<li>El resultado aparecerá en la Consola.</li>
+</ul></li>
+<li><p>Ejecutar script completo:</p>
+<ul>
+<li>Usa el botón Source (arriba del panel de script).</li>
+<li>O ejecuta source(“ruta/a/tu/script_basico.R”) en la Consola.</li>
+</ul></li>
+</ul>
+</section>
+<section id="extra-1" class="slide level2">
+<h2>8. EXTRA</h2>
+<ul>
+<li><p><strong>Diferencia entre Consola y Source</strong></p></li>
+<li><p>Consola:</p>
+<ul>
+<li>Para comandos rápidos, pruebas, o resultados inmediatos.</li>
+<li>El código se ejecuta al instante y no se guarda automáticamente.</li>
+</ul></li>
+<li><p>Source (Editor de Scripts):</p>
+<ul>
+<li>Para almacenar, organizar y documentar tu código.</li>
+<li>Permite la reproducibilidad de tu análisis.</li>
+<li>Es el lugar principal para desarrollar tus proyectos.</li>
+</ul></li>
+</ul>
+</section>
 <section id="ejercicio-práctico" class="slide level2">
 <h2>Ejercicio Práctico:</h2>
 <p>Calcular el IMC (<span class="math inline">\(IMC = \frac{peso}{altura^2}\)</span>)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>peso <span class="ot">&lt;-</span> <span class="dv">75</span>      <span class="co"># kg</span></span>
-<span id="cb35-2"><a></a>altura <span class="ot">&lt;-</span> <span class="fl">1.80</span>  <span class="co"># metros</span></span>
-<span id="cb35-3"><a></a></span>
-<span id="cb35-4"><a></a>imc <span class="ot">&lt;-</span> peso <span class="sc">/</span> (altura<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb35-5"><a></a></span>
-<span id="cb35-6"><a></a><span class="co"># Imprimir resultado redondeado</span></span>
-<span id="cb35-7"><a></a><span class="fu">round</span>(imc, <span class="dv">2</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>peso <span class="ot">&lt;-</span> <span class="dv">75</span>      <span class="co"># kg</span></span>
+<span id="cb40-2"><a></a>altura <span class="ot">&lt;-</span> <span class="fl">1.80</span>  <span class="co"># metros</span></span>
+<span id="cb40-3"><a></a></span>
+<span id="cb40-4"><a></a>imc <span class="ot">&lt;-</span> peso <span class="sc">/</span> (altura<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb40-5"><a></a></span>
+<span id="cb40-6"><a></a><span class="co"># Imprimir resultado redondeado</span></span>
+<span id="cb40-7"><a></a><span class="fu">round</span>(imc, <span class="dv">2</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 23.15</code></pre>
 </div>

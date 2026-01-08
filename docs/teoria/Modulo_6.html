@@ -476,13 +476,13 @@ Prof.&nbsp;Oliver Triveño
 
 <h3 id="ejemplo-personalización">Ejemplo Personalización</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="co"># --- 1. Preparación de los datos (Igual que antes) ---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="co"># --- 1. Preparación de los datos ---</span></span>
 <span id="cb13-2"><a></a>cartera_grafico <span class="ot">&lt;-</span> cartera <span class="sc">%&gt;%</span></span>
 <span id="cb13-3"><a></a>  <span class="fu">group_by</span>(mes, tipo_auto, siniestro) <span class="sc">%&gt;%</span></span>
 <span id="cb13-4"><a></a>  <span class="fu">summarise</span>(<span class="at">monto_primas =</span> <span class="fu">sum</span>(prima), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb13-5"><a></a>  <span class="fu">mutate</span>(<span class="at">siniestro_label =</span> <span class="fu">ifelse</span>(siniestro <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Con Siniestro"</span>, <span class="st">"Sin Siniestro"</span>))</span>
 <span id="cb13-6"><a></a></span>
-<span id="cb13-7"><a></a><span class="co"># --- 2. Gráfico 100% ggplot2 Nativo ---</span></span>
+<span id="cb13-7"><a></a><span class="co"># --- 2. Gráfico ---</span></span>
 <span id="cb13-8"><a></a><span class="fu">ggplot</span>(cartera_grafico, <span class="fu">aes</span>(<span class="at">x =</span> mes, <span class="at">y =</span> monto_primas, <span class="at">fill =</span> siniestro_label)) <span class="sc">+</span></span>
 <span id="cb13-9"><a></a>  </span>
 <span id="cb13-10"><a></a>  <span class="co"># --- Geometrías ---</span></span>

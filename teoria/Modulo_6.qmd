@@ -18,32 +18,41 @@ lang: es
 
 ## La Filosofía `ggplot2`
 
-* ggplot2 es un sistema para crear gráficos de forma declarativa, basado en la "Gramática de Gráficos". Esto significa que construyes tus visualizaciones especificando componentes en lugar de los pasos exactos para dibujarlos.
+-   ggplot2 es un sistema para crear gráficos de forma declarativa, basado en la "Gramática de Gráficos". Esto significa que construyes tus visualizaciones especificando componentes en lugar de los pasos exactos para dibujarlos.
 
-* A diferencia de Excel, aquí no elegimos un "gráfico de la galería". Construimos el gráfico por **capas**, como si estuviéramos pintando un cuadro.
+-   A diferencia de Excel, aquí no elegimos un "gráfico de la galería". Construimos el gráfico por **capas**, como si estuviéramos pintando un cuadro.
 
 ------------------------------------------------------------------------
 
 La estructura básica es: $$Gráfico = Datos + Estética (aes) + Geometría (geom)$$
 
-* Gramática de gráficos:
+-   Gramática de gráficos:
 
-  * Datos (data): El data frame con la información que quieres visualizar.
+    -   Datos (data): El data frame con la información que quieres visualizar.
 
-  * Mapeos estéticos (aes()): Define cómo las variables de tus datos se traducen en propiedades visuales (ejes x, y, color, tamaño, forma, etc.).
+    -   Mapeos estéticos (aes()): Define cómo las variables de tus datos se traducen en propiedades visuales (ejes x, y, color, tamaño, forma, etc.).
 
-  * Geometrías (geom_*): El tipo de gráfico que quieres dibujar (puntos, líneas, barras, etc.).
+    -   Geometrías (geom\_\*): El tipo de gráfico que quieres dibujar (puntos, líneas, barras, etc.).
 
 ------------------------------------------------------------------------
 
 ## Estructura Básica de ggplot2
-La estructura fundamental de un gráfico en ggplot2 es simple: 
 
-  * 1. Empiezas con la función ggplot()
-  * 2. Especificas los datos y los mapeos estéticos
-  * 3. Añade capas usando +.
+La estructura fundamental de un gráfico en ggplot2 es simple:
 
-```r
+-   
+
+    1.  Empiezas con la función ggplot()
+
+-   
+
+    2.  Especificas los datos y los mapeos estéticos
+
+-   
+
+    3.  Añade capas usando +.
+
+``` r
 ggplot(data = df, aes(x = var1, y = var2)) +
    geom_point()
 ```
@@ -302,7 +311,7 @@ ggplot(cartera_resumen, aes(x = mes, y = total_prima)) +
 
 labs() permite añadir y modificar fácilmente títulos, subtítulos, pies de página y etiquetas de ejes.
 
-```r
+``` r
 labs
      title = "Evolución de Primas Cobradas",
      subtitle = "Total acumulado por mes - Año 2025",
@@ -315,22 +324,21 @@ labs
 
 ## Personalización
 
-### Temas (theme_*())
+### Temas (theme\_\*())
 
-```r
+``` r
 Temas predefinidos: theme_minimal(), theme_bw(), theme_classic(), theme_light(), etc., cambian rápidamente la apariencia general del gráfico.
 
 * Ajustes manuales con theme(): Permite un control granular sobre cada elemento del tema (texto, líneas, fondos, leyendas).
 ```
 
-
 ------------------------------------------------------------------------
 
 ## Personalización
 
-### Escalas (scale_*())
+### Escalas (scale\_\*())
 
-```r
+``` r
 Las escalas controlan cómo los datos se mapean a los estéticos.
 
 Ejes: scale_x_continuous(), scale_y_log10(), scale_x_date(), etc., para controlar rangos, breaks, transformaciones.
@@ -344,27 +352,28 @@ Colores/Rellenos: scale_color_manual(), scale_fill_brewer(), scale_fill_viridis_
 
 ### Facetas (facet_wrap() y facet_grid())
 
-```r
+``` r
  Dividen el gráfico en múltiples paneles (o "facetas") basados en una o dos variables categóricas.
 
    facet_wrap(~ var): Una dimensión, envuelve los paneles en filas/columnas.
 
    facet_grid(var_fila ~ var_columna): Dos dimensiones, crea una cuadrícula de paneles.
 ```
-----------------------------------------------------------------------
+
+------------------------------------------------------------------------
 
 ### Ejemplo Personalización
 
 ```{r}
 #| label: pers
 #| eval: false
-# --- 1. Preparación de los datos (Igual que antes) ---
+# --- 1. Preparación de los datos ---
 cartera_grafico <- cartera %>%
   group_by(mes, tipo_auto, siniestro) %>%
   summarise(monto_primas = sum(prima), .groups = "drop") %>%
   mutate(siniestro_label = ifelse(siniestro == 1, "Con Siniestro", "Sin Siniestro"))
 
-# --- 2. Gráfico 100% ggplot2 Nativo ---
+# --- 2. Gráfico ---
 ggplot(cartera_grafico, aes(x = mes, y = monto_primas, fill = siniestro_label)) +
   
   # --- Geometrías ---
@@ -422,20 +431,20 @@ ggplot(cartera_grafico, aes(x = mes, y = monto_primas, fill = siniestro_label)) 
   )
 ```
 
---------------------------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 ### Ejemplo Personalización
 
 ```{r}
 #| label: pers-out
 #| echo: false
-# --- 1. Preparación de los datos (Igual que antes) ---
+# --- 1. Preparación de los datos ---
 cartera_grafico <- cartera %>%
   group_by(mes, tipo_auto, siniestro) %>%
   summarise(monto_primas = sum(prima), .groups = "drop") %>%
   mutate(siniestro_label = ifelse(siniestro == 1, "Con Siniestro", "Sin Siniestro"))
 
-# --- 2. Gráfico 100% ggplot2 Nativo ---
+# --- 2. Gráfico ---
 ggplot(cartera_grafico, aes(x = mes, y = monto_primas, fill = siniestro_label)) +
   
   # --- Geometrías ---
@@ -492,7 +501,6 @@ ggplot(cartera_grafico, aes(x = mes, y = monto_primas, fill = siniestro_label)) 
     panel.grid.major.x = element_blank() # Eliminar líneas verticales para limpieza visual
   )
 ```
-
 
 ::: {style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;"}
 <a href="../index.qmd" class="btn btn-primary shadow-lg" role="button" style="border-radius: 50px; padding: 10px 20px;"> 🏠 Inicio </a>

@@ -64,12 +64,6 @@ El contenido está dividido en 7 módulos secuenciales. Cada módulo es un archi
     * Abre cualquier archivo `.qmd` (por ejemplo, `Modulo_1.qmd`).
     * Haz clic en el botón **Render** (ícono de flecha azul sobre el editor) para generar el documento HTML o PDF con la clase y los ejercicios resueltos.
 
-## 🤝 Dudas y Contribuciones
-
-Si tienes problemas con la instalación o algún ejercicio:
-* Revisa la pestaña "Issues" en este repositorio.
-* Consulta la documentación oficial de [Quarto](https://quarto.org/).
-
 ---
 **Escuela de Estadística y Ciencias Actuariales**
 *Repositorio docente para uso académico.*

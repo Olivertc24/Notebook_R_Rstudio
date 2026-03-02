@@ -17,9 +17,9 @@ lang: es
 
 ## ¿Qué es el Tidyverse?
 
-* Es una colección de paquetes diseñados para la Ciencia de Datos. 
+-   Es una colección de paquetes diseñados para la Ciencia de Datos.
 
-* Todos comparten una misma filosofía de diseño, gramática y estructuras de datos.
+-   Todos comparten una misma filosofía de diseño, gramática y estructuras de datos.
 
 ```{r}
 #| message: false
@@ -32,23 +32,23 @@ library(tidyverse)
 
 ### Filosofía de Datos “Tidy”
 
-* La filosofía "tidy" (ordenado) es fundamental en el tidyverse:
+-   La filosofía "tidy" (ordenado) es fundamental en el tidyverse:
 
-  * Cada variable es una columna: Cada tipo de observación que registras debe tener su propia columna.
+    -   Cada variable es una columna: Cada tipo de observación que registras debe tener su propia columna.
 
-  * Cada observación (o registro) es una fila: Cada caso o unidad experimental debe ser una fila distinta.
+    -   Cada observación (o registro) es una fila: Cada caso o unidad experimental debe ser una fila distinta.
 
-  * Cada unidad de observación debe ser claramente definible: Facilita la comprensión y el análisis.
+    -   Cada unidad de observación debe ser claramente definible: Facilita la comprensión y el análisis.
 
 ------------------------------------------------------------------------
 
 ### Ventajas:
 
-  * Código más legible (uso de pipes %>%).
+-   Código más legible (uso de pipes %\>%).
 
-  * Consistencia de funciones: mismos nombres en dplyr, ggplot2, tidyr, readr.
+-   Consistencia de funciones: mismos nombres en dplyr, ggplot2, tidyr, readr.
 
-  * Pipeline armonizado: lectura.
+-   Pipeline armonizado: lectura.
 
 ------------------------------------------------------------------------
 
@@ -56,7 +56,6 @@ El Operador Pipe (%\>% o \|\>) El "pipe" nos permite encadenar operaciones. Se l
 
 -   %\>% (Magrittr): El clásico del tidyverse (Ctrl + Shift + M).
 -   \|\> (Nativo): Disponible desde R 4.1.
-
 
 ------------------------------------------------------------------------
 
@@ -73,9 +72,9 @@ siniestros <- tibble(
 
 ------------------------------------------------------------------------
 
-1. Sin Pipe (Difícil de leer): summarise(group_by(filter(siniestros, monto \> 300), ramo))
+1.  Sin Pipe (Difícil de leer): summarise(group_by(filter(siniestros, monto \> 300), ramo))
 
-2. Con Pipe (Fluido):
+2.  Con Pipe (Fluido):
 
 ```{r}
 siniestros %>% 
@@ -98,6 +97,55 @@ siniestros %>%
   filter(monto > 400) %>% 
   select(ramo, monto)
 ```
+
+------------------------------------------------------------------------
+
+### Filtros Múltiples: Operadores Lógicos (`&` y `|`)
+
+En la vida real, rara vez filtramos por una sola condición. Para combinar múltiples reglas, usamos los operadores lógicos fundamentales:
+
+* **El operador `&` (AND / Y):** Exige que **todas** las condiciones se cumplan al mismo tiempo.
+* **El operador `|` (OR / O):** Exige que **al menos una** de las condiciones se cumpla.
+
+
+::: {.callout-tip}
+Nota: En dplyr, si separas las condiciones con una coma dentro de filter(), R lo interpreta automáticamente como un &)
+:::
+
+------------------------------------------------------------------------
+
+Veamos cómo aplicarlos a nuestra tabla de `siniestros`:
+
+**1. Ejemplo con `&` (Intersección):**
+Supongamos que el área de auditoría nos pide los siniestros del ramo "Auto" **Y** que ya hayan sido pagados.
+
+```{r}
+siniestros %>% 
+  filter(ramo == "Auto" & estado == "Pagado")
+```
+
+------------------------------------------------------------------------
+
+**2. Ejemplo con | (Unión):**
+Ahora queremos identificar los siniestros que sean de "Salud" O aquellos cuyo monto sea considerado un impacto alto (mayor a 1000), sin importar el ramo.
+
+
+```{r}
+siniestros %>% 
+  filter(ramo == "Salud" | monto > 1000)
+```
+
+------------------------------------------------------------------------
+
+::: {.callout-tip}
+El atajo %in%
+
+- Cuando tienes muchas condiciones | sobre una misma variable (ej. ramo == "Auto" | ramo == "Vida" | ramo == "Salud"), tu código se vuelve largo. 
+
+- El operador %in% hace esto mucho más elegante:
+
+filter(ramo %in% c("Auto", "Vida", "Salud"))
+:::
 
 ------------------------------------------------------------------------
 
@@ -133,11 +181,11 @@ siniestros %>%
 
 ### Distinct
 
-####  Extraer filas únicas
+#### Extraer filas únicas
 
-* Extrae filas únicas según columnas especificadas.
+-   Extrae filas únicas según columnas especificadas.
 
-* Usa .keep_all = TRUE para mantener todas las columnas de las filas únicas.
+-   Usa .keep_all = TRUE para mantener todas las columnas de las filas únicas.
 
 ```{r}
 siniestros %>% 
@@ -150,9 +198,9 @@ siniestros %>%
 
 #### Renombrar columnas
 
-* Renombra columnas de un data frame.
+-   Renombra columnas de un data frame.
 
-* La sintaxis es nuevo_nombre = nombre_antiguo.
+-   La sintaxis es nuevo_nombre = nombre_antiguo.
 
 ```{r}
 siniestros %>% 
@@ -247,6 +295,127 @@ inner_join(polizas, reclamos, by = "id")
 ::: fragment
 Ejercicio: Intenta calcular el "Loss Ratio" (Siniestros / Primas) uniendo una tabla de primas con una de siniestros.
 :::
+
+------------------------------------------------------------------------
+
+## 5. Manejo de Datos Faltantes (NA)
+
+
+- En la vida real, las bases de datos casi nunca están completas, hay errores de sistema o cruces fallidos.
+
+- Vamos a simular una cartera de 1.000 clientes donde, a propósito, faltan algunos datos.
+
+------------------------------------------------------------------------
+
+```{r}
+# Generamos 1000 registros simulados
+set.seed(2026) # Para que todos obtengamos los mismos datos aleatorios
+n <- 1000
+
+cartera <- tibble(
+  poliza_id = 1:n,
+  edad = round(rnorm(n, mean = 40, sd = 10)),
+  ramo = sample(c("Auto", "Vida", "Salud", "Hogar"), n, replace = TRUE),
+  prima = round(runif(n, 500, 3000), 2),
+  riesgo = sample(c("Alto", "Medio", "Bajo"), n, replace = TRUE)
+)
+
+# Introducimos NA (valores faltantes) de forma aleatoria
+cartera <- cartera %>%
+  mutate(
+    edad = if_else(runif(n) < 0.10, NA_real_, edad),           # ~10% sin edad
+    prima = if_else(runif(n) < 0.15, NA_real_, prima),         # ~15% sin prima
+    ramo = if_else(runif(n) < 0.05, NA_character_, ramo),      # ~5% sin ramo
+    riesgo = if_else(runif(n) < 0.12, NA_character_, riesgo)   # ~12% sin riesgo
+  )
+
+head(cartera)
+```
+
+------------------------------------------------------------------------
+
+### 5.1 Diagnóstico: ¿Cuántos NA tenemos?
+
+Antes de tomar decisiones, debemos saber a qué nos enfrentamos. 
+
+#### 5.1.1 Diagnóstico: summary()
+
+La función summary() nos da un vistazo rápido.
+
+```{r}
+summary(cartera)
+```
+
+------------------------------------------------------------------------
+
+#### 5.1.2 Diagnóstico: colSums()
+
+Pero podemos ser más precisos combinando is.na() con colSums():
+
+```{r}
+# Cuenta cuántos NA hay por cada columna
+colSums(is.na(cartera))
+```
+
+------------------------------------------------------------------------
+
+### 5.2 Estrategia 1: Eliminación (drop_na)
+
+Si los datos faltantes son muy pocos o la variable no es crítica, podemos eliminar las filas incompletas usando la función drop_na() del paquete tidyr.
+
+```{r}
+# Eliminar TODAS las filas que tengan al menos un NA
+cartera_limpia <- cartera %>% drop_na()
+
+# Eliminar filas solo si falta la variable 'ramo'
+cartera_sin_na_ramo <- cartera %>% drop_na(ramo)
+```
+
+::: {.callout-warning}
+¡Precaución! Usar drop_na() sin argumentos eliminará cualquier fila con un solo NA. En nuestro caso de 1000 registros, podríamos perder más del 30% de la cartera si no tenemos cuidado.
+:::
+
+------------------------------------------------------------------------
+
+### 5.3 Estrategia 2: Imputación en Variables Categóricas
+En lugar de borrar al cliente que no tiene registrado el ramo o el riesgo, podemos rellenar ese vacío con una categoría como "Desconocido" o "Sin Clasificar". Usamos replace_na():
+
+```{r}
+cartera <- cartera %>%
+  mutate(
+    ramo = replace_na(ramo, "No Especificado"),
+    riesgo = replace_na(riesgo, "Sin Evaluación")
+  )
+
+# Verificamos que ya no hay NA en esas columnas categóricas
+colSums(is.na(cartera))
+```
+
+------------------------------------------------------------------------
+
+### 5.4 Estrategia 3: Imputación en Variables Numéricas
+
+Para los números (como la edad o la prima), rellenar con un "cero" arruinaría nuestros promedios y modelos. Una técnica común es imputar la media o la mediana de esa variable.
+
+------------------------------------------------------------------------
+
+```{r}
+# Calculamos la mediana de la edad y el promedio de la prima (ignorando los NA)
+mediana_edad <- median(cartera$edad, na.rm = TRUE)
+promedio_prima <- mean(cartera$prima, na.rm = TRUE)
+
+cartera_imputada <- cartera %>%
+  mutate(
+    # Si la edad es NA, pon la mediana; si no, deja la edad original
+    edad = if_else(is.na(edad), mediana_edad, edad),
+    
+    # Hacemos lo mismo para la prima
+    prima = if_else(is.na(prima), promedio_prima, prima)
+  )
+
+# ¡Cartera 100% limpia y sin perder una sola fila!
+colSums(is.na(cartera_imputada))
+```
 
 ::: {style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;"}
 <a href="../index.qmd" class="btn btn-primary shadow-lg" role="button" style="border-radius: 50px; padding: 10px 20px;"> 🏠 Inicio </a>

@@ -950,5 +950,12 @@
     "title": "Módulo 6: Visualización Avanzada",
     "section": "Personalización",
     "text": "Personalización\nFacetas (facet_wrap() y facet_grid())\n Dividen el gráfico en múltiples paneles (o \"facetas\") basados en una o dos variables categóricas.\n\n   facet_wrap(~ var): Una dimensión, envuelve los paneles en filas/columnas.\n\n   facet_grid(var_fila ~ var_columna): Dos dimensiones, crea una cuadrícula de paneles."
+  },
+  {
+    "objectID": "teoria/Modulo_5.html#manejo-de-datos-faltantes-na",
+    "href": "teoria/Modulo_5.html#manejo-de-datos-faltantes-na",
+    "title": "Módulo 5: Manipulación de Datos",
+    "section": "5. Manejo de Datos Faltantes (NA)",
+    "text": "5. Manejo de Datos Faltantes (NA)\n\nEn la vida real, las bases de datos casi nunca están completas, hay errores de sistema o cruces fallidos.\nVamos a simular una cartera de 1.000 clientes donde, a propósito, faltan algunos datos."
   }
 ]

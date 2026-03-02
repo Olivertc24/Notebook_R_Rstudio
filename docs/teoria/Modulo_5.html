@@ -6,10 +6,10 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
 <link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.26">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Prof.&nbsp;Oliver Triveño">
   <title>Curso de Fundamentos en R – Módulo 5: Manipulación de Datos</title>
@@ -306,16 +306,91 @@ Prof.&nbsp;Oliver Triveño
 </section>
 <section class="slide level2">
 
+<h3 id="filtros-múltiples-operadores-lógicos-y">Filtros Múltiples: Operadores Lógicos (<code>&amp;</code> y <code>|</code>)</h3>
+<p>En la vida real, rara vez filtramos por una sola condición. Para combinar múltiples reglas, usamos los operadores lógicos fundamentales:</p>
+<ul>
+<li><strong>El operador <code>&amp;</code> (AND / Y):</strong> Exige que <strong>todas</strong> las condiciones se cumplan al mismo tiempo.</li>
+<li><strong>El operador <code>|</code> (OR / O):</strong> Exige que <strong>al menos una</strong> de las condiciones se cumpla.</li>
+</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Nota: En dplyr, si separas las condiciones con una coma dentro de filter(), R lo interpreta automáticamente como un &amp;)</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Veamos cómo aplicarlos a nuestra tabla de <code>siniestros</code>:</p>
+<p><strong>1. Ejemplo con <code>&amp;</code> (Intersección):</strong> Supongamos que el área de auditoría nos pide los siniestros del ramo “Auto” <strong>Y</strong> que ya hayan sido pagados.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>siniestros <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a></a>  <span class="fu">filter</span>(ramo <span class="sc">==</span> <span class="st">"Auto"</span> <span class="sc">&amp;</span> estado <span class="sc">==</span> <span class="st">"Pagado"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+     id ramo  monto estado
+  &lt;int&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; 
+1     1 Auto    500 Pagado
+2     3 Auto    450 Pagado</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p><strong>2. Ejemplo con | (Unión):</strong> Ahora queremos identificar los siniestros que sean de “Salud” O aquellos cuyo monto sea considerado un impacto alto (mayor a 1000), sin importar el ramo.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>siniestros <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a></a>  <span class="fu">filter</span>(ramo <span class="sc">==</span> <span class="st">"Salud"</span> <span class="sc">|</span> monto <span class="sc">&gt;</span> <span class="dv">1000</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+     id ramo  monto estado   
+  &lt;int&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;    
+1     2 Vida   2000 Pendiente
+2     4 Salud   150 Pagado   
+3     5 Vida   3000 Rechazado</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>El atajo %in%</p>
+<ul>
+<li><p>Cuando tienes muchas condiciones | sobre una misma variable (ej. ramo == “Auto” | ramo == “Vida” | ramo == “Salud”), tu código se vuelve largo.</p></li>
+<li><p>El operador %in% hace esto mucho más elegante:</p></li>
+</ul>
+<p>filter(ramo %in% c(“Auto”, “Vida”, “Salud”))</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
 <h3 id="arrange-y-mutate">Arrange y Mutate</h3>
 <ul>
 <li>arrange(): Ordena las filas.</li>
 <li>mutate(): Crea o modifica variables (columnas).</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>siniestros <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(monto)) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a></a>  <span class="fu">mutate</span>(<span class="at">iva =</span> monto <span class="sc">*</span> <span class="fl">0.16</span>,</span>
-<span id="cb7-4"><a></a>         <span class="at">total =</span> monto <span class="sc">+</span> iva)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>siniestros <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(monto)) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a></a>  <span class="fu">mutate</span>(<span class="at">iva =</span> monto <span class="sc">*</span> <span class="fl">0.16</span>,</span>
+<span id="cb11-4"><a></a>         <span class="at">total =</span> monto <span class="sc">+</span> iva)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 6
      id ramo  monto estado      iva total
@@ -333,13 +408,13 @@ Prof.&nbsp;Oliver Triveño
 <h3 id="summarise-y-group_by">Summarise (y Group_by)</h3>
 <p>La potencia real surge al combinar estos dos. group_by() rompe el dataset en grupos, y summarise() colapsa cada grupo en una sola fila (estadística).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>siniestros <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a></a>  <span class="fu">group_by</span>(ramo) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-3"><a></a>  <span class="fu">summarise</span>(</span>
-<span id="cb9-4"><a></a>    <span class="at">conteo =</span> <span class="fu">n</span>(),</span>
-<span id="cb9-5"><a></a>    <span class="at">promedio_costo =</span> <span class="fu">mean</span>(monto),</span>
-<span id="cb9-6"><a></a>    <span class="at">total_ramo =</span> <span class="fu">sum</span>(monto)</span>
-<span id="cb9-7"><a></a>  )</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>siniestros <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a></a>  <span class="fu">group_by</span>(ramo) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a></a>  <span class="fu">summarise</span>(</span>
+<span id="cb13-4"><a></a>    <span class="at">conteo =</span> <span class="fu">n</span>(),</span>
+<span id="cb13-5"><a></a>    <span class="at">promedio_costo =</span> <span class="fu">mean</span>(monto),</span>
+<span id="cb13-6"><a></a>    <span class="at">total_ramo =</span> <span class="fu">sum</span>(monto)</span>
+<span id="cb13-7"><a></a>  )</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
   ramo  conteo promedio_costo total_ramo
@@ -359,8 +434,8 @@ Prof.&nbsp;Oliver Triveño
 <li><p>Usa .keep_all = TRUE para mantener todas las columnas de las filas únicas.</p></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>siniestros <span class="sc">%&gt;%</span> </span>
-<span id="cb11-2"><a></a>  <span class="fu">distinct</span>(estado)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>siniestros <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a></a>  <span class="fu">distinct</span>(estado)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 1
   estado   
@@ -380,10 +455,10 @@ Prof.&nbsp;Oliver Triveño
 <li><p>La sintaxis es nuevo_nombre = nombre_antiguo.</p></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>siniestros <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a></a>  <span class="fu">rename</span>(</span>
-<span id="cb13-3"><a></a>    <span class="at">producto =</span> ramo</span>
-<span id="cb13-4"><a></a>  )</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>siniestros <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a></a>  <span class="fu">rename</span>(</span>
+<span id="cb17-3"><a></a>    <span class="at">producto =</span> ramo</span>
+<span id="cb17-4"><a></a>  )</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 4
      id producto monto estado   
@@ -403,13 +478,13 @@ Prof.&nbsp;Oliver Triveño
 <li>Pivot Longer (De Ancho a Largo)</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># Datos "Anchos" (Ej: Reservas por año en columnas)</span></span>
-<span id="cb15-2"><a></a>reservas <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb15-3"><a></a>  <span class="at">producto =</span> <span class="fu">c</span>(<span class="st">"Auto"</span>, <span class="st">"Vida"</span>),</span>
-<span id="cb15-4"><a></a>  <span class="at">res_2023 =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">500</span>),</span>
-<span id="cb15-5"><a></a>  <span class="at">res_2024 =</span> <span class="fu">c</span>(<span class="dv">120</span>, <span class="dv">550</span>)</span>
-<span id="cb15-6"><a></a>)</span>
-<span id="cb15-7"><a></a>reservas</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># Datos "Anchos" (Ej: Reservas por año en columnas)</span></span>
+<span id="cb19-2"><a></a>reservas <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb19-3"><a></a>  <span class="at">producto =</span> <span class="fu">c</span>(<span class="st">"Auto"</span>, <span class="st">"Vida"</span>),</span>
+<span id="cb19-4"><a></a>  <span class="at">res_2023 =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">500</span>),</span>
+<span id="cb19-5"><a></a>  <span class="at">res_2024 =</span> <span class="fu">c</span>(<span class="dv">120</span>, <span class="dv">550</span>)</span>
+<span id="cb19-6"><a></a>)</span>
+<span id="cb19-7"><a></a>reservas</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   producto res_2023 res_2024
@@ -425,14 +500,14 @@ Prof.&nbsp;Oliver Triveño
 <li>Pivot Longer (De Ancho a Largo)</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="co"># Transformación</span></span>
-<span id="cb17-2"><a></a>reservas_long <span class="ot">&lt;-</span> reservas <span class="sc">%&gt;%</span> </span>
-<span id="cb17-3"><a></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb17-4"><a></a>    <span class="at">cols =</span> <span class="fu">c</span>(res_2023, res_2024),</span>
-<span id="cb17-5"><a></a>    <span class="at">names_to =</span> <span class="st">"anio"</span>,</span>
-<span id="cb17-6"><a></a>    <span class="at">values_to =</span> <span class="st">"reserva"</span></span>
-<span id="cb17-7"><a></a>  )</span>
-<span id="cb17-8"><a></a>reservas_long</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="co"># Transformación</span></span>
+<span id="cb21-2"><a></a>reservas_long <span class="ot">&lt;-</span> reservas <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb21-4"><a></a>    <span class="at">cols =</span> <span class="fu">c</span>(res_2023, res_2024),</span>
+<span id="cb21-5"><a></a>    <span class="at">names_to =</span> <span class="st">"anio"</span>,</span>
+<span id="cb21-6"><a></a>    <span class="at">values_to =</span> <span class="st">"reserva"</span></span>
+<span id="cb21-7"><a></a>  )</span>
+<span id="cb21-8"><a></a>reservas_long</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
   producto anio     reserva
@@ -451,11 +526,11 @@ Prof.&nbsp;Oliver Triveño
 </ul>
 <p>La operación inversa. Útil para presentar reportes finales.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>reservas_long <span class="sc">%&gt;%</span> </span>
-<span id="cb19-2"><a></a>  <span class="fu">pivot_wider</span>(</span>
-<span id="cb19-3"><a></a>    <span class="at">names_from =</span> anio,</span>
-<span id="cb19-4"><a></a>    <span class="at">values_from =</span> reserva</span>
-<span id="cb19-5"><a></a>  )</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>reservas_long <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb23-3"><a></a>    <span class="at">names_from =</span> anio,</span>
+<span id="cb23-4"><a></a>    <span class="at">values_from =</span> reserva</span>
+<span id="cb23-5"><a></a>  )</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   producto res_2023 res_2024
@@ -469,14 +544,14 @@ Prof.&nbsp;Oliver Triveño
 <h2>4. Unión de Tablas (Joins)</h2>
 <p>Vincular datos de dos fuentes distintas usando una clave común (key).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>polizas <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">cliente =</span> <span class="fu">c</span>(<span class="st">"Ana"</span>, <span class="st">"Bob"</span>, <span class="st">"Cid"</span>))</span>
-<span id="cb21-2"><a></a>reclamos <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">monto =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">500</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>polizas <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">cliente =</span> <span class="fu">c</span>(<span class="st">"Ana"</span>, <span class="st">"Bob"</span>, <span class="st">"Cid"</span>))</span>
+<span id="cb25-2"><a></a>reclamos <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">monto =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">500</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Left Join Mantiene todas las pólizas, trae reclamos si existen.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">left_join</span>(polizas, reclamos, <span class="at">by =</span> <span class="st">"id"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">left_join</span>(polizas, reclamos, <span class="at">by =</span> <span class="st">"id"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
      id cliente monto
@@ -490,7 +565,7 @@ Prof.&nbsp;Oliver Triveño
 </div><div class="column" style="width:50%;">
 <p>Inner Join Solo mantiene registros que existen en AMBAS tablas.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">inner_join</span>(polizas, reclamos, <span class="at">by =</span> <span class="st">"id"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">inner_join</span>(polizas, reclamos, <span class="at">by =</span> <span class="st">"id"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
      id cliente monto
@@ -512,6 +587,165 @@ Prof.&nbsp;Oliver Triveño
 </ul>
 <div class="fragment">
 <p>Ejercicio: Intenta calcular el “Loss Ratio” (Siniestros / Primas) uniendo una tabla de primas con una de siniestros.</p>
+</div>
+</section>
+<section id="manejo-de-datos-faltantes-na" class="slide level2">
+<h2>5. Manejo de Datos Faltantes (NA)</h2>
+<ul>
+<li><p>En la vida real, las bases de datos casi nunca están completas, hay errores de sistema o cruces fallidos.</p></li>
+<li><p>Vamos a simular una cartera de 1.000 clientes donde, a propósito, faltan algunos datos.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="co"># Generamos 1000 registros simulados</span></span>
+<span id="cb30-2"><a></a><span class="fu">set.seed</span>(<span class="dv">2026</span>) <span class="co"># Para que todos obtengamos los mismos datos aleatorios</span></span>
+<span id="cb30-3"><a></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb30-4"><a></a></span>
+<span id="cb30-5"><a></a>cartera <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb30-6"><a></a>  <span class="at">poliza_id =</span> <span class="dv">1</span><span class="sc">:</span>n,</span>
+<span id="cb30-7"><a></a>  <span class="at">edad =</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">40</span>, <span class="at">sd =</span> <span class="dv">10</span>)),</span>
+<span id="cb30-8"><a></a>  <span class="at">ramo =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Auto"</span>, <span class="st">"Vida"</span>, <span class="st">"Salud"</span>, <span class="st">"Hogar"</span>), n, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb30-9"><a></a>  <span class="at">prima =</span> <span class="fu">round</span>(<span class="fu">runif</span>(n, <span class="dv">500</span>, <span class="dv">3000</span>), <span class="dv">2</span>),</span>
+<span id="cb30-10"><a></a>  <span class="at">riesgo =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Alto"</span>, <span class="st">"Medio"</span>, <span class="st">"Bajo"</span>), n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb30-11"><a></a>)</span>
+<span id="cb30-12"><a></a></span>
+<span id="cb30-13"><a></a><span class="co"># Introducimos NA (valores faltantes) de forma aleatoria</span></span>
+<span id="cb30-14"><a></a>cartera <span class="ot">&lt;-</span> cartera <span class="sc">%&gt;%</span></span>
+<span id="cb30-15"><a></a>  <span class="fu">mutate</span>(</span>
+<span id="cb30-16"><a></a>    <span class="at">edad =</span> <span class="fu">if_else</span>(<span class="fu">runif</span>(n) <span class="sc">&lt;</span> <span class="fl">0.10</span>, <span class="cn">NA_real_</span>, edad),           <span class="co"># ~10% sin edad</span></span>
+<span id="cb30-17"><a></a>    <span class="at">prima =</span> <span class="fu">if_else</span>(<span class="fu">runif</span>(n) <span class="sc">&lt;</span> <span class="fl">0.15</span>, <span class="cn">NA_real_</span>, prima),         <span class="co"># ~15% sin prima</span></span>
+<span id="cb30-18"><a></a>    <span class="at">ramo =</span> <span class="fu">if_else</span>(<span class="fu">runif</span>(n) <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="cn">NA_character_</span>, ramo),      <span class="co"># ~5% sin ramo</span></span>
+<span id="cb30-19"><a></a>    <span class="at">riesgo =</span> <span class="fu">if_else</span>(<span class="fu">runif</span>(n) <span class="sc">&lt;</span> <span class="fl">0.12</span>, <span class="cn">NA_character_</span>, riesgo)   <span class="co"># ~12% sin riesgo</span></span>
+<span id="cb30-20"><a></a>  )</span>
+<span id="cb30-21"><a></a></span>
+<span id="cb30-22"><a></a><span class="fu">head</span>(cartera)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  poliza_id  edad ramo  prima riesgo
+      &lt;int&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; 
+1         1    45 Auto   600. Bajo  
+2         2    NA Vida  2896. Medio 
+3         3    41 Auto  1290. Medio 
+4         4    39 Vida  1426. Alto  
+5         5    33 Salud   NA  Alto  
+6         6    15 Salud 2374. &lt;NA&gt;  </code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="diagnóstico-cuántos-na-tenemos">5.1 Diagnóstico: ¿Cuántos NA tenemos?</h3>
+<p>Antes de tomar decisiones, debemos saber a qué nos enfrentamos.</p>
+<h4 id="diagnóstico-summary">5.1.1 Diagnóstico: summary()</h4>
+<p>La función summary() nos da un vistazo rápido.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">summary</span>(cartera)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   poliza_id           edad           ramo               prima       
+ Min.   :   1.0   Min.   :10.00   Length:1000        Min.   : 506.9  
+ 1st Qu.: 250.8   1st Qu.:33.00   Class :character   1st Qu.:1138.0  
+ Median : 500.5   Median :40.00   Mode  :character   Median :1764.8  
+ Mean   : 500.5   Mean   :40.23                      Mean   :1741.6  
+ 3rd Qu.: 750.2   3rd Qu.:46.00                      3rd Qu.:2330.8  
+ Max.   :1000.0   Max.   :74.00                      Max.   :2995.5  
+                  NA's   :116                        NA's   :140     
+    riesgo         
+ Length:1000       
+ Class :character  
+ Mode  :character  
+                   
+                   
+                   
+                   </code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h4 id="diagnóstico-colsums">5.1.2 Diagnóstico: colSums()</h4>
+<p>Pero podemos ser más precisos combinando is.na() con colSums():</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="co"># Cuenta cuántos NA hay por cada columna</span></span>
+<span id="cb34-2"><a></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(cartera))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>poliza_id      edad      ramo     prima    riesgo 
+        0       116        42       140       129 </code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="estrategia-1-eliminación-drop_na">5.2 Estrategia 1: Eliminación (drop_na)</h3>
+<p>Si los datos faltantes son muy pocos o la variable no es crítica, podemos eliminar las filas incompletas usando la función drop_na() del paquete tidyr.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="co"># Eliminar TODAS las filas que tengan al menos un NA</span></span>
+<span id="cb36-2"><a></a>cartera_limpia <span class="ot">&lt;-</span> cartera <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span>
+<span id="cb36-3"><a></a></span>
+<span id="cb36-4"><a></a><span class="co"># Eliminar filas solo si falta la variable 'ramo'</span></span>
+<span id="cb36-5"><a></a>cartera_sin_na_ramo <span class="ot">&lt;-</span> cartera <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(ramo)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Advertencia</strong></p>
+</div>
+<div class="callout-content">
+<p>¡Precaución! Usar drop_na() sin argumentos eliminará cualquier fila con un solo NA. En nuestro caso de 1000 registros, podríamos perder más del 30% de la cartera si no tenemos cuidado.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="estrategia-2-imputación-en-variables-categóricas">5.3 Estrategia 2: Imputación en Variables Categóricas</h3>
+<p>En lugar de borrar al cliente que no tiene registrado el ramo o el riesgo, podemos rellenar ese vacío con una categoría como “Desconocido” o “Sin Clasificar”. Usamos replace_na():</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>cartera <span class="ot">&lt;-</span> cartera <span class="sc">%&gt;%</span></span>
+<span id="cb37-2"><a></a>  <span class="fu">mutate</span>(</span>
+<span id="cb37-3"><a></a>    <span class="at">ramo =</span> <span class="fu">replace_na</span>(ramo, <span class="st">"No Especificado"</span>),</span>
+<span id="cb37-4"><a></a>    <span class="at">riesgo =</span> <span class="fu">replace_na</span>(riesgo, <span class="st">"Sin Evaluación"</span>)</span>
+<span id="cb37-5"><a></a>  )</span>
+<span id="cb37-6"><a></a></span>
+<span id="cb37-7"><a></a><span class="co"># Verificamos que ya no hay NA en esas columnas categóricas</span></span>
+<span id="cb37-8"><a></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(cartera))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>poliza_id      edad      ramo     prima    riesgo 
+        0       116         0       140         0 </code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="estrategia-3-imputación-en-variables-numéricas">5.4 Estrategia 3: Imputación en Variables Numéricas</h3>
+<p>Para los números (como la edad o la prima), rellenar con un “cero” arruinaría nuestros promedios y modelos. Una técnica común es imputar la media o la mediana de esa variable.</p>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="co"># Calculamos la mediana de la edad y el promedio de la prima (ignorando los NA)</span></span>
+<span id="cb39-2"><a></a>mediana_edad <span class="ot">&lt;-</span> <span class="fu">median</span>(cartera<span class="sc">$</span>edad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb39-3"><a></a>promedio_prima <span class="ot">&lt;-</span> <span class="fu">mean</span>(cartera<span class="sc">$</span>prima, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb39-4"><a></a></span>
+<span id="cb39-5"><a></a>cartera_imputada <span class="ot">&lt;-</span> cartera <span class="sc">%&gt;%</span></span>
+<span id="cb39-6"><a></a>  <span class="fu">mutate</span>(</span>
+<span id="cb39-7"><a></a>    <span class="co"># Si la edad es NA, pon la mediana; si no, deja la edad original</span></span>
+<span id="cb39-8"><a></a>    <span class="at">edad =</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(edad), mediana_edad, edad),</span>
+<span id="cb39-9"><a></a>    </span>
+<span id="cb39-10"><a></a>    <span class="co"># Hacemos lo mismo para la prima</span></span>
+<span id="cb39-11"><a></a>    <span class="at">prima =</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(prima), promedio_prima, prima)</span>
+<span id="cb39-12"><a></a>  )</span>
+<span id="cb39-13"><a></a></span>
+<span id="cb39-14"><a></a><span class="co"># ¡Cartera 100% limpia y sin perder una sola fila!</span></span>
+<span id="cb39-15"><a></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(cartera_imputada))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>poliza_id      edad      ramo     prima    riesgo 
+        0         0         0         0         0 </code></pre>
+</div>
 </div>
 <div style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
 <p><a href="../index.html" class="btn btn-primary shadow-lg" role="button" style="border-radius: 50px; padding: 10px 20px;"> 🏠 Inicio </a></p>
